@@ -28,3 +28,6 @@ The `LICENSE.md` file contains the license used for this repository
 
 ## `nodemon.json`
 The `nodemon.json` file restarts the Node server whenever any file changes are detected.
+
+## `practices.md`
+The `practices.md` file contains practices to follow when creating this app, which cannot be monitored by any configuration files.

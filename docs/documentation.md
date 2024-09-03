@@ -25,3 +25,6 @@ The `eslint.config.js` file defines linting and formatting options for the repos
 
 ## `LICENSE.md`
 The `LICENSE.md` file contains the license used for this repository
+
+## `nodemon.json`
+The `nodemon.json` file restarts the Node server whenever any file changes are detected.

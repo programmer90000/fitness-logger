@@ -13,3 +13,6 @@ The `.husky/_/husky.sh` file initialises Git hooks to enforce code quality, run 
 
 ## `scripts/hooks/prepare-commit-msg`
 The `scripts/hooks/prepare-commit-msg` defines the keywords that every commit message must begin with, ensuring consistency in every commit
+
+## `.gitignore`
+The `.gitignore` file is used to stop files from being added to git, ensuring they remain on the local PC and are not added to git version control and pushed to GitHub

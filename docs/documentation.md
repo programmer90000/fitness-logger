@@ -10,3 +10,6 @@ The `.husky/pre-commit` file ensures that each file contains the correct linting
 
 ## `.husky/_/husky.sh`
 The `.husky/_/husky.sh` file initialises Git hooks to enforce code quality, run tests, and perform other actions during Git operations.
+
+## `scripts/hooks/prepare-commit-msg`
+The `scripts/hooks/prepare-commit-msg` defines the keywords that every commit message must begin with, ensuring consistency in every commit

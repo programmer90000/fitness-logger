@@ -16,3 +16,6 @@ The `scripts/hooks/prepare-commit-msg` defines the keywords that every commit me
 
 ## `.gitignore`
 The `.gitignore` file is used to stop files from being added to git, ensuring they remain on the local PC and are not added to git version control and pushed to GitHub
+
+## `babel.config.js`
+The `babel.config.js` file configures Babel to transform modern JavaScript code into an older version of JavaScript, which is compatible with older browsers and environments.

@@ -31,3 +31,6 @@ The `nodemon.json` file restarts the Node server whenever any file changes are d
 
 ## `practices.md`
 The `practices.md` file contains practices to follow when creating this app, which cannot be monitored by any configuration files.
+
+## `tailwind.config.js`
+The `tailwind.config.js` file is used to tailor Tailwind to fit my project’s specific design and functionality requirements. It ensures global consistency across the app. It also allows plugins to extend the functionality of Tailwind.

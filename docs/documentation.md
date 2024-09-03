@@ -22,3 +22,6 @@ The `babel.config.js` file configures Babel to transform modern JavaScript code 
 
 ## `eslint.config.js`
 The `eslint.config.js` file defines linting and formatting options for the repository. It ensures all code pushed to the repository follows pre-defined rules to keep all files consistent and error-free.
+
+## `LICENSE.md`
+The `LICENSE.md` file contains the license used for this repository

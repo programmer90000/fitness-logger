@@ -9,4 +9,4 @@ The `.github/workflows/linting.yml` file is used to ensure the repository lintin
 The `.husky/pre-commit` file ensures that each file contains the correct linting before committing. If a file does not contain the correct linting, the commit will fail.
 
 ## `.husky/_/husky.sh`
-Initialises Git hooks to enforce code quality, run tests, and perform other actions during Git operations.
+The `.husky/_/husky.sh` file initialises Git hooks to enforce code quality, run tests, and perform other actions during Git operations.

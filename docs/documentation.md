@@ -19,3 +19,6 @@ The `.gitignore` file is used to stop files from being added to git, ensuring th
 
 ## `babel.config.js`
 The `babel.config.js` file configures Babel to transform modern JavaScript code into an older version of JavaScript, which is compatible with older browsers and environments.
+
+## `eslint.config.js`
+The `eslint.config.js` file defines linting and formatting options for the repository. It ensures all code pushed to the repository follows pre-defined rules to keep all files consistent and error-free.

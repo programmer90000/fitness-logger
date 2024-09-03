@@ -12,10 +12,10 @@ The `.husky/pre-commit` file ensures that each file contains the correct linting
 The `.husky/_/husky.sh` file initialises Git hooks to enforce code quality, run tests, and perform other actions during Git operations.
 
 ## `scripts/hooks/prepare-commit-msg`
-The `scripts/hooks/prepare-commit-msg` defines the keywords that every commit message must begin with, ensuring consistency in every commit
+The `scripts/hooks/prepare-commit-msg` defines the keywords that every commit message must begin with, ensuring consistency in every commit.
 
 ## `.gitignore`
-The `.gitignore` file is used to stop files from being added to git, ensuring they remain on the local PC and are not added to git version control and pushed to GitHub
+The `.gitignore` file is used to stop files from being added to git, ensuring they remain on the local PC and are not added to git version control and pushed to GitHub.
 
 ## `babel.config.js`
 The `babel.config.js` file configures Babel to transform modern JavaScript code into an older version of JavaScript, which is compatible with older browsers and environments.
@@ -24,7 +24,7 @@ The `babel.config.js` file configures Babel to transform modern JavaScript code 
 The `eslint.config.js` file defines linting and formatting options for the repository. It ensures all code pushed to the repository follows pre-defined rules to keep all files consistent and error-free.
 
 ## `LICENSE.md`
-The `LICENSE.md` file contains the license used for this repository
+The `LICENSE.md` file contains the license used for this repository.
 
 ## `nodemon.json`
 The `nodemon.json` file restarts the Node server whenever any file changes are detected.

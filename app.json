@@ -1,0 +1,48 @@
+{
+    "expo": {
+        "name": "fitness-logger",
+        "slug": "fitness-logger",
+        "scheme": "fitness-logger",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon-black.png",
+        "splash": {
+            "image": "./assets/splash-screen-black.png",
+            "backgroundColor": "#000000"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.programmer90000.fitness-tracker.dev",
+            "buildNumber": "1.0.0",
+            "infoPlist": {
+                "NSUserNotificationUsageDescription": "You can enable notifications"
+            }
+        },
+        "android": {
+            "package": "com.programmer90000.fitness-tracker.dev",
+            "versionCode": 1,
+            "permissions": [
+                "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.POST_NOTIFICATIONS"
+            ],
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon-black.png",
+                "backgroundColor": "#000000"
+            }
+        },
+        "privacy": "hidden",
+        "entryPoint": "./App.js",
+        "platforms": [
+            "ios",
+            "android"
+        ],
+        "notification": {
+            "icon": "./assets/icon-black.png",
+            "color": "#000000"
+        },
+        "description": "A description of your app",
+        "githubUrl": "https://github.com/programmer90000/fitness-logger/",
+        "primaryColor": "#000000"
+    }
+}

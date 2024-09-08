@@ -9,6 +9,13 @@ export default [
             "@stylistic/jsx": stylisticJsx,
             "@stylistic": stylistic,
         },
+        "languageOptions": {
+            "parserOptions": {
+                "ecmaFeatures": {
+                    "jsx": true,
+                },
+            },
+        },
         "rules": {
             "semi": "error",
             "indent": ["error", 4],

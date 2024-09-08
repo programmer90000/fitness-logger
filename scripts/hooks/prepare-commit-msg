@@ -1,5 +1,5 @@
 COMMIT_MSG_FILE=$1
-ALLOWED_KEYWORDS="config:|component:|feat:|fix:|docs:|style:|refactor:|perf:|optimize:|test:|revert:|comment:|breaking:|other:"
+ALLOWED_KEYWORDS="config:|component:|feat:|fix:|docs:|style:|refactor:|perf:|optimize:|merge:|test:|revert:|comment:|breaking:|other:"
 
 # ANSI color codes
 RED='\033[0;31m'

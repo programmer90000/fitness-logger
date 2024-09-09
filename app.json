@@ -10,6 +10,9 @@
             "image": "./assets/splash-screen-black.png",
             "backgroundColor": "#000000"
         },
+        "web": {
+            "bundler": "metro"
+        },
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.programmer90000.fitness-tracker.dev",
@@ -43,6 +46,9 @@
         },
         "description": "A description of your app",
         "githubUrl": "https://github.com/programmer90000/fitness-logger/",
-        "primaryColor": "#000000"
+        "primaryColor": "#000000",
+        "plugins": [
+            "expo-router"
+        ]
     }
 }

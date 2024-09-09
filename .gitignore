@@ -51,3 +51,6 @@ yarn-error.*
 .npmrc
 .yarnrc
 package-lock.json
+
+# IDE settings
+.idea/

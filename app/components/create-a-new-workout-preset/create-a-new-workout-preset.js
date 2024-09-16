@@ -3,8 +3,8 @@ import { View, ScrollView, Text, TextInput, Button } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 
 const WorkoutForm = () => {
-    const { control, handleSubmit } = useForm({});
-    const { fields, append } = useFieldArray({
+    const { control, handleSubmit, getValues } = useForm({});
+    const { fields, append, insert } = useFieldArray({
         control,
         "name": "exercises",
     });
@@ -13,8 +13,9 @@ const WorkoutForm = () => {
         console.log(data);
     };
 
-    const addExercise = () => {
-        append({ "name": "", "duration": "", "reps": "" });
+    const addExercise = (index) => {
+        const currentValues = getValues(`exercises.${index}`);
+        insert(index + 1, { ...currentValues });
     };
 
     return (
@@ -25,72 +26,72 @@ const WorkoutForm = () => {
                     control = {control}
                     name = "workoutName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput
-                            onBlur = {onBlur}
-                            onChangeText = {onChange}
-                            value = {value}
-                        />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} />
                     ); }}
                 />
-
                 <Text>Workout Notes</Text>
                 <Controller
                     control = {control}
                     name = "workoutNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput
-                            onBlur = {onBlur}
-                            onChangeText = {onChange}
-                            value = {value}
-                        />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} />
                     ); }}
                 />
-
                 <Text>Exercises</Text>
-
                 {fields.map((field, index) => { return (
                     <View key = {field.id}>
-                        <Text>Exercise Name</Text>
-                        <Controller
-                            control = {control}
-                            name = {`exercises.${index}.name`}
-                            render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                <TextInput
-                                    onBlur = {onBlur}
-                                    onChangeText = {onChange}
-                                    value = {value}
-                                />
-                            ); }}
-                        />
-                        <Text>Weight Size</Text>
-                        <Controller
-                            control = {control}
-                            name = {`exercises.${index}.duration`}
-                            render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                <TextInput
-                                    onBlur = {onBlur}
-                                    onChangeText = {onChange}
-                                    value = {value}
-                                    keyboardType = "numeric"
-                                />
-                            ); }}
-                        />
-                        <Text>Reps</Text>
-                        <Controller
-                            control = {control}
-                            name = {`exercises.${index}.reps`}
-                            render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                <TextInput
-                                    onBlur = {onBlur}
-                                    onChangeText = {onChange}
-                                    value = {value}
-                                    keyboardType = "numeric"
-                                />
-                            ); }}
-                        />
+                        <View>
+                            <Text>Exercise Name</Text>
+                            <Controller
+                                control = {control}
+                                name = {`exercises.${index}.name`}
+                                render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                    <TextInput
+                                        onBlur = {onBlur}
+                                        onChangeText = {onChange}
+                                        value = {value}
+                                    />
+                                ); }}
+                            />
+                        </View>
+                        <View>
+                            <Text>Personal Best</Text>
+                            <Text>N/A</Text>
+                        </View>
+                        <View>
+                            <Text>Weight Size</Text>
+                            <Controller
+                                control = {control}
+                                name = {`exercises.${index}.duration`}
+                                render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                    <TextInput
+                                        onBlur = {onBlur}
+                                        onChangeText = {onChange}
+                                        value = {value}
+                                        keyboardType = "numeric"
+                                    />
+                                ); }}
+                            />
+                        </View>
+                        <View>
+                            <Text>Reps</Text>
+                            <Controller
+                                control = {control}
+                                name = {`exercises.${index}.reps`}
+                                render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                    <TextInput
+                                        onBlur = {onBlur}
+                                        onChangeText = {onChange}
+                                        value = {value}
+                                        keyboardType = "numeric"
+                                    />
+                                ); }}
+                            />
+                        </View>
+                        <Button title = "Add Set" onPress = {() => { return addExercise(index); }} />
                     </View>
                 ); })}
-                <Button title = "Add Exercise" onPress = {addExercise} />
+                <Button title = "Add Exercise" onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} />
                 <Button title = "Submit" onPress = {handleSubmit(onSubmit)} />
             </View>
         </ScrollView>

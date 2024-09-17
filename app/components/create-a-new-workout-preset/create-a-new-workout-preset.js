@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { styles } from "./style.js";
 
 const WorkoutForm = () => {
+    const [removedButtons, setRemovedButtons] = useState([]);
+
     const { control, handleSubmit, getValues } = useForm({});
-    const { fields, append, insert } = useFieldArray({
+    const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
     });
@@ -22,6 +24,8 @@ const WorkoutForm = () => {
             "duration": currentValues.duration,
             "reps": currentValues.reps,
         });
+        setRemovedButtons([...removedButtons, index]);
+
     };
 
     return (
@@ -103,9 +107,11 @@ const WorkoutForm = () => {
                                     />
                                 </View>
                             </View>
-                            <TouchableOpacity onPress = {() => { return addSet(index); }} style = {styles.button}>
-                                <Text style = {styles.buttonText}>Add Set</Text>
-                            </TouchableOpacity>
+                            {!removedButtons.includes(index) && (
+                                <TouchableOpacity onPress = {() => { return addSet(index); }} style = {styles.button}>
+                                    <Text style = {styles.buttonText}>Add Set</Text>
+                                </TouchableOpacity>
+                            )}
                         </View>
                     );
                     })}

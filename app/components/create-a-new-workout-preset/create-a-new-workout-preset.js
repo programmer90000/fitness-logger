@@ -14,7 +14,7 @@ const WorkoutForm = () => {
         console.log(data);
     };
 
-    const addExercise = (index) => {
+    const addSet = (index) => {
         const currentValues = getValues(`exercises.${index}`);
         insert(index + 1, {
             "name": currentValues.name,
@@ -103,7 +103,7 @@ const WorkoutForm = () => {
                                     />
                                 </View>
                             </View>
-                            <TouchableOpacity onPress = {() => { return addExercise(index); }} style = {styles.button}>
+                            <TouchableOpacity onPress = {() => { return addSet(index); }} style = {styles.button}>
                                 <Text style = {styles.buttonText}>Add Set</Text>
                             </TouchableOpacity>
                         </View>

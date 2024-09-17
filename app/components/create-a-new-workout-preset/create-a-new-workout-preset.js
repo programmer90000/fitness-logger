@@ -1,6 +1,7 @@
 import React from "react";
-import { View, ScrollView, Text, TextInput, Button } from "react-native";
+import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
+import { styles } from "./style.js";
 
 const WorkoutForm = () => {
     const { control, handleSubmit, getValues } = useForm({});
@@ -19,80 +20,97 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView>
-            <View>
-                <Text>Workout Name</Text>
+        <ScrollView style = {styles.screen}>
+            <View style = {styles.container}>
+                <Text style = {styles.title}>Workout Name</Text>
                 <Controller
                     control = {control}
                     name = "workoutName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} style = {styles.textInput} />
                     ); }}
                 />
-                <Text>Workout Notes</Text>
+                <Text style = {styles.title}>Workout Notes</Text>
                 <Controller
                     control = {control}
                     name = "workoutNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} style = {styles.textInput} multiline = {true} numberOfLines = {3} />
                     ); }}
-                />
-                <Text>Exercises</Text>
-                {fields.map((field, index) => { return (
-                    <View key = {field.id}>
-                        <View>
-                            <Text>Exercise Name</Text>
-                            <Controller
-                                control = {control}
-                                name = {`exercises.${index}.name`}
-                                render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                    <TextInput
-                                        onBlur = {onBlur}
-                                        onChangeText = {onChange}
-                                        value = {value}
+                /> 
+                <Text style = {[styles.title, styles.mainExerciseTitle]}>Exercises</Text>
+                <View style = {styles.formFields}>
+                    {fields.map((field, index) => { return (
+                        <View key = {field.id} style = {styles.newExercise}>
+                            <View style = {styles.exerciseFormFields}>
+                                <View style = {styles.exerciseField}>
+                                    <Text style = {styles.exerciseTitle}>Exercise Name</Text>
+                                    <Controller
+                                        control = {control}
+                                        name = {`exercises.${index}.name`}
+                                        style = {styles.textInput}
+                                        render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                            <TextInput
+                                                onBlur = {onBlur}
+                                                onChangeText = {onChange}
+                                                value = {value}
+                                                style = {styles.textInput}
+                                            />
+                                        ); }}
                                     />
-                                ); }}
-                            />
-                        </View>
-                        <View>
-                            <Text>Personal Best</Text>
-                            <Text>N/A</Text>
-                        </View>
-                        <View>
-                            <Text>Weight Size</Text>
-                            <Controller
-                                control = {control}
-                                name = {`exercises.${index}.duration`}
-                                render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                    <TextInput
-                                        onBlur = {onBlur}
-                                        onChangeText = {onChange}
-                                        value = {value}
-                                        keyboardType = "numeric"
+                                </View>
+                                <View style = {styles.exerciseField}>
+                                    <Text style = {styles.exerciseTitle}>Personal Best</Text>
+                                    <Text style = {styles.textInput}>N/A</Text>
+                                </View>
+                                <View style = {styles.exerciseField}>
+                                    <Text style = {styles.exerciseTitle}>Weight Size</Text>
+                                    <Controller
+                                        control = {control}
+                                        name = {`exercises.${index}.duration`}
+                                        style = {styles.textInput}
+                                        render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                            <TextInput
+                                                onBlur = {onBlur}
+                                                onChangeText = {onChange}
+                                                value = {value}
+                                                keyboardType = "numeric"
+                                                style = {styles.textInput}
+                                            />
+                                        ); }}
                                     />
-                                ); }}
-                            />
-                        </View>
-                        <View>
-                            <Text>Reps</Text>
-                            <Controller
-                                control = {control}
-                                name = {`exercises.${index}.reps`}
-                                render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                    <TextInput
-                                        onBlur = {onBlur}
-                                        onChangeText = {onChange}
-                                        value = {value}
-                                        keyboardType = "numeric"
+                                </View>
+                                <View style = {styles.exerciseField}>
+                                    <Text style = {styles.exerciseTitle}>Reps</Text>
+                                    <Controller
+                                        control = {control}
+                                        name = {`exercises.${index}.reps`}
+                                        style = {styles.textInput}
+                                        render = {({ "field": { onChange, onBlur, value } }) => { return (
+                                            <TextInput
+                                                onBlur = {onBlur}
+                                                onChangeText = {onChange}
+                                                value = {value}
+                                                keyboardType = "numeric"
+                                                style = {styles.textInput}
+                                            />
+                                        ); }}
                                     />
-                                ); }}
-                            />
+                                </View>
+                            </View>
+                            <TouchableOpacity onPress = {() => { return addExercise(index); }} style = {styles.button}>
+                                <Text style = {styles.buttonText}>Add Set</Text>
+                            </TouchableOpacity>
                         </View>
-                        <Button title = "Add Set" onPress = {() => { return addExercise(index); }} />
-                    </View>
-                ); })}
-                <Button title = "Add Exercise" onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} />
-                <Button title = "Submit" onPress = {handleSubmit(onSubmit)} />
+                    );
+                    })}
+                </View>
+                <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} style = {styles.button}>
+                    <Text style = {styles.buttonText}>Add Exercise</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {styles.button}>
+                    <Text style = {styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );

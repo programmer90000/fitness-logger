@@ -16,7 +16,12 @@ const WorkoutForm = () => {
 
     const addExercise = (index) => {
         const currentValues = getValues(`exercises.${index}`);
-        insert(index + 1, { ...currentValues });
+        insert(index + 1, {
+            "name": currentValues.name,
+            "personalBest": currentValues.personalBest || "N/A",
+            "duration": currentValues.duration,
+            "reps": currentValues.reps,
+        });
     };
 
     return (

@@ -13,7 +13,19 @@ const WorkoutForm = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(data);
+        const exercises = data.exercises.reduce((acc, exercise) => {
+            const existingExercise = acc.find((ex) => { return ex.name === exercise.name; });
+            if (existingExercise) {
+                existingExercise.sets.push({ "duration": exercise.duration, "reps": exercise.reps });
+            } else {
+                acc.push({ "name": exercise.name, "personalBest": "N/A", "sets": [{ "duration": exercise.duration, "reps": exercise.reps }] });
+            }
+            return acc;
+        }, []);
+
+        const formattedData = { ...data, exercises };
+        console.log(formattedData);
+
     };
 
     const addSet = (index) => {

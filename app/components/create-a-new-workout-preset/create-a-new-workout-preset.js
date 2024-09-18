@@ -11,7 +11,7 @@ const WorkoutForm = () => {
         control,
         "name": "exercises",
     });
-
+    
     const onSubmit = (data) => {
         const exercises = data.exercises.reduce((acc, exercise) => {
             const existingExercise = acc.find((ex) => { return ex.name === exercise.name; });
@@ -25,7 +25,11 @@ const WorkoutForm = () => {
 
         const formattedData = { ...data, exercises };
         console.log(formattedData);
-
+    };
+    
+    const updateData = () => {
+        const allData = getValues();
+        onSubmit(allData);
     };
 
     const addSet = (index) => {
@@ -37,7 +41,6 @@ const WorkoutForm = () => {
             "reps": currentValues.reps,
         });
         setRemovedButtons([...removedButtons, index]);
-
     };
 
     return (
@@ -120,7 +123,10 @@ const WorkoutForm = () => {
                                 </View>
                             </View>
                             {!removedButtons.includes(index) && (
-                                <TouchableOpacity onPress = {() => { return addSet(index); }} style = {styles.button}>
+                                <TouchableOpacity onPress = {() => {
+                                    updateData();
+                                    addSet(index);
+                                }} style = {styles.button}>
                                     <Text style = {styles.buttonText}>Add Set</Text>
                                 </TouchableOpacity>
                             )}
@@ -128,7 +134,10 @@ const WorkoutForm = () => {
                     );
                     })}
                 </View>
-                <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} style = {styles.button}>
+                <TouchableOpacity onPress = {() => {
+                    updateData();
+                    append({ "name": "", "duration": "", "reps": "" });
+                }} style = {styles.button}>
                     <Text style = {styles.buttonText}>Add Exercise</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {styles.button}>

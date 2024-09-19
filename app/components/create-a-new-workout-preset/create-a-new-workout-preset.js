@@ -14,9 +14,9 @@ const WorkoutForm = () => {
     
     const onSubmit = (data) => {
         const exercises = data.exercises.reduce((acc, exercise) => {
-            const existingExercise = acc.find((ex) => { return ex.name === exercise.name; });
-            if (existingExercise) {
-                existingExercise.sets.push({ "duration": exercise.duration, "reps": exercise.reps });
+            const lastExercise = acc[acc.length - 1];
+            if (lastExercise && lastExercise.name === exercise.name) {
+                lastExercise.sets.push({ "duration": exercise.duration, "reps": exercise.reps });
             } else {
                 acc.push({ "name": exercise.name, "personalBest": "N/A", "sets": [{ "duration": exercise.duration, "reps": exercise.reps }] });
             }
@@ -26,7 +26,7 @@ const WorkoutForm = () => {
         const formattedData = { ...data, exercises };
         console.log(formattedData);
     };
-    
+
     const updateData = () => {
         const allData = getValues();
         onSubmit(allData);

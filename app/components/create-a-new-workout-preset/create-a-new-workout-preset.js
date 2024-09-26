@@ -70,14 +70,14 @@ const WorkoutForm = () => {
                 <Text style = {{color: colours.black}} className="text-xl mt-[30px]">Exercises</Text>
                 <View className="items-center flex justify-center">
                     {fields.map((field, index) => { return (
-                        <View key = {field.id} className="flex-initial flex-col w-full justify-between	mt-[15px] flex-wrap items-center">
+                        <View key = {field.id} className="flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             <View className="flex-row w-full">
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px]">Exercise Name</Text>
+                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Exercise Name</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.name`}
-                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
+                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
@@ -89,15 +89,15 @@ const WorkoutForm = () => {
                                     />
                                 </View>
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px]">Personal Best</Text>
-                                    <Text className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]">N/A</Text>
+                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Personal Best</Text>
+                                    <Text className="text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27]">N/A</Text>
                                 </View>
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px]">Weight Size</Text>
+                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.duration`}
-                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
+                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
@@ -110,11 +110,11 @@ const WorkoutForm = () => {
                                     />
                                 </View>
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px]">Reps</Text>
+                                    <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Reps</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.reps`}
-                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
+                                        className="align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}

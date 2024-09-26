@@ -90,7 +90,7 @@ const WorkoutForm = () => {
                                 </View>
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Personal Best</Text>
-                                    <Text className="text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27]">N/A</Text>
+                                    <Text className="text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
                                 </View>
                                 <View className="bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{color: colours.black}} className="flex-1 text-[15px] h-5">Weight Size</Text>

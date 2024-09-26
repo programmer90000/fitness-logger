@@ -54,3 +54,4 @@ package-lock.json
 
 # IDE settings
 .idea/
+.vscode/

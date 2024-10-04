@@ -14,10 +14,10 @@ const WorkoutForm = () => {
     const { control } = useForm({});
     
     const [value, setValue] = useState(null);
-    const data = [
-        { "label": "Option 1", "value": "1" },
-        { "label": "Option 2", "value": "2" },
-        { "label": "Option 3", "value": "3" },
+    const exerciseType = [
+        { "label": "Reps", "value": "reps" },
+        { "label": "Weight/ Reps", "value": "weightAndReps" },
+        { "label": "Distance/ Time", "value": "distanceAndTime" },
     ];
 
     return (
@@ -33,7 +33,7 @@ const WorkoutForm = () => {
                 />
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
-                    data = {data}
+                    data = {exerciseType}
                     value = {value}
                     onChange = {setValue}
                 />

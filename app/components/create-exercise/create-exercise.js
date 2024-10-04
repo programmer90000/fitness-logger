@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../dropdown-box/dropdown-box.js";
+import UploadVideo from "../upload-video/upload-video.js";
 
 const colours = {
     "black": "#060606",
@@ -43,8 +44,8 @@ const WorkoutForm = () => {
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
-                />                 
-
+                />       
+                <UploadVideo />
                 <TouchableOpacity className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 
 const UploadVideo = () => {
@@ -18,8 +18,10 @@ const UploadVideo = () => {
     };
 
     return (
-        <View style = {{ "flex": 1, "justifyContent": "center", "alignItems": "center" }}>
-            <Button title = "Upload Video" onPress = {pickVideo} />
+        <View className = "flex-1 justify-center items-center">
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[5px]" onPress = {pickVideo}>
+                <Text className = "font-medium text-base">Upload Video</Text>
+            </TouchableOpacity>
         </View>
     );
 };

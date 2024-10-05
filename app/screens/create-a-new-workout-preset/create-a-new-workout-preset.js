@@ -1,8 +1,10 @@
 import React from "react";
-import WorkoutForm from "../../components/workout-form/workout-form.js"
+import WorkoutForm from "../../components/workout-form/workout-form.js";
 
 const createANewWorkoutPreset = () => {
-    <WorkoutForm />
-}
+    return (
+        <WorkoutForm />
+    );
+};
 
 export default createANewWorkoutPreset;

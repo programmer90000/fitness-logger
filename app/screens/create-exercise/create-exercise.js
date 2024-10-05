@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import DropdownComponent from "../dropdown-box/dropdown-box.js";
-import UploadVideo from "../upload-video/upload-video.js";
+import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
+import UploadVideo from "../../components/upload-video/upload-video.js";
 
 const colours = {
     "black": "#060606",

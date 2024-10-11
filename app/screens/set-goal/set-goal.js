@@ -12,7 +12,7 @@ const colours = {
 const WorkoutForm = () => {
     const { control } = useForm({});
     const [mode, setMode] = useState("date");
-    const [startDate, setStartDate] = useState(new Date(1598051730000));
+    const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [reminderDate, setReminderDate] = useState(new Date());
     const [startPickerShow, setStartPickerShow] = useState(false);

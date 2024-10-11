@@ -11,48 +11,49 @@ const colours = {
 
 const WorkoutForm = () => {
     const { control } = useForm({});
-    const [date, setDate] = useState(new Date(1598051730000));
     const [mode, setMode] = useState("date");
-    const [show, setShow] = useState(false);
+    const [startDate, setStartDate] = useState(new Date(1598051730000));
     const [endDate, setEndDate] = useState(new Date());
     const [reminderDate, setReminderDate] = useState(new Date());
-    const [endShow, setEndShow] = useState(false);
-    const [reminderShow, setReminderShow] = useState(false);
+    const [startPickerShow, setStartPickerShow] = useState(false);
+    const [endPickerShow, setEndPickerShow] = useState(false);
+    const [reminderPickerShow, setReminderPickerShow] = useState(false);
 
-
-    const onChange = (event, selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(false);
-        setDate(currentDate);
-    };
-
-    const showDatepicker = () => {
-        setShow(true);
-    };
     const options = {
         "year": "numeric",
         "month": "numeric",
         "day": "numeric",
     };
+
+    const onStartChange = (event, selectedDate) => {
+        const currentDate = selectedDate || startDate;
+        setStartPickerShow(false);
+        setStartDate(currentDate);
+    };
     
     const onEndChange = (event, selectedDate) => {
         const currentDate = selectedDate || endDate;
-        setEndShow(false);
+        setEndPickerShow(false);
         setEndDate(currentDate);
     };
-    const showEndDatepicker = () => {
-        setEndShow(true);
-    };
-    const showReminderDatepicker = () => {
-        setReminderShow(true);
-    };
-
+    
     const onReminderChange = (event, selectedDate) => {
         const currentDate = selectedDate || endDate;
-        setReminderShow(false);
+        setReminderPickerShow(false);
         setReminderDate(currentDate);
     };
 
+    const showStartDatepicker = () => {
+        setStartPickerShow(true);
+    };
+    
+    const showEndDatepicker = () => {
+        setEndPickerShow(true);
+    };
+    
+    const showReminderDatepicker = () => {
+        setReminderPickerShow(true);
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
@@ -73,14 +74,14 @@ const WorkoutForm = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4">Start Date</Text>
-                    <TouchableOpacity control = {control} name = "startDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showDatepicker}><Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">{date.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
-                    {show && (
+                    <TouchableOpacity control = {control} name = "startDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showStartDatepicker}><Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
+                    {startPickerShow && (
                         <DateTimePicker
                             testID = "dateTimePicker"
-                            value = {date}
+                            value = {startDate}
                             mode = {mode}
                             is24Hour = {true}
-                            onChange = {onChange}
+                            onChange = {onStartChange}
                         />
                     )}
                 </View>
@@ -91,7 +92,7 @@ const WorkoutForm = () => {
                             {endDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
-                    {endShow && (
+                    {endPickerShow && (
                         <DateTimePicker
                             testID = "endDateTimePicker"
                             value = {endDate}
@@ -108,7 +109,7 @@ const WorkoutForm = () => {
                             {reminderDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
-                    {reminderShow && (
+                    {reminderPickerShow && (
                         <DateTimePicker
                             value = {reminderDate}
                             mode = {mode}

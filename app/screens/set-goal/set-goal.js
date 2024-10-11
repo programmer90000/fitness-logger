@@ -120,7 +120,7 @@ const WorkoutForm = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Additional Notes</Text>
-                    <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
+                    <Controller control = {control} name = "notes" render = {({ "field": { onChange, onBlur, value } }) => { return (
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} numberOfLines = {5} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                     />

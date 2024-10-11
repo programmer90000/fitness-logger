@@ -14,8 +14,10 @@ const WorkoutForm = () => {
     const [date, setDate] = useState(new Date(1598051730000));
     const [mode, setMode] = useState("date");
     const [show, setShow] = useState(false);
-    const [endDate, setEndDate] = useState(new Date(1598051730000));
+    const [endDate, setEndDate] = useState(new Date());
+    const [reminderDate, setReminderDate] = useState(new Date());
     const [endShow, setEndShow] = useState(false);
+    const [reminderShow, setReminderShow] = useState(false);
 
 
     const onChange = (event, selectedDate) => {
@@ -41,7 +43,15 @@ const WorkoutForm = () => {
     const showEndDatepicker = () => {
         setEndShow(true);
     };
+    const showReminderDatepicker = () => {
+        setReminderShow(true);
+    };
 
+    const onReminderChange = (event, selectedDate) => {
+        const currentDate = selectedDate || endDate;
+        setReminderShow(false);
+        setReminderDate(currentDate);
+    };
 
 
     return (
@@ -88,6 +98,22 @@ const WorkoutForm = () => {
                             mode = {mode}
                             is24Hour = {true}
                             onChange = {onEndChange}
+                        />
+                    )}
+                </View>
+                <View className = "flex-row items-center">
+                    <Text className = "mr-4">Reminder Date</Text>
+                    <TouchableOpacity control = {control} name = "reminderDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showReminderDatepicker}>
+                        <Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">
+                            {reminderDate.toLocaleString("en-GB", options)}
+                        </Text>
+                    </TouchableOpacity>
+                    {reminderShow && (
+                        <DateTimePicker
+                            value = {reminderDate}
+                            mode = {mode}
+                            is24Hour = {true}
+                            onChange = {onReminderChange}
                         />
                     )}
                 </View>

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Table, TableWrapper, Row, Rows, Col } from "react-native-table-component";
+import LineChartComponent from "../../components/line-graph/line-graph.js";
 
 const CONTENT = {
     "tableHead": ["", "Column 1", "Column 2", "Column 3"],
@@ -53,7 +54,9 @@ export default function App() {
                     />
                 </TableWrapper>
             </Table>
-
+            <View style = {styles.container1}>
+                <LineChartComponent style = {{ "flex": 1, "justifyContent": "center", "alignItems": "center" }} />
+            </View>
         </View>
     );
 }

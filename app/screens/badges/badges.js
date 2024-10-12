@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
 export default function Footer() {
     return (
-        <ScrollView style = {styles.container}>
+        <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <MaterialCommunityIcons name = "shoe-cleat" size = {100} color = "black" />
             <FontAwesome6 name = "dumbbell" size = {100} color = "black" />
             <FontAwesome6 name = "mountain" size = {100} color = "black" />

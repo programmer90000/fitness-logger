@@ -22,12 +22,11 @@ export default function App() {
         "title": { "flex": 1, "backgroundColor": "#2ecc71" },
         "row": { "height": 28 },
         "text": { "textAlign": "center" },
-        "container1": {
+        "lineGraph": {
             "flex": 1,
             "justifyContent": "center",
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "width": "90%",
         },
     });
     return (
@@ -54,7 +53,7 @@ export default function App() {
                     />
                 </TableWrapper>
             </Table>
-            <View style = {styles.container1}>
+            <View style = {styles.lineGraph}>
                 <LineChartComponent style = {{ "flex": 1, "justifyContent": "center", "alignItems": "center" }} />
             </View>
         </View>

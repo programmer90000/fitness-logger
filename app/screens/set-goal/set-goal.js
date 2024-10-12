@@ -126,6 +126,8 @@ const WorkoutForm = () => {
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                    {/* // TODO: Before submitting, check if the End Date is after the Start Date */}
+                    {/* // TODO: Before submitting, check if the Reminder Date is in-between or on the Start Date and End Date */}
                     <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Submit</Text>
                 </TouchableOpacity>
             </View>

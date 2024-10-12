@@ -125,6 +125,9 @@ const WorkoutForm = () => {
                     ); }}
                     />
                 </View>
+                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Submit</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );

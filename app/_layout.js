@@ -13,6 +13,7 @@ export default function Layout() {
                 <Drawer.Screen name = "screens/set-goal/set-goal" options = {{ "drawerLabel": "Set Goal", "title": "Set Goal" }} />
                 <Drawer.Screen name = "screens/upload-download-data/upload-download-data" options = {{ "drawerLabel": "Upload/ Download data", "title": "Upload/ Download data" }} />
                 <Drawer.Screen name = "screens/statistics/statistics" options = {{ "drawerLabel": "Statistics", "title": "Statistics" }} />
+                <Drawer.Screen name = "screens/badges/badges" options = {{ "drawerLabel": "Badges", "title": "Badges" }} />
             </Drawer>
         </GestureHandlerRootView>
     );

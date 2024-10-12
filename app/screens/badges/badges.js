@@ -1,11 +1,17 @@
-import { View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
 
+const styles = StyleSheet.create({
+    "container": {
+        "padding": 16,
+    },
+});
+
 export default function Footer() {
     return (
-        <View>
+        <ScrollView style = {styles.container}>
             <MaterialCommunityIcons name = "shoe-cleat" size = {100} color = "black" />
             <FontAwesome6 name = "dumbbell" size = {100} color = "black" />
             <FontAwesome6 name = "mountain" size = {100} color = "black" />
@@ -15,6 +21,6 @@ export default function Footer() {
             <FontAwesome6 name = "fire" size = {100} color = "black" />
             <FontAwesome6 name = "trophy" size = {100} color = "black" />
             <FontAwesome6 name = "bottle-water" size = {100} color = "black" />
-        </View>
+        </ScrollView>
     );
 }

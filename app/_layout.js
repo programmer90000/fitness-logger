@@ -8,6 +8,9 @@ export default function Layout() {
                 <Drawer.Screen name = "index" options = {{ "drawerLabel": "Home", "title": "Home" }} />
                 <Drawer.Screen name = "screens/create-a-new-workout-preset/create-a-new-workout-preset" options = {{ "drawerLabel": "Create A New Workout", "title": "Create A New Workout" }} />
                 <Drawer.Screen name = "screens/create-exercise/create-exercise" options = {{ "drawerLabel": "Create Exercise", "title": "Create Exercise" }} />
+                <Drawer.Screen name = "screens/create-workout/create-workout" options = {{ "drawerLabel": "Begin Workout", "title": "Begin Workout" }} />
+                <Drawer.Screen name = "screens/workout-history/workout-history" options = {{ "drawerLabel": "Workout History", "title": "Workout History" }} />
+                <Drawer.Screen name = "screens/set-goal/set-goal" options = {{ "drawerLabel": "Set Goal", "title": "Set Goal" }} />
             </Drawer>
         </GestureHandlerRootView>
     );

@@ -15,3 +15,6 @@ The component first asks the user for an exercise name using a TextInput box. Th
 
 ## `app/screens/create-workout/`
 The `app/screens/create-workout/` directory is used to create a screen to create a new workout. This screen contains a button to begin a new workout. It also contains all of the workout presets created by the user
+
+## `app/screens/log-workout/`
+This screens uses the `WorkoutForm` component in `app/components/workout-form` to display a form to create a new workout

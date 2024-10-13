@@ -21,3 +21,6 @@ This screens uses the `WorkoutForm` component in `app/components/workout-form` t
 
 ## `app/screens/set-goal`
 The `app/screen/set-goal` directory is used to create a new goal. The user is asked to enter a goal name, goal description, start date and end date. The user also has the option to enter the date for a notification which reminds the user of this goal
+
+## `app/screens/settings`
+The `app/screen/settings` directory is used to create a screen containing all of the app settings which the user can modify

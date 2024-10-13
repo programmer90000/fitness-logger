@@ -33,3 +33,6 @@ The `app/screen/upload-download-data` directory is used to create a screen conta
 
 ## `app/screens/view-goals`
 The `app/screen/view-goals` directory creates a screen which allows the user to view all of the goals he has set.
+
+## `app/screens/workout-history`
+The `app/screen/workout-history` directory creates a screen which allows the user to view all of the completed workouts

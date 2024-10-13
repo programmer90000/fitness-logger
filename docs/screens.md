@@ -18,3 +18,6 @@ The `app/screens/create-workout/` directory is used to create a screen to create
 
 ## `app/screens/log-workout/`
 This screens uses the `WorkoutForm` component in `app/components/workout-form` to display a form to create a new workout
+
+## `app/screens/set-goal`
+The `app/screen/set-goal` directory is used to create a new goal. The user is asked to enter a goal name, goal description, start date and end date. The user also has the option to enter the date for a notification which reminds the user of this goal

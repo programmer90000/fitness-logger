@@ -11,3 +11,6 @@ The `app/components/dropdown-box/` directory is used to create a component for a
 
 ## `app/components/Footer/`
 The `app/components/Footer/` directory creates a footer which can be used in the app
+
+## `app/components/line-grpah`
+The `app/components/line-graph` directory creates a line graph

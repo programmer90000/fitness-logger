@@ -30,3 +30,6 @@ The `app/screen/statistics` directory is used to create a screen containing stat
 
 ## `app/screens/upload-download-data`
 The `app/screen/upload-download-data` directory is used to create a screen containing 2 buttons. 1 button allows the user to upload data to the app. The other button allows the user to download data from the app
+
+## `app/screens/view-goals`
+The `app/screen/view-goals` directory creates a screen which allows the user to view all of the goals he has set.

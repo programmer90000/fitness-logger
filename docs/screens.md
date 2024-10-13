@@ -24,3 +24,6 @@ The `app/screen/set-goal` directory is used to create a new goal. The user is as
 
 ## `app/screens/settings`
 The `app/screen/settings` directory is used to create a screen containing all of the app settings which the user can modify
+
+## `app/screens/statistics`
+The `app/screen/statistics` directory is used to create a screen containing statistics. These statistics are taken from the data input by the user into the Workout Form

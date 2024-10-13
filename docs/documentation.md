@@ -34,3 +34,6 @@ The `practices.md` file contains practices to follow when creating this app, whi
 
 ## `tailwind.config.js`
 The `tailwind.config.js` file is used to tailor Tailwind to fit my project’s specific design and functionality requirements. It ensures global consistency across the app. It also allows plugins to extend the functionality of Tailwind.
+
+## `eas.json`
+The `eas.json` file is a configuration file for Expo Application Services (EAS) CLI. It manages the project's build, submit, and CLI settings.

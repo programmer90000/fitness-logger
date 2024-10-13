@@ -27,3 +27,6 @@ The `app/screen/settings` directory is used to create a screen containing all of
 
 ## `app/screens/statistics`
 The `app/screen/statistics` directory is used to create a screen containing statistics. These statistics are taken from the data input by the user into the Workout Form
+
+## `app/screens/upload-download-data`
+The `app/screen/upload-download-data` directory is used to create a screen containing 2 buttons. 1 button allows the user to upload data to the app. The other button allows the user to download data from the app

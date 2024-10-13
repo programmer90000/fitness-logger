@@ -8,3 +8,6 @@ The component first asks the user for an exercise name using a TextInput box. Th
 
 ## `app/components/dropdown-box/`
 The `app/components/dropdown-box/` directory is used to create a component for a dropdown box. When this box is clicked on, a dropdown list appears, from which the user can select an option
+
+## `app/components/Footer/`
+The `app/components/Footer/` directory creates a footer which can be used in the app

@@ -14,3 +14,6 @@ The `app/components/Footer/` directory creates a footer which can be used in the
 
 ## `app/components/line-grpah`
 The `app/components/line-graph` directory creates a line graph
+
+## `app/components/upload-video`
+The `app/components/upload-video` directory creates a button which allows the user to upload a video to the app

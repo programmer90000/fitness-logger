@@ -20,14 +20,26 @@ const exercises = {
     "primaryKey": "id",
 };
 
+const previousWorkouts = {
+    "name": "PreviousWorkouts",
+    "properties": {
+        "id": "objectId",
+        "name": "string",
+        "done": "bool",
+    },
+    "primaryKey": "id",
+};
+
+
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [workoutPresets, exercises] });
+        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);
         throw error; // Re-throw the error for handling in other files
     }
 };
+
 
 export default openRealm;

@@ -1,19 +1,18 @@
 import Realm from "realm";
 
-// Define your schema
-const database = {
-    "name": "Task",
+const workoutPresets = {
+    "name": "WorkoutPresets",
     "properties": {
         "id": "objectId",
         "name": "string",
         "done": "bool",
     },
-    "primaryKey": "_id",
+    "primaryKey": "id",
 };
 
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [database] });
+        const realm = await Realm.open({ "database": [workoutPresets] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);

@@ -40,9 +40,19 @@ const badges = {
     "primaryKey": "id",
 };
 
+const goals = {
+    "name": "Goals",
+    "properties": {
+        "id": "objectId",
+        "name": "string",
+        "done": "bool",
+    },
+    "primaryKey": "id",
+};
+
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges] });
+        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);

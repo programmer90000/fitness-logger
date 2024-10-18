@@ -60,4 +60,6 @@ const openRealm = async () => {
     }
 };
 
+// ! Each time I call this function, write the following line to close the database: realm.close();
+
 export default openRealm;

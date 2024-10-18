@@ -4,7 +4,7 @@ const workoutPresets = {
     "name": "WorkoutPresets",
     "properties": {
         "id": "objectId",
-        "name": "string",
+        "name": { "type": "string", "maxLength": 50 },
         "done": "bool",
     },
     "primaryKey": "id",
@@ -14,7 +14,7 @@ const exercises = {
     "name": "Exercises",
     "properties": {
         "id": "objectId",
-        "name": "string",
+        "name": { "type": "string", "maxLength": 50 },
         "done": "bool",
     },
     "primaryKey": "id",
@@ -24,7 +24,7 @@ const previousWorkouts = {
     "name": "PreviousWorkouts",
     "properties": {
         "id": "objectId",
-        "name": "string",
+        "name": { "type": "string", "maxLength": 50 },
         "done": "bool",
     },
     "primaryKey": "id",
@@ -34,7 +34,7 @@ const badges = {
     "name": "Badges",
     "properties": {
         "id": "objectId",
-        "name": "string",
+        "name": { "type": "string", "maxLength": 50 },
         "done": "bool",
     },
     "primaryKey": "id",
@@ -44,7 +44,7 @@ const goals = {
     "name": "Goals",
     "properties": {
         "id": "objectId",
-        "name": "string",
+        "name": { "type": "string", "maxLength": 50 },
         "done": "bool",
     },
     "primaryKey": "id",

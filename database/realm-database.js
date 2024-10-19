@@ -27,7 +27,8 @@ const previousWorkouts = {
     "properties": {
         "id": "objectId",
         "name": { "type": "string", "maxLength": 50 },
-        "done": "bool",
+        "notes": { "type": "string", "maxLength": 500 },
+        "date": "date", // TODO: Add a date picker for this field
     },
     "primaryKey": "id",
 };

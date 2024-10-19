@@ -49,7 +49,10 @@ const goals = {
     "properties": {
         "id": "objectId",
         "name": { "type": "string", "maxLength": 50 },
-        "done": "bool",
+        "startDate": "date", // TODO: Add a date picker for this field
+        "endDate": "date", // TODO: Add a date picker for this field
+        "reminders": "date", // TODO: Add a date picker for this field
+        "notes": { "type": "string", "maxLength": 500 },
     },
     "primaryKey": "id",
 };

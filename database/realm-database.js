@@ -45,6 +45,16 @@ const previousWorkouts = {
     "primaryKey": "id",
 };
 
+const previousWorkoutsExercises = {
+    "name": "PreviousWorkoutsExercises",
+    "properties": {
+        "id": "objectId",
+        "previousWorkouts": { "type": "objectId", "link": "PreviousWorkouts" },
+        "exercises": { "type": "objectId", "link": "Exercises" },
+    },
+    "primaryKey": "id",
+};
+
 const badges = {
     "name": "Badges",
     "properties": {
@@ -71,7 +81,7 @@ const goals = {
 
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises] });
+        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises, previousWorkoutsExercises] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);

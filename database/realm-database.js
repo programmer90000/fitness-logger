@@ -15,7 +15,9 @@ const exercises = {
     "properties": {
         "id": "objectId",
         "name": { "type": "string", "maxLength": 50 },
-        "done": "bool",
+        "type": "string", // TODO: Add a dropdown picker for this field
+        "notes": { "type": "string", "maxLength": 500 },
+        "video": "binary", // TODO: Add a file picker to add videos to this field
     },
     "primaryKey": "id",
 };

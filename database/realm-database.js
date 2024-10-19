@@ -29,6 +29,7 @@ const previousWorkouts = {
         "name": { "type": "string", "maxLength": 50 },
         "notes": { "type": "string", "maxLength": 500 },
         "date": "date", // TODO: Add a date picker for this field
+        "badges": { "type": "list", "objectType": "Badges" },
     },
     "primaryKey": "id",
 };

@@ -37,8 +37,9 @@ const badges = {
     "name": "Badges",
     "properties": {
         "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "done": "bool",
+        "image": "binary", // TODO: Add an image picker for this field
+        "text": { "type": "string", "maxLength": 50 },
+        "completed": "bool",
     },
     "primaryKey": "id",
 };

@@ -30,6 +30,7 @@ const previousWorkouts = {
         "notes": { "type": "string", "maxLength": 500 },
         "date": "date", // TODO: Add a date picker for this field
         "badges": { "type": "list", "objectType": "Badges" },
+        "goals": { "type": "list", "objectType": "Goals" },
     },
     "primaryKey": "id",
 };

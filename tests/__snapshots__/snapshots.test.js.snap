@@ -1067,3 +1067,275 @@ exports[`index.js Test 1`] = `
   </View>
 </View>
 `;
+
+exports[`log-workout.js Test 1`] = `
+<RCTScrollView
+  style={
+    {
+      "backgroundColor": "#f1f1f1",
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+          },
+          {
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 20,
+              "lineHeight": 28,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Workout Name
+      </Text>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        style={
+          [
+            {
+              "textAlign": "center",
+            },
+            {
+              "width": "91.666667%",
+            },
+            {
+              "flexBasis": "0%",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+            {
+              "marginBottom": 10,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 10,
+            },
+            {
+              "backgroundColor": "#DEDEDE",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "fontSize": 20,
+              "lineHeight": 28,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Workout Notes
+      </Text>
+      <TextInput
+        multiline={true}
+        numberOfLines={3}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        style={
+          [
+            {
+              "textAlign": "center",
+            },
+            {
+              "width": "91.666667%",
+            },
+            {
+              "flexBasis": "0%",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+            {
+              "marginBottom": 10,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 10,
+            },
+            {
+              "backgroundColor": "#DEDEDE",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "fontSize": 20,
+              "lineHeight": 28,
+            },
+            {
+              "marginTop": 30,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Exercises
+      </Text>
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+            },
+            {
+              "display": "flex",
+            },
+            {
+              "justifyContent": "center",
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#2296f3",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "700",
+              },
+              {
+                "fontSize": 16,
+              },
+              {
+                "color": "#f1f1f1",
+              },
+            ]
+          }
+        >
+          Add Exercise
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#2296f3",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "700",
+              },
+              {
+                "fontSize": 16,
+              },
+              {
+                "color": "#f1f1f1",
+              },
+            ]
+          }
+        >
+          Submit
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

@@ -1,10 +1,10 @@
 import React from "react";
 import WorkoutForm from "../../components/workout-form/workout-form.js";
 
-const logWorkout = () => {
+const LogWorkout = () => {
     return (
         <WorkoutForm />
     );
 };
 
-export default logWorkout;
+export default LogWorkout;

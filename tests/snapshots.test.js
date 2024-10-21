@@ -5,6 +5,7 @@ import Badges from "../app/screens/badges/badges";
 import CreateANewWorkoutPreset from "../app/screens/create-a-new-workout-preset/create-a-new-workout-preset";
 import CreateWorkout from "../app/screens/create-workout/create-workout.js";
 import LogWorkout from "../app/screens/log-workout/log-workout.js";
+import SetGoal from "../app/screens/set-goal/set-goal.js";
 
 test("index.js Test", () => {
     const snapshot = renderer.create(<App />);
@@ -32,6 +33,12 @@ test("create-workout.js Test", () => {
 
 test("log-workout.js Test", () => {
     const snapshot = renderer.create(<LogWorkout />);
+    let snapshotJSON = snapshot.toJSON();
+    expect(snapshotJSON).toMatchSnapshot();
+});
+
+test("set-goal.js Test", () => {
+    const snapshot = renderer.create(<SetGoal />);
     let snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
 });

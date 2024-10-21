@@ -10,7 +10,7 @@ const colours = {
     "red": "#d10000",
 };
 
-const WorkoutForm = () => {
+const CreateExercise = () => {
     const { control } = useForm({});
     
     const [value, setValue] = useState(null);
@@ -54,4 +54,4 @@ const WorkoutForm = () => {
     );
 };
 
-export default WorkoutForm;
+export default CreateExercise;

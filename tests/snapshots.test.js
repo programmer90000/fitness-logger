@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import App from "../app/index";
 import Badges from "../app/screens/badges/badges";
 import CreateANewWorkoutPreset from "../app/screens/create-a-new-workout-preset/create-a-new-workout-preset";
+import CreateExercise from "../app/screens/create-exercise/create-exercise.js";
 import CreateWorkout from "../app/screens/create-workout/create-workout.js";
 import LogWorkout from "../app/screens/log-workout/log-workout.js";
 import SetGoal from "../app/screens/set-goal/set-goal.js";
@@ -24,6 +25,12 @@ test("badges.js Test", () => {
 
 test("create-a-new-workout-preset.js Test", () => {
     const snapshot = renderer.create(<CreateANewWorkoutPreset />);
+    let snapshotJSON = snapshot.toJSON();
+    expect(snapshotJSON).toMatchSnapshot();
+});
+
+test("create-exercise.js", () => {
+    const snapshot = renderer.create(<CreateExercise />);
     let snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
 });

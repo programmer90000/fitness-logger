@@ -1,6 +1,6 @@
 import { React } from "react";
-import App from "../app/index";
 import renderer from "react-test-renderer";
+import App from "../app/index";
 
 test("index.js Test", () => {
     const snapshot = renderer.create(<App />);

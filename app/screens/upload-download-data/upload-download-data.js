@@ -7,7 +7,7 @@ const colours = {
     "red": "#d10000",
 };
 
-const CreateWorkout = () => {
+const UploadDownloadData = () => {
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
             <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
@@ -20,4 +20,4 @@ const CreateWorkout = () => {
     );
 };
 
-export default CreateWorkout;
+export default UploadDownloadData;

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function Footer() {
+export default function Badges() {
     return (
         <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>

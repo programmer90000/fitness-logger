@@ -9,7 +9,7 @@ const colours = {
     "red": "#d10000",
 };
 
-const WorkoutForm = () => {
+const SetGoal = () => {
     const { control } = useForm({});
     const [mode, setMode] = useState("date");
     const [startDate, setStartDate] = useState(new Date());
@@ -135,4 +135,4 @@ const WorkoutForm = () => {
     );
 };
 
-export default WorkoutForm;
+export default SetGoal;

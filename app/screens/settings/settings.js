@@ -8,7 +8,7 @@ const colours = {
     "red": "#d10000",
 };
 
-const WorkoutForm = () => { 
+const Settings = () => { 
     const [value, setValue] = useState(null);
     const theme = [
         { "label": "Light Mode", "value": "light" },
@@ -64,4 +64,4 @@ const WorkoutForm = () => {
     );
 };
 
-export default WorkoutForm;
+export default Settings;

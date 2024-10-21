@@ -7,6 +7,7 @@ import CreateWorkout from "../app/screens/create-workout/create-workout.js";
 import LogWorkout from "../app/screens/log-workout/log-workout.js";
 import SetGoal from "../app/screens/set-goal/set-goal.js";
 import UploadDownloadData from "../app/screens/upload-download-data/upload-download-data.js";
+import ViewGoals from "../app/screens/view-goals/view-goals.js";
 
 test("index.js Test", () => {
     const snapshot = renderer.create(<App />);
@@ -46,6 +47,12 @@ test("set-goal.js Test", () => {
 
 test("upload-download-data.js Test", () => {
     const snapshot = renderer.create(<UploadDownloadData />);
+    let snapshotJSON = snapshot.toJSON();
+    expect(snapshotJSON).toMatchSnapshot();
+});
+
+test("view-goals.js Test", () => {
+    const snapshot = renderer.create(<ViewGoals />);
     let snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
 });

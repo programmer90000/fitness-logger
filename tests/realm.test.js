@@ -47,3 +47,11 @@ test("Read record in badges database", () => { });
 test("Update record in badges database", () => { });
 
 test("Delete record in badges database", () => { });
+
+test("Create record in goals database", () => { });
+
+test("Read record in goals database", () => { });
+
+test("Update record in goals database", () => { });
+
+test("Delete record in goals database", () => { });

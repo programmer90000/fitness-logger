@@ -39,3 +39,11 @@ test("Read record in previousWorkoutsExercises database", () => { });
 test("Update record in previousWorkoutsExercises database", () => { });
 
 test("Delete record in previousWorkoutsExercises database", () => { });
+
+test("Create record in badges database", () => { });
+
+test("Read record in badges database", () => { });
+
+test("Update record in badges database", () => { });
+
+test("Delete record in badges database", () => { });

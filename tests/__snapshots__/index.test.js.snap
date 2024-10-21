@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index.js Test 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#f1f1f1",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text>
+    Open up App.js to start working on your app!
+  </Text>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#d10000",
+        "bottom": 0,
+        "color": "#060606",
+        "display": "flex",
+        "flex": 1,
+        "flexDirection": "row",
+        "height": "auto",
+        "justifyContent": "space-evenly",
+        "paddingBottom": "1%",
+        "paddingTop": "1%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      href="/"
+      onPress={[Function]}
+      role="link"
+    >
+      <Text />
+    </Text>
+    <Text
+      href="/"
+      onPress={[Function]}
+      role="link"
+    >
+      <Text />
+    </Text>
+    <Text
+      href="/"
+      onPress={[Function]}
+      role="link"
+    >
+      <Text />
+    </Text>
+    <Text
+      href="/"
+      onPress={[Function]}
+      role="link"
+    >
+      <Text />
+    </Text>
+    <Text
+      href="/"
+      onPress={[Function]}
+      role="link"
+    >
+      <Text />
+    </Text>
+  </View>
+</View>
+`;

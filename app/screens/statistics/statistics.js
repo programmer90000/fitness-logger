@@ -14,7 +14,7 @@ const CONTENT = {
     ],
 };
 
-export default function App() {
+export default function Statistics() {
     const styles = StyleSheet.create({
         "container": { "flex": 1, "padding": 16, "paddingTop": 100, "backgroundColor": "#fff" },
         "head": { "height": 40, "backgroundColor": "orange" },

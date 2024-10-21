@@ -8,6 +8,7 @@ import CreateWorkout from "../app/screens/create-workout/create-workout.js";
 import LogWorkout from "../app/screens/log-workout/log-workout.js";
 import SetGoal from "../app/screens/set-goal/set-goal.js";
 import Settings from "../app/screens/settings/settings.js";
+import Statistics from "../app/screens/statistics/statistics.js";
 import UploadDownloadData from "../app/screens/upload-download-data/upload-download-data.js";
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
@@ -56,6 +57,12 @@ test("set-goal.js Test", () => {
 
 test("settings.js Test", () => {
     const snapshot = renderer.create(<Settings />);
+    let snapshotJSON = snapshot.toJSON();
+    expect(snapshotJSON).toMatchSnapshot();
+});
+
+test("statistics.js Test", () => {
+    const snapshot = renderer.create(<Statistics />);
     let snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
 });

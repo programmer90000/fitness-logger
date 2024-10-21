@@ -31,3 +31,11 @@ test("Read record in previousWorkouts database", () => { });
 test("Update record in previousWorkouts database", () => { });
 
 test("Delete record in previousWorkouts database", () => { });
+
+test("Create record in previousWorkoutsExercises database", () => { });
+
+test("Read record in previousWorkoutsExercises database", () => { });
+
+test("Update record in previousWorkoutsExercises database", () => { });
+
+test("Delete record in previousWorkoutsExercises database", () => { });

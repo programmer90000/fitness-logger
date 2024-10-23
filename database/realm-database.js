@@ -44,19 +44,6 @@ const badges = {
     "primaryKey": "id",
 };
 
-const goals = {
-    "name": "Goals",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "startDate": "date", // TODO: Add a date picker for this field
-        "endDate": "date", // TODO: Add a date picker for this field
-        "reminders": "date", // TODO: Add a date picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
-    },
-    "primaryKey": "id",
-};
-
 const openRealm = async () => {
     try {
         const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises, previousWorkoutsExercises] });

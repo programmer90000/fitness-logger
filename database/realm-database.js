@@ -1,15 +1,5 @@
 import Realm from "realm";
 
-const workoutPresets = {
-    "name": "WorkoutPresets",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
-    },
-    "primaryKey": "id",
-};
-
 const exercises = {
     "name": "Exercises",
     "properties": {

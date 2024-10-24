@@ -29,12 +29,12 @@ const addWorkout = (realm, workoutName, workoutNotes, workoutDate, setPreviousWo
 
         realm.write(() => {
             realm.create("Goals", {
-                id: maxId + 1,
-                name: workoutName,
-                notes: workoutNotes,
-                date: workoutDate,
+                "id": maxId + 1,
+                "name": workoutName,
+                "notes": workoutNotes,
+                "date": workoutDate,
             });
-            setPreviousWorkouts([...realm.objects("PreviousWorkouts")]);  // Refresh the PreviousWorkouts list
+            setPreviousWorkouts([...realm.objects("PreviousWorkouts")]); // Refresh the PreviousWorkouts list
             setWorkoutName("");
             setWorkoutNotes("");
             setWorkoutDate("");
@@ -58,22 +58,22 @@ const deleteWorkout = (realm, previousWorkout, setPreviousWorkout, setIsLoading)
             "Are you sure you want to delete this workout?",
             [
                 {
-                    text: "Cancel",
+                    "text": "Cancel",
                     onPress: () => {
                         setIsLoading(false);
                     },
                 },
                 {
-                    text: "Delete",
+                    "text": "Delete",
                     onPress: () => {
                         realm.write(() => {
                             realm.delete(previousWorkout);
-                            setPreviousWorkout([...realm.objects("PreviousWorkouts")]);  // Refresh the PreviousWorkouts list
+                            setPreviousWorkout([...realm.objects("PreviousWorkouts")]); // Refresh the PreviousWorkouts list
                             setIsLoading(false);
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);
@@ -96,12 +96,12 @@ const editPreviousWorkout = (realm, previousWorkout, setPreviousWorkout, previou
             setIsLoading(false);
             return;
         }
-        setGoal(realm.objects("PreviousWorkouts").toJSON());  // Refresh the PreviousWorkouts list
+        setGoal(realm.objects("PreviousWorkouts").toJSON()); // Refresh the PreviousWorkouts list
     } catch (error) {
         Alert.alert("Error", error.message);
     } finally {
         setIsLoading(false);
     }
-}
+};
 
 export { previousWorkouts, addWorkout, deleteWorkout, editPreviousWorkout };

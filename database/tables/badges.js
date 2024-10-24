@@ -14,8 +14,8 @@ const badges = {
 
 
 const initialBadges = [
-    //{ id: 1, image: "path/to/badge1.png", text: "Badge 1", completed: false },
-    //{ id: 2, image: "path/to/badge2.png", text: "Badge 2", completed: false },
+    // { id: 1, image: "path/to/badge1.png", text: "Badge 1", completed: false },
+    // { id: 2, image: "path/to/badge2.png", text: "Badge 2", completed: false },
 ];
 
 const addBadgesToRealm = (realm) => {

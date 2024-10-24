@@ -1,4 +1,4 @@
-name: Linting And Testing
+name: Linting-And-Testing
 
 on: [push, pull_request]
 

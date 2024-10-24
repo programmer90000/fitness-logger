@@ -72,7 +72,7 @@ const deleteWorkoutPreset = (realm, workoutPreset, setWorkoutPresets, setIsLoadi
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);

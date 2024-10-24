@@ -20,17 +20,6 @@ const previousWorkoutsExercises = {
     "primaryKey": "id",
 };
 
-const badges = {
-    "name": "Badges",
-    "properties": {
-        "id": "objectId",
-        "image": "binary", // TODO: Add an image picker for this field
-        "text": { "type": "string", "maxLength": 50 },
-        "completed": "bool",
-    },
-    "primaryKey": "id",
-};
-
 const openRealm = async () => {
     try {
         const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises, previousWorkoutsExercises] });

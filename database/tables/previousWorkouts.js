@@ -59,13 +59,13 @@ const deleteWorkout = (realm, previousWorkout, setPreviousWorkout, setIsLoading)
             [
                 {
                     "text": "Cancel",
-                    onPress: () => {
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },
                 {
                     "text": "Delete",
-                    onPress: () => {
+                    "onPress": () => {
                         realm.write(() => {
                             realm.delete(previousWorkout);
                             setPreviousWorkout([...realm.objects("PreviousWorkouts")]); // Refresh the PreviousWorkouts list

@@ -89,7 +89,7 @@ const deleteGoal = (realm, goal, setGoals, setIsLoading) => {
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);

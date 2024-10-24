@@ -68,7 +68,7 @@ const deleteExercise = (realm, exercise, setExercises, setIsLoading) => {
             [
                 {
                     "text": "Cancel",
-                    onPress: () => {
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },

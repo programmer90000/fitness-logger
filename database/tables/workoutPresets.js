@@ -58,13 +58,13 @@ const deleteWorkoutPreset = (realm, workoutPreset, setWorkoutPresets, setIsLoadi
             [
                 {
                     "text": "Cancel",
-                    onPress: () => {
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },
                 {
                     "text": "Delete",
-                    onPress: () => {
+                    "onPress": () => {
                         realm.write(() => {
                             realm.delete(workoutPreset);
                             setWorkoutPresets([...realm.objects("WorkoutPresets")]); // Refresh the workout preset list

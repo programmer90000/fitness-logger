@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 const goals = {
     "name": "Goals",
     "properties": {
-        "id": "objectId",
+        "id": "int",
         "name": { "type": "string", "maxLength": 50 },
         "startDate": "date", // TODO: Add a date picker for this field
         "endDate": "date", // TODO: Add a date picker for this field

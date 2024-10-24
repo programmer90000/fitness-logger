@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 const exercises = {
     "name": "Exercises",
     "properties": {
-        "id": "objectId",
+        "id": "int",
         "name": { "type": "string", "maxLength": 50 },
         "type": "string", // TODO: Add a dropdown picker for this field
         "notes": { "type": "string", "maxLength": 500 },

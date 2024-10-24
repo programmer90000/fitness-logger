@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 const badges = {
     "name": "Badges",
     "properties": {
-        "id": "objectId",
+        "id": "int",
         "image": "binary", // TODO: Add an image picker for this field
         "text": { "type": "string", "maxLength": 50 },
         "completed": "bool",

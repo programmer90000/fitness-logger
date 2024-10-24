@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 const previousWorkouts = {
     "name": "PreviousWorkouts",
     "properties": {
-        "id": "objectId",
+        "id": "int",
         "name": { "type": "string", "maxLength": 50 },
         "notes": { "type": "string", "maxLength": 500 },
         "date": "date", // TODO: Add a date picker for this field

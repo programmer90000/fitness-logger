@@ -1,27 +1,5 @@
 import Realm from "realm";
 
-const workoutPresets = {
-    "name": "WorkoutPresets",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
-    },
-    "primaryKey": "id",
-};
-
-const exercises = {
-    "name": "Exercises",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "type": "string", // TODO: Add a dropdown picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
-        "video": "binary", // TODO: Add a file picker to add videos to this field
-    },
-    "primaryKey": "id",
-};
-
 const workoutPresetsExercises = {
     "name": "WorkoutPresetsExercises",
     "properties": {
@@ -32,49 +10,12 @@ const workoutPresetsExercises = {
     "primaryKey": "id",
 };
 
-const previousWorkouts = {
-    "name": "PreviousWorkouts",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
-        "date": "date", // TODO: Add a date picker for this field
-        "badges": { "type": "list", "objectType": "Badges" },
-        "goals": { "type": "list", "objectType": "Goals" },
-    },
-    "primaryKey": "id",
-};
-
 const previousWorkoutsExercises = {
     "name": "PreviousWorkoutsExercises",
     "properties": {
         "id": "objectId",
         "previousWorkouts": { "type": "objectId", "link": "PreviousWorkouts" },
         "exercises": { "type": "objectId", "link": "Exercises" },
-    },
-    "primaryKey": "id",
-};
-
-const badges = {
-    "name": "Badges",
-    "properties": {
-        "id": "objectId",
-        "image": "binary", // TODO: Add an image picker for this field
-        "text": { "type": "string", "maxLength": 50 },
-        "completed": "bool",
-    },
-    "primaryKey": "id",
-};
-
-const goals = {
-    "name": "Goals",
-    "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "startDate": "date", // TODO: Add a date picker for this field
-        "endDate": "date", // TODO: Add a date picker for this field
-        "reminders": "date", // TODO: Add a date picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
     },
     "primaryKey": "id",
 };

@@ -36,20 +36,20 @@ export default function Statistics() {
                     data = {CONTENT.tableHead}
                     flexArr = {[1, 2, 1, 1]}
                     style = {styles.head}
-                    textStyle={{ ...styles.text }}
+                    textStyle = {{ ...styles.text }}
                 />
                 <TableWrapper style = {styles.wrapper}>
                     <Col
                         data = {CONTENT.tableTitle}
                         style = {styles.title}
                         heightArr = {[28, 28]}
-                        textStyle={{ ...styles.text }}
+                        textStyle = {{ ...styles.text }}
                     />
                     <Rows
                         data = {CONTENT.tableData}
                         flexArr = {[2, 1, 1]}
                         style = {styles.row}
-                        textStyle={{ ...styles.text }}
+                        textStyle = {{ ...styles.text }}
                     />
                 </TableWrapper>
             </Table>

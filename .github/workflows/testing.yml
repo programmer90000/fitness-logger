@@ -3,7 +3,7 @@ name: Linting-And-Testing
 on: [push, pull_request]
 
 jobs:
-  Linting And Testing:
+  Linting-And-Testing:
     name: Linting-And-Testing
     runs-on: ubuntu-latest
     steps:

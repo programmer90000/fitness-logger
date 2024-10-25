@@ -22,7 +22,7 @@ const previousWorkoutsExercises = {
 
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises, previousWorkoutsExercises] });
+        const realm = await Realm.open({ "database": [workoutPresetsExercises, previousWorkoutsExercises] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);

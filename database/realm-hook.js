@@ -3,29 +3,31 @@ import Realm from "realm";
 
 const openTable = (tableName) => {
     const [realm, setRealm] = useState(null);
-    const [realmData, setRealmData] = useState({ "tableName": [] });
+    const [realmData, setRealmData] = useState({ [tableName]: [] });
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(true);
-        Realm.open({ "schema": [tableName] })
-            .then((realmInstance) => {
+        const fetchData = async () => {
+            setIsLoading(true);
+            try {
+                const realmInstance = await Realm.open({ "schema": [tableName] });
                 setRealm(realmInstance);
-                const tableNameData = realmInstance.objects([tableName]);
-                setRealmData(tableNameData);
+                const tableNameData = realmInstance.objects(tableName);
+                setRealmData({ [tableName]: tableNameData });
                 setIsLoading(false);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("Error opening Realm:", error);
                 setIsLoading(false);
-            });
+            }
+        };
+        fetchData();
 
         return () => {
             if (realm) {
                 realm.close();
             }
         };
-    }, []);
+    }, [tableName]);
     return { realm, realmData, isLoading, setIsLoading };
 };
 

@@ -2745,7 +2745,7 @@ exports[`statistics.js Test 1`] = `
       "backgroundColor": "#fff",
       "flex": 1,
       "padding": 16,
-      "paddingTop": 100,
+      "paddingTop": 30,
     }
   }
 >
@@ -2763,172 +2763,98 @@ exports[`statistics.js Test 1`] = `
   >
     <View
       style={
-        [
-          undefined,
-          0,
-          {
-            "flexDirection": "row",
-            "overflow": "hidden",
-          },
-          {
-            "backgroundColor": "orange",
-            "height": 40,
-          },
-        ]
+        {
+          "backgroundColor": "#f1f8ff",
+          "flexDirection": "row",
+          "height": 40,
+          "overflow": "hidden",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-            },
-            {
-              "justifyContent": "center",
-            },
-            undefined,
-            undefined,
-            {
-              "flex": 1,
-            },
-            false,
-            undefined,
-          ]
+          {
+            "borderColor": "#000",
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "flex": 1,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
           style={
-            [
-              [
-                undefined,
-                {
-                  "textAlign": "center",
-                },
-              ],
-              {
-                "backgroundColor": "transparent",
-              },
-            ]
+            {
+              "backgroundColor": "transparent",
+              "textAlign": "center",
+            }
           }
         />
       </View>
       <View
         style={
-          [
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-            },
-            {
-              "justifyContent": "center",
-            },
-            undefined,
-            undefined,
-            {
-              "flex": 2,
-            },
-            false,
-            undefined,
-          ]
+          {
+            "borderColor": "#000",
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "flex": 2,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
           style={
-            [
-              [
-                undefined,
-                {
-                  "textAlign": "center",
-                },
-              ],
-              {
-                "backgroundColor": "transparent",
-              },
-            ]
+            {
+              "backgroundColor": "transparent",
+              "textAlign": "center",
+            }
           }
         >
-          Column 1
+          Head1
         </Text>
       </View>
       <View
         style={
-          [
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-            },
-            {
-              "justifyContent": "center",
-            },
-            undefined,
-            undefined,
-            {
-              "flex": 1,
-            },
-            false,
-            undefined,
-          ]
+          {
+            "borderColor": "#000",
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "flex": 1,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
           style={
-            [
-              [
-                undefined,
-                {
-                  "textAlign": "center",
-                },
-              ],
-              {
-                "backgroundColor": "transparent",
-              },
-            ]
+            {
+              "backgroundColor": "transparent",
+              "textAlign": "center",
+            }
           }
         >
-          Column 2
+          Head2
         </Text>
       </View>
       <View
         style={
-          [
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-            },
-            {
-              "justifyContent": "center",
-            },
-            undefined,
-            undefined,
-            {
-              "flex": 1,
-            },
-            false,
-            undefined,
-          ]
+          {
+            "borderColor": "#000",
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "flex": 1,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
           style={
-            [
-              [
-                undefined,
-                {
-                  "textAlign": "center",
-                },
-              ],
-              {
-                "backgroundColor": "transparent",
-              },
-            ]
+            {
+              "backgroundColor": "transparent",
+              "textAlign": "center",
+            }
           }
         >
-          Column 3
+          Head3
         </Text>
       </View>
     </View>
@@ -2941,2445 +2867,413 @@ exports[`statistics.js Test 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flex": 1,
-            },
-            undefined,
-            {
-              "backgroundColor": "#2ecc71",
-              "flex": 1,
-            },
-          ]
+          {
+            "backgroundColor": "#f6f8fa",
+            "flex": 1,
+            "width": 1,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-              },
-              {
-                "justifyContent": "center",
-              },
-              undefined,
-              {
-                "height": 28,
-              },
-              undefined,
-              false,
-              undefined,
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "textAlign": "center",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ]
-            }
-          >
-            Row
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-              },
-              {
-                "justifyContent": "center",
-              },
-              undefined,
-              {
-                "height": 28,
-              },
-              undefined,
-              false,
-              undefined,
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "textAlign": "center",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ]
-            }
-          >
-            Row 2
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-              },
-              {
-                "justifyContent": "center",
-              },
-              undefined,
-              undefined,
-              undefined,
-              {
-                "flex": 1,
-              },
-              undefined,
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "textAlign": "center",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ]
-            }
-          >
-            Row 3
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-              },
-              {
-                "justifyContent": "center",
-              },
-              undefined,
-              undefined,
-              undefined,
-              {
-                "flex": 1,
-              },
-              undefined,
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "textAlign": "center",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ]
-            }
-          >
-            Row 4
-          </Text>
-        </View>
-      </View>
-      <View
-        style={
-          [
             {
-              "flex": 4,
-            },
-            0,
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              undefined,
-              0,
-              {
-                "flexDirection": "row",
-                "overflow": "hidden",
-              },
-              {
-                "height": 28,
-              },
-            ]
+              "borderColor": "#000",
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "height": 28,
+              "justifyContent": "center",
+            }
           }
         >
-          <View
+          <Text
             style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 2,
-                },
-                false,
-                undefined,
-              ]
+              {
+                "backgroundColor": "transparent",
+                "textAlign": "center",
+              }
             }
           >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              1
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              2
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              3
-            </Text>
-          </View>
+            Title
+          </Text>
         </View>
         <View
           style={
-            [
-              undefined,
-              0,
-              {
-                "flexDirection": "row",
-                "overflow": "hidden",
-              },
-              {
-                "height": 28,
-              },
-            ]
+            {
+              "borderColor": "#000",
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "height": 28,
+              "justifyContent": "center",
+            }
           }
         >
-          <View
+          <Text
             style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 2,
-                },
-                false,
-                undefined,
-              ]
+              {
+                "backgroundColor": "transparent",
+                "textAlign": "center",
+              }
             }
           >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              a
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              b
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              c
-            </Text>
-          </View>
+            Title2
+          </Text>
         </View>
         <View
           style={
-            [
-              undefined,
-              0,
-              {
-                "flexDirection": "row",
-                "overflow": "hidden",
-              },
-              {
-                "height": 28,
-              },
-            ]
+            {
+              "borderColor": "#000",
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flex": 1,
+              "justifyContent": "center",
+            }
           }
         >
-          <View
+          <Text
             style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 2,
-                },
-                false,
-                undefined,
-              ]
+              {
+                "backgroundColor": "transparent",
+                "textAlign": "center",
+              }
             }
           >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              1
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              2
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              3
-            </Text>
-          </View>
+            Title3
+          </Text>
         </View>
         <View
           style={
-            [
-              undefined,
-              0,
-              {
-                "flexDirection": "row",
-                "overflow": "hidden",
-              },
-              {
-                "height": 28,
-              },
-            ]
+            {
+              "borderColor": "#000",
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flex": 1,
+              "justifyContent": "center",
+            }
           }
         >
-          <View
+          <Text
             style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 2,
-                },
-                false,
-                undefined,
-              ]
+              {
+                "backgroundColor": "transparent",
+                "textAlign": "center",
+              }
             }
           >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              a
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              b
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "borderColor": "#000",
-                  "borderRightWidth": 1,
-                  "borderTopWidth": 1,
-                },
-                {
-                  "justifyContent": "center",
-                },
-                undefined,
-                undefined,
-                {
-                  "flex": 1,
-                },
-                false,
-                undefined,
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  [
-                    undefined,
-                    {
-                      "textAlign": "center",
-                    },
-                  ],
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ]
-              }
-            >
-              c
-            </Text>
-          </View>
+            Title4
+          </Text>
         </View>
       </View>
-    </View>
-  </View>
-  <View
-    style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#fff",
-        "flex": 1,
-        "justifyContent": "center",
-      }
-    }
-  >
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "flex": 1,
-          "justifyContent": "center",
-        }
-      }
-    >
       <View
         style={
           {
-            "borderRadius": 16,
-            "marginVertical": 8,
+            "flex": 4,
           }
         }
       >
-        <RNSVGSvgView
-          bbHeight={220}
-          bbWidth={675}
-          focusable={false}
-          height={220}
+        <View
           style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "flex": 0,
-                "height": 220,
-                "width": 675,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "height": 28,
+              "overflow": "hidden",
+            }
           }
-          width={675}
         >
-          <RNSVGGroup
-            fill={
+          <View
+            style={
               {
-                "payload": 4278190080,
-                "type": 0,
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 2,
+                "justifyContent": "center",
               }
             }
           >
-            <RNSVGRect
-              fill={
+            <Text
+              style={
                 {
-                  "brushRef": "backgroundGradient",
-                  "type": 1,
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              }
-              fillOpacity={1}
-              height={220}
-              propList={
-                [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-              rx={16}
-              ry={16}
-              width="100%"
-              x={0}
-              y={0}
-            />
-            <RNSVGGroup
-              fill={
-                {
-                  "payload": 4278190080,
-                  "type": 0,
-                }
-              }
-              matrix={
-                [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
               }
             >
-              <RNSVGDefs>
-                <RNSVGLinearGradient
-                  gradient={
-                    [
-                      0,
-                      -291840,
-                      1,
-                      -22746,
-                    ]
-                  }
-                  gradientTransform={null}
-                  gradientUnits={1}
-                  name="backgroundGradient"
-                  x1={0}
-                  x2={675}
-                  y1={220}
-                  y2={0}
-                />
-                <RNSVGLinearGradient
-                  gradient={
-                    [
-                      0,
-                      452984831,
-                      1,
-                      452984831,
-                    ]
-                  }
-                  gradientTransform={null}
-                  gradientUnits={1}
-                  name="fillShadowGradientFrom"
-                  x1={0}
-                  x2={0}
-                  y1={0}
-                  y2={220}
-                />
-              </RNSVGDefs>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              1
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={675}
-                  y1={16}
-                  y2={16}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={675}
-                  y1={57.25}
-                  y2={57.25}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={675}
-                  y1={98.5}
-                  y2={98.5}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={675}
-                  y1={139.75}
-                  y2={139.75}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={675}
-                  y1={181}
-                  y2={181}
-                />
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              2
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "end",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      52,
-                    ]
-                  }
-                  y={
-                    [
-                      181,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="0.00"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "end",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      52,
-                    ]
-                  }
-                  y={
-                    [
-                      139.75,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="24.75"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "end",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      52,
-                    ]
-                  }
-                  y={
-                    [
-                      98.5,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="49.50"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "end",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      52,
-                    ]
-                  }
-                  y={
-                    [
-                      57.25,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="74.25"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "end",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      52,
-                    ]
-                  }
-                  y={
-                    [
-                      16,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="99.00"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              3
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexDirection": "row",
+              "height": 28,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 2,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={64}
-                  x2={64}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={151}
-                  x2={151}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={238}
-                  x2={238}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={325}
-                  x2={325}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={413}
-                  x2={413}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={500}
-                  x2={500}
-                  y1={0}
-                  y2={181}
-                />
-                <RNSVGLine
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeDasharray",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872415231,
-                      "type": 0,
-                    }
-                  }
-                  strokeDasharray={
-                    [
-                      "5",
-                      "10",
-                    ]
-                  }
-                  strokeWidth={1}
-                  x1={587}
-                  x2={587}
-                  y1={0}
-                  y2={181}
-                />
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              a
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      64,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="January"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      151.28571428571428,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="February"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      238.57142857142858,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="March"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      325.8571428571429,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="April"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      413.14285714285717,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="May"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      500.42857142857144,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="June"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-                <RNSVGText
-                  content={null}
-                  dx={[]}
-                  dy={[]}
-                  fill={
-                    {
-                      "payload": 3439329279,
-                      "type": 0,
-                    }
-                  }
-                  font={
-                    {
-                      "fontSize": 12,
-                      "textAnchor": "middle",
-                    }
-                  }
-                  matrix={
-                    [
-                      1,
-                      0,
-                      -0,
-                      1,
-                      0,
-                      0,
-                    ]
-                  }
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  rotate={[]}
-                  x={
-                    [
-                      587.7142857142858,
-                    ]
-                  }
-                  y={
-                    [
-                      205,
-                    ]
-                  }
-                >
-                  <RNSVGTSpan
-                    content="July"
-                    dx={[]}
-                    dy={[]}
-                    fill={
-                      {
-                        "payload": 4278190080,
-                        "type": 0,
-                      }
-                    }
-                    font={{}}
-                    rotate={[]}
-                    x={[]}
-                    y={[]}
-                  />
-                </RNSVGText>
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              b
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGPath
-                  d="M64,147 Q 85.75, 147, 107.5, 126.5 Q 129.25, 106, 151, 106 Q 172.75, 106, 194.5, 120 Q 216.25, 134, 238, 134 Q 259.75, 134, 281.5, 90.5 Q 303.25, 47, 325, 47 Q 347, 47, 369, 31.5 Q 391, 16, 413, 16 Q 434.75, 16, 456.5, 62.5 Q 478.25, 109, 500, 109 Q 521.75, 109, 543.5, 103 Q 565.25, 97, 587, 97"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 872349696,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth={2}
-                />
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              c
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexDirection": "row",
+              "height": 28,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 2,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGPath
-                  d="M64,147 Q 85.75, 147, 107.5, 126.5 Q 129.25, 106, 151, 106 Q 172.75, 106, 194.5, 120 Q 216.25, 134, 238, 134 Q 259.75, 134, 281.5, 90.5 Q 303.25, 47, 325, 47 Q 347, 47, 369, 31.5 Q 391, 16, 413, 16 Q 434.75, 16, 456.5, 62.5 Q 478.25, 109, 500, 109 Q 521.75, 109, 543.5, 103 Q 565.25, 97, 587, 97 L587.7142857142858,181 L64,181 Z"
-                  fill={
-                    {
-                      "brushRef": "fillShadowGradientFrom",
-                      "type": 1,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "strokeWidth",
-                    ]
-                  }
-                  strokeWidth={0}
-                />
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              1
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              >
-                <RNSVGCircle
-                  cx={64}
-                  cy={147.66666666666666}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={64}
-                  cy={147.66666666666666}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={151.28571428571428}
-                  cy={106}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={151.28571428571428}
-                  cy={106}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={238.57142857142858}
-                  cy={134.33333333333331}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={238.57142857142858}
-                  cy={134.33333333333331}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={325.85714285714283}
-                  cy={47.66666666666667}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={325.85714285714283}
-                  cy={47.66666666666667}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={413.14285714285717}
-                  cy={16}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={413.14285714285717}
-                  cy={16}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={500.42857142857144}
-                  cy={109.33333333333333}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={500.42857142857144}
-                  cy={109.33333333333333}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-                <RNSVGCircle
-                  cx={587.7142857142857}
-                  cy={97.66666666666666}
-                  fill={
-                    {
-                      "payload": 3875471360,
-                      "type": 0,
-                    }
-                  }
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
-                  }
-                  r="6"
-                  responsible={true}
-                  stroke={
-                    {
-                      "payload": 4294944550,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2"
-                />
-                <RNSVGCircle
-                  cx={587.7142857142857}
-                  cy={97.66666666666666}
-                  fill={
-                    {
-                      "payload": 4294967295,
-                      "type": 0,
-                    }
-                  }
-                  fillOpacity={0}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  propList={
-                    [
-                      "fill",
-                      "fillOpacity",
-                    ]
-                  }
-                  r="14"
-                  responsible={true}
-                />
-              </RNSVGGroup>
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              2
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              />
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
+              }
+            >
+              3
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexDirection": "row",
+              "height": 28,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 2,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
                 }
-              />
-            </RNSVGGroup>
-          </RNSVGGroup>
-        </RNSVGSvgView>
+              }
+            >
+              a
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
+                }
+              }
+            >
+              b
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "borderColor": "#000",
+                "borderRightWidth": 1,
+                "borderTopWidth": 1,
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "backgroundColor": "transparent",
+                  "textAlign": "center",
+                }
+              }
+            >
+              c
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   </View>

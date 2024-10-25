@@ -36,13 +36,13 @@ const addExercise = (realm, exerciseName, exerciseType, exerciseNotes, exerciseV
 
         realm.write(() => {
             realm.create("Exercises", {
-                id: maxId + 1,
-                name: exerciseName,
-                type: exerciseType,
-                notes: exerciseNotes,
-                video: exerciseVideo
+                "id": maxId + 1,
+                "name": exerciseName,
+                "type": exerciseType,
+                "notes": exerciseNotes,
+                "video": exerciseVideo,
             });
-            setExercise([...realm.objects("Exercises")]);  // Refresh the workout preset list
+            setExercise([...realm.objects("Exercises")]); // Refresh the workout preset list
             setExerciseName("");
             setExerciseType("");
             setExerciseNotes("");
@@ -67,22 +67,22 @@ const deleteExercise = (realm, exercise, setExercises, setIsLoading) => {
             "Are you sure you want to delete this workout preset?",
             [
                 {
-                    text: "Cancel",
-                    onPress: () => {
+                    "text": "Cancel",
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },
                 {
-                    text: "Delete",
-                    onPress: () => {
+                    "text": "Delete",
+                    "onPress": () => {
                         realm.write(() => {
                             realm.delete(exercise);
-                            setExercises([...realm.objects("Exercises")]);  // Refresh the workout preset list
+                            setExercises([...realm.objects("Exercises")]); // Refresh the exercises list
                             setIsLoading(false);
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);
@@ -105,12 +105,12 @@ const editExercise = (realm, exercise, setExercise, exerciseName, setIsLoading) 
             setIsLoading(false);
             return;
         }
-        setExercise(realm.objects("Exercises").toJSON());  // Refresh the workout preset list
+        setExercise(realm.objects("Exercises").toJSON()); // Refresh the workout preset list
     } catch (error) {
         Alert.alert("Error", error.message);
     } finally {
         setIsLoading(false);
     }
-}
+};
 
 export { exercises, addExercise, deleteExercise, editExercise };

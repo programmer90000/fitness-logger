@@ -30,11 +30,11 @@ const addWorkoutPreset = (realm, workoutPresetName, workoutPresetNotes, setWorko
 
         realm.write(() => {
             realm.create("WorkoutPresets", {
-                id: maxId + 1,
-                name: workoutPresetName,
-                notes: workoutPresetNotes,
+                "id": maxId + 1,
+                "name": workoutPresetName,
+                "notes": workoutPresetNotes,
             });
-            setWorkoutPresets([...realm.objects("WorkoutPresets")]);  // Refresh the workout preset list
+            setWorkoutPresets([...realm.objects("WorkoutPresets")]); // Refresh the workout preset list
             setWorkoutPresetName("");
             setWorkoutPresetNotes("");
         });
@@ -57,22 +57,22 @@ const deleteWorkoutPreset = (realm, workoutPreset, setWorkoutPresets, setIsLoadi
             "Are you sure you want to delete this workout preset?",
             [
                 {
-                    text: "Cancel",
-                    onPress: () => {
+                    "text": "Cancel",
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },
                 {
-                    text: "Delete",
-                    onPress: () => {
+                    "text": "Delete",
+                    "onPress": () => {
                         realm.write(() => {
                             realm.delete(workoutPreset);
-                            setWorkoutPresets([...realm.objects("WorkoutPresets")]);  // Refresh the workout preset list
+                            setWorkoutPresets([...realm.objects("WorkoutPresets")]); // Refresh the workout preset list
                             setIsLoading(false);
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);
@@ -95,12 +95,12 @@ const editWorkoutPreset = (realm, workoutPreset, setWorkoutPresets, setIsLoading
             setIsLoading(false);
             return;
         }
-        setWorkoutPresets(realm.objects("WorkoutPresets").toJSON());  // Refresh the workout preset list
+        setWorkoutPresets(realm.objects("WorkoutPresets").toJSON()); // Refresh the workout preset list
     } catch (error) {
         Alert.alert("Error", error.message);
     } finally {
         setIsLoading(false);
     }
-}
+};
 
 export { workoutPresets, addWorkoutPreset, deleteWorkoutPreset, editWorkoutPreset };

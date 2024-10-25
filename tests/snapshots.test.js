@@ -13,6 +13,20 @@ import UploadDownloadData from "../app/screens/upload-download-data/upload-downl
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
 
+// Set a fixed date and time when running the tests
+const fixedDate = new Date("2024-10-21T00:00:00Z");
+beforeAll(() => {
+    global.Date = class extends Date {
+        constructor() {
+            super();
+            return fixedDate;
+        }
+    };
+});
+afterAll(() => {
+    global.Date = Date;
+});
+
 test("index.js Test", () => {
     const snapshot = renderer.create(<App />);
     let snapshotJSON = snapshot.toJSON();

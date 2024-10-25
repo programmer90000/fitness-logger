@@ -41,14 +41,14 @@ const addGoal = (realm, goalName, goalStartDate, goalEndDate, goalReminders, goa
 
         realm.write(() => {
             realm.create("Goals", {
-                id: maxId + 1,
-                name: goalName,
-                startDate: goalStartDate,
-                endDate: goalEndDate,
-                reminders: goalReminders,
-                notes: goalNotes,
+                "id": maxId + 1,
+                "name": goalName,
+                "startDate": goalStartDate,
+                "endDate": goalEndDate,
+                "reminders": goalReminders,
+                "notes": goalNotes,
             });
-            setGoal([...realm.objects("Goals")]);  // Refresh the goal list
+            setGoal([...realm.objects("Goals")]); // Refresh the goal list
             setGoalName("");
             setGoalStartDate("");
             setGoalEndDate("");
@@ -74,22 +74,22 @@ const deleteGoal = (realm, goal, setGoals, setIsLoading) => {
             "Are you sure you want to delete this goal?",
             [
                 {
-                    text: "Cancel",
-                    onPress: () => {
+                    "text": "Cancel",
+                    "onPress": () => {
                         setIsLoading(false);
                     },
                 },
                 {
-                    text: "Delete",
-                    onPress: () => {
+                    "text": "Delete",
+                    "onPress": () => {
                         realm.write(() => {
                             realm.delete(goal);
-                            setGoals([...realm.objects("Goals")]);  // Refresh the goals list
+                            setGoals([...realm.objects("Goals")]); // Refresh the goals list
                             setIsLoading(false);
                         });
                     },
                 },
-            ]
+            ],
         );
     } catch (error) {
         Alert.alert("Error", error.message);
@@ -112,12 +112,12 @@ const editGoal = (realm, goal, setGoal, goalName, setIsLoading) => {
             setIsLoading(false);
             return;
         }
-        setGoal(realm.objects("Goals").toJSON());  // Refresh the goals list
+        setGoal(realm.objects("Goals").toJSON()); // Refresh the goals list
     } catch (error) {
         Alert.alert("Error", error.message);
     } finally {
         setIsLoading(false);
     }
-}
+};
 
 export { goals, addGoal, deleteGoal, editGoal };

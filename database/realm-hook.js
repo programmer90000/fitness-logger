@@ -6,13 +6,139 @@ import { goals } from "../database/tables/goals";
 import { previousWorkouts } from "../database/tables/previousWorkouts";
 import { workoutPresets } from "../database/tables/workoutPresets.js";
 
-export const useRealmTasks = () => {
+const openBadgesTable = () => {
     const [realm, setRealm] = useState(null);
     const [realmData, setRealmData] = useState({
         "badges": [],
+    });
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        Realm.open({ "schema": [badges] })
+            .then((realmInstance) => {
+                setRealm(realmInstance);
+                const badges = realmInstance.objects("badges");
+                setRealmData({
+                    "badges": [...badges],
+                });
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error opening Realm:", error);
+                setIsLoading(false);
+            });
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
+    }, []);
+    return { realm, realmData, isLoading, setIsLoading };
+};
+
+const openExercisesTable = () => {
+    const [realm, setRealm] = useState(null);
+    const [realmData, setRealmData] = useState({
         "exercises": [],
+    });
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        Realm.open({ "schema": [exercises] })
+            .then((realmInstance) => {
+                setRealm(realmInstance);
+                const exercises = realmInstance.objects("exercises");
+                setRealmData({
+                    "exercises": [...exercises],
+                });
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error opening Realm:", error);
+                setIsLoading(false);
+            });
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
+    }, []);
+    return { realm, realmData, isLoading, setIsLoading };
+};
+
+const openGoalsTable = () => {
+    const [realm, setRealm] = useState(null);
+    const [realmData, setRealmData] = useState({
         "goals": [],
+    });
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        Realm.open({ "schema": [goals] })
+            .then((realmInstance) => {
+                setRealm(realmInstance);
+                const goals = realmInstance.objects("goals");
+
+                setRealmData({
+                    "goals": [...goals],
+                });
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error opening Realm:", error);
+                setIsLoading(false);
+            });
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
+    }, []);
+    return { realm, realmData, isLoading, setIsLoading };
+};
+
+const openPreviousWorkoutsTable = () => {
+    const [realm, setRealm] = useState(null);
+    const [realmData, setRealmData] = useState({
         "previousWorkouts": [],
+    });
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        Realm.open({ "schema": [previousWorkouts] })
+            .then((realmInstance) => {
+                setRealm(realmInstance);
+                const previousWorkouts = realmInstance.objects("previousWorkouts");
+
+                setRealmData({
+                    "previousWorkouts": [...previousWorkouts],
+                });
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error opening Realm:", error);
+                setIsLoading(false);
+            });
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
+    }, []);
+    return { realm, realmData, isLoading, setIsLoading };
+};
+
+const openWorkoutPresetsTable = () => {
+    const [realm, setRealm] = useState(null);
+    const [realmData, setRealmData] = useState({
         "workoutPresets": [],
 
     });
@@ -20,20 +146,12 @@ export const useRealmTasks = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        Realm.open({ "schema": [badges, exercises, goals, previousWorkouts, workoutPresets] })
+        Realm.open({ "schema": [workoutPresets] })
             .then((realmInstance) => {
                 setRealm(realmInstance);
-                const badges = realmInstance.objects("badges");
-                const exercises = realmInstance.objects("exercises");
-                const goals = realmInstance.objects("goals");
-                const previousWorkouts = realmInstance.objects("previousWorkouts");
                 const workoutPresets = realmInstance.objects("workoutPresets");
 
                 setRealmData({
-                    "badges": [...badges],
-                    "exercises": [...exercises],
-                    "goals": [...goals],
-                    "previousWorkouts": [...previousWorkouts],
                     "workoutPresets": [...workoutPresets],
                 });
                 setIsLoading(false);
@@ -51,3 +169,5 @@ export const useRealmTasks = () => {
     }, []);
     return { realm, realmData, isLoading, setIsLoading };
 };
+
+export { openBadgesTable, openExercisesTable, openGoalsTable, openPreviousWorkoutsTable, openWorkoutPresetsTable };

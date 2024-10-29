@@ -27,7 +27,7 @@ test("Update record in workoutPresetsExercises database", () => { });
 
 test("Delete record in workoutPresetsExercises database", () => { });
 
-// ! workoutPresetsExercises database
+// ! previousWorkouts database
 test("Create record in previousWorkouts database", () => { });
 
 test("Read record in previousWorkouts database", () => { });
@@ -36,7 +36,7 @@ test("Update record in previousWorkouts database", () => { });
 
 test("Delete record in previousWorkouts database", () => { });
 
-// ! workoutPresetsExercises database
+// ! previousWorkoutsExercises database
 test("Create record in previousWorkoutsExercises database", () => { });
 
 test("Read record in previousWorkoutsExercises database", () => { });
@@ -45,7 +45,7 @@ test("Update record in previousWorkoutsExercises database", () => { });
 
 test("Delete record in previousWorkoutsExercises database", () => { });
 
-// ! workoutPresetsExercises database
+// ! badges database
 test("Create record in badges database", () => { });
 
 test("Read record in badges database", () => { });
@@ -54,7 +54,7 @@ test("Update record in badges database", () => { });
 
 test("Delete record in badges database", () => { });
 
-// ! workoutPresetsExercises database
+// ! goals database
 test("Create record in goals database", () => { });
 
 test("Read record in goals database", () => { });

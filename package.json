@@ -8,7 +8,7 @@
         "ios": "expo start --ios",
         "web": "expo start --web",
         "server": "nodemon my_server_file.js",
-        "test": "jest",
+        "test": "jest --watch --runInBand --detectOpenHandles",
         "lint": "npx eslint ."
     },
     "jest": {

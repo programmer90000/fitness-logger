@@ -1,64 +1,64 @@
 import { React } from "react";
 
-// ! workoutPresets database
-test("Create record in workoutPresets database", () => { });
+// ! workoutPresets table
+test("Create record in workoutPresets table", () => { });
 
-test("Read record in workoutPresets database", () => { });
+test("Read record in workoutPresets table", () => { });
 
-test("Update record in workoutPresets database", () => { });
+test("Update record in workoutPresets table", () => { });
 
-test("Delete record in workoutPresets database", () => { });
+test("Delete record in workoutPresets table", () => { });
 
-// ! exercises database
-test("Create record in exercises database", () => { });
+// ! exercises table
+test("Create record in exercises table", () => { });
 
-test("Read record in exercises database", () => { });
+test("Read record in exercises table", () => { });
 
-test("Update record in exercises database", () => { });
+test("Update record in exercises table", () => { });
 
-test("Delete record in exercises database", () => { });
+test("Delete record in exercises table", () => { });
 
-// ! workoutPresetsExercises database
-test("Create record in workoutPresetsExercises database", () => { });
+// ! workoutPresetsExercises table
+test("Create record in workoutPresetsExercises table", () => { });
 
-test("Read record in workoutPresetsExercises database", () => { });
+test("Read record in workoutPresetsExercises table", () => { });
 
-test("Update record in workoutPresetsExercises database", () => { });
+test("Update record in workoutPresetsExercises table", () => { });
 
-test("Delete record in workoutPresetsExercises database", () => { });
+test("Delete record in workoutPresetsExercises table", () => { });
 
-// ! previousWorkouts database
-test("Create record in previousWorkouts database", () => { });
+// ! previousWorkouts table
+test("Create record in previousWorkouts table", () => { });
 
-test("Read record in previousWorkouts database", () => { });
+test("Read record in previousWorkouts table", () => { });
 
-test("Update record in previousWorkouts database", () => { });
+test("Update record in previousWorkouts table", () => { });
 
-test("Delete record in previousWorkouts database", () => { });
+test("Delete record in previousWorkouts table", () => { });
 
-// ! previousWorkoutsExercises database
-test("Create record in previousWorkoutsExercises database", () => { });
+// ! previousWorkoutsExercises table
+test("Create record in previousWorkoutsExercises table", () => { });
 
-test("Read record in previousWorkoutsExercises database", () => { });
+test("Read record in previousWorkoutsExercises table", () => { });
 
-test("Update record in previousWorkoutsExercises database", () => { });
+test("Update record in previousWorkoutsExercises table", () => { });
 
-test("Delete record in previousWorkoutsExercises database", () => { });
+test("Delete record in previousWorkoutsExercises table", () => { });
 
-// ! badges database
-test("Create record in badges database", () => { });
+// ! badges table
+test("Create record in badges table", () => { });
 
-test("Read record in badges database", () => { });
+test("Read record in badges table", () => { });
 
-test("Update record in badges database", () => { });
+test("Update record in badges table", () => { });
 
-test("Delete record in badges database", () => { });
+test("Delete record in badges table", () => { });
 
-// ! goals database
-test("Create record in goals database", () => { });
+// ! goals table
+test("Create record in goals table", () => { });
 
-test("Read record in goals database", () => { });
+test("Read record in goals table", () => { });
 
-test("Update record in goals database", () => { });
+test("Update record in goals table", () => { });
 
-test("Delete record in goals database", () => { });
+test("Delete record in goals table", () => { });

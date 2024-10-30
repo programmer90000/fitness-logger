@@ -5,8 +5,8 @@ const previousWorkouts = {
     "name": "PreviousWorkouts",
     "properties": {
         "id": "int",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
+        "name": "string",
+        "notes": "string",
         "date": "date", // TODO: Add a date picker for this field
     },
     "primaryKey": "id",

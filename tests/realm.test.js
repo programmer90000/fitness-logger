@@ -1,6 +1,7 @@
 const Realm = require("realm");
 import { workoutPresets } from "../database/tables/workoutPresets.js";
 import { exercises } from "../database/tables/exercises.js";
+import { previousWorkouts } from "../database/tables/previousWorkouts.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {
@@ -150,16 +151,75 @@ describe("workoutPresetsExercises table", () => {
 
 // ! previousWorkouts table
 describe("previousWorkouts table", () => {
+    let realm;
 
-    test("Create previousWorkouts table", () => { });
+    beforeEach(() => {
+        realm = new Realm({ "schema": [previousWorkouts] });
+    });
 
-    test("Create record in previousWorkouts table", () => { });
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create PreviousWorkouts table", () => {
+        expect(realm.schema[0].name).toBe("PreviousWorkouts");
+    });
 
-    test("Read record in previousWorkouts table", () => { });
+    test("Create record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
 
-    test("Update record in previousWorkouts table", () => { });
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        const previousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(previousWorkout.id).toBe(1);
+        expect(previousWorkout.name).toBe("Gym");
+        expect(previousWorkout.notes).toBe("Main Workout");
+        expect(previousWorkout.date).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+    });
+    test("Read record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
 
-    test("Delete record in previousWorkouts table", () => { });
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        const previousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(previousWorkout.id).toBe(1);
+        expect(previousWorkout.name).toBe("Gym");
+        expect(previousWorkout.notes).toBe("Main Workout");
+        expect(previousWorkout.date).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+    });
+
+    test("Update record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        realm.write(() => {
+            const previousWorkout = realm.objects("PreviousWorkouts")[0];
+            previousWorkout.notes = "Secondary Workout";
+        });
+        const updatedPreviousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(updatedPreviousWorkout.notes).toBe("Secondary Workout");
+    });
+
+    test("Delete record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        realm.write(() => {
+            const previousWorkout = realm.objects("PreviousWorkouts")[0];
+            realm.delete(previousWorkout);
+        });
+        const remainingPreviousWorkouts = realm.objects("PreviousWorkouts");
+        expect(remainingPreviousWorkouts.length).toBe(0);
+    });
 });
 
 // ! previousWorkoutsExercises table

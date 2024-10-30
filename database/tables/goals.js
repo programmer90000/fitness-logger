@@ -5,11 +5,11 @@ const goals = {
     "name": "Goals",
     "properties": {
         "id": "int",
-        "name": { "type": "string", "maxLength": 50 },
+        "name": "string",
         "startDate": "date", // TODO: Add a date picker for this field
         "endDate": "date", // TODO: Add a date picker for this field
         "reminders": "date", // TODO: Add a date picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
+        "notes": "string",
     },
     "primaryKey": "id",
 };

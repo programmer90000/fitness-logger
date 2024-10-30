@@ -3,6 +3,7 @@ import { workoutPresets } from "../database/tables/workoutPresets.js";
 import { exercises } from "../database/tables/exercises.js";
 import { previousWorkouts } from "../database/tables/previousWorkouts.js";
 import { badges } from "../database/tables/badges.js";
+import { goals } from "../database/tables/goals.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {
@@ -305,14 +306,79 @@ describe("badges table", () => {
 
 // ! goals table
 describe("goals table", () => {
+    let realm;
 
-    test("Create goals table", () => { });
+    beforeEach(() => {
+        realm = new Realm({ "schema": [goals] });
+    });
 
-    test("Create record in goals table", () => { });
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create Goals table", () => {
+        expect(realm.schema[0].name).toBe("Goals");
+    });
 
-    test("Read record in goals table", () => { });
+    test("Create record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
 
-    test("Update record in goals table", () => { });
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        const goals = realm.objects("Goals")[0];
+        expect(goals.id).toBe(1);
+        expect(goals.name).toBe("Goal 1");
+        expect(goals.startDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.endDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.reminders).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.notes).toBe("Goal Notes");
+    });
+    test("Read record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
 
-    test("Delete record in goals table", () => { });
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        const goals = realm.objects("Goals")[0];
+        expect(goals.id).toBe(1);
+        expect(goals.name).toBe("Goal 1");
+        expect(goals.startDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.endDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.reminders).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.notes).toBe("Goal Notes");
+    });
+
+    test("Update record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+
+        realm.write(() => {
+            const goals = realm.objects("Goals")[0];
+            goals.name = "Goal 2";
+        });
+        const updatedGoals = realm.objects("Goals")[0];
+        expect(updatedGoals.name).toBe("Goal 2");
+    });
+
+    test("Delete record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        
+        realm.write(() => {
+            const goals = realm.objects("Goals")[0];
+            realm.delete(goals);
+        });
+        const remainingGoals = realm.objects("Goals");
+        expect(remainingGoals.length).toBe(0);
+    });
 });

@@ -2,6 +2,7 @@ const Realm = require("realm");
 import { workoutPresets } from "../database/tables/workoutPresets.js";
 import { exercises } from "../database/tables/exercises.js";
 import { previousWorkouts } from "../database/tables/previousWorkouts.js";
+import { badges } from "../database/tables/badges.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {
@@ -238,6 +239,68 @@ describe("previousWorkoutsExercises table", () => {
 
 // ! badges table
 describe("badges table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [badges] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create Badges table", () => {
+        expect(realm.schema[0].name).toBe("Badges");
+    });
+
+    test("Create record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        const badges = realm.objects("Badges")[0];
+        expect(badges.id).toBe(1);
+        expect(badges.image).toBe("image1.png");
+        expect(badges.text).toBe("This is Badge 1");
+        expect(badges.completed).toEqual(true);
+    });
+    test("Read record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        const badges = realm.objects("Badges")[0];
+        expect(badges.id).toBe(1);
+        expect(badges.image).toBe("image1.png");
+        expect(badges.text).toBe("This is Badge 1");
+        expect(badges.completed).toEqual(true);
+    });
+
+    test("Update record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+
+        realm.write(() => {
+            const badges = realm.objects("Badges")[0];
+            badges.text = "This is Badge 2";
+        });
+        const updatedBadges = realm.objects("Badges")[0];
+        expect(updatedBadges.text).toBe("This is Badge 2");
+    });
+
+    test("Delete record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        realm.write(() => {
+            const badges = realm.objects("Badges")[0];
+            realm.delete(badges);
+        });
+        const remainingBadges = realm.objects("Badges");
+        expect(remainingBadges.length).toBe(0);
+    });
 
     test("Create badges table", () => { });
 

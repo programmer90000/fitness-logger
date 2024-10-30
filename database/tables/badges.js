@@ -5,8 +5,8 @@ const badges = {
     "name": "Badges",
     "properties": {
         "id": "int",
-        "image": "binary", // TODO: Add an image picker for this field
-        "text": { "type": "string", "maxLength": 50 },
+        "image": "string", // TODO: Add an image picker for this field
+        "text": "string",
         "completed": "bool",
     },
     "primaryKey": "id",

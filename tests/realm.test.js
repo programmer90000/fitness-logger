@@ -301,16 +301,6 @@ describe("badges table", () => {
         const remainingBadges = realm.objects("Badges");
         expect(remainingBadges.length).toBe(0);
     });
-
-    test("Create badges table", () => { });
-
-    test("Create record in badges table", () => { });
-
-    test("Read record in badges table", () => { });
-
-    test("Update record in badges table", () => { });
-
-    test("Delete record in badges table", () => { });
 });
 
 // ! goals table

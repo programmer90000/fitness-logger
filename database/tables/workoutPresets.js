@@ -5,8 +5,8 @@ const workoutPresets = {
     "name": "WorkoutPresets",
     "properties": {
         "id": "int",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
+        "name": "string",
+        "notes": "string",
     },
     "primaryKey": "id",
 };

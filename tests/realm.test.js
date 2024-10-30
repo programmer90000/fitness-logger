@@ -1,17 +1,68 @@
-import { React } from "react";
+const Realm = require("realm");
+import { workoutPresets } from "../database/tables/workoutPresets.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [workoutPresets] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
     
-    test("Create workoutPresets table", () => { });
+    test("Create workoutPresets table", () => {
+        expect(realm.schema[0].name).toBe("WorkoutPresets");
+    });
 
-    test("Create record in workoutPresets table", () => { });
+    test("Create record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        const workoutPreset = realm.objects("WorkoutPresets")[0];
+        expect(workoutPreset.id).toBe(1);
+        expect(workoutPreset.name).toBe("Gym");
+        expect(workoutPreset.notes).toBe("Main Workout");
+    });
 
-    test("Read record in workoutPresets table", () => { });
+    test("Read record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        const workoutPreset = realm.objects("WorkoutPresets")[0];
+        expect(workoutPreset.id).toBe(1);
+        expect(workoutPreset.name).toBe("Gym");
+        expect(workoutPreset.notes).toBe("Main Workout");
+    });
 
-    test("Update record in workoutPresets table", () => { });
+    test("Update record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        realm.write(() => {
+            const workoutPreset = realm.objects("WorkoutPresets")[0];
+            workoutPreset.notes = "Using Dumbbells";
+        });
+        const updatedExercise = realm.objects("WorkoutPresets")[0];
+        expect(updatedExercise.notes).toBe("Using Dumbbells");
+    });
 
-    test("Delete record in workoutPresets table", () => { });
+    test("Delete record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        realm.write(() => {
+            const workoutPreset = realm.objects("WorkoutPresets")[0];
+            realm.delete(workoutPreset);
+        });
+        const remainingWorkoutPresets = realm.objects("WorkoutPresets");
+        expect(remainingWorkoutPresets.length).toBe(0);
+    });
 });
 
 // ! exercises table

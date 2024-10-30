@@ -1,5 +1,6 @@
 const Realm = require("realm");
 import { workoutPresets } from "../database/tables/workoutPresets.js";
+import { exercises } from "../database/tables/exercises.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {
@@ -67,16 +68,70 @@ describe("workoutPresets table", () => {
 
 // ! exercises table
 describe("exercises table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [exercises] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
     
-    test("Create exercises table", () => { });
+    test("Create exercises table", () => {
+        expect(realm.schema[0].name).toBe("Exercises");
+    });
 
-    test("Create record in exercises table", () => { });
+    test("Create record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        const exercises = realm.objects("Exercises")[0];
+        expect(exercises.id).toBe(1);
+        expect(exercises.name).toBe("Plank");
+        expect(exercises.type).toBe("Bodyweight");
+        expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
+        expect(exercises.video).toBe("Video-Path");
+    });
 
-    test("Read record in exercises table", () => { });
+    test("Read record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        const exercises = realm.objects("Exercises")[0];
+        expect(exercises.id).toBe(1);
+        expect(exercises.name).toBe("Plank");
+        expect(exercises.type).toBe("Bodyweight");
+        expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
+        expect(exercises.video).toBe("Video-Path");
+    });
 
-    test("Update record in exercises table", () => { });
+    test("Update record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        realm.write(() => {
+            const exercises = realm.objects("Exercises")[0];
+            exercises.notes = "Do not arch back. Keep neck in line with body. Do not drop hips";
+        });
+        const updatedExercise = realm.objects("Exercises")[0];
+        expect(updatedExercise.notes).toBe("Do not arch back. Keep neck in line with body. Do not drop hips");
+    });
 
-    test("Delete record in exercises table", () => { });
+    test("Delete record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        realm.write(() => {
+            const exercises = realm.objects("Exercises")[0];
+            realm.delete(exercises);
+        });
+        const remainingExercises = realm.objects("Exercises");
+        expect(remainingExercises.length).toBe(0);
+    });
 });
 
 // ! workoutPresetsExercises table

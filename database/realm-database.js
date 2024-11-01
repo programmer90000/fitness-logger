@@ -53,6 +53,19 @@ const previousWorkoutsExercises = {
     "primaryKey": "id",
 };
 
+const goals = {
+    "name": "Goals",
+    "properties": {
+        "id": "int",
+        "name": "string",
+        "startDate": "date", // TODO: Add a date picker for this field
+        "endDate": "date", // TODO: Add a date picker for this field
+        "reminders": "date", // TODO: Add a date picker for this field
+        "notes": "string",
+    },
+    "primaryKey": "id",
+};
+
 const openRealm = async () => {
     try {
         const realm = await Realm.open({ "database": [workoutPresetsExercises, previousWorkoutsExercises] });
@@ -66,4 +79,4 @@ const openRealm = async () => {
 // ! Each time I call this function, write the following line to close the database: realm.close();
 
 export default openRealm;
-export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises };
+export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals };

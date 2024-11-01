@@ -1,9 +1,8 @@
 const Realm = require("realm");
-import { exercises } from "../database/tables/exercises.js";
 import { previousWorkouts } from "../database/tables/previousWorkouts.js";
 import { badges } from "../database/tables/badges.js";
 import { goals } from "../database/tables/goals.js";
-import { workoutPresets, workoutPresetsExercises, previousWorkoutsExercises } from "../database/realm-database.js";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkoutsExercises } from "../database/realm-database.js";
 
 // ! workoutPresets table
 describe("workoutPresets table", () => {

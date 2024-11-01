@@ -32,6 +32,17 @@ const workoutPresetsExercises = {
     "primaryKey": "id",
 };
 
+const previousWorkouts = {
+    "name": "PreviousWorkouts",
+    "properties": {
+        "id": "int",
+        "name": "string",
+        "notes": "string",
+        "date": "date", // TODO: Add a date picker for this field
+    },
+    "primaryKey": "id",
+};
+
 const previousWorkoutsExercises = {
     "name": "PreviousWorkoutsExercises",
     "properties": {
@@ -55,4 +66,4 @@ const openRealm = async () => {
 // ! Each time I call this function, write the following line to close the database: realm.close();
 
 export default openRealm;
-export { workoutPresets, exercises, workoutPresetsExercises, previousWorkoutsExercises };
+export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises };

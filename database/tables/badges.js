@@ -18,12 +18,6 @@ const initialBadges = [
     // { id: 2, image: "path/to/badge2.png", text: "Badge 2", completed: false },
 ];
 
-const addBadgesToRealm = (realm) => {
-    realm.write(() => {
-        realm.create("Badges", initialBadges);
-    });
-};
-
 const toggleBadgeCompletion = (realm, badgeId, setBadges) => {
     try {
         const badge = realm.objects("Badges").filtered(`id = ${badgeId}`)[0];
@@ -41,4 +35,4 @@ const toggleBadgeCompletion = (realm, badgeId, setBadges) => {
     }
 };
 
-export { badges, addBadgesToRealm, toggleBadgeCompletion };
+export { badges, toggleBadgeCompletion };

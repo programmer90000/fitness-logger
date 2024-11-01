@@ -164,47 +164,47 @@ describe("workoutPresetsExercises table", () => {
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
 
             // Create a linking record
-            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
+            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
         });
-
+        
         const links = realm.objects("WorkoutPresetsExercises");
         expect(links.length).toBe(1);
 
         // Access the linking record's properties
         const workoutPresetLink = links[0];
-        expect(workoutPresetLink.workoutPreset).not.toBeUndefined();
-        expect(workoutPresetLink.exercise).not.toBeUndefined();
-        expect(workoutPresetLink.workoutPreset.name).toBe("Gym");
-        expect(workoutPresetLink.exercise.name).toBe("Plank");
+        expect(workoutPresetLink.workoutPresets).not.toBeUndefined();
+        expect(workoutPresetLink.exercises).not.toBeUndefined();
+        expect(workoutPresetLink.workoutPresets.name).toBe("Gym");
+        expect(workoutPresetLink.exercises.name).toBe("Plank");
     });
 
     test("Read record in workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
-            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
+            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
         });
 
         const links = realm.objects("WorkoutPresetsExercises");
         expect(links.length).toBe(1);
-        expect(links[0].workoutPreset.name).toBe("Gym");
-        expect(links[0].exercise.name).toBe("Plank");
+        expect(links[0].workoutPresets.name).toBe("Gym");
+        expect(links[0].exercises.name).toBe("Plank");
     });
 
     test("Update record in workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
-            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
             
             // Update the exercise in the linking record
             const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
-            link.exercise = newExercise;
+            link.exercises = newExercise;
         });
 
         const links = realm.objects("WorkoutPresetsExercises");
         expect(links.length).toBe(1);
-        expect(links[0].exercise.name).toBe("Squat");
+        expect(links[0].exercises.name).toBe("Squat");
     });
 
     test("Delete record in workoutPresetsExercises table", () => {

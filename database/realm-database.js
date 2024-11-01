@@ -3,9 +3,9 @@ import Realm from "realm";
 const workoutPresetsExercises = {
     "name": "WorkoutPresetsExercises",
     "properties": {
-        "id": "objectId",
-        "workoutPresets": { "type": "objectId", "link": "WorkoutPresets" },
-        "exercises": { "type": "objectId", "link": "Exercises" },
+        "id": "int",
+        "workoutPresets": "WorkoutPresets",
+        "exercises": "Exercises",
     },
     "primaryKey": "id",
 };
@@ -33,3 +33,4 @@ const openRealm = async () => {
 // ! Each time I call this function, write the following line to close the database: realm.close();
 
 export default openRealm;
+export { workoutPresetsExercises };

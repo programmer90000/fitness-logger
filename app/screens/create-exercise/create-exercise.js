@@ -11,14 +11,21 @@ const colours = {
 };
 
 const CreateExercise = () => {
-    const { control } = useForm({});
+    const { control, getValues } = useForm({});
     
-    const [value, setValue] = useState(null);
+    const [selectedExerciseType, setselectedExerciseType] = useState(null);
     const exerciseType = [
         { "label": "Reps", "value": "reps" },
         { "label": "Weight/ Reps", "value": "weightAndReps" },
         { "label": "Distance/ Time", "value": "distanceAndTime" },
     ];
+    
+    const handleAddExercise = () => {
+        const formValues = getValues();
+        console.log(formValues.exerciseName);
+        console.log(selectedExerciseType);
+        console.log(formValues.exerciseNotes);
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
@@ -26,7 +33,7 @@ const CreateExercise = () => {
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Name</Text>
                 <Controller
                     control = {control}
-                    name = "workoutName"
+                    name = "exerciseName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
@@ -34,19 +41,19 @@ const CreateExercise = () => {
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
                     data = {exerciseType}
-                    value = {value}
-                    onChange = {setValue}
+                    value = {selectedExerciseType}
+                    onChange = {setselectedExerciseType}
                 />
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Notes</Text>
                 <Controller
                     control = {control}
-                    name = "workoutNotes"
+                    name = "exerciseNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />       
-                <UploadVideo />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                <UploadVideo onVideoSelect = {handleAddExercise} />
+                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.black }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>

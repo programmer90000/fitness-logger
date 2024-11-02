@@ -1,64 +1,518 @@
-import { React } from "react";
+const Realm = require("realm");
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../database/realm-database.js";
 
-// ! workoutPresets database
-test("Create record in workoutPresets database", () => { });
+// ! workoutPresets table
+describe("workoutPresets table", () => {
+    let realm;
 
-test("Read record in workoutPresets database", () => { });
+    beforeEach(() => {
+        realm = new Realm({ "schema": [workoutPresets] });
+    });
 
-test("Update record in workoutPresets database", () => { });
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create workoutPresets table", () => {
+        expect(realm.schema[0].name).toBe("WorkoutPresets");
+    });
 
-test("Delete record in workoutPresets database", () => { });
+    test("Create record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        const workoutPreset = realm.objects("WorkoutPresets")[0];
+        expect(workoutPreset.id).toBe(1);
+        expect(workoutPreset.name).toBe("Gym");
+        expect(workoutPreset.notes).toBe("Main Workout");
+    });
 
-// ! exercises database
-test("Create record in exercises database", () => { });
+    test("Read record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        const workoutPreset = realm.objects("WorkoutPresets")[0];
+        expect(workoutPreset.id).toBe(1);
+        expect(workoutPreset.name).toBe("Gym");
+        expect(workoutPreset.notes).toBe("Main Workout");
+    });
 
-test("Read record in exercises database", () => { });
+    test("Update record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        realm.write(() => {
+            const workoutPreset = realm.objects("WorkoutPresets")[0];
+            workoutPreset.notes = "Using Dumbbells";
+        });
+        const updatedExercise = realm.objects("WorkoutPresets")[0];
+        expect(updatedExercise.notes).toBe("Using Dumbbells");
+    });
 
-test("Update record in exercises database", () => { });
+    test("Delete record in workoutPresets table", () => {
+        realm.write(() => {
+            realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+        });
+        realm.write(() => {
+            const workoutPreset = realm.objects("WorkoutPresets")[0];
+            realm.delete(workoutPreset);
+        });
+        const remainingWorkoutPresets = realm.objects("WorkoutPresets");
+        expect(remainingWorkoutPresets.length).toBe(0);
+    });
+});
 
-test("Delete record in exercises database", () => { });
+// ! exercises table
+describe("exercises table", () => {
+    let realm;
 
-// ! workoutPresetsExercises database
-test("Create record in workoutPresetsExercises database", () => { });
+    beforeEach(() => {
+        realm = new Realm({ "schema": [exercises] });
+    });
 
-test("Read record in workoutPresetsExercises database", () => { });
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create exercises table", () => {
+        expect(realm.schema[0].name).toBe("Exercises");
+    });
 
-test("Update record in workoutPresetsExercises database", () => { });
+    test("Create record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        const exercises = realm.objects("Exercises")[0];
+        expect(exercises.id).toBe(1);
+        expect(exercises.name).toBe("Plank");
+        expect(exercises.type).toBe("Bodyweight");
+        expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
+        expect(exercises.video).toBe("Video-Path");
+    });
 
-test("Delete record in workoutPresetsExercises database", () => { });
+    test("Read record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        const exercises = realm.objects("Exercises")[0];
+        expect(exercises.id).toBe(1);
+        expect(exercises.name).toBe("Plank");
+        expect(exercises.type).toBe("Bodyweight");
+        expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
+        expect(exercises.video).toBe("Video-Path");
+    });
 
-// ! workoutPresetsExercises database
-test("Create record in previousWorkouts database", () => { });
+    test("Update record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        realm.write(() => {
+            const exercises = realm.objects("Exercises")[0];
+            exercises.notes = "Do not arch back. Keep neck in line with body. Do not drop hips";
+        });
+        const updatedExercise = realm.objects("Exercises")[0];
+        expect(updatedExercise.notes).toBe("Do not arch back. Keep neck in line with body. Do not drop hips");
+    });
 
-test("Read record in previousWorkouts database", () => { });
+    test("Delete record in exercises table", () => {
+        realm.write(() => {
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+        });
+        realm.write(() => {
+            const exercises = realm.objects("Exercises")[0];
+            realm.delete(exercises);
+        });
+        const remainingExercises = realm.objects("Exercises");
+        expect(remainingExercises.length).toBe(0);
+    });
+});
 
-test("Update record in previousWorkouts database", () => { });
+// ! workoutPresetsExercises table
+describe("workoutPresetsExercises table", () => {
+    let realm;
 
-test("Delete record in previousWorkouts database", () => { });
+    beforeEach(() => {
+        realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises] });
+    });
 
-// ! workoutPresetsExercises database
-test("Create record in previousWorkoutsExercises database", () => { });
+    afterEach(async () => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
 
-test("Read record in previousWorkoutsExercises database", () => { });
+    test("Create workoutPresetsExercises table", () => {
+        expect(realm.schema[2].name).toBe("WorkoutPresetsExercises");
+    });
 
-test("Update record in previousWorkoutsExercises database", () => { });
+    test("Create record in workoutPresetsExercises table", () => {
+        realm.write(() => {
+            // Create WorkoutPreset and Exercise first
+            const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
 
-test("Delete record in previousWorkoutsExercises database", () => { });
+            // Create a linking record
+            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+        });
+        
+        const links = realm.objects("WorkoutPresetsExercises");
+        expect(links.length).toBe(1);
 
-// ! workoutPresetsExercises database
-test("Create record in badges database", () => { });
+        // Access the linking record's properties
+        const workoutPresetLink = links[0];
+        expect(workoutPresetLink.workoutPresets).not.toBeUndefined();
+        expect(workoutPresetLink.exercises).not.toBeUndefined();
+        expect(workoutPresetLink.workoutPresets.name).toBe("Gym");
+        expect(workoutPresetLink.exercises.name).toBe("Plank");
+    });
 
-test("Read record in badges database", () => { });
+    test("Read record in workoutPresetsExercises table", () => {
+        realm.write(() => {
+            const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+        });
 
-test("Update record in badges database", () => { });
+        const links = realm.objects("WorkoutPresetsExercises");
+        expect(links.length).toBe(1);
+        expect(links[0].workoutPresets.name).toBe("Gym");
+        expect(links[0].exercises.name).toBe("Plank");
+    });
 
-test("Delete record in badges database", () => { });
+    test("Update record in workoutPresetsExercises table", () => {
+        realm.write(() => {
+            const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            
+            // Update the exercise in the linking record
+            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
+            link.exercises = newExercise;
+        });
 
-// ! workoutPresetsExercises database
-test("Create record in goals database", () => { });
+        const links = realm.objects("WorkoutPresetsExercises");
+        expect(links.length).toBe(1);
+        expect(links[0].exercises.name).toBe("Squat");
+    });
 
-test("Read record in goals database", () => { });
+    test("Delete record in workoutPresetsExercises table", () => {
+        realm.write(() => {
+            const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
 
-test("Update record in goals database", () => { });
+            // Delete the linking record
+            realm.delete(link);
+        });
 
-test("Delete record in goals database", () => { });
+        const links = realm.objects("WorkoutPresetsExercises");
+        expect(links.length).toBe(0);
+    });
+});
+
+// ! previousWorkouts table
+describe("previousWorkouts table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [previousWorkouts] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create PreviousWorkouts table", () => {
+        expect(realm.schema[0].name).toBe("PreviousWorkouts");
+    });
+
+    test("Create record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        const previousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(previousWorkout.id).toBe(1);
+        expect(previousWorkout.name).toBe("Gym");
+        expect(previousWorkout.notes).toBe("Main Workout");
+        expect(previousWorkout.date).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+    });
+    test("Read record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        const previousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(previousWorkout.id).toBe(1);
+        expect(previousWorkout.name).toBe("Gym");
+        expect(previousWorkout.notes).toBe("Main Workout");
+        expect(previousWorkout.date).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+    });
+
+    test("Update record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        realm.write(() => {
+            const previousWorkout = realm.objects("PreviousWorkouts")[0];
+            previousWorkout.notes = "Secondary Workout";
+        });
+        const updatedPreviousWorkout = realm.objects("PreviousWorkouts")[0];
+        expect(updatedPreviousWorkout.notes).toBe("Secondary Workout");
+    });
+
+    test("Delete record in previousWorkouts table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": newDate });
+        });
+        realm.write(() => {
+            const previousWorkout = realm.objects("PreviousWorkouts")[0];
+            realm.delete(previousWorkout);
+        });
+        const remainingPreviousWorkouts = realm.objects("PreviousWorkouts");
+        expect(remainingPreviousWorkouts.length).toBe(0);
+    });
+});
+
+// ! previousWorkoutsExercises table
+describe("previousWorkoutsExercises table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
+    });
+
+    afterEach(async () => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+
+    test("Create PreviousWorkoutsExercises table", () => {
+        expect(realm.schema[2].name).toBe("PreviousWorkoutsExercises");
+    });
+
+    test("Create record in previousWorkoutsExercises table", () => {
+        realm.write(() => {
+            const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
+        });
+        
+        const links = realm.objects("PreviousWorkoutsExercises");
+        expect(links.length).toBe(1);
+
+        const previousWorkoutLink = links[0];
+        expect(previousWorkoutLink.previousWorkouts).not.toBeUndefined();
+        expect(previousWorkoutLink.exercises).not.toBeUndefined();
+        expect(previousWorkoutLink.previousWorkouts.name).toBe("Gym");
+        expect(previousWorkoutLink.exercises.name).toBe("Plank");
+    });
+
+    test("Read record in previousWorkoutsExercises table", () => {
+        realm.write(() => {
+            const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
+
+        });
+
+        const links = realm.objects("PreviousWorkoutsExercises");
+        expect(links.length).toBe(1);
+        const previousWorkoutLink = links[0];
+        expect(previousWorkoutLink.previousWorkouts.name).toBe("Gym");
+        expect(links[0].exercises.name).toBe("Plank");
+    });
+
+    test("Update record in previousWorkoutsExercises table", () => {
+        realm.write(() => {
+            const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
+            
+            // Update the exercise in the linking record
+            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
+            previousWorkoutExercise.exercises = newExercise;
+        });
+
+        const links = realm.objects("PreviousWorkoutsExercises");
+        expect(links.length).toBe(1);
+        expect(links[0].exercises.name).toBe("Squat");
+    });
+
+    test("Delete record in previousWorkoutsExercises table", () => {
+        realm.write(() => {
+            const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "workoutPreset": previousWorkout, "exercise": exercise });
+
+            // Delete the linking record
+            realm.delete(previousWorkoutExercise);
+        });
+
+        const previousWorkoutExercises = realm.objects("PreviousWorkoutsExercises");
+        expect(previousWorkoutExercises.length).toBe(0);
+    });
+});
+
+// ! badges table
+describe("badges table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [badges] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create Badges table", () => {
+        expect(realm.schema[0].name).toBe("Badges");
+    });
+
+    test("Create record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        const badges = realm.objects("Badges")[0];
+        expect(badges.id).toBe(1);
+        expect(badges.image).toBe("image1.png");
+        expect(badges.text).toBe("This is Badge 1");
+        expect(badges.completed).toEqual(true);
+    });
+    test("Read record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        const badges = realm.objects("Badges")[0];
+        expect(badges.id).toBe(1);
+        expect(badges.image).toBe("image1.png");
+        expect(badges.text).toBe("This is Badge 1");
+        expect(badges.completed).toEqual(true);
+    });
+
+    test("Update record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+
+        realm.write(() => {
+            const badges = realm.objects("Badges")[0];
+            badges.text = "This is Badge 2";
+        });
+        const updatedBadges = realm.objects("Badges")[0];
+        expect(updatedBadges.text).toBe("This is Badge 2");
+    });
+
+    test("Delete record in Badges table", () => {
+        realm.write(() => {
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
+        });
+        realm.write(() => {
+            const badges = realm.objects("Badges")[0];
+            realm.delete(badges);
+        });
+        const remainingBadges = realm.objects("Badges");
+        expect(remainingBadges.length).toBe(0);
+    });
+});
+
+// ! goals table
+describe("goals table", () => {
+    let realm;
+
+    beforeEach(() => {
+        realm = new Realm({ "schema": [goals] });
+    });
+
+    afterEach(async() => {
+        realm.write(() => {
+            realm.deleteAll(); // Clear all data in the database
+        });
+        await realm.close(); // Ensure Realm is closed after each test
+    });
+    
+    test("Create Goals table", () => {
+        expect(realm.schema[0].name).toBe("Goals");
+    });
+
+    test("Create record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        const goals = realm.objects("Goals")[0];
+        expect(goals.id).toBe(1);
+        expect(goals.name).toBe("Goal 1");
+        expect(goals.startDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.endDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.reminders).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.notes).toBe("Goal Notes");
+    });
+    test("Read record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        const goals = realm.objects("Goals")[0];
+        expect(goals.id).toBe(1);
+        expect(goals.name).toBe("Goal 1");
+        expect(goals.startDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.endDate).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.reminders).toEqual(new Date("2024-11-30T00:00:00.000Z"));
+        expect(goals.notes).toBe("Goal Notes");
+    });
+
+    test("Update record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+
+        realm.write(() => {
+            const goals = realm.objects("Goals")[0];
+            goals.name = "Goal 2";
+        });
+        const updatedGoals = realm.objects("Goals")[0];
+        expect(updatedGoals.name).toBe("Goal 2");
+    });
+
+    test("Delete record in Goals table", () => {
+        const newDate = new Date(2024, 10, 30);
+
+        realm.write(() => {
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+        });
+        
+        realm.write(() => {
+            const goals = realm.objects("Goals")[0];
+            realm.delete(goals);
+        });
+        const remainingGoals = realm.objects("Goals");
+        expect(remainingGoals.length).toBe(0);
+    });
+});

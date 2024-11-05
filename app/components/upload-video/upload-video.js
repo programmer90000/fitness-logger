@@ -1,19 +1,38 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
 
 const UploadVideo = () => {
     const [video, setVideo] = useState(null);
+    const downloadVideo = async (videoUri) => {
+        if (!videoUri) {
+            console.error("Video URI is null. Please select a valid video.");
+            return;
+        }
 
+        const destinationUri = `${FileSystem.documentDirectory}my_video.mp4`;
+
+        try {
+            await FileSystem.copyAsync({ "from": videoUri, "to": destinationUri });
+            console.log("Video downloaded successfully!");
+            console.log(destinationUri);
+        } catch (error) {
+            console.error("Error downloading video:", error);
+        }
+    };
+    
     const pickVideo = async () => {
         let result = await DocumentPicker.getDocumentAsync({
             "type": "video/*",
             "copyToCacheDirectory": true,
         });
+        
+        const uri = result.assets[0].uri;
 
-        if (result.type === "success") {
+        if (result.assets[0].uri) {
             setVideo(result);
-            console.log(result);
+            downloadVideo(uri);
         }
     };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
+import { Video } from "react-native-compressor";
 
 const UploadVideo = () => {
     const [video, setVideo] = useState(null);
@@ -12,9 +13,11 @@ const UploadVideo = () => {
         }
 
         const destinationUri = `${FileSystem.documentDirectory}my_video.mp4`;
+        
+        const compressedVideo = await Video.compress(videoUri, {}, (progress) => { console.log("Compression Progress: ", progress); });
 
         try {
-            await FileSystem.copyAsync({ "from": videoUri, "to": destinationUri });
+            await FileSystem.copyAsync({ "from": compressedVideo, "to": destinationUri });
             console.log("Video downloaded successfully!");
             console.log(destinationUri);
         } catch (error) {

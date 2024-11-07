@@ -18,6 +18,9 @@
         ],
         "transform": {
             "^.+\\.jsx?$": "babel-jest"
+        },
+        "moduleNameMapper": {
+            "react-native-compressor": "<rootDir>/__mocks__/react-native-compressor.js"
         }
     },
     "dependencies": {

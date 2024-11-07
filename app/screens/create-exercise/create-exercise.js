@@ -12,6 +12,7 @@ const colours = {
 
 const CreateExercise = () => {
     const { control, getValues } = useForm({});
+    const [exerciseName, setExerciseName] = useState("");
     
     const [selectedExerciseType, setselectedExerciseType] = useState(null);
     const exerciseType = [
@@ -35,7 +36,10 @@ const CreateExercise = () => {
                     control = {control}
                     name = "exerciseName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {(text) => {
+                            onChange(text); 
+                            setExerciseName(text);
+                        }} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Type</Text>
@@ -52,7 +56,7 @@ const CreateExercise = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />       
-                <UploadVideo onVideoSelect = {handleAddExercise} />
+                <UploadVideo onVideoSelect = {handleAddExercise} videoFileName = {`${exerciseName}.mp4`} />
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.black }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>

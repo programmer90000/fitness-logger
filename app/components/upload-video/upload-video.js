@@ -4,7 +4,7 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { Video } from "react-native-compressor";
 
-const UploadVideo = (videoFileName) => {
+const UploadVideo = ({ videoFileName }) => {
     const [video, setVideo] = useState(null);
     
     const getUniqueFileName = async (baseFileName) => {
@@ -21,7 +21,7 @@ const UploadVideo = (videoFileName) => {
         
             const nameWithoutExt = baseFileName.replace(/\.[^/.]+$/, "");
             const extension = baseFileName.split(".").pop();
-            fileName = `${nameWithoutExt}${counter}.${extension}`;
+            fileName = `${nameWithoutExt}-${counter}.${extension}`;
             counter++;
         }
     };

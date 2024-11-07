@@ -52,9 +52,8 @@ const UploadVideo = (videoFileName) => {
             "copyToCacheDirectory": true,
         });
         
-        const uri = result.assets[0].uri;
-
-        if (result.assets[0].uri) {
+        if (result.assets && result.assets[0]?.uri) {
+            const uri = result.assets[0].uri;
             setVideo(result);
             downloadVideo(uri);
         }

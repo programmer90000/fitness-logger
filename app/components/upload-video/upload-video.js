@@ -6,13 +6,34 @@ import { Video } from "react-native-compressor";
 
 const UploadVideo = (videoFileName) => {
     const [video, setVideo] = useState(null);
+    
+    const getUniqueFileName = async (baseFileName) => {
+        let fileName = baseFileName;
+        let counter = 1;
+    
+        while (true) {
+            const filePath = `${FileSystem.documentDirectory}${fileName}`;
+            const fileExists = await FileSystem.getInfoAsync(filePath);
+        
+            if (!fileExists.exists) {
+                return fileName;
+            }
+        
+            const nameWithoutExt = baseFileName.replace(/\.[^/.]+$/, "");
+            const extension = baseFileName.split(".").pop();
+            fileName = `${nameWithoutExt}${counter}.${extension}`;
+            counter++;
+        }
+    };
+
     const downloadVideo = async (videoUri) => {
         if (!videoUri) {
             console.error("Video URI is null. Please select a valid video.");
             return;
         }
 
-        const destinationUri = `${FileSystem.documentDirectory}${videoFileName}`;
+        const uniqueFileName = await getUniqueFileName(videoFileName);
+        const destinationUri = `${FileSystem.documentDirectory}${uniqueFileName}`;
         
         const compressedVideo = await Video.compress(videoUri, {}, (progress) => { console.log("Compression Progress: ", progress); });
 

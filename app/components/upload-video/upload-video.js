@@ -8,7 +8,8 @@ const UploadVideo = ({ videoFileName }) => {
     const [video, setVideo] = useState(null);
     
     const getUniqueFileName = async (baseFileName) => {
-        let fileName = baseFileName;
+        let formattedName = baseFileName.replace(/\s+/g, "-");
+        let fileName = formattedName;
         let counter = 1;
     
         while (true) {
@@ -19,8 +20,8 @@ const UploadVideo = ({ videoFileName }) => {
                 return fileName;
             }
         
-            const nameWithoutExt = baseFileName.replace(/\.[^/.]+$/, "");
-            const extension = baseFileName.split(".").pop();
+            const nameWithoutExt = formattedName.replace(/\.[^/.]+$/, "");
+            const extension = formattedName.split(".").pop();
             fileName = `${nameWithoutExt}-${counter}.${extension}`;
             counter++;
         }

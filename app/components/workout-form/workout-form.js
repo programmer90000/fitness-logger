@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises } from "../../../database/realm-database.js";
@@ -19,13 +19,12 @@ const WorkoutForm = () => {
         "name": "exercises",
     });
     
-    useEffect(() => {
-        const realm = new Realm({ "schema": [exercises] });
-        const allExercises = realm.objects("Exercises");
-        const names = allExercises.map((exercise) => { return exercise.name; });
-        console.log(names);
-        realm.close();
-    });
+    const realm = new Realm({ "schema": [exercises] });
+    const allExercises = realm.objects("Exercises");
+    const names = allExercises.map((exercise) => { return exercise.name; });
+    realm.close();
+    
+    console.log(names);
     
     const onSubmit = (data) => {
         const exercises = data.exercises.reduce((acc, exercise) => {

@@ -37,9 +37,9 @@ const exercises = {
     "properties": {
         "id": "int",
         "name": "string",
-        "type": "string", // TODO: Add a dropdown picker for this field
+        "type": "string",
         "notes": "string",
-        "video": "string", // TODO: Add a file picker to add videos to this field
+        "video": "string",
     },
     "primaryKey": "id",
 };

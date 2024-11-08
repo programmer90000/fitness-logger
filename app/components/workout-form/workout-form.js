@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
+import { exercises } from "../../../database/realm-database.js";
+import Realm from "realm";
 
 const colours = {
     "black": "#060606",
@@ -15,6 +17,14 @@ const WorkoutForm = () => {
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
+    });
+    
+    useEffect(() => {
+        const realm = new Realm({ "schema": [exercises] });
+        const allExercises = realm.objects("Exercises");
+        const names = allExercises.map((exercise) => { return exercise.name; });
+        console.log(names);
+        realm.close();
     });
     
     const onSubmit = (data) => {

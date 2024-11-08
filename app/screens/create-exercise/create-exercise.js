@@ -3,6 +3,8 @@ import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-nativ
 import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import UploadVideo from "../../components/upload-video/upload-video.js";
+import { exercises } from "../../../database/realm-database.js";
+import Realm from "realm";
 
 const colours = {
     "black": "#060606",
@@ -24,11 +26,23 @@ const CreateExercise = () => {
     
     const handleAddExercise = () => {
         const formValues = getValues();
-        console.log(formValues.exerciseName);
-        console.log(selectedExerciseType);
-        console.log(formValues.exerciseNotes);
-        console.log(videoPath);
+        const realm = new Realm({ "schema": [exercises] });
+        realm.write(() => {
+            const currentHighestId = realm.objects("Exercises").max("id") || 0;
+            let newId;
 
+            if (currentHighestId === 0)
+            {
+                newId = 1;
+            } else {
+                newId = currentHighestId + 1;
+            }
+            
+            realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath });
+        });
+        const allExercises = realm.objects("Exercises");
+        console.log("All Exercises:", allExercises);
+        realm.close();
     };
 
     return (

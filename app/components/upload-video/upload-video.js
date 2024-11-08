@@ -4,7 +4,7 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { Video } from "react-native-compressor";
 
-const UploadVideo = ({ videoFileName }) => {
+const UploadVideo = ({ onVideoSelect, videoFileName }) => {
     const [video, setVideo] = useState(null);
     
     const getUniqueFileName = async (baseFileName) => {
@@ -35,6 +35,7 @@ const UploadVideo = ({ videoFileName }) => {
 
         const uniqueFileName = await getUniqueFileName(videoFileName);
         const destinationUri = `${FileSystem.documentDirectory}${uniqueFileName}`;
+        onVideoSelect(destinationUri);
         
         const compressedVideo = await Video.compress(videoUri, {}, (progress) => { console.log("Compression Progress: ", progress); });
 
@@ -45,6 +46,10 @@ const UploadVideo = ({ videoFileName }) => {
         } catch (error) {
             console.error("Error downloading video:", error);
         }
+    };
+    
+    const handleVideoDownload = (videoPath) => {
+        setVideoPath(videoPath);
     };
     
     const pickVideo = async () => {

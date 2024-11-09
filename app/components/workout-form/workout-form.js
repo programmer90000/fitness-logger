@@ -3,6 +3,7 @@ import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-nativ
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises } from "../../../database/realm-database.js";
 import Realm from "realm";
+import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 
 const colours = {
     "black": "#060606",
@@ -12,6 +13,7 @@ const colours = {
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);
+    const [workoutName, setWorkoutName] = useState(null);
 
     const { control, handleSubmit, getValues } = useForm({});
     const { fields, append, insert, remove } = useFieldArray({
@@ -22,9 +24,16 @@ const WorkoutForm = () => {
     const realm = new Realm({ "schema": [exercises] });
     const allExercises = realm.objects("Exercises");
     const names = allExercises.map((exercise) => { return exercise.name; });
+    const names2 = names.map((name) => {
+        return {
+            "label": name,
+            "value": name.replace(/\s/g, ""), // Remove spaces using regex
+        };
+    }); realm.close();
+    
+    console.log(names2);
     realm.close();
     
-    console.log(names);
     
     const onSubmit = (data) => {
         const exercises = data.exercises.reduce((acc, exercise) => {
@@ -83,19 +92,7 @@ const WorkoutForm = () => {
                             <View className = "flex-row w-full">
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                    <Controller
-                                        control = {control}
-                                        name = {`exercises.${index}.name`}
-                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
-                                        render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                            <TextInput
-                                                onBlur = {onBlur}
-                                                onChangeText = {onChange}
-                                                value = {value}
-                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
-                                            />
-                                        ); }}
-                                    />
+                                    <DropdownComponent data = {names2} value = {workoutName} onChange = {setWorkoutName} style = {{ "width": 100 }} placeholder = "Exercise Name"/>
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Personal Best</Text>

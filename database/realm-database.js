@@ -40,6 +40,7 @@ const exercises = {
         "type": "string",
         "notes": "string",
         "video": "string",
+        "personalBest": "string",
     },
     "primaryKey": "id",
 };
@@ -50,6 +51,8 @@ const workoutPresetsExercises = {
         "id": "int",
         "workoutPresets": "WorkoutPresets",
         "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };

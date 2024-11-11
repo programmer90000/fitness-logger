@@ -38,7 +38,7 @@ const CreateExercise = () => {
                 newId = currentHighestId + 1;
             }
             
-            realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath });
+            realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath, "personalBest": "N/A" });
         });
         const allExercises = realm.objects("Exercises");
         console.log("All Exercises:", allExercises);

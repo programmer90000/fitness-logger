@@ -92,7 +92,7 @@ const WorkoutForm = () => {
                             <View className = "flex-row w-full">
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                    <DropdownComponent data = {names2} value = {workoutName} onChange = {setWorkoutName} style = {{ "width": 100 }} placeholder = "Exercise Name"/>
+                                    <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { const updatedFields = fields.map((item, i) => { if (i === index) { return { ...item, name }; } return item; }); fields.splice(0, fields.length, ...updatedFields); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Personal Best</Text>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
-import { exercises } from "../../../database/realm-database.js";
+import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 
@@ -36,23 +36,64 @@ const WorkoutForm = () => {
     
     
     const onSubmit = (data) => {
-        const exercises = data.exercises.reduce((acc, exercise) => {
-            const lastExercise = acc[acc.length - 1];
-            if (lastExercise && lastExercise.name === exercise.name) {
-                lastExercise.sets.push({ "duration": exercise.duration, "reps": exercise.reps });
-            } else {
-                acc.push({ "name": exercise.name, "personalBest": "N/A", "sets": [{ "duration": exercise.duration, "reps": exercise.reps }] });
-            }
-            return acc;
-        }, []);
+        const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises] });
 
-        const formattedData = { ...data, exercises };
-        console.log(formattedData);
+        try {
+            realm.write(() => {
+                const currentWorkoutId = realm.objects("WorkoutPresets").max("id") || 0;
+                let newWorkoutId;
+                if (currentWorkoutId === 0)
+                {
+                    newWorkoutId = 1;
+                } else {
+                    newWorkoutId = currentWorkoutId + 1;
+                }
+
+                const newWorkout = realm.create("WorkoutPresets", {
+                    "id": newWorkoutId,
+                    "name": data.workoutName,
+                    "notes": data.workoutNotes || "",
+                });
+
+                data.exercises.forEach((exercise) => {
+                    const currentWorkoutPresetsExercisesId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
+                    let newWorkoutPresetsExercisesId;
+                    if (currentWorkoutPresetsExercisesId === 0)
+                    {
+                        newWorkoutPresetsExercisesId = 1;
+                    } else {
+                        newWorkoutPresetsExercisesId = currentWorkoutPresetsExercisesId + 1;
+                    }
+
+                    const exerciseObj = realm.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                    if (!exerciseObj) {
+                        throw new Error(`Exercise with name "${exercise.name}" not found.`);
+                    }
+
+                    realm.create("WorkoutPresetsExercises", {
+                        "id": newWorkoutPresetsExercisesId,
+                        "workoutPresets": newWorkout,
+                        "exercises": exerciseObj,
+                        "metrics": exercise.duration,
+                        "volume": exercise.reps.toString(),
+                    });
+                });
+            });
+            const exercisesRecords = realm.objects("WorkoutPresetsExercises");
+
+            exercisesRecords.forEach((record) => {
+                console.log("id:", record.id, "Workout Preset ID:", record.workoutPresets.id, "Exercise ID:", record.exercises.id, "Metrics:", record.metrics, "Volume:", record.volume);
+            });
+
+        } catch (error) {
+            console.error("Error saving workout:", error);
+        } finally {
+            realm.close();
+        }
     };
 
     const updateData = () => {
         const allData = getValues();
-        onSubmit(allData);
     };
 
     const addSet = (index) => {

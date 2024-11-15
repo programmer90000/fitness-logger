@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
+
 
 const colours = {
     "black": "#060606",
@@ -18,6 +20,7 @@ const SetGoal = () => {
     const [startPickerShow, setStartPickerShow] = useState(false);
     const [endPickerShow, setEndPickerShow] = useState(false);
     const [reminderPickerShow, setReminderPickerShow] = useState(false);
+    const [value, setValue] = useState(null);
 
     const options = {
         "year": "numeric",
@@ -54,6 +57,12 @@ const SetGoal = () => {
     const showReminderDatepicker = () => {
         setReminderPickerShow(true);
     };
+    
+    const possibleGoals = [
+        { "label": "Increase Weight", "value": "weight" },
+        { "label": "Increase Reps", "value": "reps" },
+        { "label": "Number Of Workouts", "value": "numWorkouts" },
+    ];
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
@@ -68,7 +77,14 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Goal</Text>
                     <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <DropdownComponent data = {possibleGoals} value = {value} onChange = {setValue} />
+                    ); }}
+                    />
+                </View>
+                <View className = "flex-row items-center">
+                    <Text className = "mr-4 w-16">New Goal Value</Text>
+                    <Controller control = {control} name = "goalValue" render = {({ "field": { onChange, onBlur, value } }) => { return (
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                     />
                 </View>

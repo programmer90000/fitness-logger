@@ -77,7 +77,7 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Goal</Text>
                     <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <DropdownComponent data = {possibleGoals} value = {value} onChange = {setValue} />
+                        <DropdownComponent data = {possibleGoals} value = {value} onChange = {setValue} className = "align-middle text-center w-[260px] flex-1 m-2.5 bg-[#DEDEDE]" />
                     ); }}
                     />
                 </View>

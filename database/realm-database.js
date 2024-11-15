@@ -83,9 +83,11 @@ const goals = {
     "properties": {
         "id": "int",
         "name": "string",
-        "startDate": "date", // TODO: Add a date picker for this field
-        "endDate": "date", // TODO: Add a date picker for this field
-        "reminders": "date", // TODO: Add a date picker for this field
+        "type": "string",
+        "value": "string",
+        "startDate": "date",
+        "endDate": "date",
+        "reminders": "date",
         "notes": "string",
     },
     "primaryKey": "id",

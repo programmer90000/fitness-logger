@@ -463,7 +463,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         const goals = realm.objects("Goals")[0];
         expect(goals.id).toBe(1);
@@ -477,7 +477,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         const goals = realm.objects("Goals")[0];
         expect(goals.id).toBe(1);
@@ -492,7 +492,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
 
         realm.write(() => {
@@ -507,7 +507,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         
         realm.write(() => {

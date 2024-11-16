@@ -161,7 +161,7 @@ describe("workoutPresetsExercises table", () => {
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
 
             // Create a linking record
-            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
         });
         
         const links = realm.objects("WorkoutPresetsExercises");
@@ -179,7 +179,7 @@ describe("workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
-            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
         });
 
         const links = realm.objects("WorkoutPresetsExercises");
@@ -192,7 +192,7 @@ describe("workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
-            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
             
             // Update the exercise in the linking record
             const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path", "personalBest": "15 KG" });
@@ -208,7 +208,7 @@ describe("workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
             const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
-            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise, "metrics": "15 KG", "volume": "10 reps" });
 
             // Delete the linking record
             realm.delete(link);

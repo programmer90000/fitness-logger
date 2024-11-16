@@ -350,7 +350,7 @@ describe("previousWorkoutsExercises table", () => {
             const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
             
             // Update the exercise in the linking record
-            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
+            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path", "personalBest": "15 KG" });
             previousWorkoutExercise.exercises = newExercise;
         });
 

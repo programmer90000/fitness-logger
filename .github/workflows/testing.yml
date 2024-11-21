@@ -13,4 +13,4 @@ jobs:
       - name: Run linting
         run: npm run lint
       - name: Run tests
-        run: npx jest --runInBand --detectOpenHandles
+        run: npx jest --runInBand --detectOpenHandles --forceExit

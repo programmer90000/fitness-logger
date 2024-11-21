@@ -6,7 +6,7 @@ describe("workoutPresets table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [workoutPresets] });
+        realm = new Realm({ "schema": [workoutPresets], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -70,7 +70,7 @@ describe("exercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [exercises] });
+        realm = new Realm({ "schema": [exercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -140,7 +140,7 @@ describe("workoutPresetsExercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises] });
+        realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async () => {
@@ -224,7 +224,7 @@ describe("previousWorkouts table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [previousWorkouts] });
+        realm = new Realm({ "schema": [previousWorkouts], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -297,7 +297,7 @@ describe("previousWorkoutsExercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
+        realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async () => {
@@ -379,7 +379,7 @@ describe("badges table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [badges] });
+        realm = new Realm({ "schema": [badges], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -445,7 +445,7 @@ describe("goals table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [goals] });
+        realm = new Realm({ "schema": [goals], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {

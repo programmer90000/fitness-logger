@@ -37,9 +37,10 @@ const exercises = {
     "properties": {
         "id": "int",
         "name": "string",
-        "type": "string", // TODO: Add a dropdown picker for this field
+        "type": "string",
         "notes": "string",
-        "video": "string", // TODO: Add a file picker to add videos to this field
+        "video": "string",
+        "personalBest": "string",
     },
     "primaryKey": "id",
 };
@@ -50,6 +51,8 @@ const workoutPresetsExercises = {
         "id": "int",
         "workoutPresets": "WorkoutPresets",
         "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };
@@ -80,9 +83,11 @@ const goals = {
     "properties": {
         "id": "int",
         "name": "string",
-        "startDate": "date", // TODO: Add a date picker for this field
-        "endDate": "date", // TODO: Add a date picker for this field
-        "reminders": "date", // TODO: Add a date picker for this field
+        "type": "string",
+        "value": "string",
+        "startDate": "date",
+        "endDate": "date",
+        "reminders": "date",
         "notes": "string",
     },
     "primaryKey": "id",

@@ -6,7 +6,7 @@ describe("workoutPresets table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [workoutPresets] });
+        realm = new Realm({ "schema": [workoutPresets], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -70,7 +70,7 @@ describe("exercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [exercises] });
+        realm = new Realm({ "schema": [exercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -86,7 +86,7 @@ describe("exercises table", () => {
 
     test("Create record in exercises table", () => {
         realm.write(() => {
-            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path", "personalBest": "15 KG" });
         });
         const exercises = realm.objects("Exercises")[0];
         expect(exercises.id).toBe(1);
@@ -94,11 +94,12 @@ describe("exercises table", () => {
         expect(exercises.type).toBe("Bodyweight");
         expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
         expect(exercises.video).toBe("Video-Path");
+        expect(exercises.personalBest).toBe("15 KG");
     });
 
     test("Read record in exercises table", () => {
         realm.write(() => {
-            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path", "personalBest": "15 KG" });
         });
         const exercises = realm.objects("Exercises")[0];
         expect(exercises.id).toBe(1);
@@ -106,11 +107,12 @@ describe("exercises table", () => {
         expect(exercises.type).toBe("Bodyweight");
         expect(exercises.notes).toBe("Do not arch back. Keep neck in line with body");
         expect(exercises.video).toBe("Video-Path");
+        expect(exercises.personalBest).toBe("15 KG");
     });
 
     test("Update record in exercises table", () => {
         realm.write(() => {
-            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path", "personalBest": "15 KG" });
         });
         realm.write(() => {
             const exercises = realm.objects("Exercises")[0];
@@ -122,7 +124,7 @@ describe("exercises table", () => {
 
     test("Delete record in exercises table", () => {
         realm.write(() => {
-            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path" });
+            realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Do not arch back. Keep neck in line with body", "video": "Video-Path", "personalBest": "15 KG" });
         });
         realm.write(() => {
             const exercises = realm.objects("Exercises")[0];
@@ -138,7 +140,7 @@ describe("workoutPresetsExercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises] });
+        realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async () => {
@@ -156,10 +158,10 @@ describe("workoutPresetsExercises table", () => {
         realm.write(() => {
             // Create WorkoutPreset and Exercise first
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
 
             // Create a linking record
-            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            const workoutPresetExercise = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
         });
         
         const links = realm.objects("WorkoutPresetsExercises");
@@ -176,8 +178,8 @@ describe("workoutPresetsExercises table", () => {
     test("Read record in workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
-            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
+            realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
         });
 
         const links = realm.objects("WorkoutPresetsExercises");
@@ -189,11 +191,11 @@ describe("workoutPresetsExercises table", () => {
     test("Update record in workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
-            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPresets": preset, "exercises": exercise, "metrics": "15 KG", "volume": "10 reps" });
             
             // Update the exercise in the linking record
-            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
+            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path", "personalBest": "15 KG" });
             link.exercises = newExercise;
         });
 
@@ -205,8 +207,8 @@ describe("workoutPresetsExercises table", () => {
     test("Delete record in workoutPresetsExercises table", () => {
         realm.write(() => {
             const preset = realm.create("WorkoutPresets", { "id": 1, "name": "Gym", "notes": "Main Workout" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
-            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
+            const link = realm.create("WorkoutPresetsExercises", { "id": 1, "workoutPreset": preset, "exercise": exercise, "metrics": "15 KG", "volume": "10 reps" });
 
             // Delete the linking record
             realm.delete(link);
@@ -222,7 +224,7 @@ describe("previousWorkouts table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [previousWorkouts] });
+        realm = new Realm({ "schema": [previousWorkouts], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -295,7 +297,7 @@ describe("previousWorkoutsExercises table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
+        realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async () => {
@@ -312,7 +314,7 @@ describe("previousWorkoutsExercises table", () => {
     test("Create record in previousWorkoutsExercises table", () => {
         realm.write(() => {
             const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
             const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
         });
         
@@ -329,7 +331,7 @@ describe("previousWorkoutsExercises table", () => {
     test("Read record in previousWorkoutsExercises table", () => {
         realm.write(() => {
             const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
             const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
 
         });
@@ -344,11 +346,11 @@ describe("previousWorkoutsExercises table", () => {
     test("Update record in previousWorkoutsExercises table", () => {
         realm.write(() => {
             const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
             const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "previousWorkouts": previousWorkout, "exercises": exercise });
             
             // Update the exercise in the linking record
-            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path" });
+            const newExercise = realm.create("Exercises", { "id": 2, "name": "Squat", "type": "Strength", "notes": "Leg exercise", "video": "Video-Path", "personalBest": "15 KG" });
             previousWorkoutExercise.exercises = newExercise;
         });
 
@@ -360,7 +362,7 @@ describe("previousWorkoutsExercises table", () => {
     test("Delete record in previousWorkoutsExercises table", () => {
         realm.write(() => {
             const previousWorkout = realm.create("PreviousWorkouts", { "id": 1, "name": "Gym", "notes": "Main Workout", "date": "01/01/2024" });
-            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path" });
+            const exercise = realm.create("Exercises", { "id": 1, "name": "Plank", "type": "Bodyweight", "notes": "Core exercise", "video": "Video-Path", "personalBest": "15 KG" });
             const previousWorkoutExercise = realm.create("PreviousWorkoutsExercises", { "id": 1, "workoutPreset": previousWorkout, "exercise": exercise });
 
             // Delete the linking record
@@ -377,7 +379,7 @@ describe("badges table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [badges] });
+        realm = new Realm({ "schema": [badges], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -443,7 +445,7 @@ describe("goals table", () => {
     let realm;
 
     beforeEach(() => {
-        realm = new Realm({ "schema": [goals] });
+        realm = new Realm({ "schema": [goals], "deleteRealmIfMigrationNeeded": true });
     });
 
     afterEach(async() => {
@@ -461,7 +463,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         const goals = realm.objects("Goals")[0];
         expect(goals.id).toBe(1);
@@ -475,7 +477,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         const goals = realm.objects("Goals")[0];
         expect(goals.id).toBe(1);
@@ -490,7 +492,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
 
         realm.write(() => {
@@ -505,7 +507,7 @@ describe("goals table", () => {
         const newDate = new Date(2024, 10, 30);
 
         realm.write(() => {
-            realm.create("Goals", { "id": 1, "name": "Goal 1", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
+            realm.create("Goals", { "id": 1, "name": "Goal 1", "type": "weight", "value": "10 KG", "startDate": newDate, "endDate": newDate, "reminders": newDate, "notes": "Goal Notes" });
         });
         
         realm.write(() => {

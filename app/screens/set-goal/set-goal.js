@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
+import { goals } from "../../../database/realm-database.js";
+import Realm from "realm";
+
 
 const colours = {
     "black": "#060606",
@@ -10,7 +14,7 @@ const colours = {
 };
 
 const SetGoal = () => {
-    const { control } = useForm({});
+    const { control, getValues } = useForm({});
     const [mode, setMode] = useState("date");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -18,6 +22,7 @@ const SetGoal = () => {
     const [startPickerShow, setStartPickerShow] = useState(false);
     const [endPickerShow, setEndPickerShow] = useState(false);
     const [reminderPickerShow, setReminderPickerShow] = useState(false);
+    const [type, setType] = useState(null);
 
     const options = {
         "year": "numeric",
@@ -54,6 +59,33 @@ const SetGoal = () => {
     const showReminderDatepicker = () => {
         setReminderPickerShow(true);
     };
+    
+    const handleAddGoal = () => {
+        const formValues = getValues();
+        const realm = new Realm({ "schema": [goals] });
+        realm.write(() => {
+            const currentHighestId = realm.objects("Goals").max("id") || 0;
+            let newId;
+
+            if (currentHighestId === 0)
+            {
+                newId = 1;
+            } else {
+                newId = currentHighestId + 1;
+            }
+            realm.create("Goals", { "id": newId, "name": formValues.goalName, "type": type, "value": formValues.goalValue, "startDate": startDate, "endDate": endDate, "reminders": reminderDate, "notes": formValues.notes });
+        });
+        const allGoals = realm.objects("Goals");
+        console.log("All Goals:", allGoals);
+        realm.close();
+    };
+
+    
+    const possibleGoals = [
+        { "label": "Increase Weight", "value": "weight" },
+        { "label": "Increase Reps", "value": "reps" },
+        { "label": "Number Of Workouts", "value": "numWorkouts" },
+    ];
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
@@ -68,7 +100,14 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Goal</Text>
                     <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <DropdownComponent data = {possibleGoals} value = {type} onChange = {setType} className = "align-middle text-center w-[260px] flex-1 m-2.5 bg-[#DEDEDE]" />
+                    ); }}
+                    />
+                </View>
+                <View className = "flex-row items-center">
+                    <Text className = "mr-4 w-16">New Goal Value</Text>
+                    <Controller control = {control} name = "goalValue" render = {({ "field": { onChange, onBlur, value } }) => { return (
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                     />
                 </View>
@@ -125,7 +164,7 @@ const SetGoal = () => {
                     ); }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
                     {/* // TODO: Before submitting, check if the End Date is after the Start Date */}
                     {/* // TODO: Before submitting, check if the Reminder Date is in-between or on the Start Date and End Date */}
                     <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Submit</Text>

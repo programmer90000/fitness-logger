@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
+import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
+import Realm from "realm";
+import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 
 const colours = {
     "black": "#060606",
@@ -10,31 +13,87 @@ const colours = {
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);
+    const [workoutName, setWorkoutName] = useState(null);
 
-    const { control, handleSubmit, getValues } = useForm({});
+    const { control, handleSubmit, getValues, setValue } = useForm({});
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
     });
     
+    const realm = new Realm({ "schema": [exercises] });
+    const allExercises = realm.objects("Exercises");
+    const names = allExercises.map((exercise) => { return exercise.name; });
+    const names2 = names.map((name) => {
+        return {
+            "label": name,
+            "value": name.replace(/\s/g, ""), // Remove spaces using regex
+        };
+    }); realm.close();
+    
+    console.log(names2);
+    realm.close();
+    
+    
     const onSubmit = (data) => {
-        const exercises = data.exercises.reduce((acc, exercise) => {
-            const lastExercise = acc[acc.length - 1];
-            if (lastExercise && lastExercise.name === exercise.name) {
-                lastExercise.sets.push({ "duration": exercise.duration, "reps": exercise.reps });
-            } else {
-                acc.push({ "name": exercise.name, "personalBest": "N/A", "sets": [{ "duration": exercise.duration, "reps": exercise.reps }] });
-            }
-            return acc;
-        }, []);
+        const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises] });
 
-        const formattedData = { ...data, exercises };
-        console.log(formattedData);
+        try {
+            realm.write(() => {
+                const currentWorkoutId = realm.objects("WorkoutPresets").max("id") || 0;
+                let newWorkoutId;
+                if (currentWorkoutId === 0)
+                {
+                    newWorkoutId = 1;
+                } else {
+                    newWorkoutId = currentWorkoutId + 1;
+                }
+
+                const newWorkout = realm.create("WorkoutPresets", {
+                    "id": newWorkoutId,
+                    "name": data.workoutName,
+                    "notes": data.workoutNotes || "",
+                });
+
+                data.exercises.forEach((exercise) => {
+                    const currentWorkoutPresetsExercisesId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
+                    let newWorkoutPresetsExercisesId;
+                    if (currentWorkoutPresetsExercisesId === 0)
+                    {
+                        newWorkoutPresetsExercisesId = 1;
+                    } else {
+                        newWorkoutPresetsExercisesId = currentWorkoutPresetsExercisesId + 1;
+                    }
+
+                    const exerciseObj = realm.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                    if (!exerciseObj) {
+                        throw new Error(`Exercise with name "${exercise.name}" not found.`);
+                    }
+
+                    realm.create("WorkoutPresetsExercises", {
+                        "id": newWorkoutPresetsExercisesId,
+                        "workoutPresets": newWorkout,
+                        "exercises": exerciseObj,
+                        "metrics": exercise.duration,
+                        "volume": exercise.reps.toString(),
+                    });
+                });
+            });
+            const exercisesRecords = realm.objects("WorkoutPresetsExercises");
+
+            exercisesRecords.forEach((record) => {
+                console.log("id:", record.id, "Workout Preset ID:", record.workoutPresets.id, "Exercise ID:", record.exercises.id, "Metrics:", record.metrics, "Volume:", record.volume);
+            });
+
+        } catch (error) {
+            console.error("Error saving workout:", error);
+        } finally {
+            realm.close();
+        }
     };
 
     const updateData = () => {
         const allData = getValues();
-        onSubmit(allData);
     };
 
     const addSet = (index) => {
@@ -74,19 +133,7 @@ const WorkoutForm = () => {
                             <View className = "flex-row w-full">
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                    <Controller
-                                        control = {control}
-                                        name = {`exercises.${index}.name`}
-                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
-                                        render = {({ "field": { onChange, onBlur, value } }) => { return (
-                                            <TextInput
-                                                onBlur = {onBlur}
-                                                onChangeText = {onChange}
-                                                value = {value}
-                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
-                                            />
-                                        ); }}
-                                    />
+                                    <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Personal Best</Text>

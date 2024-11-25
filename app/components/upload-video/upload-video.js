@@ -7,8 +7,8 @@ import { Video } from "react-native-compressor";
 const UploadVideo = ({ onVideoSelect, videoFileName }) => {
     const [video, setVideo] = useState(null);
     
-    const getUniqueFileName = async (baseFileName) => {
-        let formattedName = baseFileName.replace(/\s+/g, "-");
+    const getUniqueFileName = async (videoFileName) => {
+        let formattedName = videoFileName.replace(/\s+/g, "-");
         let fileName = formattedName;
         let counter = 1;
     
@@ -27,12 +27,13 @@ const UploadVideo = ({ onVideoSelect, videoFileName }) => {
         }
     };
 
-    const downloadVideo = async (videoUri) => {
+    const downloadVideo = async (videoUri, fileName) => {
         if (!videoUri) {
             console.error("Video URI is null. Please select a valid video.");
             return;
         }
 
+        const videoFileName = fileName.split("/").pop();
         const uniqueFileName = await getUniqueFileName(videoFileName);
         const destinationUri = `${FileSystem.documentDirectory}${uniqueFileName}`;
         onVideoSelect(destinationUri);
@@ -61,7 +62,7 @@ const UploadVideo = ({ onVideoSelect, videoFileName }) => {
         if (result.assets && result.assets[0]?.uri) {
             const uri = result.assets[0].uri;
             setVideo(result);
-            downloadVideo(uri);
+            downloadVideo(uri, result.assets[0].name);
         }
     };
 

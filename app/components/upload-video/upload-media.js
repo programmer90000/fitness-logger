@@ -4,7 +4,7 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { Video, Image } from "react-native-compressor";
 
-const UploadVideo = ({ onMediaSelect, mediaFileName, mediaType }) => {
+const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
     const [media, setMedia] = useState(null);
     
     const getUniqueFileName = async (mediaFileName) => {
@@ -29,7 +29,7 @@ const UploadVideo = ({ onMediaSelect, mediaFileName, mediaType }) => {
 
     const downloadMedia = async (mediaUri, fileName) => {
         if (!mediaUri) {
-            console.error("Media URI is null. Please select a valid video.");
+            console.error(`Media URI is null. Please select a valid ${mediaType}.`);
             return;
         }
 
@@ -48,7 +48,7 @@ const UploadVideo = ({ onMediaSelect, mediaFileName, mediaType }) => {
             console.log("Media downloaded successfully!");
             console.log(destinationUri);
         } catch (error) {
-            console.error("Error downloading video:", error);
+            console.error(`Error downloading ${mediaType}:`, error);
         }
     };
     
@@ -86,4 +86,4 @@ const UploadVideo = ({ onMediaSelect, mediaFileName, mediaType }) => {
     );
 };
 
-export default UploadVideo;
+export default UploadMedia;

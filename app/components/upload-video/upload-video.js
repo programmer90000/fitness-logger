@@ -57,8 +57,16 @@ const UploadVideo = ({ onMediaSelect, mediaFileName, mediaType }) => {
     };
     
     const pickMedia = async () => {
+        let typeOfMedia;
+        if (mediaType === "Video") {
+            typeOfMedia = "video/*";
+        } else if (mediaType === "Image") {
+            typeOfMedia = "image/*";
+        } else {
+            throw new Error("Invalid media type");
+        }
         let result = await DocumentPicker.getDocumentAsync({
-            "type": mediaType === "Video" ? "video/*" : "image/*",
+            "type": typeOfMedia,
             "copyToCacheDirectory": true,
         });
         

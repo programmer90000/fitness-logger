@@ -58,7 +58,6 @@ const WorkoutForm = () => {
             });
         });
         const allBadges = realm.objects("Badges");
-        console.log("All Badges:", allBadges);
         realm.close();
     };
 

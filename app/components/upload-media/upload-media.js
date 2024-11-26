@@ -39,14 +39,12 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         onMediaSelect(destinationUri);
         let compressedMedia;
         if (mediaType === "Video") {
-            compressedMedia = await Video.compress(mediaUri, {}, (progress) => { console.log("Compression Progress: ", progress); });
+            compressedMedia = await Video.compress(mediaUri, {}, (progress) => { });
         } else if (mediaType === "Image") {
-            compressedMedia = await Image.compress(mediaUri, {}, (progress) => { console.log("Compression Progress: ", progress); });
+            compressedMedia = await Image.compress(mediaUri, {}, (progress) => { });
         }
         try {
             await FileSystem.copyAsync({ "from": compressedMedia, "to": destinationUri });
-            console.log("Media downloaded successfully!");
-            console.log(destinationUri);
         } catch (error) {
             console.error(`Error downloading ${mediaType}:`, error);
         }

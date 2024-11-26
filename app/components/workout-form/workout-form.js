@@ -30,8 +30,6 @@ const WorkoutForm = () => {
             "value": name.replace(/\s/g, ""), // Remove spaces using regex
         };
     }); realm.close();
-    
-    console.log(names2);
     realm.close();
     
     
@@ -79,12 +77,6 @@ const WorkoutForm = () => {
                     });
                 });
             });
-            const exercisesRecords = realm.objects("WorkoutPresetsExercises");
-
-            exercisesRecords.forEach((record) => {
-                console.log("id:", record.id, "Workout Preset ID:", record.workoutPresets.id, "Exercise ID:", record.exercises.id, "Metrics:", record.metrics, "Volume:", record.volume);
-            });
-
         } catch (error) {
             console.error("Error saving workout:", error);
         } finally {

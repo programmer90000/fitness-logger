@@ -76,7 +76,6 @@ const SetGoal = () => {
             realm.create("Goals", { "id": newId, "name": formValues.goalName, "type": type, "value": formValues.goalValue, "startDate": startDate, "endDate": endDate, "reminders": reminderDate, "notes": formValues.notes });
         });
         const allGoals = realm.objects("Goals");
-        console.log("All Goals:", allGoals);
         realm.close();
     };
 

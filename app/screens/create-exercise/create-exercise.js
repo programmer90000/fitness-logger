@@ -41,7 +41,6 @@ const CreateExercise = () => {
             realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath, "personalBest": "N/A" });
         });
         const allExercises = realm.objects("Exercises");
-        console.log("All Exercises:", allExercises);
         realm.close();
     };
 

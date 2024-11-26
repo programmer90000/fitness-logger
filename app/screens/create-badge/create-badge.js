@@ -37,16 +37,25 @@ const WorkoutForm = () => {
         const realm = new Realm({ "schema": [badges] });
         realm.write(() => {
             const currentHighestId = realm.objects("Badges").max("id") || 0;
-            let newId;
+            const newId = currentHighestId + 1;
 
-            if (currentHighestId === 0)
-            {
-                newId = 1;
-            } else {
-                newId = currentHighestId + 1;
+            let exerciseDetails = "";
+            if (selectedExerciseType === "reps") {
+                exerciseDetails = `Reps: ${formValues.reps}`;
+            } else if (selectedExerciseType === "weightAndReps") {
+                exerciseDetails = `Weight: ${formValues.weight}, Reps: ${formValues.reps}`;
+            } else if (selectedExerciseType === "distanceAndTime") {
+                exerciseDetails = `Distance: ${formValues.distance}, Time: ${formValues.time}`;
             }
-            
-            realm.create("Badges", { "id": newId, "image": formValues.goalName, "text": formValues.goalNotes, "completed": false });
+
+            realm.create("Badges", {
+                "id": newId,
+                "goalName": formValues.goalName,
+                "exerciseName": name,
+                "image": videoPath || "",
+                "details": exerciseDetails,
+                "completed": false,
+            });
         });
         const allBadges = realm.objects("Badges");
         console.log("All Badges:", allBadges);

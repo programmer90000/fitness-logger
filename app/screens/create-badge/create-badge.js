@@ -66,37 +66,32 @@ const WorkoutForm = () => {
                     setName(name);
                     setValue("exercises.name", name);
                     setSelectedExerciseType(names.find((item) => { return item.value === name; })?.type);                 
-                }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
+                }} style = {{ "width": 200 }} placeholder = "Exercise Name" />
                 
                 {selectedExerciseType === "reps" && (
-                    <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                        <Text>Number of reps</Text>
-                        <Controller control = {control} name = {"reps"} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
+                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
+                        <Text>Number of Reps</Text>
+                        <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
                         ); }} />
                     </View>
                 )}
                 {selectedExerciseType === "weightAndReps" && (
-                    <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
                         <Text>Amount of Weight</Text>
-                        <Controller control = {control} name = {"reps"} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5" render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (
-                                <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                            ); }} />
+                        <Controller control = {control} name = {"weight"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
+                        ); }} />
                         <Text>Number of Reps</Text>
-                        <Controller control = {control} name = {"reps"} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5" render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (
-                                <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                            ); }} />
+                        <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
+                        ); }} />
                     </View>
                 )}
                 {selectedExerciseType === "distanceAndTime" && (
-                    <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
                         <Text>Distance</Text>
-                        <Controller control = {control} name = {"reps"} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
+                        <Controller control = {control} name = {"distance"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
                         ); }} />
                         <Text>Time</Text>
-                        <Controller control = {control} name = {"reps"} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                            <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
+                        <Controller control = {control} name = {"time"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
                         ); }} />
                     </View>
                 )}

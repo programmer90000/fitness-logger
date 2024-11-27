@@ -82,13 +82,34 @@ const UploadDownloadData = () => {
                 
                 const { badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises } = jsonData;
 
-                badges.forEach((badge) => { console.log("Badge:", badge); });
-                goals.forEach((goal) => { console.log("Goal:", goal); });
-                exercises.forEach((exercise) => { console.log("Exercise:", exercise); });
-                previousWorkouts.forEach((previousWorkout) => { console.log("Previous Workout:", previousWorkout); });
-                previousWorkoutsExercises.forEach((previousWorkoutExercise) => { console.log("Previous Workout Exercise:", previousWorkoutExercise); });
-                workoutPresets.forEach((workoutPreset) => { console.log("Workout Preset:", workoutPreset); });
-                workoutPresetsExercises.forEach((workoutPresetExercise) => { console.log("Workout Preset Exercise:", workoutPresetExercise); });
+                badges.forEach((badge) => {
+                    delete badge.id;
+                    console.log("Badge:", badge);
+                });
+                goals.forEach((goal) => {
+                    delete goal.id;
+                    console.log("Goal:", goal);
+                });
+                exercises.forEach((exercise) => {
+                    delete exercise.id;
+                    console.log("Exercise:", exercise);
+                });
+                previousWorkouts.forEach((previousWorkout) => {
+                    delete previousWorkout.id;
+                    console.log("Previous Workout:", previousWorkout);
+                });
+                previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
+                    delete previousWorkoutExercise.id;
+                    console.log("Previous Workout Exercise:", previousWorkoutExercise);
+                });
+                workoutPresets.forEach((workoutPreset) => {
+                    delete workoutPreset.id;
+                    console.log("Workout Preset:", workoutPreset);
+                });
+                workoutPresetsExercises.forEach((workoutPresetExercise) => {
+                    delete workoutPresetExercise.id;
+                    console.log("Workout Preset Exercise:", workoutPresetExercise);
+                });
 
             } else {
                 setError("No document selected");

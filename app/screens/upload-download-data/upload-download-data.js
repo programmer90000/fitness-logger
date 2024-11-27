@@ -1,6 +1,7 @@
 import { ScrollView, Text, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import * as FileSystem from "expo-file-system";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 
 const colours = {
     "black": "#060606",
@@ -11,9 +12,9 @@ const colours = {
 const UploadDownloadData = () => {
     const downloadTestFile = async () => {
         try {
-            const fileName = "sample-file.txt"; // The file name
+            const fileName = "fitness-logger-database.json";
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
-            const fileContents = "This is the content of the file."; // Content to write to the file
+            const fileContents = `[\n${JSON.stringify(workoutPresets)},\n${JSON.stringify(exercises)},\n${JSON.stringify(workoutPresetsExercises)},\n${JSON.stringify(previousWorkouts)},\n${JSON.stringify(previousWorkoutsExercises)},\n${JSON.stringify(goals)},\n${JSON.stringify(badges)}\n]`;
 
             // Write content
             await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });

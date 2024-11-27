@@ -79,8 +79,7 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                
-                const { badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises } = jsonData;
+                const { badges = [], goals = [], exercises = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
 
                 badges.forEach((badge) => {
                     delete badge.id;

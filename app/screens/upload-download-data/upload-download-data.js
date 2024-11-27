@@ -82,13 +82,13 @@ const UploadDownloadData = () => {
                 
                 const { badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises } = jsonData;
 
-                console.log("Badges:", badges);
-                console.log("Goals:", goals);
-                console.log("Exercises:", exercises);
-                console.log("Previous Workouts:", previousWorkouts);
-                console.log("Previous Workouts Exercises:", previousWorkoutsExercises);
-                console.log("Workout Presets:", workoutPresets);
-                console.log("Workout Presets Exercises:", workoutPresetsExercises);
+                badges.forEach((badge) => { console.log("Badge:", badge); });
+                goals.forEach((goal) => { console.log("Goal:", goal); });
+                exercises.forEach((exercise) => { console.log("Exercise:", exercise); });
+                previousWorkouts.forEach((previousWorkout) => { console.log("Previous Workout:", previousWorkout); });
+                previousWorkoutsExercises.forEach((previousWorkoutExercise) => { console.log("Previous Workout Exercise:", previousWorkoutExercise); });
+                workoutPresets.forEach((workoutPreset) => { console.log("Workout Preset:", workoutPreset); });
+                workoutPresetsExercises.forEach((workoutPresetExercise) => { console.log("Workout Preset Exercise:", workoutPresetExercise); });
 
             } else {
                 setError("No document selected");

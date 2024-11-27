@@ -79,12 +79,21 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                console.log(jsonData);
+                
+                const { badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises } = jsonData;
+
+                console.log("Badges:", badges);
+                console.log("Goals:", goals);
+                console.log("Exercises:", exercises);
+                console.log("Previous Workouts:", previousWorkouts);
+                console.log("Previous Workouts Exercises:", previousWorkoutsExercises);
+                console.log("Workout Presets:", workoutPresets);
+                console.log("Workout Presets Exercises:", workoutPresetsExercises);
+
             } else {
                 setError("No document selected");
             }
         } catch (err) {
-            setError("Failed to pick or parse the file");
             console.error(err);
         }
     };

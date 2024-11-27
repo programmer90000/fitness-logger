@@ -1,5 +1,6 @@
 import { ScrollView, Text, TouchableOpacity, Alert } from "react-native";
 import React from "react";
+import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 
@@ -10,13 +11,34 @@ const colours = {
 };
 
 const UploadDownloadData = () => {
-    const downloadTestFile = async () => {
+
+    const downloadAllRecords = async () => {
         try {
+            const realm = await Realm.open({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges] });
+
+            const workoutPresetsRecords = realm.objects("WorkoutPresets");
+            const exercisesRecords = realm.objects("Exercises");
+            const workoutPresetsExercisesRecords = realm.objects("WorkoutPresetsExercises");
+            const previousWorkoutsRecords = realm.objects("PreviousWorkouts");
+            const previousWorkoutsExercisesRecords = realm.objects("PreviousWorkoutsExercises");
+            const goalsRecords = realm.objects("Goals");
+            const badgesRecords = realm.objects("Badges");
+
+            // Convert records to JSON and add indentation for readability
+            const workoutPresetsJson = JSON.stringify(workoutPresetsRecords, null, 2);
+            const exercisesJson = JSON.stringify(exercisesRecords, null, 2);
+            const workoutPresetsExercisesJson = JSON.stringify(workoutPresetsExercisesRecords, null, 2);
+            const previousWorkoutsJson = JSON.stringify(previousWorkoutsRecords, null, 2);
+            const previousWorkoutsExercisesJson = JSON.stringify(previousWorkoutsExercisesRecords, null, 2);
+            const goalsJson = JSON.stringify(goalsRecords, null, 2);
+            const badgesJson = JSON.stringify(badgesRecords, null, 2);
+
+            const fileContents = `{\n  "workoutPresets": ${workoutPresetsJson},\n  "exercises": ${exercisesJson},\n  "workoutPresetsExercises": ${workoutPresetsExercisesJson},\n  "previousWorkouts": ${previousWorkoutsJson},\n  "previousWorkoutsExercises": ${previousWorkoutsExercisesJson},\n  "goals": ${goalsJson},\n  "badges": ${badgesJson}\n}`;
+            
             const fileName = "fitness-logger-database.json";
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
-            const fileContents = `[\n${JSON.stringify(workoutPresets)},\n${JSON.stringify(exercises)},\n${JSON.stringify(workoutPresetsExercises)},\n${JSON.stringify(previousWorkouts)},\n${JSON.stringify(previousWorkoutsExercises)},\n${JSON.stringify(goals)},\n${JSON.stringify(badges)}\n]`;
 
-            // Write content
+            // Write the content to the app's local file system
             await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
             // Request permission to access external storage
@@ -36,6 +58,8 @@ const UploadDownloadData = () => {
             await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
             Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
+            
+            realm.close();
         } catch (error) {
             console.error("Error writing and saving file:", error);
             Alert.alert("Save Failed", "Something went wrong.");
@@ -46,7 +70,7 @@ const UploadDownloadData = () => {
             <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                 <Text className = "font-medium text-base" style = {{ "color": colours.black }}>Upload Data</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadTestFile}>
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.black }}>Download Data</Text>
             </TouchableOpacity>
         </ScrollView>

@@ -1,7 +1,8 @@
 import { ScrollView, Text, TouchableOpacity, Alert } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
+import * as DocumentPicker from "expo-document-picker";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 
 const colours = {
@@ -11,6 +12,7 @@ const colours = {
 };
 
 const UploadDownloadData = () => {
+    const [jsonData, setJsonData] = useState();
 
     const downloadAllRecords = async () => {
         try {
@@ -65,9 +67,30 @@ const UploadDownloadData = () => {
             Alert.alert("Save Failed", "Something went wrong.");
         }
     };
+    const pickDocument = async () => {
+        try {
+            // Open the document picker to allow users to select a file
+            const result = await DocumentPicker.getDocumentAsync({
+                "type": "application/json",
+            });
+            
+            if (result.assets[0].mimeType === "application/json") {
+                const fileUri = result.assets[0].uri;
+                const fileContent = await FileSystem.readAsStringAsync(fileUri);
+                const parsedData = JSON.parse(fileContent);
+                setJsonData(parsedData);
+                console.log(jsonData);
+            } else {
+                setError("No document selected");
+            }
+        } catch (err) {
+            setError("Failed to pick or parse the file");
+            console.error(err);
+        }
+    };
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.black }}>Upload Data</Text>
             </TouchableOpacity>
             <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>

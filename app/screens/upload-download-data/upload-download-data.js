@@ -30,7 +30,7 @@ const UploadDownloadData = () => {
             const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
                 permissions.directoryUri,
                 fileName,
-                "text/plain",
+                "application/json",
             );
 
             await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });

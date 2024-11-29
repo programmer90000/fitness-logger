@@ -79,11 +79,23 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { badges = [], goals = [], exercises = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
+                const { badgesArray = [badges], goals = [], exercises = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
 
-                badges.forEach((badge) => {
+                badgesArray.forEach((badge) => {
                     delete badge.id;
                     console.log("Badge:", badge);
+                    const realm = new Realm({ "schema": [badges] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("Badges").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        let completedString = badge.properties.completed;
+                        let completed;
+
+                        if (completedString === "true") { completed = true; } else { completed = false; }
+
+                        realm.create("Badges", { "id": newId, "goalName": badge.properties.goalName, "exerciseName": badge.properties.exerciseName, "image": badge.properties.image, "details": badge.properties.details, "completed": completed });
+                    });
+                    realm.close();
                 });
                 goals.forEach((goal) => {
                     delete goal.id;

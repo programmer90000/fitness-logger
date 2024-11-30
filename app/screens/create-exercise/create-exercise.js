@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
-import UploadVideo from "../../components/upload-video/upload-video.js";
+import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 
@@ -41,7 +41,6 @@ const CreateExercise = () => {
             realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath, "personalBest": "N/A" });
         });
         const allExercises = realm.objects("Exercises");
-        console.log("All Exercises:", allExercises);
         realm.close();
     };
 
@@ -73,7 +72,7 @@ const CreateExercise = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />       
-                <UploadVideo onVideoSelect = {(path) => { return setVideoPath(path); }} videoFileName = {`${exerciseName}.mp4`} />
+                <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.black }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>

@@ -403,6 +403,7 @@ describe("badges table", () => {
         expect(badges.text).toBe("This is Badge 1");
         expect(badges.completed).toEqual(true);
     });
+    
     test("Read record in Badges table", () => {
         realm.write(() => {
             realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });

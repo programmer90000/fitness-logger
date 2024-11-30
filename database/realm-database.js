@@ -1,27 +1,5 @@
 import Realm from "realm";
 
-const initialBadges = [
-    // { id: 1, image: "path/to/badge1.png", text: "Badge 1", completed: false },
-    // { id: 2, image: "path/to/badge2.png", text: "Badge 2", completed: false },
-];
-
-const toggleBadgeCompletion = (realm, badgeId, setBadges) => {
-    try {
-        const badge = realm.objects("Badges").filtered(`id = ${badgeId}`)[0];
-        if (!badge) {
-            Alert.alert("Error", "Badge not found!");
-            return;
-        }
-
-        realm.write(() => {
-            badge.completed = !badge.completed;
-            setBadges([...realm.objects("Badges")]); // Refresh the badges list
-        });
-    } catch (error) {
-        Alert.alert("Error", error.message);
-    }
-};
-
 const workoutPresets = {
     "name": "WorkoutPresets",
     "properties": {
@@ -117,4 +95,4 @@ const openRealm = async () => {
 // ! Each time I call this function, write the following line to close the database: realm.close();
 
 export default openRealm;
-export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges, toggleBadgeCompletion };
+export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges };

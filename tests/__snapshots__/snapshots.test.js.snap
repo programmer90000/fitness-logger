@@ -852,7 +852,8 @@ exports[`create-exercise.js 1`] = `
               ]
             }
           >
-            Upload Video
+            Upload 
+            Video
           </Text>
         </View>
       </View>
@@ -3422,7 +3423,7 @@ exports[`upload-download-data.js Test 1`] = `
       }
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -3487,7 +3488,7 @@ exports[`upload-download-data.js Test 1`] = `
       }
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

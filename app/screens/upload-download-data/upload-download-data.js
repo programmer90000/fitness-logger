@@ -135,6 +135,12 @@ const UploadDownloadData = () => {
                 previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
                     delete previousWorkoutExercise.id;
                     console.log("Previous Workout Exercise:", previousWorkoutExercise);
+                    const realm = new Realm({ "schema": [previousWorkoutsExercises] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises });
+                    });        
                 });
                 
                 workoutPresetsArray.forEach((workoutPreset) => {

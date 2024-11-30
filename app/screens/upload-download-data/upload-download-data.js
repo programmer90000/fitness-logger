@@ -158,8 +158,15 @@ const UploadDownloadData = () => {
                 workoutPresetsExercises.forEach((workoutPresetExercise) => {
                     delete workoutPresetExercise.id;
                     console.log("Workout Preset Exercise:", workoutPresetExercise);
+                    const realm = new Realm({ "schema": [workoutPresetsExercises] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        realm.create("WorkoutPresetsExercises", { "id": newId, "workoutPresets": workoutPresetExercise.workoutPresets, "exercises": workoutPresetExercise.exercises, "metrics": workoutPresetExercise.metrics, "volume": workoutPresetExercise.volume });
+                    });
+                    realm.close();
                 });
-
+                
             } else {
                 setError("No document selected");
             }

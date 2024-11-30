@@ -79,7 +79,7 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
+                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercises = [] } = parsedData;
 
                 badgesArray.forEach((badge) => {
                     delete badge.id;
@@ -136,10 +136,19 @@ const UploadDownloadData = () => {
                     delete previousWorkoutExercise.id;
                     console.log("Previous Workout Exercise:", previousWorkoutExercise);
                 });
-                workoutPresets.forEach((workoutPreset) => {
+                
+                workoutPresetsArray.forEach((workoutPreset) => {
                     delete workoutPreset.id;
                     console.log("Workout Preset:", workoutPreset);
+                    const realm = new Realm({ "schema": [workoutPresets] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("WorkoutPresets").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
+                    });
+                    realm.close();
                 });
+                
                 workoutPresetsExercises.forEach((workoutPresetExercise) => {
                     delete workoutPresetExercise.id;
                     console.log("Workout Preset Exercise:", workoutPresetExercise);

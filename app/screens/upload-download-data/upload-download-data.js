@@ -79,7 +79,7 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { "badges": badgesArray = [], "goals": goalsArray = [], exercises = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
+                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
 
                 badgesArray.forEach((badge) => {
                     delete badge.id;
@@ -109,10 +109,18 @@ const UploadDownloadData = () => {
                         realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
                     });
                 });
-                exercises.forEach((exercise) => {
+                
+                exercisesArray.forEach((exercise) => {
                     delete exercise.id;
                     console.log("Exercise:", exercise);
+                    const realm = new Realm({ "schema": [exercises] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("Exercises").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest });
+                    });
                 });
+                
                 previousWorkouts.forEach((previousWorkout) => {
                     delete previousWorkout.id;
                     console.log("Previous Workout:", previousWorkout);

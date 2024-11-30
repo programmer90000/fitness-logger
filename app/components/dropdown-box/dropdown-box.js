@@ -16,15 +16,15 @@ const styles = StyleSheet.create({
     },
 });
 
-const DropdownComponent = ({ data, value, onChange }) => {
+const DropdownComponent = ({ data, value, onChange, style, placeholder = "Select an option" }) => {
     return (
         <View style = {styles.container}>
             <Dropdown
-                style = {styles.dropdown}
+                style = {[styles.dropdown, style]}
                 data = {data}
                 labelField = "label"
                 valueField = "value"
-                placeholder = "Select an option"
+                placeholder = {placeholder}
                 value = {value}
                 onChange = {(item) => {
                     onChange(item.value);

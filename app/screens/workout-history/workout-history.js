@@ -7,7 +7,7 @@ const colours = {
     "red": "#d10000",
 };
 
-const createANewWorkoutPreset = () => {
+const WorkoutHistory = () => {
     return (
         <ScrollView className = "mt-5">
             <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
@@ -23,4 +23,4 @@ const createANewWorkoutPreset = () => {
     );
 };
 
-export default createANewWorkoutPreset;
+export default WorkoutHistory;

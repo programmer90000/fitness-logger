@@ -395,46 +395,42 @@ describe("badges table", () => {
 
     test("Create record in Badges table", () => {
         realm.write(() => {
-            realm.create("Badges", { "id": 1, "goalName": "Goal 1", "exerciseName": "Exercise 1", "image": "image1.png", "details": "This is Badge 1", "completed": true });
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
         });
         const badges = realm.objects("Badges")[0];
         expect(badges.id).toBe(1);
-        expect(badges.goalName).toBe("Goal 1");
-        expect(badges.exerciseName).toBe("Exercise 1");
         expect(badges.image).toBe("image1.png");
-        expect(badges.details).toBe("This is Badge 1");
+        expect(badges.text).toBe("This is Badge 1");
         expect(badges.completed).toEqual(true);
     });
     
     test("Read record in Badges table", () => {
         realm.write(() => {
-            realm.create("Badges", { "id": 1, "goalName": "Goal 1", "exerciseName": "Exercise 1", "image": "image1.png", "details": "This is Badge 1", "completed": true });
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
         });
         const badges = realm.objects("Badges")[0];
         expect(badges.id).toBe(1);
-        expect(badges.goalName).toBe("Goal 1");
-        expect(badges.exerciseName).toBe("Exercise 1");
         expect(badges.image).toBe("image1.png");
-        expect(badges.details).toBe("This is Badge 1");
+        expect(badges.text).toBe("This is Badge 1");
         expect(badges.completed).toEqual(true);
     });
 
     test("Update record in Badges table", () => {
         realm.write(() => {
-            realm.create("Badges", { "id": 1, "goalName": "Goal 1", "exerciseName": "Exercise 1", "image": "image1.png", "details": "This is Badge 1", "completed": true });
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
         });
 
         realm.write(() => {
             const badges = realm.objects("Badges")[0];
-            badges.details = "This is Badge 2";
+            badges.text = "This is Badge 2";
         });
         const updatedBadges = realm.objects("Badges")[0];
-        expect(updatedBadges.details).toBe("This is Badge 2");
+        expect(updatedBadges.text).toBe("This is Badge 2");
     });
 
     test("Delete record in Badges table", () => {
         realm.write(() => {
-            realm.create("Badges", { "id": 1, "goalName": "Goal 1", "exerciseName": "Exercise 1", "image": "image1.png", "details": "This is Badge 1", "completed": true });
+            realm.create("Badges", { "id": 1, "image": "image1.png", "text": "This is Badge 1", "completed": true });
         });
         realm.write(() => {
             const badges = realm.objects("Badges")[0];

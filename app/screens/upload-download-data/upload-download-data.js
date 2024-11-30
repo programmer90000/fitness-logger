@@ -79,7 +79,7 @@ const UploadDownloadData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], previousWorkouts = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
+                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], workoutPresets = [], workoutPresetsExercises = [] } = parsedData;
 
                 badgesArray.forEach((badge) => {
                     delete badge.id;
@@ -121,10 +121,17 @@ const UploadDownloadData = () => {
                     });
                 });
                 
-                previousWorkouts.forEach((previousWorkout) => {
+                previousWorkoutsArray.forEach((previousWorkout) => {
                     delete previousWorkout.id;
                     console.log("Previous Workout:", previousWorkout);
+                    const realm = new Realm({ "schema": [previousWorkouts] });
+                    realm.write(() => {
+                        const currentHighestId = realm.objects("PreviousWorkouts").max("id") || 0;
+                        const newId = currentHighestId + 1;
+                        realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": new Date(previousWorkout.date) });
+                    });
                 });
+                
                 previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
                     delete previousWorkoutExercise.id;
                     console.log("Previous Workout Exercise:", previousWorkoutExercise);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
+import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 
 const colours = {
@@ -22,6 +23,8 @@ const Settings = () => {
         { "label": "Metric (KM)", "value": "reps" },
         { "label": "Imperial (M)", "value": "weightAndReps" },
     ];
+    
+    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.white }}>
@@ -56,7 +59,7 @@ const Settings = () => {
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
                     <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Report A Bug</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
+                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
                     <Text style = {{ "color": colours.black }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>
             </View>

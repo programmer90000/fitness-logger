@@ -43,7 +43,7 @@ const CreateExercise = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.off_white }}>
             <View className = "items-center m-[5px]">
                 <Text style = {{ "color": colours.black }} className = "text-xl">Exercise Name</Text>
                 <Controller

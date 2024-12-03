@@ -37,7 +37,7 @@ const Settings = () => {
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.off_white }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
                     <Text style = {{ "color": colours.black }} className = "text-xl">Theme</Text>

@@ -98,7 +98,7 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.off_white }}>
             <View className = "items-center m-[5px]">
                 <Text style = {{ "color": colours.black }} className = "text-xl">Workout Name</Text>
                 <Controller
@@ -169,7 +169,7 @@ const WorkoutForm = () => {
                                     updateData();
                                     addSet(index);
                                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Set</Text>
+                                    <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Add Set</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -180,10 +180,10 @@ const WorkoutForm = () => {
                     updateData();
                     append({ "name": "", "duration": "", "reps": "" });
                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Exercise</Text>
+                    <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Submit</Text>
+                    <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

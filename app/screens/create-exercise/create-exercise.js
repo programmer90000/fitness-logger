@@ -51,9 +51,9 @@ const CreateExercise = () => {
                     name = "exerciseName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
                         <TextInput onBlur = {onBlur} onChangeText = {(text) => {
-                            onChange(text); 
+                            onChange(text);
                             setExerciseName(text);
-                        }} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        }} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
                     ); }}
                 />
                 <Text style = {{ "color": colours.charcoal }} className = "text-xl">Exercise Type</Text>
@@ -67,7 +67,7 @@ const CreateExercise = () => {
                     control = {control}
                     name = "exerciseNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
                     ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />

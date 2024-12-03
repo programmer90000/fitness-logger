@@ -105,7 +105,7 @@ const WorkoutForm = () => {
                     control = {control}
                     name = "workoutName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
                     ); }}
                 />
                 <Text style = {{ "color": colours.charcoal }} className = "text-xl">Workout Notes</Text>
@@ -113,7 +113,7 @@ const WorkoutForm = () => {
                     control = {control}
                     name = "workoutNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
                     ); }}
                 /> 
                 <Text style = {{ "color": colours.charcoal }} className = "text-xl mt-[30px]">Exercises</Text>
@@ -127,21 +127,21 @@ const WorkoutForm = () => {
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
-                                    <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
+                                    <Text className = {`text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}] h-[27px] leading-[35px]`}>N/A</Text>
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.duration`}
-                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
+                                        className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}] h-5`}
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
+                                                className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`}
                                             />
                                         ); }}
                                     />
@@ -151,14 +151,14 @@ const WorkoutForm = () => {
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.reps`}
-                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
+                                        className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}] h-5`}
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
+                                                className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`}
                                             />
                                         ); }}
                                     />

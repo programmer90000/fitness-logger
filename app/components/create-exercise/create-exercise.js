@@ -23,7 +23,7 @@ const WorkoutForm = () => {
                     control = {control}
                     name = "workoutName"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`}/>
                     ); }}
                 />
                 <Text style = {{ "color": colours.charcoal }} className = "text-xl">Exercise Type</Text>
@@ -37,7 +37,7 @@ const WorkoutForm = () => {
                     control = {control}
                     name = "workoutNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
                     ); }}
                 />       
                 <UploadMedia />

@@ -13,18 +13,22 @@ const colours = {
 const useSettings = create((set) => { return {
     "theme": "light",
     "setTheme": (theme) => { return set({ theme }); },
-}; });
+    "weight": "metric",
+    "setWeight": (weight) => { return set({ weight }); },
+};
+});
 
 
 const Settings = () => { 
     const [value, setValue] = useState(null);
     const { theme, setTheme } = useSettings();
+    const { weight, setWeight } = useSettings();
     
     const themeOptions = [
         { "label": "Light Mode", "value": "light" },
         { "label": "Dark Mode", "value": "dark" },
     ];
-    const weight = [
+    const weightOptions = [
         { "label": "Metric (KG)", "value": "metric" },
         { "label": "Imperial (lB)", "value": "imperial" },
     ];
@@ -49,9 +53,9 @@ const Settings = () => {
                 <View className = "flex-row items-center">
                     <Text style = {{ "color": colours.black }} className = "text-xl">Weight</Text>
                     <DropdownComponent
-                        data = {weight}
-                        value = {value}
-                        onChange = {setValue}
+                        data = {weightOptions}
+                        value = {weight}
+                        onChange = {setWeight}
                     />
                 </View>
                 <View className = "flex-row items-center">

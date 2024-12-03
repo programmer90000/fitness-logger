@@ -3,6 +3,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
 import { useSettings } from "../settings/settings.js";
+import { colours } from "../../constants/colours.js";
 
 const styles = StyleSheet.create({
     "badge": {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
         "textAlign": "center",
     },
     "completed": {
-        "color": "#FFD700",
+        "color": colours.gold,
     },
     "unCompleted": {
         "color": "#000000",

@@ -7,6 +7,7 @@ const colours = {
     "crimson": "#d10000",
     "carrot_orange": "#E26A00",
     "vivid_orange": "#FFA726",
+    "gold": "#FFD700",
     "light_blue": "#2296F3",
 };
 

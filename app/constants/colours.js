@@ -6,6 +6,7 @@ const colours = {
     "off_white": "#f1f1f1",
     "crimson": "#d10000",
     "carrot_orange": "#E26A00",
+    "vivid_orange": "#FFA726",
     "light_blue": "#2296F3",
 };
 

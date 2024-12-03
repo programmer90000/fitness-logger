@@ -173,10 +173,10 @@ const UploadDownloadData = () => {
     };
     return (
         <ScrollView style = {{ "backgroundColor": colours.off_white }}>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.charcoal }}>Upload Data</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.charcoal }}>Download Data</Text>
             </TouchableOpacity>
         </ScrollView>

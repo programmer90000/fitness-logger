@@ -63,13 +63,13 @@ const Settings = () => {
                         onChange = {setDistance}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
+                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px] w-56 items-center">
                     <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Sync With Drive</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
+                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px] w-56 items-center">
                     <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Report A Bug</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
                     <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>
             </View>

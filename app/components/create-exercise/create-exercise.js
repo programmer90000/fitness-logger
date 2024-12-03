@@ -41,7 +41,7 @@ const WorkoutForm = () => {
                     ); }}
                 />       
                 <UploadMedia />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px]">
                     <Text style = {{ "color": colours.charcoal }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>

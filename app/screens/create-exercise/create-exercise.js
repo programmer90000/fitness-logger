@@ -71,7 +71,7 @@ const CreateExercise = () => {
                     ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.charcoal }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>

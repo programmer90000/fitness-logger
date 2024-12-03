@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
+import { create } from "zustand";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 
 const colours = {
@@ -9,9 +10,17 @@ const colours = {
     "red": "#d10000",
 };
 
+const useSettings = create((set) => { return {
+    "theme": "light",
+    "setTheme": (theme) => { return set({ theme }); },
+}; });
+
+
 const Settings = () => { 
     const [value, setValue] = useState(null);
-    const theme = [
+    const { theme, setTheme } = useSettings();
+    
+    const themeOptions = [
         { "label": "Light Mode", "value": "light" },
         { "label": "Dark Mode", "value": "dark" },
     ];
@@ -32,9 +41,9 @@ const Settings = () => {
                 <View className = "flex-row items-center">
                     <Text style = {{ "color": colours.black }} className = "text-xl">Theme</Text>
                     <DropdownComponent
-                        data = {theme}
-                        value = {value}
-                        onChange = {setValue}
+                        data = {themeOptions}
+                        value = {theme}
+                        onChange = {setTheme}
                     />
                 </View>
                 <View className = "flex-row items-center">

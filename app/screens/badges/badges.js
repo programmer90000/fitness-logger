@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         "color": colours.gold,
     },
     "unCompleted": {
-        "color": "#000000",
+        "color": colours.black,
     },
 });
 

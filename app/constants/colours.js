@@ -5,6 +5,7 @@ const colours = {
     "charcoal": "#060606",
     "off_white": "#f1f1f1",
     "white": "#FFFFFF",
+    "black": "#000000",
     "crimson": "#d10000",
     "carrot_orange": "#E26A00",
     "light_carrot_orange": "#FB8C00",

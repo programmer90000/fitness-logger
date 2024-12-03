@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Table, TableWrapper, Row, Rows, Col } from "react-native-reanimated-table";
 import LineChartComponent from "../../components/line-graph/line-graph";
+import { useSettings } from "../settings/settings.js";
 
 styles = StyleSheet.create({
     "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": "#fff" },
@@ -13,6 +14,8 @@ styles = StyleSheet.create({
 });
 
 const Statistics = () => {
+    const { theme } = useSettings();
+
     const tableHead = ["", "Head1", "Head2", "Head3"];
     const tableTitle = ["Title", "Title2", "Title3", "Title4"];
     const tableData = [

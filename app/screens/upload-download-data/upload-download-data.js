@@ -4,6 +4,7 @@ import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
+import { useSettings } from "../settings/settings.js";
 
 const colours = {
     "black": "#060606",
@@ -13,6 +14,7 @@ const colours = {
 
 const UploadDownloadData = () => {
     const [jsonData, setJsonData] = useState();
+    const { theme } = useSettings();
 
     const downloadAllRecords = async () => {
         try {

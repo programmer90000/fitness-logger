@@ -2,6 +2,7 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
+import { useSettings } from "../settings/settings.js";
 
 const styles = StyleSheet.create({
     "badge": {
@@ -21,6 +22,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Badges() {
+    const { theme } = useSettings();
+
     return (
         <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>

@@ -5,6 +5,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { exercises, badges } from "../../../database/realm-database.js";
 import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media.js";
+import { useSettings } from "../settings/settings.js";
 
 const colours = {
     "black": "#060606",
@@ -20,6 +21,8 @@ const WorkoutForm = () => {
     const [name, setName] = useState(null);
     
     const { fields, append, insert, remove } = useFieldArray({ control, "name": "exercises" });
+    const { theme } = useSettings();
+
 
     const realm = new Realm({ "schema": [exercises] });
     const allExercises = realm.objects("Exercises");

@@ -4,6 +4,7 @@ import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
+import { useSettings } from "../../screens/settings/settings.js";
 
 const colours = {
     "black": "#060606",
@@ -20,6 +21,8 @@ const WorkoutForm = () => {
         control,
         "name": "exercises",
     });
+    const { theme } = useSettings();
+
     
     const realm = new Realm({ "schema": [exercises] });
     const allExercises = realm.objects("Exercises");

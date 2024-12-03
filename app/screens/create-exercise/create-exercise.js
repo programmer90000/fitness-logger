@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
+import { useSettings } from "../settings/settings.js";
 import Realm from "realm";
 
 const colours = {
@@ -17,6 +18,8 @@ const CreateExercise = () => {
     const [exerciseName, setExerciseName] = useState("");
     const [selectedExerciseType, setselectedExerciseType] = useState(null);
     const [videoPath, setVideoPath] = useState(null);
+    const { theme } = useSettings();
+
     
     const exerciseType = [
         { "label": "Reps", "value": "reps" },

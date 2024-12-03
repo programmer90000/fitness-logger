@@ -4,8 +4,8 @@ import { useForm, Controller } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { goals } from "../../../database/realm-database.js";
+import { useSettings } from "../settings/settings.js";
 import Realm from "realm";
-
 
 const colours = {
     "black": "#060606",
@@ -23,6 +23,8 @@ const SetGoal = () => {
     const [endPickerShow, setEndPickerShow] = useState(false);
     const [reminderPickerShow, setReminderPickerShow] = useState(false);
     const [type, setType] = useState(null);
+    const { theme } = useSettings();
+
 
     const options = {
         "year": "numeric",

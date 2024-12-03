@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
+import { useSettings } from "../settings/settings.js";
 
 const colours = {
     "black": "#060606",
@@ -8,6 +9,8 @@ const colours = {
 };
 
 const CreateWorkout = () => {
+    const { theme } = useSettings();
+
     const workoutPresets = [
         { "name": "Workout Preset 1" },
         { "name": "Workout Preset 2" },

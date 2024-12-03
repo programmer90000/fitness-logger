@@ -6,7 +6,7 @@ import { useSettings } from "../settings/settings.js";
 import { colours } from "../../constants/colours.js";
 
 styles = StyleSheet.create({
-    "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": "#fff" },
+    "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.white },
     "head": { "height": 40, "backgroundColor": colours.alice_blue },
     "wrapper": { "flexDirection": "row" },
     "title": { "flex": 1, "backgroundColor": colours.aqua_haze },

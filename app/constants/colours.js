@@ -4,6 +4,7 @@ const colours = {
     "very_light_grey": "#F0F0F0",
     "charcoal": "#060606",
     "off_white": "#f1f1f1",
+    "white": "#FFFFFF",
     "crimson": "#d10000",
     "carrot_orange": "#E26A00",
     "light_carrot_orange": "#FB8C00",

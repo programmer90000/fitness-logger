@@ -1,12 +1,7 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import { useSettings } from "../settings/settings.js";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const ViewGoals = () => {
     const { theme } = useSettings();

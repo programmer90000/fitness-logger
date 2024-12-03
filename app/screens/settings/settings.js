@@ -3,12 +3,7 @@ import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-nativ
 import * as Linking from "expo-linking";
 import { create } from "zustand";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const useSettings = create((set) => { return {
     "theme": "light",

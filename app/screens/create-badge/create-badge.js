@@ -6,12 +6,7 @@ import { exercises, badges } from "../../../database/realm-database.js";
 import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media.js";
 import { useSettings } from "../settings/settings.js";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const WorkoutForm = () => {
     const [goalName, setGoalName] = useState(null);

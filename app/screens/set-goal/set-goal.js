@@ -6,12 +6,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { goals } from "../../../database/realm-database.js";
 import { useSettings } from "../settings/settings.js";
 import Realm from "realm";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const SetGoal = () => {
     const { control, getValues } = useForm({});

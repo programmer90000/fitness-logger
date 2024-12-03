@@ -5,12 +5,7 @@ import { exercises, workoutPresets, workoutPresetsExercises } from "../../../dat
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useSettings } from "../../screens/settings/settings.js";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);

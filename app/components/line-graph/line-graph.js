@@ -1,4 +1,5 @@
 import React from "react";
+import { colours } from "../../constants/colours.js";
 import { View, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
@@ -15,7 +16,7 @@ const LineChartComponent = () => {
     };
 
     const chartConfig = {
-        "backgroundColor": "#e26a00",
+        "backgroundColor": colours.carrot_orange,
         "backgroundGradientFrom": "#fb8c00",
         "backgroundGradientTo": "#ffa726",
         "decimalPlaces": 2, // Optional, defaults to 2 decimal places

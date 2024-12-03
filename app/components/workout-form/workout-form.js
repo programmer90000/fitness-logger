@@ -121,15 +121,15 @@ const WorkoutForm = () => {
                     {fields.map((field, index) => { return (
                         <View key = {field.id} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             <View className = "flex-row w-full">
-                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = {`bg-[${colours.very_light_grey}] items-center min-h-[100px] flex-1 m-2.5 p-{20px}`}>
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                     <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
-                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = {`bg-[${colours.very_light_grey}] items-center min-h-[100px] flex-1 m-2.5 p-{20px}`}>
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
                                     <Text className = {`text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}] h-[27px] leading-[35px]`}>N/A</Text>
                                 </View>
-                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = {`bg-[${colours.very_light_grey}] items-center min-h-[100px] flex-1 m-2.5 p-{20px}`}>
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
@@ -146,7 +146,7 @@ const WorkoutForm = () => {
                                         ); }}
                                     />
                                 </View>
-                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = {`bg-[${colours.very_light_grey}] items-center min-h-[100px] flex-1 m-2.5 p-{20px}`}>
                                     <Text style = {{ "color": colours.charcoal }} className = "flex-1 text-[15px] h-5">Reps</Text>
                                     <Controller
                                         control = {control}

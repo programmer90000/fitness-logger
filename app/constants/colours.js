@@ -10,6 +10,7 @@ const colours = {
     "gold": "#FFD700",
     "light_blue": "#2296F3",
     "alice_blue": "#F1F8FF",
+    "aqua_haze": "#F6F8FA",
 };
 
 export { colours };

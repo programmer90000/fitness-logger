@@ -9,7 +9,7 @@ styles = StyleSheet.create({
     "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": "#fff" },
     "head": { "height": 40, "backgroundColor": colours.alice_blue },
     "wrapper": { "flexDirection": "row" },
-    "title": { "flex": 1, "backgroundColor": "#f6f8fa" },
+    "title": { "flex": 1, "backgroundColor": colours.aqua_haze },
     "row": { "height": 28 },
     "text": { "textAlign": "center" },
 });

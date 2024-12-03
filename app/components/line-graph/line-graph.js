@@ -17,7 +17,7 @@ const LineChartComponent = () => {
 
     const chartConfig = {
         "backgroundColor": colours.carrot_orange,
-        "backgroundGradientFrom": "#fb8c00",
+        "backgroundGradientFrom": colours.light_carrot_orange,
         "backgroundGradientTo": colours.vivid_orange,
         "decimalPlaces": 2, // Optional, defaults to 2 decimal places
         "color": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Axis text color

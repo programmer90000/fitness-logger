@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
         "textAlign": "center",
     },
     "completed": {
-        "color": colours.gold,
+        "color": colours.colour_15,
     },
     "unCompleted": {
-        "color": colours.black,
+        "color": colours.colour_3,
     },
 });
 

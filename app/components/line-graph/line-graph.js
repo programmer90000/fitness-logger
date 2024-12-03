@@ -16,9 +16,9 @@ const LineChartComponent = () => {
     };
 
     const chartConfig = {
-        "backgroundColor": colours.carrot_orange,
-        "backgroundGradientFrom": colours.light_carrot_orange,
-        "backgroundGradientTo": colours.vivid_orange,
+        "backgroundColor": colours.colour_9,
+        "backgroundGradientFrom": colours.colour_10,
+        "backgroundGradientTo": colours.colour_11,
         "decimalPlaces": 2, // Optional, defaults to 2 decimal places
         "color": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Axis text color
         "labelColor": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Label color
@@ -28,7 +28,7 @@ const LineChartComponent = () => {
         "propsForDots": {
             "r": "6",
             "strokeWidth": "2",
-            "stroke": colours.vivid_orange, // Dot stroke color
+            "stroke": colours.color_11, // Dot stroke color
         },
     };
 

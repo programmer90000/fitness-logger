@@ -43,9 +43,9 @@ const CreateExercise = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.off_white }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.charcoal }} className = "text-xl">Exercise Name</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Name</Text>
                 <Controller
                     control = {control}
                     name = "exerciseName"
@@ -53,26 +53,26 @@ const CreateExercise = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {(text) => {
                             onChange(text);
                             setExerciseName(text);
-                        }} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        }} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                 />
-                <Text style = {{ "color": colours.charcoal }} className = "text-xl">Exercise Type</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
                     data = {exerciseType}
                     value = {selectedExerciseType}
                     onChange = {setselectedExerciseType}
                 />
-                <Text style = {{ "color": colours.charcoal }} className = "text-xl">Exercise Notes</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Notes</Text>
                 <Controller
                     control = {control}
                     name = "exerciseNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
-                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
-                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-3xl">Add Exercise</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
+                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

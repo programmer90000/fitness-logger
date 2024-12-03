@@ -6,10 +6,10 @@ import { useSettings } from "../settings/settings.js";
 import { colours } from "../../constants/colours.js";
 
 styles = StyleSheet.create({
-    "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.white },
-    "head": { "height": 40, "backgroundColor": colours.alice_blue },
+    "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.colour_1 },
+    "head": { "height": 40, "backgroundColor": colours.colour_13 },
     "wrapper": { "flexDirection": "row" },
-    "title": { "flex": 1, "backgroundColor": colours.aqua_haze },
+    "title": { "flex": 1, "backgroundColor": colours.colour_14 },
     "row": { "height": 28 },
     "text": { "textAlign": "center" },
 });

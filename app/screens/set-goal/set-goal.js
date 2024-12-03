@@ -84,32 +84,32 @@ const SetGoal = () => {
     ];
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.off_white }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Name</Text>
                     <Controller control = {control} name = "goalName" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                     />
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Goal</Text>
                     <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <DropdownComponent data = {possibleGoals} value = {type} onChange = {setType} className = {`align-middle text-center w-[260px] flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        <DropdownComponent data = {possibleGoals} value = {type} onChange = {setType} className = {`align-middle text-center w-[260px] flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                     />
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">New Goal Value</Text>
                     <Controller control = {control} name = "goalValue" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                     />
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Start Date</Text>
-                    <TouchableOpacity control = {control} name = "startDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showStartDatepicker}><Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
+                    <TouchableOpacity control = {control} name = "startDate" className = {`mt-[100px] bg-[${colours.colour_12}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} onPress = {showStartDatepicker}><Text style = {{ "color": colours.colour_4 }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
                     {startPickerShow && (
                         <DateTimePicker
                             testID = "dateTimePicker"
@@ -122,8 +122,8 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">End Date</Text>
-                    <TouchableOpacity control = {control} name = "endDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showEndDatepicker}>
-                        <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
+                    <TouchableOpacity control = {control} name = "endDate" className = {`mt-[100px] bg-[${colours.colour_12}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} onPress = {showEndDatepicker}>
+                        <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-[16px]">
                             {endDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
@@ -139,8 +139,8 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Reminder Date</Text>
-                    <TouchableOpacity control = {control} name = "reminderDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showReminderDatepicker}>
-                        <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
+                    <TouchableOpacity control = {control} name = "reminderDate" className = {`mt-[100px] bg-[${colours.colour_12}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} onPress = {showReminderDatepicker}>
+                        <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-[16px]">
                             {reminderDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
@@ -156,14 +156,14 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Additional Notes</Text>
                     <Controller control = {control} name = "notes" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} numberOfLines = {5} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} numberOfLines = {5} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
                     ); }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
                     {/* // TODO: Before submitting, check if the End Date is after the Start Date */}
                     {/* // TODO: Before submitting, check if the Reminder Date is in-between or on the Start Date and End Date */}
-                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Submit</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

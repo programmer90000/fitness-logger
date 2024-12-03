@@ -78,7 +78,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
 
     return (
         <View className = "flex-1 justify-center items-center">
-            <TouchableOpacity style = {{ "backgroundColor": colours.red }} className = "p-2 mt-[5px]" onPress = {pickMedia}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 mt-[5px]" onPress = {pickMedia}>
                 <Text className = "font-medium text-base">Upload {mediaType}</Text>
             </TouchableOpacity>
         </View>

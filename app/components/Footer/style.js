@@ -4,8 +4,8 @@ import { colours } from "../../constants/colours.js";
 const styles = StyleSheet.create({
     "container": {
         "flex": 1,
-        "backgroundColor": colours.crimson,
-        "color": colours.charcoal,
+        "backgroundColor": colours.colour_8,
+        "color": colours.colour_4,
         "display": "flex",
         "alignItems": "center",
         "justifyContent": "space-evenly",

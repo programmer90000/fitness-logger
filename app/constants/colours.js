@@ -5,6 +5,7 @@ const colours = {
     "charcoal": "#060606",
     "off_white": "#f1f1f1",
     "crimson": "#d10000",
+    "light_blue": "#2296F3",
 };
 
 export { colours };

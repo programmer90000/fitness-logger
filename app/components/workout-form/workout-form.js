@@ -168,7 +168,7 @@ const WorkoutForm = () => {
                                 <TouchableOpacity onPress = {() => {
                                     updateData();
                                     addSet(index);
-                                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                                }} className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px]`}>
                                     <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Add Set</Text>
                                 </TouchableOpacity>
                             )}
@@ -179,10 +179,10 @@ const WorkoutForm = () => {
                 <TouchableOpacity onPress = {() => {
                     updateData();
                     append({ "name": "", "duration": "", "reps": "" });
-                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                }} className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px]`}>
                     <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px]`}>
                     <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
             </View>

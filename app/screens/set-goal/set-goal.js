@@ -109,7 +109,7 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Start Date</Text>
-                    <TouchableOpacity control = {control} name = "startDate" className = {`mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showStartDatepicker}><Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
+                    <TouchableOpacity control = {control} name = "startDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showStartDatepicker}><Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
                     {startPickerShow && (
                         <DateTimePicker
                             testID = "dateTimePicker"
@@ -122,7 +122,7 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">End Date</Text>
-                    <TouchableOpacity control = {control} name = "endDate" className = {`mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showEndDatepicker}>
+                    <TouchableOpacity control = {control} name = "endDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showEndDatepicker}>
                         <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
                             {endDate.toLocaleString("en-GB", options)}
                         </Text>
@@ -139,7 +139,7 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Reminder Date</Text>
-                    <TouchableOpacity control = {control} name = "reminderDate" className = {`mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showReminderDatepicker}>
+                    <TouchableOpacity control = {control} name = "reminderDate" className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.light_grey}]`} onPress = {showReminderDatepicker}>
                         <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
                             {reminderDate.toLocaleString("en-GB", options)}
                         </Text>

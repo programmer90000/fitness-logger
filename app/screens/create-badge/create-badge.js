@@ -108,7 +108,7 @@ const WorkoutForm = () => {
                 )}
 
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
-                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px]`}>
                     <Text style = {{ "color": colours.off_white }} className = "font-bold text-[16px]">Create Goal</Text>
                 </TouchableOpacity>
             </View>

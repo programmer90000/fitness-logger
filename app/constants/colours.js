@@ -9,6 +9,7 @@ const colours = {
     "vivid_orange": "#FFA726",
     "gold": "#FFD700",
     "light_blue": "#2296F3",
+    "alice_blue": "#F1F8FF",
 };
 
 export { colours };

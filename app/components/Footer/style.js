@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     "container": {
         "flex": 1,
         "backgroundColor": colours.crimson,
-        "color": colours.black,
+        "color": colours.charcoal,
         "display": "flex",
         "alignItems": "center",
         "justifyContent": "space-evenly",

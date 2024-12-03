@@ -109,7 +109,7 @@ const SetGoal = () => {
                 </View>
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Start Date</Text>
-                    <TouchableOpacity control = {control} name = "startDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showStartDatepicker}><Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
+                    <TouchableOpacity control = {control} name = "startDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showStartDatepicker}><Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">{startDate.toLocaleString("en-GB", options)}</Text></TouchableOpacity>
                     {startPickerShow && (
                         <DateTimePicker
                             testID = "dateTimePicker"
@@ -123,7 +123,7 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">End Date</Text>
                     <TouchableOpacity control = {control} name = "endDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showEndDatepicker}>
-                        <Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">
+                        <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
                             {endDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
@@ -140,7 +140,7 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16">Reminder Date</Text>
                     <TouchableOpacity control = {control} name = "reminderDate" className = "mt-[100px] bg-[#2296f3] p-2 m-[5px] align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" onPress = {showReminderDatepicker}>
-                        <Text style = {{ "color": colours.black }} className = "font-bold text-[16px]">
+                        <Text style = {{ "color": colours.charcoal }} className = "font-bold text-[16px]">
                             {reminderDate.toLocaleString("en-GB", options)}
                         </Text>
                     </TouchableOpacity>
@@ -163,7 +163,7 @@ const SetGoal = () => {
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
                     {/* // TODO: Before submitting, check if the End Date is after the Start Date */}
                     {/* // TODO: Before submitting, check if the Reminder Date is in-between or on the Start Date and End Date */}
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Submit</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

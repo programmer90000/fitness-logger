@@ -40,7 +40,7 @@ const Settings = () => {
         <ScrollView style = {{ "backgroundColor": colours.off_white }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Theme</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "text-xl">Theme</Text>
                     <DropdownComponent
                         data = {themeOptions}
                         value = {theme}
@@ -48,7 +48,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Weight</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "text-xl">Weight</Text>
                     <DropdownComponent
                         data = {weightOptions}
                         value = {weight}
@@ -56,7 +56,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Distance</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "text-xl">Distance</Text>
                     <DropdownComponent
                         data = {distanceOptions}
                         value = {distance}
@@ -64,13 +64,13 @@ const Settings = () => {
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Sync With Drive</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Sync With Drive</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Report A Bug</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">Report A Bug</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">How To Use The App</Text>
+                    <Text style = {{ "color": colours.charcoal }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

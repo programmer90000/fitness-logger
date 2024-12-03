@@ -15,14 +15,16 @@ const useSettings = create((set) => { return {
     "setTheme": (theme) => { return set({ theme }); },
     "weight": "metric",
     "setWeight": (weight) => { return set({ weight }); },
+    "distance": "reps",
+    "setDistance": (distance) => { return set({ distance }); },
 };
 });
 
 
 const Settings = () => { 
-    const [value, setValue] = useState(null);
     const { theme, setTheme } = useSettings();
     const { weight, setWeight } = useSettings();
+    const { distance, setDistance } = useSettings();
     
     const themeOptions = [
         { "label": "Light Mode", "value": "light" },
@@ -32,7 +34,7 @@ const Settings = () => {
         { "label": "Metric (KG)", "value": "metric" },
         { "label": "Imperial (lB)", "value": "imperial" },
     ];
-    const distance = [
+    const distanceOptions = [
         { "label": "Metric (KM)", "value": "reps" },
         { "label": "Imperial (M)", "value": "weightAndReps" },
     ];
@@ -61,9 +63,9 @@ const Settings = () => {
                 <View className = "flex-row items-center">
                     <Text style = {{ "color": colours.black }} className = "text-xl">Distance</Text>
                     <DropdownComponent
-                        data = {distance}
-                        value = {value}
-                        onChange = {setValue}
+                        data = {distanceOptions}
+                        value = {distance}
+                        onChange = {setDistance}
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">

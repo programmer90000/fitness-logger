@@ -30,8 +30,8 @@ const Settings = () => {
         { "label": "Imperial (lB)", "value": "imperial" },
     ];
     const distanceOptions = [
-        { "label": "Metric (KM)", "value": "reps" },
-        { "label": "Imperial (M)", "value": "weightAndReps" },
+        { "label": "Metric (KM)", "value": "kilometers" },
+        { "label": "Imperial (M)", "value": "miles" },
     ];
     
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };

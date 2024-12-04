@@ -67,7 +67,7 @@ const WorkoutForm = () => {
                     return (<TextInput onBlur = {onBlur} onChangeText = {(text) => {
                         onChange(text);
                         setGoalName(text);
-                    }} value = {value} className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                    }} value = {value} style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                     ); }} />
                 <DropdownComponent data = {names} value = {name} onChange = {(name) => {
                     setName(name);
@@ -76,39 +76,39 @@ const WorkoutForm = () => {
                 }} style = {{ "width": 200 }} placeholder = "Exercise Name" />
                 
                 {selectedExerciseType === "reps" && (
-                    <View className = {`bg-[${colours.colour_6}] items-center flex-1 m-2.5 p-{20px} w-11/12`}>
+                    <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center flex-1 m-2.5 p-{20px} w-11/12"}>
                         <Text>Number of Reps</Text>
                         <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                             ); }} />
                     </View>
                 )}
                 {selectedExerciseType === "weightAndReps" && (
-                    <View className = {`bg-[${colours.colour_6}] items-center flex-1 m-2.5 p-{20px} w-11/12`}>
+                    <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center flex-1 m-2.5 p-{20px} w-11/12"}>
                         <Text>Amount of Weight</Text>
                         <Controller control = {control} name = {"weight"} render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                             ); }} />
                         <Text>Number of Reps</Text>
                         <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                             ); }} />
                     </View>
                 )}
                 {selectedExerciseType === "distanceAndTime" && (
-                    <View className = {`bg-[${colours.colour_6}] items-center flex-1 m-2.5 p-{20px} w-11/12`}>
+                    <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center flex-1 m-2.5 p-{20px} w-11/12"}>
                         <Text>Distance</Text>
                         <Controller control = {control} name = {"distance"} render = {({ "field": { onChange, onBlur, value } }) => {
-                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                            return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                             ); }} />
                         <Text>Time</Text>
-                        <Controller control = {control} name = {"time"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.colour_5}]`} />
+                        <Controller control = {control} name = {"time"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
                         ); }} />
                     </View>
                 )}
 
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
-                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = {`mt-[100px] bg-[${colours.light_blue}] p-2 m-[5px]`}>
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {{ "backgroundColor": colours.colour_13 }} className = {"mt-[100px] p-2 m-[5px]"}>
                     <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Create Goal</Text>
                 </TouchableOpacity>
             </View>

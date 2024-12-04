@@ -28,7 +28,7 @@ const LineChartComponent = () => {
         "propsForDots": {
             "r": "6",
             "strokeWidth": "2",
-            "stroke": colours.color_11, // Dot stroke color
+            "stroke": colours.colour_11, // Dot stroke color
         },
     };
 

@@ -26,7 +26,7 @@ export default function Badges() {
     const { theme } = useSettings();
 
     return (
-        <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>
                 <Text style = {[styles.text, styles.completed]}>Badge 1</Text>
                 <MaterialCommunityIcons name = "shoe-cleat" size = {100} style = {styles.completed} />

@@ -7,7 +7,7 @@ const ViewGoals = () => {
     const { theme } = useSettings();
 
     return (
-        <ScrollView className = "mt-5">
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Goal 1</Text>
             </TouchableOpacity>

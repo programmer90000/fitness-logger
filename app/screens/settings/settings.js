@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { colours } from "../../constants/colours.js";
@@ -35,6 +36,15 @@ const Settings = () => {
     ];
     
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
+    
+    const pushObjectToStorage = async (key, value) => {
+        try {
+            await AsyncStorage.setItem(key, JSON.stringify(value));
+        }
+        catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
@@ -44,7 +54,10 @@ const Settings = () => {
                     <DropdownComponent
                         data = {themeOptions}
                         value = {theme}
-                        onChange = {setTheme}
+                        onChange = {(newTheme) => {
+                            setTheme(newTheme);
+                            pushObjectToStorage("theme", newTheme);
+                        }}
                     />
                 </View>
                 <View className = "flex-row items-center">
@@ -52,7 +65,10 @@ const Settings = () => {
                     <DropdownComponent
                         data = {weightOptions}
                         value = {weight}
-                        onChange = {setWeight}
+                        onChange = {(newWeight) => {
+                            setWeight(newWeight);
+                            pushObjectToStorage("weight", newWeight);
+                        }}
                     />
                 </View>
                 <View className = "flex-row items-center">
@@ -60,7 +76,10 @@ const Settings = () => {
                     <DropdownComponent
                         data = {distanceOptions}
                         value = {distance}
-                        onChange = {setDistance}
+                        onChange = {(newDistance) => {
+                            setDistance(newDistance);
+                            pushObjectToStorage("distance", newDistance);
+                        }}
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 mt-[15px] w-56 items-center">

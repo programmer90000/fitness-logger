@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useSettings } from "./screens/settings/settings.js";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 
@@ -23,7 +24,14 @@ const initializeStorage = async () => {
 };
 
 const App = () => {
-    useEffect(() => { initializeStorage(); }, []);
+    const { theme, weight, distance } = useSettings();
+
+    useEffect(() => {
+        initializeStorage();
+        console.log(theme);
+        console.log(weight);
+        console.log(distance);
+    }, []);
     return (
         <View style = {styles.container}>
             <Text>Open up App.js to start working on your app!</Text>

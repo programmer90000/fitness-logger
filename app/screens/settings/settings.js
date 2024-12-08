@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const Settings = () => { 
     const [value, setValue] = useState(null);
@@ -27,10 +22,10 @@ const Settings = () => {
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Theme</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Theme</Text>
                     <DropdownComponent
                         data = {theme}
                         value = {value}
@@ -38,7 +33,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Weight</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Weight</Text>
                     <DropdownComponent
                         data = {weight}
                         value = {value}
@@ -46,7 +41,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.black }} className = "text-xl">Distance</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Distance</Text>
                     <DropdownComponent
                         data = {distance}
                         value = {value}
@@ -54,13 +49,13 @@ const Settings = () => {
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Sync With Drive</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Sync With Drive</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">Report A Bug</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Report A Bug</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
-                    <Text style = {{ "color": colours.black }} className = "font-bold text-xl">How To Use The App</Text>
+                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

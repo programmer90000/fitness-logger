@@ -4,13 +4,8 @@ import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
+import { colours } from "../../constants/colours.js";
 import Realm from "realm";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
 
 const CreateExercise = () => {
     const { control, getValues } = useForm({});

@@ -2,8 +2,6 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
-import { useSettings } from "../settings/settings.js";
-import { colours } from "../../constants/colours.js";
 
 const styles = StyleSheet.create({
     "badge": {
@@ -15,18 +13,16 @@ const styles = StyleSheet.create({
         "textAlign": "center",
     },
     "completed": {
-        "color": colours.colour_15,
+        "color": "#FFD700",
     },
     "unCompleted": {
-        "color": colours.colour_3,
+        "color": "#000000",
     },
 });
 
 export default function Badges() {
-    const { theme } = useSettings();
-
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
+        <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>
                 <Text style = {[styles.text, styles.completed]}>Badge 1</Text>
                 <MaterialCommunityIcons name = "shoe-cleat" size = {100} style = {styles.completed} />

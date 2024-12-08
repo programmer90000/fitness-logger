@@ -4,8 +4,12 @@ import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
-import { useSettings } from "../../screens/settings/settings.js";
-import { colours } from "../../constants/colours.js";
+
+const colours = {
+    "black": "#060606",
+    "white": "#f1f1f1",
+    "red": "#d10000",
+};
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);
@@ -16,8 +20,6 @@ const WorkoutForm = () => {
         control,
         "name": "exercises",
     });
-    const { theme } = useSettings();
-
     
     const realm = new Realm({ "schema": [exercises] });
     const allExercises = realm.objects("Exercises");
@@ -98,72 +100,67 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.white }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Workout Name</Text>
+                <Text style = {{ "color": colours.black }} className = "text-xl">Workout Name</Text>
                 <Controller
                     control = {control}
                     name = "workoutName"
-                    render = {({ "field": { onChange, onBlur, value } }) => {
-                        return (
-                            <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
-                        ); }}
+                    render = {({ "field": { onChange, onBlur, value } }) => { return (
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
+                    ); }}
                 />
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Workout Notes</Text>
+                <Text style = {{ "color": colours.black }} className = "text-xl">Workout Notes</Text>
                 <Controller
                     control = {control}
                     name = "workoutNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} style = {{ "backgroundColor": colours.colour_5 }} className = {"align-middle text-center w-11/12 flex-1 m-2.5"} />
+                        <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 /> 
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl mt-[30px]">Exercises</Text>
+                <Text style = {{ "color": colours.black }} className = "text-xl mt-[30px]">Exercises</Text>
                 <View className = "items-center flex justify-center">
                     {fields.map((field, index) => { return (
                         <View key = {field.id} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             <View className = "flex-row w-full">
-                                <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center min-h-[100px] flex-1 m-2.5 p-{20px}"}>
-                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                     <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
-                                <View style = {{ "color": colours.colour_6 }} className = {"items-center min-h-[100px] flex-1 m-2.5 p-{20px}"}>
-                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
-                                    <Text style = {{ "backgroundColor": colours.colour_5 }} className = {"text-center w-11/12 flex-1 m-2.5 h-[27px] leading-[35px]"}>N/A</Text>
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
+                                    <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
                                 </View>
-                                <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center min-h-[100px] flex-1 m-2.5 p-{20px}"}>
-                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.duration`}
-                                        style = {{ "backgroundColor": colours.colour_5 }}
-                                        className = {"align-middle text-center w-11/12 flex-1 m-2.5 h-5"}
+                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                style = {{ "backgroundColor": colours.colour_5 }}
-                                                className = {"align-middle text-center w-11/12 flex-1 m-2.5"}
+                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
                                             />
                                         ); }}
                                     />
                                 </View>
-                                <View style = {{ "backgroundColor": colours.colour_6 }} className = {"items-center min-h-[100px] flex-1 m-2.5 p-{20px}"}>
-                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Reps</Text>
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Reps</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.reps`}
-                                        style = {{ "backgroundColor": colours.colour_5 }}
-                                        className = {"align-middle text-center w-11/12 flex-1 m-2.5 h-5"}
+                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                style = {{ "backgroundColor": colours.colour_5 }}
-                                                className = {"align-middle text-center w-11/12 flex-1 m-2.5"}
+                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
                                             />
                                         ); }}
                                     />
@@ -173,8 +170,8 @@ const WorkoutForm = () => {
                                 <TouchableOpacity onPress = {() => {
                                     updateData();
                                     addSet(index);
-                                }} style = {{ "backgroundColor": colours.colour_12 }} className = {"mt-[100px] p-2 m-[5px]"}>
-                                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Set</Text>
+                                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Set</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -184,11 +181,11 @@ const WorkoutForm = () => {
                 <TouchableOpacity onPress = {() => {
                     updateData();
                     append({ "name": "", "duration": "", "reps": "" });
-                }} style = {{ "backgroundColor": colours.colour_12 }} className = {"mt-[100px] p-2 m-[5px]"}>
-                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
+                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {{ "backgroundColor": colours.colour_12 }} className = {"mt-[100px] p-2 m-[5px]"}>
-                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Submit</Text>
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

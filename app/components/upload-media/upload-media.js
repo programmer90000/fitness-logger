@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { Video, Image } from "react-native-compressor";
-import { colours } from "../../constants/colours.js";
 
 const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
     const [media, setMedia] = useState(null);
@@ -78,7 +77,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
 
     return (
         <View className = "flex-1 justify-center items-center">
-            <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 mt-[5px]" onPress = {pickMedia}>
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[5px]" onPress = {pickMedia}>
                 <Text className = "font-medium text-base">Upload {mediaType}</Text>
             </TouchableOpacity>
         </View>

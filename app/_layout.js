@@ -1,11 +1,10 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
-import { colours } from "./constants/colours.js";
 
 export default function Layout() {
     return (
         <GestureHandlerRootView style = {{ "flex": 1 }}>
-            <Drawer screenOptions = {{ "headerStyle": { "backgroundColor": colours.colour_7 }, "drawerStyle": { "backgroundColor": colours.colour_7 }, "drawerActiveTintColor": colours.colour_2, "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": colours.colour_4, "drawerInactiveBackgroundColor": "transparent", "drawerItemStyle": { "display": "none" }, "unmountOnBlur": true }}>
+            <Drawer screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "drawerItemStyle": { "display": "none" }, "unmountOnBlur": true }}>
                 <Drawer.Screen name = "index" options = {{ "drawerLabel": "Home", "title": "Home", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/create-a-new-workout-preset/create-a-new-workout-preset" options = {{ "drawerLabel": "Create A New Workout", "title": "Create A New Workout", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/create-exercise/create-exercise" options = {{ "drawerLabel": "Create Exercise", "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }} />

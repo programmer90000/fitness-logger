@@ -1,5 +1,4 @@
 import React from "react";
-import { colours } from "../../constants/colours.js";
 import { View, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
@@ -16,9 +15,9 @@ const LineChartComponent = () => {
     };
 
     const chartConfig = {
-        "backgroundColor": colours.colour_9,
-        "backgroundGradientFrom": colours.colour_10,
-        "backgroundGradientTo": colours.colour_11,
+        "backgroundColor": "#e26a00",
+        "backgroundGradientFrom": "#fb8c00",
+        "backgroundGradientTo": "#ffa726",
         "decimalPlaces": 2, // Optional, defaults to 2 decimal places
         "color": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Axis text color
         "labelColor": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Label color
@@ -28,7 +27,7 @@ const LineChartComponent = () => {
         "propsForDots": {
             "r": "6",
             "strokeWidth": "2",
-            "stroke": colours.colour_11, // Dot stroke color
+            "stroke": "#ffa726", // Dot stroke color
         },
     };
 

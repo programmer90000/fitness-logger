@@ -4,12 +4,15 @@ import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
-import { useSettings } from "../settings/settings.js";
-import { colours } from "../../constants/colours.js";
+
+const colours = {
+    "black": "#060606",
+    "white": "#f1f1f1",
+    "red": "#d10000",
+};
 
 const UploadDownloadData = () => {
     const [jsonData, setJsonData] = useState();
-    const { theme } = useSettings();
 
     const downloadAllRecords = async () => {
         try {
@@ -172,12 +175,12 @@ const UploadDownloadData = () => {
         }
     };
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
-            <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
-                <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Upload Data</Text>
+        <ScrollView style = {{ "backgroundColor": colours.white }}>
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
+                <Text className = "font-medium text-base" style = {{ "color": colours.black }}>Upload Data</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": colours.colour_7 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
-                <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Download Data</Text>
+            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
+                <Text className = "font-medium text-base" style = {{ "color": colours.black }}>Download Data</Text>
             </TouchableOpacity>
         </ScrollView>
     );

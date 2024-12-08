@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { colours } from "../../constants/colours.js";
+import { storeData } from "../../utils/async-storage.js";
 
 const Settings = () => { 
     const [value, setValue] = useState(null);
@@ -19,17 +19,6 @@ const Settings = () => {
         { "label": "Metric (KM)", "value": "reps" },
         { "label": "Imperial (M)", "value": "weightAndReps" },
     ];
-    
-    const storeData = async (key, newValue) => {
-        try {
-            await AsyncStorage.setItem(key, newValue);
-            
-            const storedValue = await AsyncStorage.getItem(key);
-            console.log(`Retrieved ${key}: ${storedValue}`);
-        } catch (e) {
-            console.log(e);
-        }
-    };
     
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { colours } from "../../constants/colours.js";
 
@@ -19,6 +20,17 @@ const Settings = () => {
         { "label": "Imperial (M)", "value": "weightAndReps" },
     ];
     
+    const storeData = async (key, newValue) => {
+        try {
+            await AsyncStorage.setItem(key, newValue);
+            
+            const storedValue = await AsyncStorage.getItem(key);
+            console.log(`Retrieved ${key}: ${storedValue}`);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
@@ -29,7 +41,7 @@ const Settings = () => {
                     <DropdownComponent
                         data = {theme}
                         value = {value}
-                        onChange = {setValue}
+                        onChange = {(newValue) => { return storeData("theme", newValue); }}
                     />
                 </View>
                 <View className = "flex-row items-center">
@@ -37,7 +49,7 @@ const Settings = () => {
                     <DropdownComponent
                         data = {weight}
                         value = {value}
-                        onChange = {setValue}
+                        onChange = {(newValue) => { return storeData("weight", newValue); }}
                     />
                 </View>
                 <View className = "flex-row items-center">
@@ -45,7 +57,7 @@ const Settings = () => {
                     <DropdownComponent
                         data = {distance}
                         value = {value}
-                        onChange = {setValue}
+                        onChange = {(newValue) => { return storeData("distance", newValue); }}
                     />
                 </View>
                 <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">

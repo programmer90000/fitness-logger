@@ -1,7 +1,7 @@
 const settings = {
     "theme": "light",
     "weight": "metric",
-    "distance": "kilometers",
+    "distance": "metric",
 };
 
 const settingsWatcher = [];

@@ -4,10 +4,15 @@ import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 
 const UploadDownloadData = () => {
     const [jsonData, setJsonData] = useState();
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
 
     const downloadAllRecords = async () => {
         try {

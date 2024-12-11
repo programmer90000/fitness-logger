@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
 
@@ -11,6 +11,11 @@ const Settings = () => {
     const [weightValue, setWeightValue] = useState(null);
     const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
 
     const loadResources = async () => {
         try {
@@ -26,19 +31,6 @@ const Settings = () => {
         }
     };
     
-    useEffect(() => {
-        const unsubscribe = subscribeToSettings(setSettings);
-        return () => { return unsubscribe(); };
-    }, []);
-
-    useEffect(() => {
-        loadResources();
-        if (settings) {
-            setThemeValue(settings.theme);
-            setWeightValue(settings.weight);
-            setDistanceValue(settings.distance);
-        }
-    }, [settings]);
 
     const theme = [
         { "label": "Light Mode", "value": "light" },

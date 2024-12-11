@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 
 const CreateExercise = () => {
@@ -18,6 +18,12 @@ const CreateExercise = () => {
         { "label": "Weight/ Reps", "value": "weightAndReps" },
         { "label": "Distance/ Time", "value": "distanceAndTime" },
     ];
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
     
     const handleAddExercise = () => {
         const formValues = getValues();

@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 
 const CreateWorkout = () => {
     const workoutPresets = [
@@ -10,6 +10,12 @@ const CreateWorkout = () => {
         { "name": "Workout Preset 4" },
         { "name": "Workout Preset 5" },
     ];
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>

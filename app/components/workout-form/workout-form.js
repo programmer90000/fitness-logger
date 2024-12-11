@@ -4,7 +4,7 @@ import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);
@@ -26,6 +26,12 @@ const WorkoutForm = () => {
         };
     }); realm.close();
     realm.close();
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
     
     
     const onSubmit = (data) => {

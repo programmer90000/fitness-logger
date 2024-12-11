@@ -5,7 +5,6 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { exercises, badges } from "../../../database/realm-database.js";
 import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media.js";
-import { colours } from "../../constants/colours.js";
 
 const WorkoutForm = () => {
     const [goalName, setGoalName] = useState(null);
@@ -26,6 +25,12 @@ const WorkoutForm = () => {
         };
     });
     realm.close();
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
 
     const onSubmit = () => {
         const formValues = getValues();

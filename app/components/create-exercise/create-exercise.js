@@ -3,10 +3,15 @@ import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-nativ
 import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../dropdown-box/dropdown-box.js";
 import UploadMedia from "../upload-media/upload-media.js";
-import { colours } from "../../constants/colours.js";
+import { useTheme } from "../../hooks/useTheme.js";
 
 const WorkoutForm = () => {
     const { control } = useForm({});
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
     
     const [value, setValue] = useState(null);
     const exerciseType = [

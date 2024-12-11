@@ -4,15 +4,14 @@ import { Text, View } from "react-native";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { retrieveData } from "./utils/async-storage.js";
+import { loadResource } from "./constants/colours.js";
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
     const [isReady, setIsReady] = useState(false);
-    const r = retrieveData("theme").then((r) => { return console.log(r); });
-
-
+    const [colours, setColour] = useState("#FFFFFF");
     const loadResources = async () => {
         try {
             const storedData = await retrieveData("theme");
@@ -26,6 +25,8 @@ export default function App() {
     useEffect(() => {
         const initializeApp = async () => {
             await loadResources();
+            const colours = await loadResource();
+            setColour(colours);
             setIsReady(true);
             await SplashScreen.hideAsync();
         };
@@ -38,8 +39,8 @@ export default function App() {
     }
 
     return (
-        <View style = {styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+        <View style = {[styles.container, { "backgroundColor": colours.colour_1 }]}> 
+            <Text style = {{ "color": colours.colour_15 }}>Open up App.js to start working on your app!</Text>
             <StatusBar style = "auto" />
             <Footer />
         </View>

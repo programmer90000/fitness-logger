@@ -1,3 +1,5 @@
+import { retrieveData } from "../utils/async-storage.js";
+
 const light_mode = {
     "colour_1": "#FFFFFF", // White
     "colour_2": "#F1F1F1", // Very Light Grey
@@ -33,5 +35,24 @@ const dark_mode = {
     "colour_14": "#F6F8FA", // Grayish Blue
     "colour_15": "#FFAB00", // Orange
 };
+
+const loadResource = async () => {
+    let colours;
+    try {
+        const theme = await retrieveData("theme");
+        if (theme) {
+            console.log("The theme is: ", theme);
+            colours = theme === "dark" ? dark_mode : light_mode;
+        } else {
+            colours = light_mode;
+        }
+    } catch (error) {
+        console.error("Error loading AsyncStorage data:", error);
+        colours = light_mode;
+    }
+    return colours;
+};
+
+export { loadResource };
 
 export { light_mode as colours };

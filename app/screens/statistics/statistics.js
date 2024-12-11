@@ -2,17 +2,24 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Table, TableWrapper, Row, Rows, Col } from "react-native-reanimated-table";
 import LineChartComponent from "../../components/line-graph/line-graph";
-
-styles = StyleSheet.create({
-    "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": "#fff" },
-    "head": { "height": 40, "backgroundColor": "#f1f8ff" },
-    "wrapper": { "flexDirection": "row" },
-    "title": { "flex": 1, "backgroundColor": "#f6f8fa" },
-    "row": { "height": 28 },
-    "text": { "textAlign": "center" },
-});
+import { useTheme } from "../../hooks/useTheme.js";
 
 const Statistics = () => {
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
+    
+    styles = StyleSheet.create({
+        "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.colour_1 },
+        "head": { "height": 40, "backgroundColor": colours.colour_13 },
+        "wrapper": { "flexDirection": "row" },
+        "title": { "flex": 1, "backgroundColor": colours.colour_14 },
+        "row": { "height": 28, "color": colours.colour_3 },
+        "text": { "textAlign": "center", "color": colours.colour_10 },
+    });
+    
     const tableHead = ["", "Head1", "Head2", "Head3"];
     const tableTitle = ["Title", "Title2", "Title3", "Title4"];
     const tableData = [

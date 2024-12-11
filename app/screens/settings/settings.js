@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { colours } from "../../constants/colours.js";
@@ -7,14 +7,24 @@ import { getSettings, updateSetting, subscribeToSettings } from "../../utils/set
 import { storeData } from "../../utils/async-storage.js";
 
 const Settings = () => { 
-    const [value, setValue] = useState(null);
+    const [themeValue, setThemeValue] = useState(null);
+    const [weightValue, setWeightValue] = useState(null);
+    const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
     
     useEffect(() => {
         const unsubscribe = subscribeToSettings(setSettings);
         return () => { return unsubscribe(); };
     }, []);
-    
+
+    useEffect(() => {
+        if (settings) {
+            setThemeValue(settings.theme);
+            setWeightValue(settings.weight);
+            setDistanceValue(settings.distance);
+        }
+    }, [settings]);
+
     const theme = [
         { "label": "Light Mode", "value": "light" },
         { "label": "Dark Mode", "value": "dark" },
@@ -37,10 +47,11 @@ const Settings = () => {
                     <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Theme</Text>
                     <DropdownComponent
                         data = {theme}
-                        value = {value}
+                        value = {themeValue}
                         onChange = {(newValue) => {
                             updateSetting("theme", newValue);
-                            return storeData("theme", newValue);
+                            setThemeValue(newValue);
+                            storeData("theme", newValue);
                         }}
                     />
                 </View>
@@ -48,10 +59,11 @@ const Settings = () => {
                     <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Weight</Text>
                     <DropdownComponent
                         data = {weight}
-                        value = {value}
+                        value = {weightValue}
                         onChange = {(newValue) => {
                             updateSetting("weight", newValue);
-                            return storeData("weight", newValue);
+                            setWeightValue(newValue);
+                            storeData("weight", newValue);
                         }}
                     />
                 </View>
@@ -59,10 +71,11 @@ const Settings = () => {
                     <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Distance</Text>
                     <DropdownComponent
                         data = {distance}
-                        value = {value}
+                        value = {distanceValue}
                         onChange = {(newValue) => {
                             updateSetting("distance", newValue);
-                            return storeData("distance", newValue);
+                            setDistanceValue(newValue);
+                            storeData("distance", newValue);
                         }}
                     />
                 </View>

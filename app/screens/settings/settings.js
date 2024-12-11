@@ -4,13 +4,27 @@ import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { colours } from "../../constants/colours.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
-import { storeData } from "../../utils/async-storage.js";
+import { storeData, retrieveData } from "../../utils/async-storage.js";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);
     const [weightValue, setWeightValue] = useState(null);
     const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
+
+    const loadResources = async () => {
+        try {
+            const theme = await retrieveData("theme");
+            const weight = await retrieveData("weight");
+            const distance = await retrieveData("distance");
+            
+            if (theme) { setThemeValue(theme); }
+            if (weight) { setWeightValue(weight); }
+            if (distance) { setDistanceValue(distance); }
+        } catch (error) {
+            console.error("Error loading AsyncStorage data:", error);
+        }
+    };
     
     useEffect(() => {
         const unsubscribe = subscribeToSettings(setSettings);
@@ -18,6 +32,7 @@ const Settings = () => {
     }, []);
 
     useEffect(() => {
+        loadResources();
         if (settings) {
             setThemeValue(settings.theme);
             setWeightValue(settings.weight);

@@ -1,38 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
-import { retrieveData } from "./utils/async-storage.js";
-import { loadResource } from "./constants/colours.js";
+import { useTheme } from "./hooks/useTheme.js";
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-    const [isReady, setIsReady] = useState(false);
-    const [colours, setColour] = useState("#FFFFFF");
-    const loadResources = async () => {
-        try {
-            const storedData = await retrieveData("theme");
-            console.log("Stored Data:", storedData);
-            await new Promise((resolve) => { return setTimeout(resolve, 1000); });
-        } catch (error) {
-            console.error("Error loading AsyncStorage data:", error);
-        }
-    };
-
-    useEffect(() => {
-        const initializeApp = async () => {
-            await loadResources();
-            const colours = await loadResource();
-            setColour(colours);
-            setIsReady(true);
-            await SplashScreen.hideAsync();
-        };
-
-        initializeApp();
-    }, []);
+    const { isReady, colours } = useTheme();
 
     if (!isReady) {
         return null;

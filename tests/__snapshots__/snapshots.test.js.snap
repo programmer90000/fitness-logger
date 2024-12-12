@@ -583,7 +583,7 @@ exports[`create-exercise.js 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -925,7 +925,7 @@ exports[`create-workout.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -3398,7 +3398,7 @@ exports[`upload-download-data.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >

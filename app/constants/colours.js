@@ -3,6 +3,7 @@ import { retrieveData } from "../utils/async-storage.js";
 const light_mode = {
     "main_background": "#F1F1F1",
     "button_background_1": "#FF0000",
+    "input_field_background_1": "#DEDEDE",
     "colour_1": "#FFFFFF", // White
     "colour_2": "#F1F1F1", // Very Light Grey
     "colour_3": "#000000", // Black
@@ -23,6 +24,7 @@ const light_mode = {
 const dark_mode = {
     "main_background": "#0A0A0A",
     "button_background_1": "#FF0000",
+    "input_field_background_1": "#7F7F7F",
     "colour_1": "#000000", // Black
     "colour_2": "#0A0A0A", // Very Dark Grey
     "colour_3": "#FFFFFF", // White

@@ -8,11 +8,11 @@ const light_mode = {
     "badge_uncompleted": "#000000",
     "footer_background": "#D10000",
     "footer_images": "#060606",
+    "statistics_title": "#F6F8FA",
     "colour_2": "#F1F1F1", // Very Light Grey
     "colour_3": "#000000", // Black
     "colour_4": "#060606", // Dark Grey
     "colour_13": "#F1F8FF", // Very Light Blue
-    "colour_14": "#F6F8FA", // Grayish Blue
 };
 
 const dark_mode = {
@@ -23,11 +23,11 @@ const dark_mode = {
     "badge_uncompleted": "#FFFFFF",
     "footer_background": "#B71C1C",
     "footer_images": "#F0F0F0",
+    "statistics_title": "#F6F8FA",
     "colour_2": "#0A0A0A", // Very Dark Grey
     "colour_3": "#FFFFFF", // White
     "colour_4": "#F0F0F0", // Very Light Grey
     "colour_13": "#F1F8FF", // Very Light Blue
-    "colour_14": "#F6F8FA", // Grayish Blue
 };
 
 const loadResource = async () => {

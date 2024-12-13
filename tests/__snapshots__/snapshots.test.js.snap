@@ -3761,11 +3761,9 @@ exports[`view-goals.js Test 1`] = `
 exports[`workout-history.js Test 1`] = `
 <RCTScrollView
   style={
-    [
-      {
-        "marginTop": 20,
-      },
-    ]
+    {
+      "backgroundColor": "#FFFFFF",
+    }
   }
 >
   <View>

@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../dropdown-box/dropdown-box.js";
 import UploadMedia from "../upload-media/upload-media.js";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 const WorkoutForm = () => {
     const { control } = useForm({});
@@ -46,7 +47,7 @@ const WorkoutForm = () => {
                     ); }}
                 />       
                 <UploadMedia />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]">
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]">
                     <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>

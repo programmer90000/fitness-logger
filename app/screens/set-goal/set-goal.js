@@ -6,6 +6,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { goals } from "../../../database/realm-database.js";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 const SetGoal = () => {
     const { control, getValues } = useForm({});
@@ -163,7 +164,7 @@ const SetGoal = () => {
                     ); }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddGoal}>
                     {/* // TODO: Before submitting, check if the End Date is after the Start Date */}
                     {/* // TODO: Before submitting, check if the Reminder Date is in-between or on the Start Date and End Date */}
                     <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Submit</Text>

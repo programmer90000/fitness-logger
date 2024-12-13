@@ -5,6 +5,7 @@ import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 const UploadDownloadData = () => {
     const [jsonData, setJsonData] = useState();
@@ -176,10 +177,10 @@ const UploadDownloadData = () => {
     };
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Upload Data</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Download Data</Text>
             </TouchableOpacity>
         </ScrollView>

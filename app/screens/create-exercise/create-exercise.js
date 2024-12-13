@@ -6,6 +6,7 @@ import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
+import { colours } from "../../constants/colours.js";
 
 const CreateExercise = () => {
     const { control, getValues } = useForm({});
@@ -76,7 +77,7 @@ const CreateExercise = () => {
                         ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 const ViewGoals = () => {
     const { isReady, colours } = useTheme();
@@ -10,13 +11,13 @@ const ViewGoals = () => {
     }
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Goal 1</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Goal 2</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                 <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Goal 3</Text>
             </TouchableOpacity>
         </ScrollView>

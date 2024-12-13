@@ -5,6 +5,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { exercises, badges } from "../../../database/realm-database.js";
 import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media.js";
+import { colours } from "../../constants/colours.js";
 
 const WorkoutForm = () => {
     const [goalName, setGoalName] = useState(null);
@@ -105,7 +106,7 @@ const WorkoutForm = () => {
                 )}
 
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
-                <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {{ "backgroundColor": colours.button_background_1 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Create Goal</Text>
                 </TouchableOpacity>
             </View>

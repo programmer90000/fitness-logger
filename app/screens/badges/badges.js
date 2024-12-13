@@ -3,6 +3,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 export default function Badges() {
     const { isReady, colours } = useTheme();
@@ -21,10 +22,10 @@ export default function Badges() {
             "textAlign": "center",
         },
         "completed": {
-            "color": colours.colour_15,
+            "color": colours.badge_completed,
         },
         "unCompleted": {
-            "color": colours.colour_3,
+            "color": colours.badge_uncompleted,
         },
     });
     

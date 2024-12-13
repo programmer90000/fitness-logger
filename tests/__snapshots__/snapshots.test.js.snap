@@ -1743,6 +1743,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -1798,6 +1801,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -1823,10 +1829,6 @@ exports[`set-goal.js Test 1`] = `
                 "flexShrink": 1,
                 "height": 50,
                 "justifyContent": "center",
-                "marginBottom": 10,
-                "marginLeft": 10,
-                "marginRight": 10,
-                "marginTop": 10,
                 "paddingHorizontal": 8,
                 "textAlign": "center",
                 "width": 260,
@@ -1910,6 +1912,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -1965,6 +1970,9 @@ exports[`set-goal.js Test 1`] = `
               },
               {
                 "width": 64,
+              },
+              {
+                "color": "#000000",
               },
             ]
           }
@@ -2059,6 +2067,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -2152,6 +2163,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -2244,6 +2258,9 @@ exports[`set-goal.js Test 1`] = `
               },
               {
                 "width": 64,
+              },
+              {
+                "color": "#000000",
               },
             ]
           }

@@ -3556,11 +3556,9 @@ exports[`upload-download-data.js Test 1`] = `
 exports[`view-goals.js Test 1`] = `
 <RCTScrollView
   style={
-    [
-      {
-        "marginTop": 20,
-      },
-    ]
+    {
+      "backgroundColor": "#FFFFFF",
+    }
   }
 >
   <View>

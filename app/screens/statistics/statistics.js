@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Table, TableWrapper, Row, Rows, Col } from "react-native-reanimated-table";
 import LineChartComponent from "../../components/line-graph/line-graph";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours";
 
 const Statistics = () => {
     const { isReady, colours } = useTheme();
@@ -12,7 +13,7 @@ const Statistics = () => {
     }
     
     styles = StyleSheet.create({
-        "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.colour_1 },
+        "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.main_background },
         "head": { "height": 40, "backgroundColor": colours.colour_13 },
         "wrapper": { "flexDirection": "row" },
         "title": { "flex": 1, "backgroundColor": colours.colour_14 },

@@ -8,7 +8,6 @@ const light_mode = {
     "badge_uncompleted": "#000000",
     "footer_background": "#D10000",
     "footer_images": "#060606",
-    "colour_1": "#FFFFFF", // White
     "colour_2": "#F1F1F1", // Very Light Grey
     "colour_3": "#000000", // Black
     "colour_4": "#060606", // Dark Grey

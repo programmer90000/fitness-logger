@@ -23,7 +23,6 @@ const dark_mode = {
     "badge_uncompleted": "#FFFFFF",
     "footer_background": "#B71C1C",
     "footer_images": "#F0F0F0",
-    "colour_1": "#000000", // Black
     "colour_2": "#0A0A0A", // Very Dark Grey
     "colour_3": "#FFFFFF", // White
     "colour_4": "#F0F0F0", // Very Light Grey

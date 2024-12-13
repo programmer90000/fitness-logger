@@ -172,7 +172,7 @@ const WorkoutForm = () => {
                                     updateData();
                                     addSet(index);
                                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Set</Text>
+                                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Set</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -183,10 +183,10 @@ const WorkoutForm = () => {
                     updateData();
                     append({ "name": "", "duration": "", "reps": "" });
                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
+                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Submit</Text>
+                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

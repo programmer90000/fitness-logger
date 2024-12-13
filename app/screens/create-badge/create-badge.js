@@ -107,7 +107,7 @@ const WorkoutForm = () => {
 
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {{ "backgroundColor": colours.button_background_1 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Create Goal</Text>
+                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Create Goal</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

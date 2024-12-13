@@ -311,7 +311,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -505,7 +505,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -566,7 +566,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -1425,7 +1425,7 @@ exports[`log-workout.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -1619,7 +1619,7 @@ exports[`log-workout.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -1680,7 +1680,7 @@ exports[`log-workout.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -1697,7 +1697,7 @@ exports[`set-goal.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -2343,7 +2343,7 @@ exports[`settings.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -2867,7 +2867,7 @@ exports[`statistics.js Test 1`] = `
 <View
   style={
     {
-      "backgroundColor": "#fff",
+      "backgroundColor": "#FFFFFF",
       "flex": 1,
       "padding": 16,
       "paddingTop": 30,
@@ -2889,7 +2889,7 @@ exports[`statistics.js Test 1`] = `
     <View
       style={
         {
-          "backgroundColor": "#f1f8ff",
+          "backgroundColor": "#F1F8FF",
           "flexDirection": "row",
           "height": 40,
           "overflow": "hidden",
@@ -2993,7 +2993,7 @@ exports[`statistics.js Test 1`] = `
       <View
         style={
           {
-            "backgroundColor": "#f6f8fa",
+            "backgroundColor": "#F6F8FA",
             "flex": 1,
             "width": 1,
           }

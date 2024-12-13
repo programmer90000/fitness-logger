@@ -2916,6 +2916,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2936,6 +2937,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2958,6 +2960,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2980,6 +2983,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -3019,6 +3023,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3041,6 +3046,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3063,6 +3069,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3085,6 +3092,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3103,6 +3111,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3124,6 +3133,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3146,6 +3156,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3168,6 +3179,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3179,6 +3191,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3200,6 +3213,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3222,6 +3236,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3244,6 +3259,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3255,6 +3271,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3276,6 +3293,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3298,6 +3316,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3320,6 +3339,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3331,6 +3351,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3352,6 +3373,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3374,6 +3396,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3396,6 +3419,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }

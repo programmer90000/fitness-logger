@@ -11,7 +11,7 @@ const light_mode = {
     "footer_images": "#060606",
     "statistics_title": "#F6F8FA",
     "statistics_head": "#F1F8FF",
-    "colour_3": "#000000", // Black
+    "heading_colour_1": "#000000",
     "colour_4": "#060606", // Dark Grey
 };
 
@@ -26,7 +26,7 @@ const dark_mode = {
     "footer_images": "#F0F0F0",
     "statistics_title": "#F6F8FA",
     "statistics_head": "#F1F8FF",
-    "colour_3": "#FFFFFF", // White
+    "heading_colour_1": "#FFFFFF",
     "colour_4": "#F0F0F0", // Very Light Grey
 };
 

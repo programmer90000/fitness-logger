@@ -17,8 +17,8 @@ const Statistics = () => {
         "head": { "height": 40, "backgroundColor": colours.statistics_head },
         "wrapper": { "flexDirection": "row" },
         "title": { "flex": 1, "backgroundColor": colours.statistics_title },
-        "row": { "height": 28, "color": colours.colour_3 },
-        "text": { "textAlign": "center", "color": colours.colour_3 },
+        "row": { "height": 28, "color": colours.heading_colour_1 },
+        "text": { "textAlign": "center", "color": colours.heading_colour_1 },
     });
     
     const tableHead = ["", "Head1", "Head2", "Head3"];

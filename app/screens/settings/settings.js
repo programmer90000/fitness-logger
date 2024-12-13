@@ -52,7 +52,7 @@ const Settings = () => {
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Theme</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Theme</Text>
                     <DropdownComponent
                         data = {theme}
                         value = {themeValue}
@@ -64,7 +64,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Weight</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Weight</Text>
                     <DropdownComponent
                         data = {weight}
                         value = {weightValue}
@@ -76,7 +76,7 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Distance</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Distance</Text>
                     <DropdownComponent
                         data = {distance}
                         value = {distanceValue}

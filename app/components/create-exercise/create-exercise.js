@@ -24,7 +24,7 @@ const WorkoutForm = () => {
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Name</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Name</Text>
                 <Controller
                     control = {control}
                     name = "workoutName"
@@ -32,13 +32,13 @@ const WorkoutForm = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Type</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
                     data = {exerciseType}
                     value = {value}
                     onChange = {setValue}
                 />
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Notes</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Notes</Text>
                 <Controller
                     control = {control}
                     name = "workoutNotes"

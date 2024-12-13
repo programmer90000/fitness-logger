@@ -12,7 +12,7 @@ const light_mode = {
     "statistics_title": "#F6F8FA",
     "statistics_head": "#F1F8FF",
     "heading_colour_1": "#000000",
-    "colour_4": "#060606", // Dark Grey
+    "heading_colour_2": "#060606",
 };
 
 const dark_mode = {
@@ -27,7 +27,7 @@ const dark_mode = {
     "statistics_title": "#F6F8FA",
     "statistics_head": "#F1F8FF",
     "heading_colour_1": "#FFFFFF",
-    "colour_4": "#F0F0F0", // Very Light Grey
+    "heading_colour_2": "#F0F0F0",
 };
 
 const loadResource = async () => {

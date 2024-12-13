@@ -101,7 +101,7 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
                 <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Workout Name</Text>
                 <Controller

@@ -62,7 +62,7 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
                 <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Goal Name</Text>
                 <Controller control = {control} name = "goalName" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {(text) => {

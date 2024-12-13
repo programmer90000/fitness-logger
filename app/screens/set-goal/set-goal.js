@@ -86,7 +86,7 @@ const SetGoal = () => {
     ];
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16" style = {{ "color": colours.colour_3 }}>Name</Text>

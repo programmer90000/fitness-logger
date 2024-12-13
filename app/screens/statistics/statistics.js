@@ -14,9 +14,9 @@ const Statistics = () => {
     
     styles = StyleSheet.create({
         "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.main_background },
-        "head": { "height": 40, "backgroundColor": colours.colour_13 },
+        "head": { "height": 40, "backgroundColor": colours.statistics_head },
         "wrapper": { "flexDirection": "row" },
-        "title": { "flex": 1, "backgroundColor": colours.colour_14 },
+        "title": { "flex": 1, "backgroundColor": colours.statistics_title },
         "row": { "height": 28, "color": colours.colour_3 },
         "text": { "textAlign": "center", "color": colours.colour_3 },
     });

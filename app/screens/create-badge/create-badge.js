@@ -6,12 +6,6 @@ import { exercises, badges } from "../../../database/realm-database.js";
 import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media.js";
 
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
-
 const WorkoutForm = () => {
     const [goalName, setGoalName] = useState(null);
     const [selectedExerciseType, setSelectedExerciseType] = useState(null);
@@ -31,6 +25,12 @@ const WorkoutForm = () => {
         };
     });
     realm.close();
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
 
     const onSubmit = () => {
         const formValues = getValues();
@@ -62,9 +62,9 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.black }} className = "text-xl">Goal Name</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Goal Name</Text>
                 <Controller control = {control} name = "goalName" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {(text) => {
                     onChange(text); 
                     setGoalName(text);
@@ -106,7 +106,7 @@ const WorkoutForm = () => {
 
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Create Goal</Text>
+                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Create Goal</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

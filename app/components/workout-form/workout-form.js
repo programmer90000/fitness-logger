@@ -4,12 +4,7 @@ import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { exercises, workoutPresets, workoutPresetsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { useTheme } from "../../hooks/useTheme.js";
 
 const WorkoutForm = () => {
     const [removedButtons, setRemovedButtons] = useState([]);
@@ -31,6 +26,12 @@ const WorkoutForm = () => {
         };
     }); realm.close();
     realm.close();
+    
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
     
     
     const onSubmit = (data) => {
@@ -100,9 +101,9 @@ const WorkoutForm = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.white }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.black }} className = "text-xl">Workout Name</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Workout Name</Text>
                 <Controller
                     control = {control}
                     name = "workoutName"
@@ -110,7 +111,7 @@ const WorkoutForm = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 />
-                <Text style = {{ "color": colours.black }} className = "text-xl">Workout Notes</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Workout Notes</Text>
                 <Controller
                     control = {control}
                     name = "workoutNotes"
@@ -118,21 +119,21 @@ const WorkoutForm = () => {
                         <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
                     ); }}
                 /> 
-                <Text style = {{ "color": colours.black }} className = "text-xl mt-[30px]">Exercises</Text>
+                <Text style = {{ "color": colours.colour_4 }} className = "text-xl mt-[30px]">Exercises</Text>
                 <View className = "items-center flex justify-center">
                     {fields.map((field, index) => { return (
                         <View key = {field.id} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             <View className = "flex-row w-full">
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
+                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                     <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
+                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
                                     <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
+                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.duration`}
@@ -149,7 +150,7 @@ const WorkoutForm = () => {
                                     />
                                 </View>
                                 <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
-                                    <Text style = {{ "color": colours.black }} className = "flex-1 text-[15px] h-5">Reps</Text>
+                                    <Text style = {{ "color": colours.colour_4 }} className = "flex-1 text-[15px] h-5">Reps</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.reps`}
@@ -171,7 +172,7 @@ const WorkoutForm = () => {
                                     updateData();
                                     addSet(index);
                                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Set</Text>
+                                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Set</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -182,10 +183,10 @@ const WorkoutForm = () => {
                     updateData();
                     append({ "name": "", "duration": "", "reps": "" });
                 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Add Exercise</Text>
+                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.white }} className = "font-bold text-[16px]">Submit</Text>
+                    <Text style = {{ "color": colours.colour_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

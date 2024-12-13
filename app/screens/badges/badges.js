@@ -2,27 +2,34 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
-
-const styles = StyleSheet.create({
-    "badge": {
-        "margin": 20,
-    },
-    "text": {
-        "fontSize": 32,
-        "fontWeight": "bold",
-        "textAlign": "center",
-    },
-    "completed": {
-        "color": "#FFD700",
-    },
-    "unCompleted": {
-        "color": "#000000",
-    },
-});
+import { useTheme } from "../../hooks/useTheme.js";
 
 export default function Badges() {
+    const { isReady, colours } = useTheme();
+
+    if (!isReady) {
+        return null;
+    }
+    
+    const styles = StyleSheet.create({
+        "badge": {
+            "margin": 20,
+        },
+        "text": {
+            "fontSize": 32,
+            "fontWeight": "bold",
+            "textAlign": "center",
+        },
+        "completed": {
+            "color": colours.colour_15,
+        },
+        "unCompleted": {
+            "color": colours.colour_3,
+        },
+    });
+    
     return (
-        <ScrollView contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
+        <ScrollView style = {{ "backgroundColor": colours.colour_1 }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>
                 <Text style = {[styles.text, styles.completed]}>Badge 1</Text>
                 <MaterialCommunityIcons name = "shoe-cleat" size = {100} style = {styles.completed} />

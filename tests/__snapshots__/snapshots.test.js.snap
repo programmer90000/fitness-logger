@@ -10,6 +10,11 @@ exports[`badges.js Test 1`] = `
       "justifyContent": "center",
     }
   }
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+    }
+  }
 >
   <View>
     <View
@@ -311,7 +316,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -505,7 +510,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -566,7 +571,7 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -583,7 +588,7 @@ exports[`create-exercise.js 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -925,7 +930,7 @@ exports[`create-workout.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -1341,22 +1346,33 @@ exports[`create-workout.js Test 1`] = `
 exports[`index.js Test 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#f1f1f1",
-      "flex": 1,
-      "justifyContent": "center",
-    }
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#F1F1F1",
+        "flex": 1,
+        "justifyContent": "center",
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+      },
+    ]
   }
 >
-  <Text>
+  <Text
+    style={
+      {
+        "color": "#000000",
+      }
+    }
+  >
     Open up App.js to start working on your app!
   </Text>
   <View
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "#d10000",
+        "backgroundColor": "#D10000",
         "bottom": 0,
         "color": "#060606",
         "display": "flex",
@@ -1414,7 +1430,7 @@ exports[`log-workout.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -1608,7 +1624,7 @@ exports[`log-workout.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -1669,7 +1685,7 @@ exports[`log-workout.js Test 1`] = `
                 "fontSize": 16,
               },
               {
-                "color": "#f1f1f1",
+                "color": "#F1F1F1",
               },
             ]
           }
@@ -1686,7 +1702,7 @@ exports[`set-goal.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -1726,6 +1742,9 @@ exports[`set-goal.js Test 1`] = `
               },
               {
                 "width": 64,
+              },
+              {
+                "color": "#000000",
               },
             ]
           }
@@ -1782,6 +1801,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -1807,10 +1829,6 @@ exports[`set-goal.js Test 1`] = `
                 "flexShrink": 1,
                 "height": 50,
                 "justifyContent": "center",
-                "marginBottom": 10,
-                "marginLeft": 10,
-                "marginRight": 10,
-                "marginTop": 10,
                 "paddingHorizontal": 8,
                 "textAlign": "center",
                 "width": 260,
@@ -1894,6 +1912,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -1949,6 +1970,9 @@ exports[`set-goal.js Test 1`] = `
               },
               {
                 "width": 64,
+              },
+              {
+                "color": "#000000",
               },
             ]
           }
@@ -2043,6 +2067,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -2136,6 +2163,9 @@ exports[`set-goal.js Test 1`] = `
               {
                 "width": 64,
               },
+              {
+                "color": "#000000",
+              },
             ]
           }
         >
@@ -2228,6 +2258,9 @@ exports[`set-goal.js Test 1`] = `
               },
               {
                 "width": 64,
+              },
+              {
+                "color": "#000000",
               },
             ]
           }
@@ -2332,7 +2365,7 @@ exports[`settings.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -2806,7 +2839,7 @@ exports[`settings.js Test 1`] = `
         }
         accessible={true}
         collapsable={false}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -2856,7 +2889,7 @@ exports[`statistics.js Test 1`] = `
 <View
   style={
     {
-      "backgroundColor": "#fff",
+      "backgroundColor": "#FFFFFF",
       "flex": 1,
       "padding": 16,
       "paddingTop": 30,
@@ -2878,7 +2911,7 @@ exports[`statistics.js Test 1`] = `
     <View
       style={
         {
-          "backgroundColor": "#f1f8ff",
+          "backgroundColor": "#F1F8FF",
           "flexDirection": "row",
           "height": 40,
           "overflow": "hidden",
@@ -2900,6 +2933,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2920,6 +2954,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2942,6 +2977,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2964,6 +3000,7 @@ exports[`statistics.js Test 1`] = `
           style={
             {
               "backgroundColor": "transparent",
+              "color": "#000000",
               "textAlign": "center",
             }
           }
@@ -2982,7 +3019,7 @@ exports[`statistics.js Test 1`] = `
       <View
         style={
           {
-            "backgroundColor": "#f6f8fa",
+            "backgroundColor": "#F6F8FA",
             "flex": 1,
             "width": 1,
           }
@@ -3003,6 +3040,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3025,6 +3063,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3047,6 +3086,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3069,6 +3109,7 @@ exports[`statistics.js Test 1`] = `
             style={
               {
                 "backgroundColor": "transparent",
+                "color": "#000000",
                 "textAlign": "center",
               }
             }
@@ -3087,6 +3128,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3108,6 +3150,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3130,6 +3173,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3152,6 +3196,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3163,6 +3208,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3184,6 +3230,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3206,6 +3253,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3228,6 +3276,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3239,6 +3288,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3260,6 +3310,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3282,6 +3333,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3304,6 +3356,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3315,6 +3368,7 @@ exports[`statistics.js Test 1`] = `
         <View
           style={
             {
+              "color": "#000000",
               "flexDirection": "row",
               "height": 28,
               "overflow": "hidden",
@@ -3336,6 +3390,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3358,6 +3413,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3380,6 +3436,7 @@ exports[`statistics.js Test 1`] = `
               style={
                 {
                   "backgroundColor": "transparent",
+                  "color": "#000000",
                   "textAlign": "center",
                 }
               }
@@ -3398,7 +3455,7 @@ exports[`upload-download-data.js Test 1`] = `
 <RCTScrollView
   style={
     {
-      "backgroundColor": "#f1f1f1",
+      "backgroundColor": "#F1F1F1",
     }
   }
 >
@@ -3540,11 +3597,9 @@ exports[`upload-download-data.js Test 1`] = `
 exports[`view-goals.js Test 1`] = `
 <RCTScrollView
   style={
-    [
-      {
-        "marginTop": 20,
-      },
-    ]
+    {
+      "backgroundColor": "#FFFFFF",
+    }
   }
 >
   <View>
@@ -3750,11 +3805,9 @@ exports[`view-goals.js Test 1`] = `
 exports[`workout-history.js Test 1`] = `
 <RCTScrollView
   style={
-    [
-      {
-        "marginTop": 20,
-      },
-    ]
+    {
+      "backgroundColor": "#FFFFFF",
+    }
   }
 >
   <View>

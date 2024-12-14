@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const DropdownComponent = ({ data, value, onChange, style, placeholder = "Select an option" }) => {
+const DropdownComponent = ({ data, value, onChange, style, placeholderStyle, selectedTextStyle, placeholder = "Select an option" }) => {
     return (
         <View style = {styles.container}>
             <Dropdown
@@ -29,6 +29,8 @@ const DropdownComponent = ({ data, value, onChange, style, placeholder = "Select
                 onChange = {(item) => {
                     onChange(item.value);
                 }}
+                placeholderStyle = {placeholderStyle}
+                selectedTextStyle = {selectedTextStyle}
             />
         </View>
     );

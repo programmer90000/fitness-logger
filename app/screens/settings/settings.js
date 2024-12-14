@@ -5,6 +5,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
+import { colours } from "../../constants/colours.js";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);
@@ -48,13 +49,15 @@ const Settings = () => {
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Theme</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Theme</Text>
                     <DropdownComponent
                         data = {theme}
                         value = {themeValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("theme", newValue);
                             setThemeValue(newValue);
@@ -63,10 +66,12 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Weight</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Weight</Text>
                     <DropdownComponent
                         data = {weight}
                         value = {weightValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("weight", newValue);
                             setWeightValue(newValue);
@@ -75,10 +80,12 @@ const Settings = () => {
                     />
                 </View>
                 <View className = "flex-row items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Distance</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Distance</Text>
                     <DropdownComponent
                         data = {distance}
                         value = {distanceValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("distance", newValue);
                             setDistanceValue(newValue);
@@ -86,14 +93,14 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Sync With Drive</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Sync With Drive</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">Report A Bug</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report A Bug</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
-                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-xl">How To Use The App</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

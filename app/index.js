@@ -16,8 +16,8 @@ export default function App() {
     }
 
     return (
-        <View style = {[styles.container, { "backgroundColor": colours.colour_1 }]}> 
-            <Text style = {{ "color": colours.colour_3 }}>Open up App.js to start working on your app!</Text>
+        <View style = {[styles.container, { "backgroundColor": colours.main_background }]}> 
+            <Text style = {{ "color": colours.heading_colour_1 }}>Open up App.js to start working on your app!</Text>
             <StatusBar style = "auto" />
             <Footer />
         </View>

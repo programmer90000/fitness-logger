@@ -3,6 +3,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 export default function Badges() {
     const { isReady, colours } = useTheme();
@@ -21,15 +22,15 @@ export default function Badges() {
             "textAlign": "center",
         },
         "completed": {
-            "color": colours.colour_15,
+            "color": colours.badge_completed,
         },
         "unCompleted": {
-            "color": colours.colour_3,
+            "color": colours.badge_uncompleted,
         },
     });
     
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_1 }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
             <View style = {styles.badge}>
                 <Text style = {[styles.text, styles.completed]}>Badge 1</Text>
                 <MaterialCommunityIcons name = "shoe-cleat" size = {100} style = {styles.completed} />

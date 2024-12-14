@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Table, TableWrapper, Row, Rows, Col } from "react-native-reanimated-table";
 import LineChartComponent from "../../components/line-graph/line-graph";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours";
 
 const Statistics = () => {
     const { isReady, colours } = useTheme();
@@ -12,12 +13,12 @@ const Statistics = () => {
     }
     
     styles = StyleSheet.create({
-        "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.colour_1 },
-        "head": { "height": 40, "backgroundColor": colours.colour_13 },
+        "container": { "flex": 1, "padding": 16, "paddingTop": 30, "backgroundColor": colours.main_background },
+        "head": { "height": 40, "backgroundColor": colours.statistics_head },
         "wrapper": { "flexDirection": "row" },
-        "title": { "flex": 1, "backgroundColor": colours.colour_14 },
-        "row": { "height": 28, "color": colours.colour_3 },
-        "text": { "textAlign": "center", "color": colours.colour_3 },
+        "title": { "flex": 1, "backgroundColor": colours.statistics_title },
+        "row": { "height": 28, "color": colours.heading_colour_1 },
+        "text": { "textAlign": "center", "color": colours.heading_colour_1 },
     });
     
     const tableHead = ["", "Head1", "Head2", "Head3"];

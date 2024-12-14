@@ -100,7 +100,7 @@ const SetGoal = () => {
                 <View className = "flex-row items-center">
                     <Text className = "mr-4 w-16" style = {{ "color": colours.heading_colour_1 }}>Goal</Text>
                     <Controller control = {control} name = "goal" render = {({ "field": { onChange, onBlur, value } }) => { return (
-                        <DropdownComponent data = {possibleGoals} value = {type} onChange = {setType} className = "align-middle text-center w-[260px] flex-1 m-2.5]" style = {{ "backgroundColor": colours.input_field_background_1 }} />
+                        <DropdownComponent data = {possibleGoals} value = {type} onChange = {setType} className = "align-middle text-center w-[260px] flex-1 m-2.5]" style = {{ "backgroundColor": colours.input_field_background_1 }} placeholderStyle = {{ "color": colours.button_text_1 }} selectedTextStyle = {{ "color": colours.button_text_1 }} />
                     ); }}
                     />
                 </View>

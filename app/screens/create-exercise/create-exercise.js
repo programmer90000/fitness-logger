@@ -66,6 +66,8 @@ const CreateExercise = () => {
                     data = {exerciseType}
                     value = {selectedExerciseType}
                     onChange = {setselectedExerciseType}
+                    placeholderStyle = {{ "color": colours.button_text_1 }}
+                    selectedTextStyle = {{ "color": colours.button_text_1 }}
                 />
                 <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Notes</Text>
                 <Controller

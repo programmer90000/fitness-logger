@@ -56,6 +56,8 @@ const Settings = () => {
                     <DropdownComponent
                         data = {theme}
                         value = {themeValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("theme", newValue);
                             setThemeValue(newValue);
@@ -68,6 +70,8 @@ const Settings = () => {
                     <DropdownComponent
                         data = {weight}
                         value = {weightValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("weight", newValue);
                             setWeightValue(newValue);
@@ -80,6 +84,8 @@ const Settings = () => {
                     <DropdownComponent
                         data = {distance}
                         value = {distanceValue}
+                        placeholderStyle = {{ "color": colours.button_text_1 }}
+                        selectedTextStyle = {{ "color": colours.button_text_1 }}
                         onChange = {(newValue) => {
                             updateSetting("distance", newValue);
                             setDistanceValue(newValue);

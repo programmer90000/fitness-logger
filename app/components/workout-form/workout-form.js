@@ -124,46 +124,44 @@ const WorkoutForm = () => {
                     {fields.map((field, index) => { return (
                         <View key = {field.id} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             <View className = "flex-row w-full">
-                                <View className = "items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                    <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholderStyle = {{ "color": colours.button_text_1 }} selectedTextStyle = {{ "color": colours.button_text_1 }} placeholder = "Exercise Name" />
+                                    <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                 </View>
-                                <View className = "items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
-                                    <Text className = "text-center w-11/12 flex-1 m-2.5 h-[27px] leading-[35px]" style = {{ "color": colours.button_text_1 }}>N/A</Text>
+                                    <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
                                 </View>
-                                <View className = "items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.duration`}
-                                        className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.button_background_1}] h-5`}
+                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                className = {"align-middle text-center w-11/12 flex-1 m-2.5"}
-                                                style = {{ "color": colours.button_text_1 }}
+                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
                                             />
                                         ); }}
                                     />
                                 </View>
-                                <View className = "items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
+                                <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                     <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Reps</Text>
                                     <Controller
                                         control = {control}
                                         name = {`exercises.${index}.reps`}
-                                        className = {`align-middle text-center w-11/12 flex-1 m-2.5 bg-[${colours.button_background_1}] h-5`}
+                                        className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
                                         render = {({ "field": { onChange, onBlur, value } }) => { return (
                                             <TextInput
                                                 onBlur = {onBlur}
                                                 onChangeText = {onChange}
                                                 value = {value}
                                                 keyboardType = "numeric"
-                                                className = "align-middle text-center w-11/12 flex-1 m-2.5"
-                                                style = {{ "color": colours.button_text_1 }}
+                                                className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"
                                             />
                                         ); }}
                                     />

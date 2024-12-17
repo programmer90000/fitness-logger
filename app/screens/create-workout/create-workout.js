@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import { useTheme } from "../../hooks/useTheme.js";
+import { colours } from "../../constants/colours.js";
 
 const CreateWorkout = () => {
     const workoutPresets = [
@@ -18,14 +19,14 @@ const CreateWorkout = () => {
     }
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
-            <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
-                <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>Begin Empty Workout</Text>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
+                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Begin Empty Workout</Text>
             </TouchableOpacity>
-            <Text className = "text-2xl self-center m-10 mb-5">Workout Presets</Text>
+            <Text className = "text-2xl self-center m-10 mb-5" style = {{ "color": colours.text_1 }}>Workout Presets</Text>
             {workoutPresets.map((item, index) => { return (
-                <TouchableOpacity key = {index} style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[5px] w-4/6 items-center self-center mb-5">
-                    <Text className = "font-medium text-base" style = {{ "color": colours.colour_4 }}>{item.name}</Text>
+                <TouchableOpacity key = {index} style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[5px] w-4/6 items-center self-center mb-5">
+                    <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>{item.name}</Text>
                 </TouchableOpacity>
             ); })}
         </ScrollView>

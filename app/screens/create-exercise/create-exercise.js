@@ -6,6 +6,7 @@ import UploadMedia from "../../components/upload-media/upload-media.js";
 import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
+import { colours } from "../../constants/colours.js";
 
 const CreateExercise = () => {
     const { control, getValues } = useForm({});
@@ -46,9 +47,9 @@ const CreateExercise = () => {
     };
 
     return (
-        <ScrollView style = {{ "backgroundColor": colours.colour_2 }}>
+        <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Name</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Name</Text>
                 <Controller
                     control = {control}
                     name = "exerciseName"
@@ -60,13 +61,15 @@ const CreateExercise = () => {
                             }} value = {value} className = {"align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"} />
                         ); }}
                 />
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Type</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
                     data = {exerciseType}
                     value = {selectedExerciseType}
                     onChange = {setselectedExerciseType}
+                    placeholderStyle = {{ "color": colours.button_text_1 }}
+                    selectedTextStyle = {{ "color": colours.button_text_1 }}
                 />
-                <Text style = {{ "color": colours.colour_4 }} className = "text-xl">Exercise Notes</Text>
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Notes</Text>
                 <Controller
                     control = {control}
                     name = "exerciseNotes"
@@ -76,8 +79,8 @@ const CreateExercise = () => {
                         ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
-                <TouchableOpacity style = {{ "backgroundColor": "#FF0000" }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
-                    <Text style = {{ "color": colours.colour_4 }} className = "font-bold text-3xl">Add Exercise</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

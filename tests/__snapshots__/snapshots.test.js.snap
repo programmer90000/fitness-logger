@@ -1703,6 +1703,158 @@ exports[`log-workout.js Test 1`] = `
 </RCTScrollView>
 `;
 
+exports[`report-feedback.js Test 1`] = `
+<RCTScrollView
+  style={
+    {
+      "backgroundColor": "#F1F1F1",
+    }
+  }
+>
+  <View>
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Title"
+      style={
+        [
+          {
+            "textAlign": "center",
+          },
+          {
+            "width": "91.666667%",
+          },
+          {
+            "height": 48,
+          },
+          {
+            "flexBasis": "0%",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+          {
+            "marginBottom": 10,
+            "marginLeft": 10,
+            "marginRight": 10,
+            "marginTop": 10,
+          },
+          {
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          {
+            "backgroundColor": "#DEDEDE",
+          },
+        ]
+      }
+      value=""
+    />
+    <TextInput
+      multiline={true}
+      onChangeText={[Function]}
+      placeholder="Description"
+      style={
+        [
+          {
+            "textAlign": "center",
+          },
+          {
+            "width": "91.666667%",
+          },
+          {
+            "height": 48,
+          },
+          {
+            "flexBasis": "0%",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+          {
+            "marginBottom": 10,
+            "marginLeft": 10,
+            "marginRight": 10,
+            "marginTop": 10,
+          },
+          {
+            "borderBottomColor": "transparent",
+            "borderLeftColor": "transparent",
+            "borderRightColor": "transparent",
+            "borderTopColor": "transparent",
+          },
+          {
+            "backgroundColor": "#DEDEDE",
+          },
+        ]
+      }
+      value=""
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "backgroundColor": "#FF0000",
+          "marginTop": 15,
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontWeight": "700",
+            },
+            {
+              "fontSize": 30,
+              "lineHeight": 36,
+            },
+            {
+              "textAlign": "center",
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Send Email
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
 exports[`set-goal.js Test 1`] = `
 <RCTScrollView
   style={

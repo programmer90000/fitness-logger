@@ -12,6 +12,7 @@ import Statistics from "../app/screens/statistics/statistics.js";
 import UploadDownloadData from "../app/screens/upload-download-data/upload-download-data.js";
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
+import ReportFeedback from "../app/screens/report-feedback/report-feedback.js";
 import { useTheme } from "../app/hooks/useTheme.js";
 
 jest.mock("@react-native-async-storage/async-storage", () => {
@@ -137,6 +138,12 @@ test("view-goals.js Test", () => {
 
 test("workout-history.js Test", () => {
     const snapshot = renderer.create(<WorkoutHistory />);
+    let snapshotJSON = snapshot.toJSON();
+    expect(snapshotJSON).toMatchSnapshot();
+});
+
+test("report-feedback.js Test", () => {
+    const snapshot = renderer.create(<ReportFeedback />);
     let snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
 });

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
@@ -96,9 +97,11 @@ const Settings = () => {
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Sync With Drive</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report A Bug</Text>
-                </TouchableOpacity>
+                <Link href = "/screens/report-feedback/report-feedback" asChild>
+                    <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
+                        <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report Feedback</Text>
+                    </TouchableOpacity>
+                </Link>
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>

@@ -2943,7 +2943,7 @@ exports[`settings.js Test 1`] = `
         }
         accessible={true}
         collapsable={false}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -2981,7 +2981,7 @@ exports[`settings.js Test 1`] = `
             ]
           }
         >
-          Report A Bug
+          Report Feedback
         </Text>
       </View>
       <View

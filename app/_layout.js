@@ -16,6 +16,7 @@ export default function Layout() {
                 <Drawer.Screen name = "screens/view-goals/view-goals" options = {{ "drawerLabel": "View Goals", "title": "View Goals", "drawerItemStyle": { "display": "flex" } }}/>
                 <Drawer.Screen name = "screens/upload-download-data/upload-download-data" options = {{ "drawerLabel": "Upload/ Download data", "title": "Upload/ Download data", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/statistics/statistics" options = {{ "drawerLabel": "Statistics", "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
+                <Drawer.Screen name = "screens/create-badge/create-badge" options = {{ "drawerLabel": "Create Badge", "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/badges/badges" options = {{ "drawerLabel": "Badges", "title": "Badges", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/settings/settings" options = {{ "drawerLabel": "Settings", "title": "Settings", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/report-feedback/report-feedback" options = {{ "drawerLabel": "Report Feedback", "title": "Report Feedback", "drawerItemStyle": { "display": "flex" } }} />

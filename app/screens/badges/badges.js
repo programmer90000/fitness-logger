@@ -52,6 +52,7 @@ export default function Badges() {
             "fontSize": 32,
             "fontWeight": "bold",
             "textAlign": "center",
+            "paddingTop": 4,
         },
         "completed": {
             "color": colours.badge_completed,

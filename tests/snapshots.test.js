@@ -31,6 +31,8 @@ jest.mock("@react-native-async-storage/async-storage", () => {
 
 // Set a fixed date and time when running the tests
 const fixedDate = new Date("2024-10-21T00:00:00Z");
+const OriginalDate = global.Date;
+
 beforeAll(() => {
     global.Date = class extends Date {
         constructor() {
@@ -41,7 +43,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-    global.Date = Date;
+    global.Date = OriginalDate;
 });
 
 beforeEach(() => {
@@ -70,80 +72,110 @@ jest.mock("../app/hooks/useTheme.js", () => { return {
     "useTheme": jest.fn(),
 }; });
 
-test("index.js Test", () => {
+afterEach(() => {
+    jest.clearAllMocks();
+    jest.resetModules();
+});
+
+test("index.js Test", async () => {
     const snapshot = renderer.create(<App />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("badges.js Test", () => {
+test("badges.js Test", async () => {
     const snapshot = renderer.create(<Badges />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("create-a-new-workout-preset.js Test", () => {
+test("create-a-new-workout-preset.js Test", async () => {
     const snapshot = renderer.create(<CreateANewWorkoutPreset />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("create-exercise.js", () => {
+test("create-exercise.js", async () => {
     const snapshot = renderer.create(<CreateExercise />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("create-workout.js Test", () => {
+test("create-workout.js Test", async () => {
     const snapshot = renderer.create(<CreateWorkout />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("log-workout.js Test", () => {
+test("log-workout.js Test", async () => {
     const snapshot = renderer.create(<LogWorkout />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("set-goal.js Test", () => {
+test("set-goal.js Test", async () => {
     const snapshot = renderer.create(<SetGoal />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("settings.js Test", () => {
+test("settings.js Test", async () => {
     const snapshot = renderer.create(<Settings />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("statistics.js Test", () => {
+test("statistics.js Test", async () => {
     const snapshot = renderer.create(<Statistics />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("upload-download-data.js Test", () => {
+test("upload-download-data.js Test", async () => {
     const snapshot = renderer.create(<UploadDownloadData />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("view-goals.js Test", () => {
+test("view-goals.js Test", async () => {
     const snapshot = renderer.create(<ViewGoals />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });
 
-test("workout-history.js Test", () => {
+test("workout-history.js Test", async () => {
     const snapshot = renderer.create(<WorkoutHistory />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
 });
 
-test("report-feedback.js Test", () => {
+test("report-feedback.js Test", async () => {
     const snapshot = renderer.create(<ReportFeedback />);
-    let snapshotJSON = snapshot.toJSON();
+    const snapshotJSON = snapshot.toJSON();
     expect(snapshotJSON).toMatchSnapshot();
+    snapshot.unmount();
+
 });

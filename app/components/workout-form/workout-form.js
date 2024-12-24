@@ -24,7 +24,7 @@ const WorkoutForm = () => {
             "label": name,
             "value": name.replace(/\s/g, ""), // Remove spaces using regex
         };
-    }); realm.close();
+    });
     realm.close();
     
     const { isReady, colours } = useTheme();

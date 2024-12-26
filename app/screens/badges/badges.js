@@ -1,16 +1,48 @@
-import { ScrollView, View, Text, StyleSheet } from "react-native";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import React, { useEffect, useState } from "react";
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import Entypo from "@expo/vector-icons/Entypo";
+import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
+import { badges } from "../../../database/realm-database.js";
 
 export default function Badges() {
     const { isReady, colours } = useTheme();
+    const [badgesList, setBadgesList] = useState([]);
+    const [realm, setRealm] = useState(null);
 
-    if (!isReady) {
-        return null;
-    }
+    useEffect(() => {
+        if (!isReady) {
+            return;
+        }
+
+        const realmInstance = new Realm({ "schema": [badges] });
+        setRealm(realmInstance);
+        const allBadges = realmInstance.objects("Badges");
+        setBadgesList(allBadges);
+
+        const listener = () => {
+            setBadgesList([...realmInstance.objects("Badges")]);
+        };
+        realmInstance.addListener("change", listener);
+
+        return () => {
+            realmInstance.removeListener("change", listener);
+            realmInstance.close();
+        };
+    }, [isReady]);
+
+    const toggleBadgeCompletion = (badge) => {
+        if (realm) {
+            realm.write(() => {
+                const badgeToUpdate = realm.objectForPrimaryKey("Badges", badge.id);
+                if (badgeToUpdate) {
+                    badgeToUpdate.completed = !badgeToUpdate.completed;
+                }
+            });
+        }
+    };
+
     
     const styles = StyleSheet.create({
         "badge": {
@@ -20,6 +52,7 @@ export default function Badges() {
             "fontSize": 32,
             "fontWeight": "bold",
             "textAlign": "center",
+            "paddingTop": 4,
         },
         "completed": {
             "color": colours.badge_completed,
@@ -31,42 +64,19 @@ export default function Badges() {
     
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }} contentContainerStyle = {{ "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "flexWrap": "wrap" }}>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.completed]}>Badge 1</Text>
-                <MaterialCommunityIcons name = "shoe-cleat" size = {100} style = {styles.completed} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.completed]}>Badge 2</Text>
-                <FontAwesome6 name = "dumbbell" size = {100} style = {styles.completed} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.completed]}>Badge 3</Text>
-                <FontAwesome6 name = "mountain" size = {100} style = {styles.completed} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.completed]}>Badge 4</Text>
-                <Entypo name = "star" size = {100} style = {styles.completed} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.completed]}>Badge 5</Text>
-                <FontAwesome6 name = "medal" size = {100} style = {styles.completed} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.unCompleted]}>Badge 6</Text>
-                <Entypo name = "heart" size = {100} style = {styles.unCompleted} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.unCompleted]}>Badge 7</Text>
-                <FontAwesome6 name = "fire" size = {100} style = {styles.unCompleted} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.unCompleted]}>Badge 8</Text>
-                <FontAwesome6 name = "trophy" size = {100} style = {styles.unCompleted} />
-            </View>
-            <View style = {styles.badge}>
-                <Text style = {[styles.text, styles.unCompleted]}>Badge 9</Text>
-                <FontAwesome6 name = "bottle-water" size = {100} style = {styles.unCompleted} />
-            </View>
+            
+            {badgesList.length === 0 ? (
+                <Text className = "text-xl text-center mt-5" style = {{ "color": colours.button_text_1 }}>No badges available</Text>
+            ) : (
+                badgesList.map((badge) => { return (
+                    <View onTouchEnd = {() => { return toggleBadgeCompletion(badge); }} key = {badge.id} style = {styles.badge}>
+                        <TouchableOpacity key = {badge.id} style = {styles.badge}>
+                            <Text className = "text-xl text-center" style = {styles.text}>{badge.text}</Text>
+                            <FontAwesome6 name = "trophy" size = {100} style = {badge.completed ? styles.completed : styles.unCompleted} />
+                        </TouchableOpacity>
+                    </View>
+                ); })
+            )}
         </ScrollView>
     );
 }

@@ -74,7 +74,6 @@ jest.mock("../app/hooks/useTheme.js", () => { return {
 
 afterEach(() => {
     jest.clearAllMocks();
-    jest.resetModules();
 });
 
 test("index.js Test", async () => {

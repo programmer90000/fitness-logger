@@ -22,7 +22,7 @@ const WorkoutForm = () => {
     const names2 = names.map((name) => {
         return {
             "label": name,
-            "value": name.replace(/\s/g, ""), // Remove spaces using regex
+            "value": name,
         };
     });
     realm.close();

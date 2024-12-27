@@ -3,7 +3,7 @@ import WorkoutForm from "../../components/workout-form/workout-form.js";
 
 const CreateANewWorkoutPreset = () => {
     return (
-        <WorkoutForm />
+        <WorkoutForm saveTo = "workoutPresets" />
     );
 };
 

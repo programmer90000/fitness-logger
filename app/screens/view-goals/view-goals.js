@@ -40,9 +40,12 @@ const ViewGoals = () => {
                 <Text className = "text-xl text-center mt-5" style = {{ "color": colours.button_text_1 }}>No goals available</Text>
             ) : (
                 goalList.map((goal) => { return (
-                    <TouchableOpacity key = {goal.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }}>
-                        <Text className = "text-xl text-center" style = {{ "color": colours.button_text_1 }}>{goal.name}</Text>
-                        <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} />
+                    <TouchableOpacity key = {goal.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
+                        <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{goal.name}</Text>
+                        <View className = "flex-row justify-end items-center">
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                        </View>
                     </TouchableOpacity>
                 ); })
             )}

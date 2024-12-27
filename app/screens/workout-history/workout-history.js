@@ -40,9 +40,12 @@ const ViewWorkouts = () => {
                 <Text className = "text-xl text-center mt-5" style = {{ "color": colours.button_text_1 }}>No workouts completed</Text>
             ) : (
                 previousWorkoutsList.map((previousWorkout) => { return (
-                    <TouchableOpacity key = {previousWorkout.id} style = {{ "backgroundColor": colours.button_background_1 }} className = "flex-row p-2 h-20 justify-between items-center mt-[5px] w-4/6 items-center self-center mb-5">
-                        <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>{previousWorkout.name}</Text>
-                        <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} />
+                    <TouchableOpacity key = {previousWorkout.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
+                        <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{previousWorkout.name}</Text>
+                        <View className = "flex-row justify-end items-center">
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                        </View>
                     </TouchableOpacity>
                 ); })
             )}

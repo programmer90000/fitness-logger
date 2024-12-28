@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import { exercises, workoutPresets, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises } from "../../../database/realm-database.js";
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
@@ -9,6 +10,8 @@ import { useTheme } from "../../hooks/useTheme.js";
 const WorkoutForm = ({ saveTo }) => {
     const [removedButtons, setRemovedButtons] = useState([]);
     const [workoutName, setWorkoutName] = useState(null);
+    const [workoutDate, setWorkoutDate] = useState(new Date());
+    const [showDatePicker, setShowDatePicker] = useState(false);
 
     const { control, handleSubmit, getValues, setValue } = useForm({});
     const { fields, append, insert, remove } = useFieldArray({
@@ -58,7 +61,7 @@ const WorkoutForm = ({ saveTo }) => {
                         "id": newId,
                         "name": data.workoutName,
                         "notes": data.workoutNotes || "",
-                        "date": new Date(),
+                        "date": workoutDate,
                     });
                 }
 
@@ -80,8 +83,11 @@ const WorkoutForm = ({ saveTo }) => {
                             "volume": exercise.reps.toString(),
                         });
                     } else if (saveTo === "previousWorkouts") {
+                        const currentPreviousWorkoutExercisesId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
+                        const newPreviousWorkoutExercisesId = currentPreviousWorkoutExercisesId === 0 ? 1 : currentPreviousWorkoutExercisesId + 1;
+
                         realm.create("PreviousWorkoutsExercises", {
-                            "id": newWorkoutExercisesId,
+                            "id": newPreviousWorkoutExercisesId,
                             "previousWorkouts": newWorkout,
                             "exercises": exerciseObj,
                             "metrics": exercise.duration,
@@ -115,6 +121,26 @@ const WorkoutForm = ({ saveTo }) => {
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
+                {saveTo === "previousWorkouts" && (
+                    <View className = "w-11/12">
+                        <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Workout Date</Text>
+                        <TouchableOpacity onPress = {() => { return setShowDatePicker(true); }} className = "align-middle text-center w-full flex-1 m-2.5 bg-[#DEDEDE] p-3">
+                            <Text>{workoutDate.toDateString()}</Text>
+                        </TouchableOpacity>
+                        {showDatePicker && (
+                            <DateTimePicker
+                                value = {workoutDate}
+                                mode = "date"
+                                display = {Platform.OS === "ios" ? "spinner" : "default"}
+                                onChange = {(event, selectedDate) => {
+                                    setShowDatePicker(false);
+                                    if (selectedDate) { setWorkoutDate(selectedDate); }
+                                }}
+                            />
+                        )}
+                    </View>
+                )}
+
                 <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Workout Name</Text>
                 <Controller
                     control = {control}

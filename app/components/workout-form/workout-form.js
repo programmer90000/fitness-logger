@@ -7,13 +7,13 @@ import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
 
-const WorkoutForm = ({ saveTo }) => {
+const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [removedButtons, setRemovedButtons] = useState([]);
     const [workoutName, setWorkoutName] = useState(null);
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
 
-    const { control, handleSubmit, getValues, setValue } = useForm({});
+    const { control, handleSubmit, getValues, setValue } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",

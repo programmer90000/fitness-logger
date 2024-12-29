@@ -15,13 +15,20 @@ const CreateWorkout = () => {
             return;
         }
 
-        const realm = new Realm({ "schema": [workoutPresets] });
-        const allWorkoutPresets = realm.objects("WorkoutPresets");
-        setAllWorkoutPresets(allWorkoutPresets);
-
-        return () => {
-            realm.close();
+        const fetchWorkoutPresets = async () => {
+            const realm = new Realm({ "schema": [workoutPresets] });
+            try {
+                const allWorkoutPresets = realm.objects("WorkoutPresets");
+                const presetsArray = allWorkoutPresets.map((item) => { return { ...item }; });
+                setAllWorkoutPresets(presetsArray);
+            } catch (error) {
+                console.error("Error fetching workout presets:", error);
+            } finally {
+                realm.close();
+            }
         };
+
+        fetchWorkoutPresets();
     }, [isReady]);
 
     if (!isReady) {

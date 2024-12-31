@@ -10,33 +10,33 @@ import { badges } from "../../../database/realm-database.js";
 export default function Badges() {
     const { isReady, colours } = useTheme();
     const [badgesList, setBadgesList] = useState([]);
-    const [realm, setRealm] = useState(null);
+    const [realmInstance, setRealmInstance] = useState(null);
 
     useEffect(() => {
         if (!isReady) {
             return;
         }
 
-        const realmInstance = new Realm({ "schema": [badges] });
-        setRealm(realmInstance);
-        const allBadges = realmInstance.objects("Badges");
+        const realm = new Realm({ "schema": [badges] });
+        setRealmInstance(realm);
+        const allBadges = realm.objects("Badges");
         setBadgesList(allBadges);
 
         const listener = () => {
-            setBadgesList([...realmInstance.objects("Badges")]);
+            setBadgesList([...realm.objects("Badges")]);
         };
-        realmInstance.addListener("change", listener);
+        realm.addListener("change", listener);
 
         return () => {
-            realmInstance.removeListener("change", listener);
-            realmInstance.close();
+            realm.removeListener("change", listener);
+            realm.close();
         };
     }, [isReady]);
 
     const toggleBadgeCompletion = (badge) => {
-        if (realm) {
-            realm.write(() => {
-                const badgeToUpdate = realm.objectForPrimaryKey("Badges", badge.id);
+        if (realmInstance) {
+            realmInstance.write(() => {
+                const badgeToUpdate = realmInstance.objectForPrimaryKey("Badges", badge.id);
                 if (badgeToUpdate) {
                     badgeToUpdate.completed = !badgeToUpdate.completed;
                 }

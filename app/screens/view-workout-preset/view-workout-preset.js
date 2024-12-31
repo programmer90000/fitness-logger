@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
-import { colours } from "../../constants/colours.js";
 import { workoutPresets } from "../../../database/realm-database.js";
 
 const ViewWorkoutPresets = () => {
     const { isReady, colours } = useTheme();
     const [workoutPresetsList, setWorkoutPresetsList] = useState([]);
+    const [realmInstance, setRealmInstance] = useState(null);
 
     useEffect(() => {
         if (!isReady) {
@@ -16,6 +16,7 @@ const ViewWorkoutPresets = () => {
         }
 
         const realm = new Realm({ "schema": [workoutPresets] });
+        setRealmInstance(realm);
         const allWorkoutPresets = realm.objects("WorkoutPresets");
         setWorkoutPresetsList(allWorkoutPresets);
 
@@ -34,6 +35,34 @@ const ViewWorkoutPresets = () => {
         return null;
     }
 
+    const deleteWorkoutPreset = (presetId) => {
+        if (!realmInstance) { return; }
+
+        try {
+            realmInstance.write(() => {
+                const presetToDelete = realmInstance.objectForPrimaryKey("WorkoutPresets", presetId);
+                if (presetToDelete) {
+                    realmInstance.delete(presetToDelete);
+                }
+            });
+
+            setWorkoutPresetsList((prev) => { return prev.filter((item) => { return item.id !== presetId; }); });
+        } catch (error) {
+            console.error("Failed to delete workout preset:", error);
+        }
+    };
+
+    const confirmDelete = (presetId) => {
+        Alert.alert(
+            "Delete Workout Preset",
+            "Are you sure you want to delete this workout preset?",
+            [
+                { "text": "Cancel", "style": "cancel" },
+                { "text": "Delete", "style": "destructive", "onPress": () => { return deleteWorkoutPreset(presetId); } },
+            ],
+        );
+    };
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             {workoutPresetsList.length === 0 ? (
@@ -42,8 +71,10 @@ const ViewWorkoutPresets = () => {
                 workoutPresetsList.map((workoutPreset) => {
                     return (
                         <TouchableOpacity key = {workoutPreset.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
-                            <Text className = "text-xl text-center" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} />
+                            <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
+                            <View className = "flex-row justify-end items-center">
+                                <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                                <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} onPress = {() => { return confirmDelete(workoutPreset.id); }} />         </View>
                         </TouchableOpacity>
                     );
                 })

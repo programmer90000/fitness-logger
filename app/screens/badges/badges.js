@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { Ionicons } from "@expo/vector-icons";
 import Realm from "realm";
@@ -43,6 +43,34 @@ export default function Badges() {
             });
         }
     };
+    
+    const deleteBadge = (badgeId) => {
+        if (!realmInstance) { return; }
+
+        try {
+            realmInstance.write(() => {
+                const badgeToDelete = realmInstance.objectForPrimaryKey("Badges", badgeId);
+                if (badgeToDelete) {
+                    realmInstance.delete(badgeToDelete);
+                }
+            });
+
+            setBadgesList((badges) => { return badges.filter((item) => { return item.id !== badgeId; }); });
+        } catch (error) {
+            console.error("Failed to delete badge:", error);
+        }
+    };
+
+    const confirmDelete = (badgeId) => {
+        Alert.alert(
+            "Delete Badge",
+            "Are you sure you want to delete this badge?",
+            [
+                { "text": "Cancel", "style": "cancel" },
+                { "text": "Delete", "style": "destructive", "onPress": () => { return deleteBadge(badgeId); } },
+            ],
+        );
+    };
 
     
     const styles = StyleSheet.create({
@@ -80,7 +108,7 @@ export default function Badges() {
                         </TouchableOpacity>
                         <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
                             <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} />
-                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} style = {styles.icons} />
+                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return confirmDelete(badge.id); }} />
                         </View>
                     </View>
                 ); })

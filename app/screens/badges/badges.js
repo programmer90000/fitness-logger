@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { Ionicons } from "@expo/vector-icons";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
@@ -54,6 +55,9 @@ export default function Badges() {
             "textAlign": "center",
             "paddingTop": 4,
         },
+        "icons": {
+            "textAlign": "center",
+        },
         "completed": {
             "color": colours.badge_completed,
         },
@@ -69,11 +73,15 @@ export default function Badges() {
                 <Text className = "text-xl text-center mt-5" style = {{ "color": colours.button_text_1 }}>No badges available</Text>
             ) : (
                 badgesList.map((badge) => { return (
-                    <View onTouchEnd = {() => { return toggleBadgeCompletion(badge); }} key = {badge.id} style = {styles.badge}>
-                        <TouchableOpacity key = {badge.id} style = {styles.badge}>
+                    <View key = {badge.id} style = {styles.badge}>
+                        <TouchableOpacity key = {badge.id} style = {styles.badge} onPress = {() => { return toggleBadgeCompletion(badge); }}>
                             <Text className = "text-xl text-center" style = {styles.text}>{badge.text}</Text>
                             <FontAwesome6 name = "trophy" size = {100} style = {badge.completed ? styles.completed : styles.unCompleted} />
                         </TouchableOpacity>
+                        <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} />
+                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} style = {styles.icons} />
+                        </View>
                     </View>
                 ); })
             )}

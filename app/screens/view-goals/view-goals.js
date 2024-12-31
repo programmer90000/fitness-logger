@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import Realm from "realm";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";

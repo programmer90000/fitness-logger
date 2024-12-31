@@ -5,11 +5,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { exercises } from "../../../database/realm-database.js";
+import { useRouter } from "expo-router";
 
 const ViewExercise = () => {
     const { isReady, colours } = useTheme();
     const [exercisesList, setExercisesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
+    const router = useRouter(); // Initialize the router
 
     useEffect(() => {
         if (!isReady) {
@@ -65,6 +67,16 @@ const ViewExercise = () => {
         );
     };
 
+    const handleEditExercise = (exerciseId) => {
+        const exercise = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
+        if (exercise) {
+            router.push({
+                "pathname": "/screens/create-exercise/create-exercise",
+            });
+        }
+    };
+
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             {exercisesList.length === 0 ? (
@@ -74,7 +86,7 @@ const ViewExercise = () => {
                     <TouchableOpacity key = {exercise.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{exercise.name}</Text>
                         <View className = "flex-row justify-end items-center">
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditExercise(exercise.id); }} />
                             <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(exercise.id); }} />
                         </View>
                     </TouchableOpacity>

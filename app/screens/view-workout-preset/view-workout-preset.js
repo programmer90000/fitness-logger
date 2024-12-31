@@ -74,8 +74,7 @@ const ViewWorkoutPresets = () => {
                             <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
                             <View className = "flex-row justify-end items-center">
                                 <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
-                                <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} onPress = {() => { return confirmDelete(workoutPreset.id); }} />
-                            </View>
+                                <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} onPress = {() => { return confirmDelete(workoutPreset.id); }} />         </View>
                         </TouchableOpacity>
                     );
                 })

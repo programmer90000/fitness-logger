@@ -10,9 +10,12 @@ import { colours } from "../../constants/colours.js";
 
 const CreateExercise = () => {
     const { control, getValues } = useForm({});
-    const [exerciseName, setExerciseName] = useState("");
-    const [selectedExerciseType, setselectedExerciseType] = useState(null);
-    const [videoPath, setVideoPath] = useState(null);
+    const [exerciseState, setExerciseState] = useState({
+        "exerciseName": "",
+        "exerciseType": null,
+        "exerciseNotes": "",
+        "videoPath": null,
+    });
     
     const exerciseType = [
         { "label": "Reps", "value": "reps" },
@@ -27,7 +30,6 @@ const CreateExercise = () => {
     }
     
     const handleAddExercise = () => {
-        const formValues = getValues();
         const realm = new Realm({ "schema": [exercises] });
         realm.write(() => {
             const currentHighestId = realm.objects("Exercises").max("id") || 0;
@@ -40,10 +42,17 @@ const CreateExercise = () => {
                 newId = currentHighestId + 1;
             }
             
-            realm.create("Exercises", { "id": newId, "name": formValues.exerciseName, "type": selectedExerciseType, "notes": formValues.exerciseNotes, "video": videoPath, "personalBest": "N/A" });
+            realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A" });
         });
         const allExercises = realm.objects("Exercises");
         realm.close();
+    };
+
+    const updateExerciseState = (field, value) => {
+        setExerciseState((prev) => { return {
+            ...prev,
+            [field]: value,
+        }; });
     };
 
     return (
@@ -57,28 +66,26 @@ const CreateExercise = () => {
                         return (
                             <TextInput onBlur = {onBlur} onChangeText = {(text) => {
                                 onChange(text);
-                                setExerciseName(text);
-                            }} value = {value} className = {"align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"} />
+                                updateExerciseState("exerciseName", text);
+                            }} value = {exerciseState.exerciseName} className = {"align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"} />
                         ); }}
                 />
                 <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Type</Text>
                 <DropdownComponent
-                    data = {exerciseType}
-                    value = {selectedExerciseType}
-                    onChange = {setselectedExerciseType}
-                    placeholderStyle = {{ "color": colours.button_text_1 }}
-                    selectedTextStyle = {{ "color": colours.button_text_1 }}
-                />
+                    data = {exerciseType} value = {exerciseState.exerciseType} onChange = {(value) => { return updateExerciseState("exerciseType", value); }} placeholderStyle = {{ "color": colours.button_text_1 }} selectedTextStyle = {{ "color": colours.button_text_1 }} />
                 <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Exercise Notes</Text>
                 <Controller
                     control = {control}
                     name = "exerciseNotes"
                     render = {({ "field": { onChange, onBlur, value } }) => {
                         return (
-                            <TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} multiline = {true} numberOfLines = {3} className = {"align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"} />
+                            <TextInput onBlur = {onBlur} onChangeText = {(text) => {
+                                onChange(text);
+                                updateExerciseState("exerciseNotes", text);
+                            }} value = {exerciseState.exerciseNotes} multiline = {true} numberOfLines = {3} className = {"align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"} />
                         ); }}
                 />       
-                <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${exerciseName}.mp4`} mediaType = "Video" />
+                <UploadMedia onMediaSelect = {(path) => { return updateExerciseState("videoPath", path); }} mediaFileName = {`${exerciseState.exerciseName}.mp4`} mediaType = "Video" />
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>

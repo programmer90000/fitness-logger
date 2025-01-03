@@ -9,7 +9,7 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 
 const SetGoal = () => {
-    const { control, getValues } = useForm({});
+    const { control, getValues, reset } = useForm({});
     const [mode, setMode] = useState("date");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -77,6 +77,12 @@ const SetGoal = () => {
         });
         const allGoals = realm.objects("Goals");
         realm.close();
+
+        reset();
+        setStartDate(new Date());
+        setEndDate(new Date());
+        setReminderDate(new Date());
+        setType(null);
     };
 
     

@@ -9,7 +9,7 @@ import Realm from "realm";
 import { colours } from "../../constants/colours.js";
 
 const CreateExercise = () => {
-    const { control, getValues } = useForm({});
+    const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
         "exerciseName": "",
         "exerciseType": null,
@@ -46,6 +46,14 @@ const CreateExercise = () => {
         });
         const allExercises = realm.objects("Exercises");
         realm.close();
+        
+        reset();
+        setExerciseState({
+            "exerciseName": "",
+            "exerciseType": null,
+            "exerciseNotes": "",
+            "videoPath": null,
+        });
     };
 
     const updateExerciseState = (field, value) => {

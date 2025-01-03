@@ -13,7 +13,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
 
-    const { control, handleSubmit, getValues, setValue } = useForm({ defaultValues });
+    const { control, handleSubmit, getValues, setValue, reset } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
@@ -101,7 +101,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             console.error("Error saving workout:", error);
         } finally {
             realm.close();
-        }
+            reset({
+                "workoutName": "",
+                "workoutNotes": "",
+                "exercises": [],
+            }); }
     };
 
     const updateData = () => {

@@ -10,7 +10,7 @@ import { colours } from "../../constants/colours.js";
 const CreateBadge = () => {
     const [badgeText, setBadgeText] = useState(null);
     const [imagePath, setImagePath] = useState(null);
-    const { control, handleSubmit, getValues, setValue } = useForm({});
+    const { control, handleSubmit, getValues, setValue, reset } = useForm({});
     
     const { isReady, colours } = useTheme();
 
@@ -34,6 +34,7 @@ const CreateBadge = () => {
         });
         
         realm.close();
+        reset();
     };
 
     return (

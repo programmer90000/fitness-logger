@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
@@ -7,6 +7,7 @@ import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
+import { useLocalSearchParams } from "expo-router";
 
 const CreateExercise = () => {
     const { control, getValues, reset } = useForm({});
@@ -24,7 +25,20 @@ const CreateExercise = () => {
     ];
     
     const { isReady, colours } = useTheme();
+    
+    const { id, exerciseName, selectedExerciseType, exerciseNotes, videoPath } = useLocalSearchParams();
 
+    useEffect(() => {
+        if (id || exerciseName || selectedExerciseType || exerciseNotes || videoPath) {
+            setExerciseState({
+                "exerciseName": exerciseName || "",
+                "exerciseType": selectedExerciseType || null,
+                "exerciseNotes": exerciseNotes || "",
+                "videoPath": videoPath || null,
+            });
+        }
+    }, [id, exerciseName, selectedExerciseType, exerciseNotes, videoPath]);
+    
     if (!isReady) {
         return null;
     }

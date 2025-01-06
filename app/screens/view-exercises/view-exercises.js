@@ -72,6 +72,13 @@ const ViewExercise = () => {
         if (exercise) {
             router.push({
                 "pathname": "/screens/create-exercise/create-exercise",
+                "params": {
+                    "id": exercise.id,
+                    "exerciseName": exercise.name,
+                    "selectedExerciseType": exercise.type,
+                    "exerciseNotes": exercise.notes,
+                    "videoPath": exercise.video,
+                },
             });
         }
     };

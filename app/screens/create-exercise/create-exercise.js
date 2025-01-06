@@ -7,9 +7,10 @@ import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
-import { useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const CreateExercise = () => {
+    const router = useRouter();
     const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
         "exerciseName": "",
@@ -67,6 +68,10 @@ const CreateExercise = () => {
             "exerciseType": null,
             "exerciseNotes": "",
             "videoPath": null,
+        });
+        router.push({
+            "pathname": "/screens/create-exercise/create-exercise",
+            "params": {},
         });
     };
 

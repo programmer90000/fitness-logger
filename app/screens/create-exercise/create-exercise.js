@@ -13,6 +13,7 @@ const CreateExercise = () => {
     const router = useRouter();
     const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
+        "id": null,
         "exerciseName": "",
         "exerciseType": null,
         "exerciseNotes": "",
@@ -32,6 +33,7 @@ const CreateExercise = () => {
     useEffect(() => {
         if (id || exerciseName || selectedExerciseType || exerciseNotes || videoPath) {
             setExerciseState({
+                "id": id || null,
                 "exerciseName": exerciseName || "",
                 "exerciseType": selectedExerciseType || null,
                 "exerciseNotes": exerciseNotes || "",
@@ -52,17 +54,27 @@ const CreateExercise = () => {
     const handleAddExercise = () => {
         const realm = new Realm({ "schema": [exercises] });
         realm.write(() => {
-            const currentHighestId = realm.objects("Exercises").max("id") || 0;
-            let newId;
-
-            if (currentHighestId === 0)
-            {
-                newId = 1;
+            if (exerciseState.id) {
+                const existingExercise = realm.objects("Exercises").filtered(`id == ${exerciseState.id}`)[0];
+                if (existingExercise) {
+                    existingExercise.name = exerciseState.exerciseName;
+                    existingExercise.type = exerciseState.exerciseType;
+                    existingExercise.notes = exerciseState.exerciseNotes;
+                    existingExercise.video = exerciseState.videoPath;
+                }
             } else {
-                newId = currentHighestId + 1;
-            }
+                const currentHighestId = realm.objects("Exercises").max("id") || 0;
+                let newId;
+
+                if (currentHighestId === 0)
+                {
+                    newId = 1;
+                } else {
+                    newId = currentHighestId + 1;
+                }
             
-            realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A" });
+                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A" });
+            }
         });
         const allExercises = realm.objects("Exercises");
         realm.close();

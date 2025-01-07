@@ -5,8 +5,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { goals } from "../../../database/realm-database.js";
+import { useRouter } from "expo-router";
 
 const ViewGoals = () => {
+    const router = useRouter();
     const { isReady, colours } = useTheme();
     const [goalList, setGoalList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
@@ -63,6 +65,25 @@ const ViewGoals = () => {
             ],
         );
     };
+    
+    const handleEditGoal = (goalId) => {
+        const goal = realmInstance.objectForPrimaryKey("Goals", goalId);
+        if (goal) {
+            router.push({
+                "pathname": "/screens/set-goal/set-goal",
+                "params": {
+                    "id": goal.id,
+                    "goalName": goal.name,
+                    "selectedGoalType": goal.type,
+                    "goalValue": goal.value,
+                    "goalStartDate": goal.startDate.toISOString(),
+                    "goalEndDate": goal.endDate.toISOString(),
+                    "goalReminders": goal.reminders.toISOString(),
+                    "goalNotes": goal.notes,
+                },
+            });
+        }
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -73,7 +94,7 @@ const ViewGoals = () => {
                     <TouchableOpacity key = {goal.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{goal.name}</Text>
                         <View className = "flex-row justify-end items-center">
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditGoal(goal.id); } } />
                             <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(goal.id); }} />
                         </View>
                     </TouchableOpacity>

@@ -6,8 +6,10 @@ import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
+import { useRouter } from "expo-router";
 
 export default function Badges() {
+    const router = useRouter();
     const { isReady, colours } = useTheme();
     const [badgesList, setBadgesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
@@ -71,6 +73,20 @@ export default function Badges() {
             ],
         );
     };
+        
+    const handleEditBadge = (badgeId) => {
+        const badge = realmInstance.objectForPrimaryKey("Badges", badgeId);
+        if (badge) {
+            router.push({
+                "pathname": "/screens/create-badge/create-badge",
+                "params": {
+                    "id": badge.id,
+                    "image": badge.image,
+                    "text": badge.text,
+                },
+            });
+        }
+    };
 
     
     const styles = StyleSheet.create({
@@ -107,7 +123,7 @@ export default function Badges() {
                             <FontAwesome6 name = "trophy" size = {100} style = {badge.completed ? styles.completed : styles.unCompleted} />
                         </TouchableOpacity>
                         <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} />
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return handleEditBadge(badge.id); }} />
                             <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return confirmDelete(badge.id); }} />
                         </View>
                     </View>

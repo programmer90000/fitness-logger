@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -12,6 +12,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [workoutName, setWorkoutName] = useState(null);
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const [realmInstance, setRealmInstance] = useState(null);
 
     const { control, handleSubmit, getValues, setValue, reset } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
@@ -20,8 +21,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         "keyName": "fieldId",
     });
     
-    const realm = new Realm({ "schema": [exercises] });
-    const allExercises = realm.objects("Exercises");
+    const allExercises = realmInstance ? realmInstance.objects("Exercises") : [];
     const names = allExercises.map((exercise) => { return exercise.name; });
     const names2 = names.map((name) => {
         return {
@@ -29,36 +29,40 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             "value": name,
         };
     });
-    realm.close();
-    
     const { isReady, colours } = useTheme();
 
-    if (!isReady) {
-        return null;
-    }
-    
-    
-    const onSubmit = (data) => {
-        const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
+    useEffect(() => {
+        if (!isReady) {
+            return;
+        }
 
+        const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
+        setRealmInstance(realm);
+
+        return () => {
+            realm.close();
+        };
+    }, [isReady]);
+
+    const onSubmit = (data) => {
         try {
-            realm.write(() => {
+            realmInstance.write(() => {
                 let newId, newWorkout;
 
                 if (saveTo === "workoutPresets") {
-                    const currentWorkoutId = realm.objects("WorkoutPresets").max("id") || 0;
+                    const currentWorkoutId = realmInstance.objects("WorkoutPresets").max("id") || 0;
                     newId = currentWorkoutId === 0 ? 1 : currentWorkoutId + 1;
 
-                    newWorkout = realm.create("WorkoutPresets", {
+                    newWorkout = realmInstance.create("WorkoutPresets", {
                         "id": newId,
                         "name": data.workoutName,
                         "notes": data.workoutNotes || "",
                     });
                 } else if (saveTo === "previousWorkouts") {
-                    const currentPreviousWorkoutId = realm.objects("PreviousWorkouts").max("id") || 0;
+                    const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
                     newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
 
-                    newWorkout = realm.create("PreviousWorkouts", {
+                    newWorkout = realmInstance.create("PreviousWorkouts", {
                         "id": newId,
                         "name": data.workoutName,
                         "notes": data.workoutNotes || "",
@@ -67,16 +71,16 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 }
 
                 data.exercises.forEach((exercise) => {
-                    const currentWorkoutExercisesId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
+                    const currentWorkoutExercisesId = realmInstance.objects("WorkoutPresetsExercises").max("id") || 0;
                     const newWorkoutExercisesId = currentWorkoutExercisesId === 0 ? 1 : currentWorkoutExercisesId + 1;
 
-                    const exerciseObj = realm.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                    const exerciseObj = realmInstance.objects("Exercises").filtered("name == $0", exercise.name)[0];
                     if (!exerciseObj) {
                         throw new Error(`Exercise with name "${exercise.name}" not found.`);
                     }
 
                     if (saveTo === "workoutPresets") {
-                        realm.create("WorkoutPresetsExercises", {
+                        realmInstance.create("WorkoutPresetsExercises", {
                             "id": newWorkoutExercisesId,
                             "workoutPresets": newWorkout,
                             "exercises": exerciseObj,
@@ -84,10 +88,10 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                             "volume": exercise.reps.toString(),
                         });
                     } else if (saveTo === "previousWorkouts") {
-                        const currentPreviousWorkoutExercisesId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
+                        const currentPreviousWorkoutExercisesId = realmInstance.objects("PreviousWorkoutsExercises").max("id") || 0;
                         const newPreviousWorkoutExercisesId = currentPreviousWorkoutExercisesId === 0 ? 1 : currentPreviousWorkoutExercisesId + 1;
 
-                        realm.create("PreviousWorkoutsExercises", {
+                        realmInstance.create("PreviousWorkoutsExercises", {
                             "id": newPreviousWorkoutExercisesId,
                             "previousWorkouts": newWorkout,
                             "exercises": exerciseObj,
@@ -100,7 +104,6 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         } catch (error) {
             console.error("Error saving workout:", error);
         } finally {
-            realm.close();
             reset({
                 "workoutName": "",
                 "workoutNotes": "",

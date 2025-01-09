@@ -44,7 +44,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
         if (id) {
             console.log(`ID is: ${id}`);
+            const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
+            console.log(`Name is: ${workoutPreset.name}`);
+            console.log(`Notes are: ${workoutPreset.notes}`);
         }
+
 
         return () => {
             realm.close();

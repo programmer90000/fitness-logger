@@ -6,8 +6,10 @@ import { exercises, workoutPresets, workoutPresetsExercises, previousWorkouts, p
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const WorkoutForm = ({ saveTo, defaultValues }) => {
+    const router = useRouter();
     const [removedButtons, setRemovedButtons] = useState([]);
     const [workoutName, setWorkoutName] = useState(null);
     const [workoutDate, setWorkoutDate] = useState(new Date());
@@ -30,6 +32,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
     });
     const { isReady, colours } = useTheme();
+    const { id } = useLocalSearchParams();
 
     useEffect(() => {
         if (!isReady) {
@@ -38,6 +41,10 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
         const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
         setRealmInstance(realm);
+
+        if (id) {
+            console.log(`ID is: ${id}`);
+        }
 
         return () => {
             realm.close();

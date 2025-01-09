@@ -71,6 +71,7 @@ const ViewWorkoutPresets = () => {
         if (workoutPreset) {
             router.push({
                 "pathname": "/screens/create-a-new-workout-preset/create-a-new-workout-preset",
+                "params": { "id": workoutPresetId },
             });
         }
     };

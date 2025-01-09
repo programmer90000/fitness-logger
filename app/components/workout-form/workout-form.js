@@ -45,30 +45,18 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         if (id) {
             const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
             const exerciseRecords = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id == $0", parseInt(id));
+            
             const exercisesData = exerciseRecords.map((exercise) => { return {
                 "name": exercise.exercises.name,
                 "duration": exercise.metrics,
                 "reps": exercise.volume,
                 "personalBest": "N/A",
             }; });
+            
             reset({
                 "workoutName": workoutPreset.name,
                 "workoutNotes": workoutPreset.notes,
                 "exercises": exercisesData,
-            });
-
-            console.log(`ID: ${id}`);
-            console.log(`Workout Preset Name: ${workoutPreset.name}`);
-            console.log(`Workout Preset Notes: ${workoutPreset.notes}`);
-            exerciseRecords.forEach((exercise, index) => {
-                console.log(`
-                    Exercise ID: ${exercise.id}
-                    Exercses Workout Preset ID: ${JSON.stringify(exercise.workoutPresets)}
-                    Exercises Exercise ID: ${JSON.stringify(exercise.exercises)}
-                    Metrics: ${exercise.metrics}
-                    Volume: ${exercise.volume}
-                `,
-                );
             });
         }
 

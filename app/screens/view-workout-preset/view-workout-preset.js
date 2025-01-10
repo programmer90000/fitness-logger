@@ -4,8 +4,10 @@ import Realm from "realm";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { workoutPresets } from "../../../database/realm-database.js";
+import { useRouter } from "expo-router";
 
 const ViewWorkoutPresets = () => {
+    const router = useRouter();
     const { isReady, colours } = useTheme();
     const [workoutPresetsList, setWorkoutPresetsList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
@@ -62,6 +64,17 @@ const ViewWorkoutPresets = () => {
             ],
         );
     };
+  
+    const handleEditWorkoutPreset = (workoutPresetId) => {
+        const workoutPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", workoutPresetId);
+        
+        if (workoutPreset) {
+            router.push({
+                "pathname": "/screens/create-a-new-workout-preset/create-a-new-workout-preset",
+                "params": { "id": workoutPresetId },
+            });
+        }
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -73,8 +86,9 @@ const ViewWorkoutPresets = () => {
                         <TouchableOpacity key = {workoutPreset.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
                             <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
                             <View className = "flex-row justify-end items-center">
-                                <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
-                                <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} onPress = {() => { return confirmDelete(workoutPreset.id); }} />         </View>
+                                <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditWorkoutPreset(workoutPreset.id); }} />
+                                <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} onPress = {() => { return confirmDelete(workoutPreset.id); }} />
+                            </View>
                         </TouchableOpacity>
                     );
                 })

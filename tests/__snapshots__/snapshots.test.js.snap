@@ -380,6 +380,7 @@ exports[`create-exercise.js 1`] = `
             },
           ]
         }
+        value=""
       />
       <Text
         style={
@@ -518,6 +519,7 @@ exports[`create-exercise.js 1`] = `
             },
           ]
         }
+        value=""
       />
       <View
         style={

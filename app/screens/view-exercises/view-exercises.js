@@ -83,7 +83,6 @@ const ViewExercise = () => {
         }
     };
 
-
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             {exercisesList.length === 0 ? (

@@ -64,7 +64,7 @@ const ViewWorkoutPresets = () => {
             ],
         );
     };
-    
+  
     const handleEditWorkoutPreset = (workoutPresetId) => {
         const workoutPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", workoutPresetId);
         

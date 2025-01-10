@@ -15,7 +15,6 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [realmInstance, setRealmInstance] = useState(null);
-
     const { control, handleSubmit, getValues, setValue, reset } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
         control,
@@ -60,7 +59,6 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             });
         }
 
-
         return () => {
             realm.close();
         };
@@ -83,7 +81,6 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 } else if (saveTo === "previousWorkouts") {
                     const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
                     newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
-
                     newWorkout = realmInstance.create("PreviousWorkouts", {
                         "id": newId,
                         "name": data.workoutName,

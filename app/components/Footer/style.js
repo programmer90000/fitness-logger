@@ -1,16 +1,11 @@
 import { StyleSheet } from "react-native";
-
-const colours = {
-    "black": "#060606",
-    "white": "#f1f1f1",
-    "red": "#d10000",
-};
+import { colours } from "../../constants/colours.js";
 
 const styles = StyleSheet.create({
     "container": {
         "flex": 1,
-        "backgroundColor": colours.red,
-        "color": colours.black,
+        "backgroundColor": colours.footer_background,
+        "color": colours.footer_images,
         "display": "flex",
         "alignItems": "center",
         "justifyContent": "space-evenly",

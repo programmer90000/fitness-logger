@@ -5,15 +5,17 @@ import LineChartComponent from "../../components/line-graph/line-graph";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours";
 import Realm from "realm";
-import { previousWorkouts } from "../../../database/realm-database.js";
+import { exercises, previousWorkouts, previousWorkoutsExercises } from "../../../database/realm-database.js";
 
 const Statistics = () => {
     const { isReady, colours } = useTheme();
     const [numberOfWorkouts, setNumberOfWorkouts] = useState();
+    const [numberOfExercises, setNumberOfExercises] = useState();
 
     useEffect(() => {
-        const realm = new Realm({ "schema": [previousWorkouts] });
+        const realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
         setNumberOfWorkouts(realm.objects("PreviousWorkouts").length);
+        setNumberOfExercises(realm.objects("PreviousWorkoutsExercises").length);
         realm.close();
     }, []);
     
@@ -42,6 +44,7 @@ const Statistics = () => {
     return (
         <View style = {styles.container}>
             <Text>Number of workouts completed: {numberOfWorkouts}</Text>
+            <Text>Number of exercises completed: {numberOfExercises}</Text>
             <Table borderStyle = {{ "borderWidth": 1 }}>
                 <Row data = {tableHead} flexArr = {[1, 2, 1, 1]} style = {styles.head} textStyle = {styles.text}/>
                 <TableWrapper style = {styles.wrapper}>

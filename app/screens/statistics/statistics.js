@@ -13,6 +13,7 @@ const Statistics = () => {
     const [numberOfExercises, setNumberOfExercises] = useState();
     const [numberOfRepsExercises, setNumberOfRepsExercises] = useState();
     const [numberOfWeightAndRepsExercises, setNumberOfWeightAndRepsExercises] = useState();
+    const [numberOfDistanceAndTimeExercises, setNumberOfDistanceAndTimeExercises] = useState();
 
     useEffect(() => {
         const realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
@@ -20,6 +21,7 @@ const Statistics = () => {
         setNumberOfExercises(realm.objects("PreviousWorkoutsExercises").length);
         setNumberOfRepsExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "reps").length);
         setNumberOfWeightAndRepsExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "weightAndReps").length);
+        setNumberOfDistanceAndTimeExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "distanceAndTime").length);
         realm.close();
     }, []);
     
@@ -51,6 +53,7 @@ const Statistics = () => {
             <Text>Number of exercises completed: {numberOfExercises}</Text>
             <Text>Number of exercises measured by Reps completed: {numberOfRepsExercises}</Text>
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
+            <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
             <Table borderStyle = {{ "borderWidth": 1 }}>
                 <Row data = {tableHead} flexArr = {[1, 2, 1, 1]} style = {styles.head} textStyle = {styles.text}/>
                 <TableWrapper style = {styles.wrapper}>

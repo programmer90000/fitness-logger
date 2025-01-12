@@ -11,11 +11,13 @@ const Statistics = () => {
     const { isReady, colours } = useTheme();
     const [numberOfWorkouts, setNumberOfWorkouts] = useState();
     const [numberOfExercises, setNumberOfExercises] = useState();
+    const [numberOfRepsExercises, setNumberOfRepsExercises] = useState();
 
     useEffect(() => {
         const realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
         setNumberOfWorkouts(realm.objects("PreviousWorkouts").length);
         setNumberOfExercises(realm.objects("PreviousWorkoutsExercises").length);
+        setNumberOfRepsExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "reps").length);
         realm.close();
     }, []);
     
@@ -45,6 +47,7 @@ const Statistics = () => {
         <View style = {styles.container}>
             <Text>Number of workouts completed: {numberOfWorkouts}</Text>
             <Text>Number of exercises completed: {numberOfExercises}</Text>
+            <Text>Number of exercises measured by Reps completed: {numberOfRepsExercises}</Text>
             <Table borderStyle = {{ "borderWidth": 1 }}>
                 <Row data = {tableHead} flexArr = {[1, 2, 1, 1]} style = {styles.head} textStyle = {styles.text}/>
                 <TableWrapper style = {styles.wrapper}>

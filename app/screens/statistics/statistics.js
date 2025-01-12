@@ -14,6 +14,7 @@ const Statistics = () => {
     const [numberOfRepsExercises, setNumberOfRepsExercises] = useState();
     const [numberOfWeightAndRepsExercises, setNumberOfWeightAndRepsExercises] = useState();
     const [numberOfDistanceAndTimeExercises, setNumberOfDistanceAndTimeExercises] = useState();
+    const [averageNumberOfExercisesPerWorkout, setAverageNumberOfExercisesPerWorkout] = useState();
 
     useEffect(() => {
         const realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });
@@ -22,6 +23,12 @@ const Statistics = () => {
         setNumberOfRepsExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "reps").length);
         setNumberOfWeightAndRepsExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "weightAndReps").length);
         setNumberOfDistanceAndTimeExercises(realm.objects("PreviousWorkoutsExercises").filtered("exercises.type == $0", "distanceAndTime").length);
+        let totalExercises = 0;
+        realm.objects("PreviousWorkouts").forEach((workout) => {
+            const associatedExercises = realm.objects("PreviousWorkoutsExercises").filtered(`previousWorkouts.id == ${workout.id}`);
+            totalExercises += associatedExercises.length;
+        });
+        setAverageNumberOfExercisesPerWorkout(realm.objects("PreviousWorkouts").length > 0 ? totalExercises / realm.objects("PreviousWorkouts").length : 0);
         realm.close();
     }, []);
     
@@ -54,6 +61,7 @@ const Statistics = () => {
             <Text>Number of exercises measured by Reps completed: {numberOfRepsExercises}</Text>
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
             <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
+            <Text>Average number of exercises per workout: {averageNumberOfExercisesPerWorkout}</Text>
             <Table borderStyle = {{ "borderWidth": 1 }}>
                 <Row data = {tableHead} flexArr = {[1, 2, 1, 1]} style = {styles.head} textStyle = {styles.text}/>
                 <TableWrapper style = {styles.wrapper}>

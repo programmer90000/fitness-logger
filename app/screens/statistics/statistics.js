@@ -28,6 +28,11 @@ const Statistics = () => {
             totalExercises += associatedExercises.length;
         });
         setAverageNumberOfExercisesPerWorkout(realm.objects("PreviousWorkouts").length > 0 ? totalExercises / realm.objects("PreviousWorkouts").length : 0);
+        const previousWorkoutsExercisesArray = realm.objects("PreviousWorkoutsExercises");
+        previousWorkoutsExercisesArray.forEach((previousWorkout) => {
+            const volumeMultipliedByMetrics = previousWorkout.volume * previousWorkout.metrics;
+            console.log(volumeMultipliedByMetrics);
+        });
         realm.close();
     }, []);
     

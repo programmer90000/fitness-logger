@@ -52,8 +52,7 @@ const Statistics = () => {
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
             <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
             <Text>Average number of exercises per workout: {averageNumberOfExercisesPerWorkout}</Text>
-            <LineChartComponent 
-                labels = {["January", "February", "March", "April", "May", "June"]} 
+            <LineChartComponent
                 dataPoints = {[50, 20, 2, 86, 71, 100]} 
                 lineColor = "#000"
                 backgroundGradientFrom = "#FF7F7F"

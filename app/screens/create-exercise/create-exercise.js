@@ -44,10 +44,6 @@ const CreateExercise = () => {
     }, [id, exerciseName, selectedExerciseType, exerciseNotes, videoPath]);
     
     if (!isReady) {
-        router.push({
-            "pathname": "/screens/create-exercise/create-exercise",
-            "params": {}, // Reset params to empty
-        });
         return null;
     }
     

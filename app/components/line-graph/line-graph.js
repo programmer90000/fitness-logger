@@ -31,7 +31,7 @@ const LineChartComponent = ({ labels, dataPoints, lineColor, backgroundGradientF
     const screenWidth = Dimensions.get("window").width;
 
     return (
-        <View style = {{ "flex": 1, "justifyContent": "center", "alignItems": "center" }}>
+        <View style = {{ "justifyContent": "center", "alignItems": "center" }}>
             <LineChart data = {data} width = {screenWidth * 0.9} height = {220} chartConfig = {chartConfig} bezier fromZero style = {{ "marginVertical": 8, "borderRadius": 16 }} />
         </View>
     );

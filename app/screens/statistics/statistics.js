@@ -32,7 +32,6 @@ const Statistics = () => {
         const previousWorkoutsExercisesArray = realm.objects("PreviousWorkoutsExercises");
         previousWorkoutsExercisesArray.forEach((previousWorkout) => {
             const volumeMultipliedByMetrics = previousWorkout.volume * previousWorkout.metrics;
-            console.log(volumeMultipliedByMetrics);
             setWeightSizeTimesReps((prevState) => {
                 const newState = [...prevState, volumeMultipliedByMetrics];
                 if (newState.length > 5) {
@@ -73,8 +72,9 @@ const Statistics = () => {
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
             <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
             <Text>Average number of exercises per workout: {averageNumberOfExercisesPerWorkout}</Text>
+            <Text>Average Weight X Reps over time:</Text>
             <LineChartComponent
-                dataPoints = {[50, 20, 2, 86, 71, 100]} 
+                dataPoints = {weightSizeTimesReps} 
                 lineColor = "#000"
                 backgroundGradientFrom = "#FF7F7F"
                 backgroundGradientTo = "#DC0000"

@@ -14,6 +14,7 @@ const Statistics = () => {
     const [numberOfWeightAndRepsExercises, setNumberOfWeightAndRepsExercises] = useState();
     const [numberOfDistanceAndTimeExercises, setNumberOfDistanceAndTimeExercises] = useState();
     const [averageNumberOfExercisesPerWorkout, setAverageNumberOfExercisesPerWorkout] = useState();
+    const [weightSizeTimesReps, setWeightSizeTimesReps] = useState([]);
 
     useEffect(() => {
         const realm = new Realm({ "schema": [previousWorkouts, exercises, previousWorkoutsExercises] });

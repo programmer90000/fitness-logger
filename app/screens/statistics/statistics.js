@@ -106,7 +106,7 @@ const Statistics = () => {
     });
 
     return (
-        <ScrollView style = {styles.container}>
+        <ScrollView style = {styles.container} contentContainerStyle = {{ "paddingBottom": 30 }} >
             <Text>Number of workouts completed: {numberOfWorkouts}</Text>
             <Text>Number of exercises completed: {numberOfExercises}</Text>
             <Text>Number of exercises measured by Reps completed: {numberOfRepsExercises}</Text>

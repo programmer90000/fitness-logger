@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, ScrollView, Text } from "react-native";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours";
 import Realm from "realm";
@@ -105,7 +105,7 @@ const Statistics = () => {
     });
 
     return (
-        <View style = {styles.container}>
+        <ScrollView style = {styles.container}>
             <Text>Number of workouts completed: {numberOfWorkouts}</Text>
             <Text>Number of exercises completed: {numberOfExercises}</Text>
             <Text>Number of exercises measured by Reps completed: {numberOfRepsExercises}</Text>
@@ -118,7 +118,7 @@ const Statistics = () => {
             <LineChartComponent dataPoints = {weightSizeTimesReps} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
             <Text style = {{ "marginTop": 30, "fontWeight": "bold", "fontSize": 30 }}>Distance/ Time</Text>
             <LineChartComponent dataPoints = {distanceTimesTime} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
-        </View>
+        </ScrollView>
     );
 };
 

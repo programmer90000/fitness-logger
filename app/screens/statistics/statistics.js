@@ -14,6 +14,7 @@ const Statistics = () => {
     const [numberOfWeightAndRepsExercises, setNumberOfWeightAndRepsExercises] = useState();
     const [numberOfDistanceAndTimeExercises, setNumberOfDistanceAndTimeExercises] = useState();
     const [averageNumberOfExercisesPerWorkout, setAverageNumberOfExercisesPerWorkout] = useState();
+    const [reps, setReps] = useState([]);
     const [weightSizeTimesReps, setWeightSizeTimesReps] = useState([]);
     const [distanceTimesTime, setDistanceTimesTime] = useState([]);
 
@@ -32,7 +33,25 @@ const Statistics = () => {
         setAverageNumberOfExercisesPerWorkout(realm.objects("PreviousWorkouts").length > 0 ? totalExercises / realm.objects("PreviousWorkouts").length : 0);
         const previousWorkoutsExercisesArray = realm.objects("PreviousWorkoutsExercises");
         previousWorkoutsExercisesArray.forEach((previousWorkout) => {
-            if (previousWorkout.exercises.type === "weightAndReps") {
+            const volume = previousWorkout.volume;
+            if (previousWorkout.exercises.type === "reps") {
+                setReps((prevState) => {
+                    const newState = [...prevState, volume];
+                    if (newState.length > 5) {
+                        const quarterSize = Math.ceil(newState.length / 6);
+                        const averagedArray = [];
+                        for (let i = 0; i < newState.length; i += quarterSize) {
+                            const quarter = newState.slice(i, i + quarterSize);
+                            const average = quarter.reduce((sum, val) => { return sum + val; }, 0) / quarter.length;
+                            averagedArray.push(average);
+                        }
+                        return averagedArray.slice(0, 5);
+                    }
+
+                    return newState;
+                });
+            }
+            else if (previousWorkout.exercises.type === "weightAndReps") {
                 const volumeMultipliedByMetrics = previousWorkout.volume * previousWorkout.metrics;
                 setWeightSizeTimesReps((prevState) => {
                     const newState = [...prevState, volumeMultipliedByMetrics];
@@ -93,6 +112,7 @@ const Statistics = () => {
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
             <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
             <Text>Average number of exercises per workout: {averageNumberOfExercisesPerWorkout}</Text>
+            <LineChartComponent dataPoints = {reps} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
             <LineChartComponent dataPoints = {weightSizeTimesReps} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
             <LineChartComponent dataPoints = {distanceTimesTime} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
 

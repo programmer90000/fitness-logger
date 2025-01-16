@@ -112,10 +112,12 @@ const Statistics = () => {
             <Text>Number of exercises measured by Weight and Reps completed: {numberOfWeightAndRepsExercises}</Text>
             <Text>Number of exercises measured by Distance and Time completed: {numberOfDistanceAndTimeExercises}</Text>
             <Text>Average number of exercises per workout: {averageNumberOfExercisesPerWorkout}</Text>
+            <Text style = {{ "marginTop": 30, "fontWeight": "bold", "fontSize": 30 }}>Reps</Text>
             <LineChartComponent dataPoints = {reps} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
+            <Text style = {{ "marginTop": 30, "fontWeight": "bold", "fontSize": 30 }}>Weight/ Reps</Text>
             <LineChartComponent dataPoints = {weightSizeTimesReps} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
+            <Text style = {{ "marginTop": 30, "fontWeight": "bold", "fontSize": 30 }}>Distance/ Time</Text>
             <LineChartComponent dataPoints = {distanceTimesTime} lineColor = "#000" backgroundGradientFrom = "#FF7F7F" backgroundGradientTo = "#DC0000" labelColor = "#000" dotColor = "#000" decimalPlaces = {2} />
-
         </View>
     );
 };

@@ -52,6 +52,8 @@ const previousWorkoutsExercises = {
         "id": "int",
         "previousWorkouts": "PreviousWorkouts",
         "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };

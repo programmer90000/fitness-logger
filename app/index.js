@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { Text, ScrollView } from "react-native";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
@@ -39,7 +39,7 @@ export default function App() {
     ];
 
     return (
-        <View style = {[styles.container, { "backgroundColor": colours.main_background }]}> 
+        <ScrollView style = {[styles.container, { "backgroundColor": colours.main_background }]} contentContainerStyle = {{ "alignItems": "center" }} > 
             <Carousel data = {carouselData} />
             <Text>Why use a fitness logger app?</Text>
             <Text>Using a fitness logger app is a powerful way to take control of your health and fitness journey. It helps you monitor your progress, set achievable goals, and stay accountable by providing a clear picture of your workouts. By tracking your efforts, you can identify trends and make informed adjustments to your routine, ensuring you continue improving your fitness. Whether you're striving to lose weight, build strength, or simply maintain a healthy lifestyle, a fitness logger app makes it easier to turn your goals into lasting habits.</Text>
@@ -47,6 +47,6 @@ export default function App() {
             <FAQComponent faqData = {benefitsOfUsingFitnessLogger} />
             <StatusBar style = "auto" />
             <Footer />
-        </View>
+        </ScrollView>
     );
 }

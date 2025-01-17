@@ -5,6 +5,7 @@ import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
 import * as SplashScreen from "expo-splash-screen";
+import Carousel from "./components/carousel/carousel.js";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -15,9 +16,15 @@ export default function App() {
         return null;
     }
 
+    const carouselData = [
+        { "image": "https://imageplaceholder.net/300x200/bebebe", "text": "Slide 1" },
+        { "image": "https://imageplaceholder.net/300x200/9c9c9c", "text": "Slide 2" },
+        { "image": "https://imageplaceholder.net/300x200/716f6f", "text": "Slide 3" },
+    ];
+
     return (
         <View style = {[styles.container, { "backgroundColor": colours.main_background }]}> 
-            <Text style = {{ "color": colours.heading_colour_1 }}>Open up App.js to start working on your app!</Text>
+            <Carousel data = {carouselData} />
             <StatusBar style = "auto" />
             <Footer />
         </View>

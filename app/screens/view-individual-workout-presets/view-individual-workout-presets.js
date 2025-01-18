@@ -36,19 +36,20 @@ const ViewWorkoutPresetDetails = () => {
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View>
-                <Text>{workoutPreset.name}</Text>
-                <Text>Notes:</Text>
-                <Text>{workoutPreset.notes}</Text>
+                <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Name</Text>
+                <Text className = "text-center text-xl">{workoutPreset.name}</Text>
+                <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Notes:</Text>
+                <Text className = "text-center text-xl">{workoutPreset.notes}</Text>
 
-                <Text>Exercises:</Text>
+                <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Exercises:</Text>
                 {workoutPresetsExercisesList.length > 0 ? (
-                    workoutPresetsExercisesList.map((workoutPresetsExercise) => {
+                    workoutPresetsExercisesList.map((workoutPresetsExercise, index) => {
                         const exercise = workoutPresetsExercise.exercises;
                         return (
-                            <View key = {exercise.id}>
-                                <Text>{exercise.name}</Text>
-                                <Text>Duration: {workoutPresetsExercise.metrics}</Text>
-                                <Text>Reps: {workoutPresetsExercise.volume}</Text>
+                            <View key = {index}>
+                                <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-xl mt-2 text-center">{exercise.name}</Text>
+                                <Text className = "text-center">Duration: {workoutPresetsExercise.metrics}</Text>
+                                <Text className = "text-center">Reps: {workoutPresetsExercise.volume}</Text>
                             </View>
                         );
                     })

@@ -75,6 +75,17 @@ const ViewWorkoutPresets = () => {
             });
         }
     };
+    
+    const handleViewWorkoutPreset = (workoutPresetId) => {
+        const workoutPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", workoutPresetId);
+        
+        if (workoutPreset) {
+            router.push({
+                "pathname": "/screens/view-individual-workout-presets/view-individual-workout-presets",
+                "params": { "id": workoutPresetId },
+            });
+        }
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -83,7 +94,7 @@ const ViewWorkoutPresets = () => {
             ) : (
                 workoutPresetsList.map((workoutPreset) => {
                     return (
-                        <TouchableOpacity key = {workoutPreset.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
+                        <TouchableOpacity key = {workoutPreset.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return handleViewWorkoutPreset(workoutPreset.id); }} >
                             <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
                             <View className = "flex-row justify-end items-center">
                                 <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditWorkoutPreset(workoutPreset.id); }} />

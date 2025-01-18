@@ -17,7 +17,7 @@ const FAQComponent = ({ faqData, style }) => {
     });
 
     return (
-        <View className = {`p-2.5 ${style}`}>
+        <View className = {`p-2.5 w-96 ${style}`}>
             {faqData.map((item, index) => { return (
                 <View key = {index}>
                     <TouchableOpacity onPress = {() => { return toggleExpanded(index); }} style = {styles.header} className = "p-[15px] border-[1px]" >

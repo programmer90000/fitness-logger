@@ -766,14 +766,17 @@ exports[`create-workout.js Test 1`] = `
 `;
 
 exports[`index.js Test 1`] = `
-<View
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignItems": "center",
+    }
+  }
   style={
     [
       {
-        "alignItems": "center",
         "backgroundColor": "#F1F1F1",
         "flex": 1,
-        "justifyContent": "center",
       },
       {
         "backgroundColor": "#F1F1F1",
@@ -781,71 +784,1138 @@ exports[`index.js Test 1`] = `
     ]
   }
 >
-  <Text
-    style={
-      {
-        "color": "#000000",
+  <View>
+    <View
+      style={
+        [
+          {
+            "height": 300,
+          },
+          {
+            "marginTop": 12,
+          },
+        ]
       }
-    }
-  >
-    Open up App.js to start working on your app!
-  </Text>
-  <View
-    style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#D10000",
-        "bottom": 0,
-        "color": "#060606",
-        "display": "flex",
-        "flex": 1,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "space-evenly",
-        "paddingBottom": "1%",
-        "paddingTop": "1%",
-        "position": "absolute",
-        "width": "100%",
+    >
+      <RCTScrollView
+        data={
+          [
+            {
+              "image": "https://imageplaceholder.net/300x200/bebebe",
+              "text": "Slide 1",
+            },
+            {
+              "image": "https://imageplaceholder.net/300x200/9c9c9c",
+              "text": "Slide 2",
+            },
+            {
+              "image": "https://imageplaceholder.net/300x200/716f6f",
+              "text": "Slide 3",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        pagingEnabled={true}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={0.0001}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={
+                  {
+                    "uri": "https://imageplaceholder.net/300x200/bebebe",
+                  }
+                }
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Slide 1
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={
+                  {
+                    "uri": "https://imageplaceholder.net/300x200/9c9c9c",
+                  }
+                }
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Slide 2
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={
+                  {
+                    "uri": "https://imageplaceholder.net/300x200/716f6f",
+                  }
+                }
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Slide 3
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "bottom": 10,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#333",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        [
+          {
+            "marginTop": 40,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
       }
-    }
-  >
-    <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
     >
-      <Text />
+      Why use a fitness logger app?
     </Text>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginBottom": 12,
+            "marginLeft": 12,
+            "marginRight": 12,
+            "marginTop": 12,
+          },
+        ]
+      }
     >
-      <Text />
+      Using a fitness logger app is a powerful way to take control of your health and fitness journey. It helps you monitor your progress, set achievable goals, and stay accountable by providing a clear picture of your workouts. By tracking your efforts, you can identify trends and make informed adjustments to your routine, ensuring you continue improving your fitness. Whether you're striving to lose weight, build strength, or simply maintain a healthy lifestyle, a fitness logger app makes it easier to turn your goals into lasting habits.
     </Text>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginTop": 20,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
+      }
     >
-      <Text />
+      FAQ
     </Text>
+    <View
+      style={
+        [
+          {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          },
+          {
+            "width": 384,
+          },
+          {
+            "marginTop": 12,
+          },
+        ]
+      }
+    >
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            What is React Native?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                React Native is a framework for building mobile apps.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            How does it work?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                It uses JavaScript and React to build native mobile apps.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Is it easy to learn?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Yes, especially if you know JavaScript and React.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginTop": 20,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
+      }
     >
-      <Text />
+      Benefits Of Using A Fitness Logger
     </Text>
-    <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+    <View
+      style={
+        [
+          {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          },
+          {
+            "width": 384,
+          },
+          {
+            "marginBottom": 40,
+          },
+        ]
+      }
     >
-      <Text />
-    </Text>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Enhanced Awareness of Activity Levels
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                This fitness tracker app help you gain a better understanding of your time spent being active. This insight can reveal gaps in your routine and help you to make healthier choices, ensuring you stay on track toward your fitness goals.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Personalized Goal Setting
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                With this fitness tracker app, you can set realistic and achievable fitness goals tailored to your current fitness level. Whether it’s completing a number of push-ups or increasing your weekly exercise minutes, these apps guide you with measurable objectives that help you progress steadily.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Building Discipline
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Fitness tracker apps promote discipline by encouraging consistent effort over time. Progress charts keep you accountable, helping you establish a routine. Over time, this consistency strengthens your willpower and instills a habit of prioritizing physical activity.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Health Insights
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Fitness trackers store your health data over time, providing valuable insights into trends in your fitness level. These records can be shared with healthcare providers to support better-informed medical decisions.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Progress Visualization
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                The visual representation of your progress—graphs, charts, and milestones—can be a powerful motivator. Seeing how far you’ve come reinforces positive behavior and encourages you to keep pushing toward your fitness goals.Improving fitness through a fitness tracker app is not just about physical health; it’s about building habits, enhancing awareness, and creating a sustainable lifestyle change.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#D10000",
+          "bottom": 0,
+          "color": "#060606",
+          "display": "flex",
+          "flex": 1,
+          "flexDirection": "row",
+          "height": "auto",
+          "justifyContent": "space-evenly",
+          "paddingBottom": "1%",
+          "paddingTop": "1%",
+          "position": "absolute",
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text />
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text />
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text />
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text />
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text />
+      </Text>
+    </View>
   </View>
-</View>
+</RCTScrollView>
 `;
 
 exports[`log-workout.js Test 1`] = `

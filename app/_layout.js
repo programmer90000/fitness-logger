@@ -11,6 +11,7 @@ export default function Layout() {
                 <Drawer.Screen name = "screens/view-individual-workout-presets/view-individual-workout-presets" options = {{ "drawerLabel": "View Individual Workout Presets", "title": "View Individual Workout Presets", "drawerItemStyle": { "display": "none" } }} />
                 <Drawer.Screen name = "screens/create-exercise/create-exercise" options = {{ "drawerLabel": "Create Exercise", "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/view-exercises/view-exercises" options = {{ "drawerLabel": "View Exercises", "title": "View Exercises", "drawerItemStyle": { "display": "flex" } }} />
+                <Drawer.Screen name = "screens/view-individual-exercises/view-individual-exercises" options = {{ "drawerLabel": "View Individual Exercises", "title": "View Individual Exercises", "drawerItemStyle": { "display": "none" } }} />
                 <Drawer.Screen name = "screens/create-workout/create-workout" options = {{ "drawerLabel": "Begin Workout", "title": "Begin Workout", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/record-workout/record-workout" options = {{ "drawerLabel": "Record Workout", "title": "Record Workout", "drawerItemStyle": { "display": "none" } }} />
                 <Drawer.Screen name = "screens/workout-history/workout-history" options = {{ "drawerLabel": "Workout History", "title": "Workout History", "drawerItemStyle": { "display": "flex" } }} />

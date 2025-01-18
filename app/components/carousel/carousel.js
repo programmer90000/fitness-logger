@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FlatList, View, Image, Text, Dimensions, StyleSheet } from "react-native";
 
-const Carousel = ({ data, autoScroll = true, interval = 3000 }) => {
+const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
     const flatListRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const { width } = Dimensions.get("window");
@@ -66,7 +66,7 @@ const Carousel = ({ data, autoScroll = true, interval = 3000 }) => {
     });
 
     return (
-        <View style = {{ "height": 300 }}>
+        <View className = {`h-[300px] ${style}`}>
             <FlatList ref = {flatListRef} data = {data} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} renderItem = {({ item }) => { return (
                 <View style = {styles.carouselItem}>
                     {item.image && <Image source = {{ "uri": item.image }} style = {styles.image} />}

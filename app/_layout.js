@@ -17,7 +17,8 @@ export default function Layout() {
                 <Drawer.Screen name = "screens/workout-history/workout-history" options = {{ "drawerLabel": "Workout History", "title": "Workout History", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/view-previous-workout/view-previous-workout" options = {{ "drawerLabel": "View Previous Workout", "title": "View Previous Workout", "drawerItemStyle": { "display": "none" } }} />
                 <Drawer.Screen name = "screens/set-goal/set-goal" options = {{ "drawerLabel": "Set Goal", "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }} />
-                <Drawer.Screen name = "screens/view-goals/view-goals" options = {{ "drawerLabel": "View Goals", "title": "View Goals", "drawerItemStyle": { "display": "flex" } }}/>
+                <Drawer.Screen name = "screens/view-goals/view-goals" options = {{ "drawerLabel": "View Goals", "title": "View Goals", "drawerItemStyle": { "display": "flex" } }} />
+                <Drawer.Screen name = "screens/view-individual-goals/view-individual-goals" options = {{ "drawerLabel": "View Individual Goals", "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }} />
                 <Drawer.Screen name = "screens/upload-download-data/upload-download-data" options = {{ "drawerLabel": "Upload/ Download data", "title": "Upload/ Download data", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/statistics/statistics" options = {{ "drawerLabel": "Statistics", "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/create-badge/create-badge" options = {{ "drawerLabel": "Create Badge", "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />

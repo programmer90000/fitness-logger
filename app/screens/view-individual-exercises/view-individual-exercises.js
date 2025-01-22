@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import Realm from "realm";
+import Video from "react-native-video";
 import { useTheme } from "../../hooks/useTheme.js";
 import { exercises } from "../../../database/realm-database.js";
 import { useLocalSearchParams } from "expo-router";
@@ -44,6 +45,7 @@ const ViewExerciseDetails = () => {
                 <Text className = "text-center text-xl">{exercise.video}</Text>
                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Personal Best</Text>
                 <Text className = "text-center text-xl">{exercise.personalBest}</Text>
+                <Video source = {{ "uri": exercise.video }} style = {{ "width": "100%", "height": 300 }} resizeMode = "contain" controls = {true} />
             </View>
         </ScrollView>
     );

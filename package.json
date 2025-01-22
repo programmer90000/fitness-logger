@@ -58,6 +58,7 @@
         "react-native-screens": "3.31.1",
         "react-native-svg": "15.2.0",
         "react-native-table-component": "^1.2.2",
+        "react-native-video": "^6.9.1",
         "react-native-web": "~0.19.10",
         "react-test-renderer": "18.2.0",
         "realm": "^20.0.0"

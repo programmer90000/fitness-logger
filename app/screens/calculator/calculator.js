@@ -47,6 +47,10 @@ const Calculator = () => {
                     </View>
                 ); })}
             </View>
+            <View className = "mt-10">
+                <Text className = "text-3xl">Miles To Kilometers: x1.609</Text>
+                <Text className = "text-3xl">Pounds to Kilograms: x0.454</Text>
+            </View>
         </View>
     );
 };

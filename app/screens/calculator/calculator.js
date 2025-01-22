@@ -27,7 +27,7 @@ const Calculator = () => {
     };
 
     return (
-        <View style = {{ "backgroundColor": colours.main_background }} className = "flex-1 justify-center items-center">
+        <View style = {{ "backgroundColor": colours.main_background }} className = "flex-1 justify-start items-center mt-10">
             <View style = {{ "backgroundColor": colours.button_background_1 }} className = "w-11/12 p-5 rounded-xl mb-5">
                 <Text className = "text-4xl text-right" style = {{ "color": colours.button_text_2 }}>{display}</Text>
             </View>

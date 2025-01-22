@@ -45,6 +45,7 @@ const ViewExerciseDetails = () => {
                 <Text className = "text-center text-xl">{exercise.video}</Text>
                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Personal Best</Text>
                 <Text className = "text-center text-xl">{exercise.personalBest}</Text>
+                <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Video</Text>
                 <Video source = {{ "uri": exercise.video }} style = {{ "width": "100%", "height": 300 }} resizeMode = "contain" controls = {true} />
             </View>
         </ScrollView>

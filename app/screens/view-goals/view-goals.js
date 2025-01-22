@@ -85,13 +85,24 @@ const ViewGoals = () => {
         }
     };
 
+    const handleViewGoal = (goalId) => {
+        const goal = realmInstance.objectForPrimaryKey("Goals", goalId);
+        
+        if (goal) {
+            router.push({
+                "pathname": "/screens/view-individual-goals/view-individual-goals",
+                "params": { "id": goalId },
+            });
+        }
+    };
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             {goalList.length === 0 ? (
                 <Text className = "text-xl text-center mt-5" style = {{ "color": colours.button_text_1 }}>No goals available</Text>
             ) : (
                 goalList.map((goal) => { return (
-                    <TouchableOpacity key = {goal.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} >
+                    <TouchableOpacity key = {goal.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return handleViewGoal(goal.id); }} >
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{goal.name}</Text>
                         <View className = "flex-row justify-end items-center">
                             <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditGoal(goal.id); } } />

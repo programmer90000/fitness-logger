@@ -19,7 +19,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
-        "keyName": "fieldId",
+        "keyName": "id",
     });
     
     const allExercises = realmInstance ? realmInstance.objects("Exercises") : [];
@@ -147,11 +147,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     
     const groupExercisesByName = (exercises) => {
         const grouped = {};
-        exercises.forEach((exercise) => {
+        exercises.forEach((exercise, index) => {
             if (!grouped[exercise.name]) {
                 grouped[exercise.name] = [];
             }
-            grouped[exercise.name].push(exercise);
+            grouped[exercise.name].push({ ...exercise, "originalIndex": index });
         });
         return Object.entries(grouped).map(([name, sets]) => { return { name, sets }; });
     };
@@ -200,12 +200,12 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl mt-[30px]">Exercises</Text>
                 <View className = "items-center flex justify-center">
                     {groupedExercises.map((group, groupIndex) => { return (
-                        <View key = {group.name} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
+                        <View key = {`${group.name}-${groupIndex}`} className = "flex-initial flex-col w-full justify-between mt-[15px] flex-wrap items-center">
                             {group.sets.map((field, index) => { return (
-                                <View key = {field.fieldId} className = "flex-row w-full">
+                                <View key = {`${field.fieldId}-${index}`} className = "flex-row w-full">
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                        <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { setValue(`exercises.${index}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
+                                        <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { return setValue(`exercises.${field.originalIndex}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
@@ -215,8 +215,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>
                                         <Controller
                                             control = {control}
-                                            name = {`exercises.${index}.duration`}
-                                            className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
+                                            name = {`exercises.${field.originalIndex}.duration`}
                                             render = {({ "field": { onChange, onBlur, value } }) => { return (
                                                 <TextInput
                                                     onBlur = {onBlur}
@@ -232,8 +231,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Reps</Text>
                                         <Controller
                                             control = {control}
-                                            name = {`exercises.${index}.reps`}
-                                            className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-5"
+                                            name = {`exercises.${field.originalIndex}.reps`}
                                             render = {({ "field": { onChange, onBlur, value } }) => { return (
                                                 <TextInput
                                                     onBlur = {onBlur}
@@ -247,22 +245,14 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                     </View>
                                 </View>
                             ); })}
-                            {!removedButtons.includes(groupIndex) && (
-                                <TouchableOpacity onPress = {() => {
-                                    updateData();
-                                    addSet(groupIndex);
-                                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Set</Text>
-                                </TouchableOpacity>
-                            )}
+                            <TouchableOpacity onPress = {() => { return addSet(group.sets[0].originalIndex); }} className = "mt-[10px] bg-[#2296f3] p-2 m-[5px]">
+                                <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Set</Text>
+                            </TouchableOpacity>
                         </View>
                     );
                     })}
                 </View>
-                <TouchableOpacity onPress = {() => {
-                    updateData();
-                    append({ "name": "", "duration": "", "reps": "" });
-                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">

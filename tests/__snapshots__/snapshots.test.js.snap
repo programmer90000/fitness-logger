@@ -1944,35 +1944,137 @@ exports[`index.js Test 1`] = `
         onPress={[Function]}
         role="link"
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "entypo",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
       </Text>
       <Text
         href="/"
         onPress={[Function]}
         role="link"
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "FontAwesome5Free-Solid",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {
+                "fontWeight": "700",
+              },
+            ]
+          }
+        >
+          
+        </Text>
       </Text>
       <Text
         href="/"
         onPress={[Function]}
         role="link"
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "anticon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
       </Text>
       <Text
         href="/"
         onPress={[Function]}
         role="link"
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "material-community",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          󰄪
+        </Text>
       </Text>
       <Text
         href="/"
         onPress={[Function]}
         role="link"
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
       </Text>
     </View>
   </View>
@@ -3678,21 +3780,27 @@ exports[`statistics.js Test 1`] = `
   <View>
     <Text>
       Number of workouts completed: 
+      0
     </Text>
     <Text>
       Number of exercises completed: 
+      0
     </Text>
     <Text>
       Number of exercises measured by Reps completed: 
+      0
     </Text>
     <Text>
       Number of exercises measured by Weight and Reps completed: 
+      0
     </Text>
     <Text>
       Number of exercises measured by Distance and Time completed: 
+      0
     </Text>
     <Text>
       Average number of exercises per workout: 
+      0
     </Text>
     <Text
       style={

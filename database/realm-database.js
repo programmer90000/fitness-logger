@@ -3,9 +3,9 @@ import Realm from "realm";
 const workoutPresets = {
     "name": "WorkoutPresets",
     "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
+        "id": "int",
+        "name": "string",
+        "notes": "string",
     },
     "primaryKey": "id",
 };
@@ -13,11 +13,12 @@ const workoutPresets = {
 const exercises = {
     "name": "Exercises",
     "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "type": "string", // TODO: Add a dropdown picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
-        "video": "binary", // TODO: Add a file picker to add videos to this field
+        "id": "int",
+        "name": "string",
+        "type": "string",
+        "notes": "string",
+        "video": "string",
+        "personalBest": "string",
     },
     "primaryKey": "id",
 };
@@ -25,9 +26,11 @@ const exercises = {
 const workoutPresetsExercises = {
     "name": "WorkoutPresetsExercises",
     "properties": {
-        "id": "objectId",
-        "workoutPresets": { "type": "objectId", "link": "WorkoutPresets" },
-        "exercises": { "type": "objectId", "link": "Exercises" },
+        "id": "int",
+        "workoutPresets": "WorkoutPresets",
+        "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };
@@ -35,12 +38,10 @@ const workoutPresetsExercises = {
 const previousWorkouts = {
     "name": "PreviousWorkouts",
     "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "notes": { "type": "string", "maxLength": 500 },
+        "id": "int",
+        "name": "string",
+        "notes": "string",
         "date": "date", // TODO: Add a date picker for this field
-        "badges": { "type": "list", "objectType": "Badges" },
-        "goals": { "type": "list", "objectType": "Goals" },
     },
     "primaryKey": "id",
 };
@@ -48,20 +49,11 @@ const previousWorkouts = {
 const previousWorkoutsExercises = {
     "name": "PreviousWorkoutsExercises",
     "properties": {
-        "id": "objectId",
-        "previousWorkouts": { "type": "objectId", "link": "PreviousWorkouts" },
-        "exercises": { "type": "objectId", "link": "Exercises" },
-    },
-    "primaryKey": "id",
-};
-
-const badges = {
-    "name": "Badges",
-    "properties": {
-        "id": "objectId",
-        "image": "binary", // TODO: Add an image picker for this field
-        "text": { "type": "string", "maxLength": 50 },
-        "completed": "bool",
+        "id": "int",
+        "previousWorkouts": "PreviousWorkouts",
+        "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };
@@ -69,19 +61,32 @@ const badges = {
 const goals = {
     "name": "Goals",
     "properties": {
-        "id": "objectId",
-        "name": { "type": "string", "maxLength": 50 },
-        "startDate": "date", // TODO: Add a date picker for this field
-        "endDate": "date", // TODO: Add a date picker for this field
-        "reminders": "date", // TODO: Add a date picker for this field
-        "notes": { "type": "string", "maxLength": 500 },
+        "id": "int",
+        "name": "string",
+        "type": "string",
+        "value": "string",
+        "startDate": "date",
+        "endDate": "date",
+        "reminders": "date",
+        "notes": "string",
+    },
+    "primaryKey": "id",
+};
+
+const badges = {
+    "name": "Badges",
+    "properties": {
+        "id": "int",
+        "image": "string", // TODO: Add an image picker for this field
+        "text": "string",
+        "completed": "bool",
     },
     "primaryKey": "id",
 };
 
 const openRealm = async () => {
     try {
-        const realm = await Realm.open({ "database": [workoutPresets, exercises, previousWorkouts, badges, goals, workoutPresetsExercises, previousWorkoutsExercises] });
+        const realm = await Realm.open({ "database": [workoutPresetsExercises, previousWorkoutsExercises] });
         return realm;
     } catch (error) {
         console.error("Error opening Realm:", error);
@@ -92,3 +97,4 @@ const openRealm = async () => {
 // ! Each time I call this function, write the following line to close the database: realm.close();
 
 export default openRealm;
+export { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges };

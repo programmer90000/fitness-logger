@@ -49,7 +49,9 @@
         "githubUrl": "https://github.com/programmer90000/fitness-logger/",
         "primaryColor": "#000000",
         "plugins": [
-            "expo-router"
+            "expo-router",
+            "react-native-compressor",
+            "react-native-video"
         ],
         "extra": {
             "eas": {

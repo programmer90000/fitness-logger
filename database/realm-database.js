@@ -19,6 +19,7 @@ const exercises = {
         "notes": "string",
         "video": "string",
         "personalBest": "string",
+        "isDeleted": { "type": "bool", "default": false },
     },
     "primaryKey": "id",
 };

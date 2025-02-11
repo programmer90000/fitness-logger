@@ -8,8 +8,12 @@ import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import { PickerModal } from "./picker-modal.js";
 
 const CreateExercise = () => {
+    const [selectedValue, setSelectedValue] = useState("");
+    const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7", "Option 8", "Option 9", "Option 10", "Option 11", "Option 12", "Option 13", "Option 14", "Option 15", "Option 16", "Option 17", "Option 18", "Option 19", "Option 20", "Option 21", "Option 22", "Option 23", "Option 24", "Option 25", "Option 26", "Option 27"];
+
     const router = useRouter();
     const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
@@ -18,6 +22,7 @@ const CreateExercise = () => {
         "exerciseType": null,
         "exerciseNotes": "",
         "videoPath": null,
+        "selectedOptions": [],
     });
     
     const exerciseType = [
@@ -57,6 +62,7 @@ const CreateExercise = () => {
                     existingExercise.type = exerciseState.exerciseType;
                     existingExercise.notes = exerciseState.exerciseNotes;
                     existingExercise.video = exerciseState.videoPath;
+                    existingExercise.selectedOptions = exerciseState.selectedOptions;
                 }
             } else {
                 const currentHighestId = realm.objects("Exercises").max("id") || 0;
@@ -69,7 +75,7 @@ const CreateExercise = () => {
                     newId = currentHighestId + 1;
                 }
             
-                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A", "isDeleted": false });
+                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A", "isDeleted": false, "selectedOptions": exerciseState.selectedOptions });
             }
         });
         const allExercises = realm.objects("Exercises");
@@ -81,6 +87,7 @@ const CreateExercise = () => {
             "exerciseType": null,
             "exerciseNotes": "",
             "videoPath": null,
+            "selectedOptions": [],
         });
         router.push({
             "pathname": "/screens/create-exercise/create-exercise",
@@ -93,6 +100,10 @@ const CreateExercise = () => {
             ...prev,
             [field]: value,
         }; });
+    };
+    
+    const handlePickerModalChange = (value) => {
+        updateExerciseState("selectedOptions", value);
     };
 
     return (
@@ -126,6 +137,7 @@ const CreateExercise = () => {
                         ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return updateExerciseState("videoPath", path); }} mediaFileName = {`${exerciseState.exerciseName}.mp4`} mediaType = "Video" />
+                <PickerModal options = {options} selectedValue = {exerciseState.selectedOptions} onValueChange = {handlePickerModalChange} />
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>

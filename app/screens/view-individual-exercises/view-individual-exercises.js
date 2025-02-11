@@ -32,6 +32,17 @@ const ViewExerciseDetails = () => {
         return <Text>Loading...</Text>;
     }
 
+    const getAllWorkedMuscles = () => {
+        const workedMuscles = new Set([...exercise.primaryMuscles, ...exercise.secondaryMuscles]);
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+        
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View>
@@ -45,6 +56,13 @@ const ViewExerciseDetails = () => {
                 <Video source = {{ "uri": exercise.video }} style = {{ "width": "100%", "height": 300 }} resizeMode = "contain" controls = {true} />
                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Personal Best</Text>
                 <Text className = "text-center text-xl">{exercise.personalBest}</Text>
+                <View className = "mt-10">
+                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Worked:</Text>
+                    <Text className = "text-center text-xl">{getAllWorkedMuscles().worked.join(", ")}</Text>
+                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Not Worked:</Text>
+                    <Text className = "text-center text-xl">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                </View>
+
             </View>
         </ScrollView>
     );

@@ -249,6 +249,75 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
         </Text>
       </View>
       <View
+        style={
+          [
+            {
+              "marginTop": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "marginTop": 20,
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Not Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pectorals, Upper back, Lower back, Deltoids, Biceps, Triceps, Quadriceps, Hamstrings, Glutes, Calves, Abs, Obliques, Cardio
+        </Text>
+      </View>
+      <View
         accessibilityState={
           {
             "busy": undefined,
@@ -596,6 +665,9 @@ exports[`create-exercise.js 1`] = `
             {
               "alignItems": "center",
             },
+            {
+              "marginBottom": 12,
+            },
           ]
         }
       >
@@ -654,6 +726,144 @@ exports[`create-exercise.js 1`] = `
           >
             Upload 
             Video
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "marginBottom": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#FF0000",
+              "marginTop": 1,
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "500",
+                },
+                {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#060606",
+                },
+              ]
+            }
+          >
+            Select Primary Muscles
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "marginBottom": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#FF0000",
+              "marginTop": 1,
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "500",
+                },
+                {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#060606",
+                },
+              ]
+            }
+          >
+            Select Secondary Muscles
           </Text>
         </View>
       </View>
@@ -2285,6 +2495,75 @@ exports[`log-workout.js Test 1`] = `
           }
         >
           Add Exercise
+        </Text>
+      </View>
+      <View
+        style={
+          [
+            {
+              "marginTop": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "marginTop": 20,
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Not Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pectorals, Upper back, Lower back, Deltoids, Biceps, Triceps, Quadriceps, Hamstrings, Glutes, Calves, Abs, Obliques, Cardio
         </Text>
       </View>
       <View

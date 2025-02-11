@@ -278,7 +278,10 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                 <View key = {`${field.fieldId}-${index}`} className = "flex-row w-full">
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                        <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { return setValue(`exercises.${field.originalIndex}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
+                                        <DropdownComponent data = {names2} value = {watch(`exercises.${field.originalIndex}.name`)} onChange = {(name) => {
+                                            setValue(`exercises.${field.originalIndex}.name`, name);
+                                            updateData();
+                                        }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>

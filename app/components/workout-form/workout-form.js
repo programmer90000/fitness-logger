@@ -185,6 +185,33 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         setRemovedButtons([...removedButtons, index]);
     };
     
+    const getAllWorkedMuscles = () => {
+        const allExercises = fields.map((f) => { return f.name; });
+        const uniqueExercises = [...new Set(allExercises)];
+    
+        const workedMuscles = new Set();
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+    
+        uniqueExercises.forEach((exerciseName) => {
+            const exercise = realmInstance.objects("Exercises").filtered("name == $0", exerciseName)[0];
+            if (exercise) {
+                exercise.primaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+                exercise.secondaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+            }
+        });
+    
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+    
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+    
+    useEffect(() => {
+        getAllWorkedMuscles();
+    }, [fields, watch("exercises")]);
+    
     const groupExercisesByName = (exercises) => {
         const grouped = {};
         exercises.forEach((exercise, index) => {
@@ -295,6 +322,12 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
+                <View className = "mt-10">
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center">Muscles Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().worked.join(", ")}</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center mt-5">Muscles Not Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                </View>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>

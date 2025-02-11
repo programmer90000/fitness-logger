@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform } from "react-native";
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform, Alert } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { exercises, workoutPresets, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises } from "../../../database/realm-database.js";
@@ -207,6 +207,25 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             "unworked": unworkedMuscles,
         };
     };
+
+    const confirmReset = () => {
+        Alert.alert(
+            "Reset Form",
+            "Are you sure you want to reset the form? All data will be lost.",
+            [
+                { "text": "Cancel", "style": "cancel" },
+                { 
+                    "text": "Reset", 
+                    "style": "destructive", 
+                    "onPress": () => {
+                        reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
+                        setWorkoutDate(new Date());
+                        AsyncStorage.removeItem("workoutFormData");
+                    },
+                },
+            ],
+        );
+    };
     
     useEffect(() => {
         getAllWorkedMuscles();
@@ -340,10 +359,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = {() => { reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
-                    setWorkoutDate(new Date());
-                    AsyncStorage.removeItem("workoutFormData");
-                }} className = "mt-[10px] bg-[#00008b] p-2 m-[5px]" >
+                <TouchableOpacity onPress = {confirmReset} className = "mt-[10px] bg-[#00008b] p-2 m-[5px]" >
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Reset Form</Text>
                 </TouchableOpacity>
 

@@ -16,9 +16,9 @@ const PickerModal = ({ options, onValueChange, title }) => {
     const closeModal = () => { return setIsVisible(false); };
 
     return (
-        <View className = "m-5">
-            <TouchableOpacity className = "p-2 mt-[5px]" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return setIsVisible(true); }} >
-                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Select options</Text>
+        <View className = "mb-3">
+            <TouchableOpacity className = "p-2 mt-[1px]" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return setIsVisible(true); }} >
+                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>{title || "Select options"}</Text>
             </TouchableOpacity>
             <Modal visible = {isVisible} animationType = "slide" transparent = {true} onRequestClose = {closeModal}>
                 <TouchableOpacity className = "flex-1 bg-black/50 justify-center items-center" onPress = {closeModal}>

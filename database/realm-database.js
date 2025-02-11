@@ -20,7 +20,8 @@ const exercises = {
         "video": "string",
         "personalBest": "string",
         "isDeleted": { "type": "bool", "default": false },
-        "selectedOptions": "string[]",
+        "primaryMuscles": "string[]",
+        "secondaryMuscles": "string[]",
     },
     "primaryKey": "id",
 };

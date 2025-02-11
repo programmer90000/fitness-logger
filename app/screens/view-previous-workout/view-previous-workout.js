@@ -33,6 +33,24 @@ const ViewPreviousWorkoutDetails = () => {
 
     const previousWorkoutExercisesList = realmInstance.objects("PreviousWorkoutsExercises").filtered(`previousWorkouts.id = ${previousWorkout.id}`);
 
+    const getAllWorkedMuscles = () => {
+        const workedMuscles = new Set();
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+
+        previousWorkoutExercisesList.forEach((workoutExercise) => {
+            const exercise = workoutExercise.exercises;
+            exercise.primaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+            exercise.secondaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+        });
+
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View>
@@ -40,7 +58,13 @@ const ViewPreviousWorkoutDetails = () => {
                 <Text className = "text-center text-xl">{previousWorkout.name}</Text>
                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Notes:</Text>
                 <Text className = "text-center text-xl">{previousWorkout.notes}</Text>
-
+                <View className = "mt-10">
+                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Worked:</Text>
+                    <Text className = "text-center text-xl">{getAllWorkedMuscles().worked.join(", ")}</Text>
+        
+                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Not Worked:</Text>
+                    <Text className = "text-center text-xl">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                </View>
                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Exercises:</Text>
                 {previousWorkoutExercisesList.length > 0 ? (
                     previousWorkoutExercisesList.map((workoutPresetsExercise) => {

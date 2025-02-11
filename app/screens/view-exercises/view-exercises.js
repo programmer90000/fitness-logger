@@ -20,11 +20,11 @@ const ViewExercise = () => {
 
         const realm = new Realm({ "schema": [exercises] });
         setRealmInstance(realm);
-        const allExercises = realm.objects("Exercises");
+        const allExercises = realm.objects("Exercises").filtered("isDeleted == false");
         setExercisesList(allExercises);
 
         const listener = () => {
-            setExercisesList([...realm.objects("Exercises")]);
+            setExercisesList([...realm.objects("Exercises").filtered("isDeleted == false")]);
         };
         realm.addListener("change", listener);
 
@@ -46,11 +46,11 @@ const ViewExercise = () => {
             realmInstance.write(() => {
                 const exerciseToDelete = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
                 if (exerciseToDelete) {
-                    realmInstance.delete(exerciseToDelete);
+                    exerciseToDelete.isDeleted = true;
                 }
             });
 
-            setExercisesList((exercise) => { return exercise.filter((item) => { return item.id !== exerciseId; }); });
+            setExercisesList((exercise) => { return exercise.filter((item) => { return item.id !== exerciseId || !item.isDeleted; }); });
         } catch (error) {
             console.error("Failed to delete exercise:", error);
         }

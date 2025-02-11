@@ -7,6 +7,7 @@ import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const WorkoutForm = ({ saveTo, defaultValues }) => {
     const router = useRouter();
@@ -15,7 +16,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [realmInstance, setRealmInstance] = useState(null);
-    const { control, handleSubmit, getValues, setValue, reset } = useForm({ defaultValues });
+    const { control, handleSubmit, getValues, setValue, reset, watch } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
         control,
         "name": "exercises",
@@ -32,39 +33,65 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     });
     const { isReady, colours } = useTheme();
     const { id } = useLocalSearchParams();
+    
+    const saveFormData = async (data) => {
+        try {
+            await AsyncStorage.setItem("workoutFormData", JSON.stringify(data));
+        } catch (error) {
+            console.error("Error saving form data to AsyncStorage:", error);
+        }
+    };
+
+    const loadFormData = async () => {
+        try {
+            const savedData = await AsyncStorage.getItem("workoutFormData");
+            return savedData ? JSON.parse(savedData) : null;
+        } catch (error) {
+            console.error("Error loading form data from AsyncStorage:", error);
+            return null;
+        }
+    };
 
     useEffect(() => {
-        if (!isReady) {
-            return;
-        }
+        const loadSavedData = async () => {
+            if (!isReady) {
+                return;
+            }
 
-        const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
-        setRealmInstance(realm);
+            const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
+            setRealmInstance(realm);
 
-        if (id) {
-            const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
-            const exerciseRecords = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id == $0", parseInt(id));
+            if (id) {
+                const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
+                const exerciseRecords = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id == $0", parseInt(id));
             
-            const exercisesData = exerciseRecords.map((exercise) => { return {
-                "name": exercise.exercises.name,
-                "duration": exercise.metrics,
-                "reps": exercise.volume,
-                "personalBest": "N/A",
-            }; });
+                const exercisesData = exerciseRecords.map((exercise) => { return {
+                    "name": exercise.exercises.name,
+                    "duration": exercise.metrics,
+                    "reps": exercise.volume,
+                    "personalBest": "N/A",
+                }; });
             
-            reset({
-                "workoutName": workoutPreset.name,
-                "workoutNotes": workoutPreset.notes,
-                "exercises": exercisesData,
-            });
-        }
-
-        return () => {
-            realm.close();
+                reset({
+                    "workoutName": workoutPreset.name,
+                    "workoutNotes": workoutPreset.notes,
+                    "exercises": exercisesData,
+                });
+            } else {
+                const savedData = await loadFormData();
+                if (savedData) {
+                    reset(savedData);
+                    if (savedData.workoutDate) {
+                        setWorkoutDate(new Date(savedData.workoutDate));
+                    }
+                }
+            }
         };
+
+        loadSavedData();
     }, [isReady, reset, id]);
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         try {
             realmInstance.write(() => {
                 let newId, newWorkout;
@@ -123,6 +150,8 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         } catch (error) {
             console.error("Error saving workout:", error);
         } finally {
+            await AsyncStorage.removeItem("workoutFormData");
+
             reset({
                 "workoutName": "",
                 "workoutNotes": "",
@@ -130,9 +159,20 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             }); }
     };
 
-    const updateData = () => {
+    const updateData = async () => {
         const allData = getValues();
+        await saveFormData({
+            ...allData,
+            "workoutDate": workoutDate.toISOString(),
+        });
     };
+    
+    useEffect(() => {
+        const subscription = watch((value) => {
+            updateData();
+        });
+        return () => { return subscription.unsubscribe(); };
+    }, [watch]);
 
     const addSet = (index) => {
         const currentValues = getValues(`exercises.${index}`);
@@ -144,6 +184,33 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         });
         setRemovedButtons([...removedButtons, index]);
     };
+    
+    const getAllWorkedMuscles = () => {
+        const allExercises = fields.map((f) => { return f.name; });
+        const uniqueExercises = [...new Set(allExercises)];
+    
+        const workedMuscles = new Set();
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+    
+        uniqueExercises.forEach((exerciseName) => {
+            const exercise = realmInstance.objects("Exercises").filtered("name == $0", exerciseName)[0];
+            if (exercise) {
+                exercise.primaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+                exercise.secondaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+            }
+        });
+    
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+    
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+    
+    useEffect(() => {
+        getAllWorkedMuscles();
+    }, [fields, watch("exercises")]);
     
     const groupExercisesByName = (exercises) => {
         const grouped = {};
@@ -255,9 +322,22 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
+                <View className = "mt-10">
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center">Muscles Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().worked.join(", ")}</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center mt-5">Muscles Not Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                </View>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress = {() => { reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
+                    setWorkoutDate(new Date());
+                    AsyncStorage.removeItem("workoutFormData");
+                }} className = "mt-[10px] bg-[#00008b] p-2 m-[5px]" >
+                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Reset Form</Text>
+                </TouchableOpacity>
+
             </View>
         </ScrollView>
     );

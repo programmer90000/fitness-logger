@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, Share } from "react-native";
 import { Link } from "expo-router";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
+import * as FileSystem from "expo-file-system";
 import { colours } from "../../constants/colours.js";
 
 const Settings = () => { 
@@ -48,6 +49,22 @@ const Settings = () => {
     ];
     
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
+    
+    const shareSettings = async () => {
+        try {
+            const settingsData = { "theme": themeValue, "weight": weightValue, "distance": distanceValue };
+        
+            const fileContents = JSON.stringify(settingsData, null, 2);
+            const fileName = "fitness-logger-settings.json";
+            const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+
+            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+
+            await Share.share({ "url": fileUri, "message": "Fitness Logger Settings", "title": fileName });
+        } catch (error) {
+            console.error("Error sharing settings:", error);
+        }
+    };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -94,8 +111,8 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Sync With Drive</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {shareSettings}>
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Share</Text>
                 </TouchableOpacity>
                 <Link href = "/screens/report-feedback/report-feedback" asChild>
                     <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">

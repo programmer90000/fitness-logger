@@ -213,14 +213,20 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     }, [fields, watch("exercises")]);
     
     const groupExercisesByName = (exercises) => {
-        const grouped = {};
-        exercises.forEach((exercise, index) => {
-            if (!grouped[exercise.name]) {
-                grouped[exercise.name] = [];
+        const groups = [];
+        if (exercises.length === 0) { return groups; }
+
+        let currentGroup = { "name": exercises[0].name, "sets": [{ ...exercises[0], "originalIndex": 0 }] };
+        for (let i = 1; i < exercises.length; i++) {
+            if (exercises[i].name === exercises[i - 1].name) {
+                currentGroup.sets.push({ ...exercises[i], "originalIndex": i });
+            } else {
+                groups.push(currentGroup);
+                currentGroup = { "name": exercises[i].name, "sets": [{ ...exercises[i], "originalIndex": i }] };
             }
-            grouped[exercise.name].push({ ...exercise, "originalIndex": index });
-        });
-        return Object.entries(grouped).map(([name, sets]) => { return { name, sets }; });
+        }
+        groups.push(currentGroup);
+        return groups;
     };
 
     const groupedExercises = groupExercisesByName(fields);

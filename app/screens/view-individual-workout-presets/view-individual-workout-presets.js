@@ -33,6 +33,24 @@ const ViewWorkoutPresetDetails = () => {
 
     const workoutPresetsExercisesList = realmInstance.objects("WorkoutPresetsExercises").filtered(`workoutPresets.id = ${workoutPreset.id}`);
 
+    const getAllWorkedMuscles = () => {
+        const workedMuscles = new Set();
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+
+        workoutPresetsExercisesList.forEach((workoutExercise) => {
+            const exercise = workoutExercise.exercises;
+            exercise.primaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+            exercise.secondaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+        });
+
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View>
@@ -50,6 +68,12 @@ const ViewWorkoutPresetDetails = () => {
                                 <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-xl mt-2 text-center">{exercise.name}</Text>
                                 <Text className = "text-center">Duration: {workoutPresetsExercise.metrics}</Text>
                                 <Text className = "text-center">Reps: {workoutPresetsExercise.volume}</Text>
+                                <View className = "mt-10">
+                                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Worked:</Text>
+                                    <Text className = "text-center text-xl">{getAllWorkedMuscles().worked.join(", ")}</Text>
+                                    <Text style = {{ "backgroundColor": colours.button_background_1 }} className = "w-full text-3xl mt-2 text-center p-2">Muscles Not Worked:</Text>
+                                    <Text className = "text-center text-xl">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                                </View>
                             </View>
                         );
                     })

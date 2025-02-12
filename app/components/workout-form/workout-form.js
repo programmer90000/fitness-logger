@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform } from "react-native";
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Platform, Alert } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { exercises, workoutPresets, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises } from "../../../database/realm-database.js";
@@ -185,15 +185,67 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         setRemovedButtons([...removedButtons, index]);
     };
     
-    const groupExercisesByName = (exercises) => {
-        const grouped = {};
-        exercises.forEach((exercise, index) => {
-            if (!grouped[exercise.name]) {
-                grouped[exercise.name] = [];
+    const getAllWorkedMuscles = () => {
+        const allExercises = fields.map((f) => { return f.name; });
+        const uniqueExercises = [...new Set(allExercises)];
+    
+        const workedMuscles = new Set();
+        const allMuscles = new Set(["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"]);
+    
+        uniqueExercises.forEach((exerciseName) => {
+            const exercise = realmInstance.objects("Exercises").filtered("name == $0", exerciseName)[0];
+            if (exercise) {
+                exercise.primaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
+                exercise.secondaryMuscles.forEach((muscle) => { return workedMuscles.add(muscle); });
             }
-            grouped[exercise.name].push({ ...exercise, "originalIndex": index });
         });
-        return Object.entries(grouped).map(([name, sets]) => { return { name, sets }; });
+    
+        const unworkedMuscles = [...allMuscles].filter((muscle) => { return !workedMuscles.has(muscle); });
+    
+        return {
+            "worked": [...workedMuscles],
+            "unworked": unworkedMuscles,
+        };
+    };
+
+    const confirmReset = () => {
+        Alert.alert(
+            "Reset Form",
+            "Are you sure you want to reset the form? All data will be lost.",
+            [
+                { "text": "Cancel", "style": "cancel" },
+                { 
+                    "text": "Reset", 
+                    "style": "destructive", 
+                    "onPress": () => {
+                        reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
+                        setWorkoutDate(new Date());
+                        AsyncStorage.removeItem("workoutFormData");
+                    },
+                },
+            ],
+        );
+    };
+    
+    useEffect(() => {
+        getAllWorkedMuscles();
+    }, [fields, watch("exercises")]);
+    
+    const groupExercisesByName = (exercises) => {
+        const groups = [];
+        if (exercises.length === 0) { return groups; }
+
+        let currentGroup = { "name": exercises[0].name, "sets": [{ ...exercises[0], "originalIndex": 0 }] };
+        for (let i = 1; i < exercises.length; i++) {
+            if (exercises[i].name === exercises[i - 1].name) {
+                currentGroup.sets.push({ ...exercises[i], "originalIndex": i });
+            } else {
+                groups.push(currentGroup);
+                currentGroup = { "name": exercises[i].name, "sets": [{ ...exercises[i], "originalIndex": i }] };
+            }
+        }
+        groups.push(currentGroup);
+        return groups;
     };
 
     const groupedExercises = groupExercisesByName(fields);
@@ -245,7 +297,10 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                 <View key = {`${field.fieldId}-${index}`} className = "flex-row w-full">
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
-                                        <DropdownComponent data = {names2} value = {field.name} onChange = {(name) => { return setValue(`exercises.${field.originalIndex}.name`, name); }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
+                                        <DropdownComponent data = {names2} value = {watch(`exercises.${field.originalIndex}.name`)} onChange = {(name) => {
+                                            setValue(`exercises.${field.originalIndex}.name`, name);
+                                            updateData();
+                                        }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
@@ -295,13 +350,16 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                 <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
+                <View className = "mt-10">
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center">Muscles Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().worked.join(", ")}</Text>
+                    <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl text-center mt-5">Muscles Not Worked</Text>
+                    <Text className = "text-center">{getAllWorkedMuscles().unworked.join(", ")}</Text>
+                </View>
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Submit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = {() => { reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
-                    setWorkoutDate(new Date());
-                    AsyncStorage.removeItem("workoutFormData");
-                }} className = "mt-[10px] bg-[#00008b] p-2 m-[5px]" >
+                <TouchableOpacity onPress = {confirmReset} className = "mt-[10px] bg-[#00008b] p-2 m-[5px]" >
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Reset Form</Text>
                 </TouchableOpacity>
 

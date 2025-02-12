@@ -8,6 +8,7 @@ import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import { PickerModal } from "./picker-modal.js";
 
 const CreateExercise = () => {
     const router = useRouter();
@@ -18,6 +19,8 @@ const CreateExercise = () => {
         "exerciseType": null,
         "exerciseNotes": "",
         "videoPath": null,
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
     });
     
     const exerciseType = [
@@ -25,6 +28,8 @@ const CreateExercise = () => {
         { "label": "Weight/ Reps", "value": "weightAndReps" },
         { "label": "Distance/ Time", "value": "distanceAndTime" },
     ];
+    
+    const muscles = ["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"];
     
     const { isReady, colours } = useTheme();
     
@@ -38,6 +43,8 @@ const CreateExercise = () => {
                 "exerciseType": selectedExerciseType || null,
                 "exerciseNotes": exerciseNotes || "",
                 "videoPath": videoPath || null,
+                "primaryMuscles": existingExercise.primaryMuscles,
+                "secondaryMuscles": existingExercise.secondaryMuscles,
             });
         }
 
@@ -57,6 +64,8 @@ const CreateExercise = () => {
                     existingExercise.type = exerciseState.exerciseType;
                     existingExercise.notes = exerciseState.exerciseNotes;
                     existingExercise.video = exerciseState.videoPath;
+                    existingExercise.primaryMuscles = exerciseState.primaryMuscles;
+                    existingExercise.secondaryMuscles = exerciseState.secondaryMuscles;
                 }
             } else {
                 const currentHighestId = realm.objects("Exercises").max("id") || 0;
@@ -69,7 +78,7 @@ const CreateExercise = () => {
                     newId = currentHighestId + 1;
                 }
             
-                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A" });
+                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A", "isDeleted": false, "primaryMuscles": exerciseState.primaryMuscles, "secondaryMuscles": exerciseState.secondaryMuscles });
             }
         });
         const allExercises = realm.objects("Exercises");
@@ -81,6 +90,8 @@ const CreateExercise = () => {
             "exerciseType": null,
             "exerciseNotes": "",
             "videoPath": null,
+            "primaryMuscles": [],
+            "secondaryMuscles": [],
         });
         router.push({
             "pathname": "/screens/create-exercise/create-exercise",
@@ -93,6 +104,10 @@ const CreateExercise = () => {
             ...prev,
             [field]: value,
         }; });
+    };
+    
+    const handlePickerModalChange = (value) => {
+        updateExerciseState("selectedOptions", value);
     };
 
     return (
@@ -126,6 +141,9 @@ const CreateExercise = () => {
                         ); }}
                 />       
                 <UploadMedia onMediaSelect = {(path) => { return updateExerciseState("videoPath", path); }} mediaFileName = {`${exerciseState.exerciseName}.mp4`} mediaType = "Video" />
+                <PickerModal options = {muscles} selectedValue = {exerciseState.primaryMuscles} onValueChange = {(value) => { return updateExerciseState("primaryMuscles", value); }} title = "Select Primary Muscles" />
+                <PickerModal options = {muscles} selectedValue = {exerciseState.secondaryMuscles} onValueChange = {(value) => { return updateExerciseState("secondaryMuscles", value); }} title = "Select Secondary Muscles" />
+
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px]" onPress = {handleAddExercise}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-3xl">Add Exercise</Text>
                 </TouchableOpacity>

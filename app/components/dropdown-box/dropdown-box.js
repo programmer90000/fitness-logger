@@ -14,21 +14,29 @@ const styles = StyleSheet.create({
         "paddingHorizontal": 8,
         "width": 200,
     },
+    "disabled": {
+        "opacity": 0.5,
+        "backgroundColor": "#e0e0e0",
+    },
 });
 
-const DropdownComponent = ({ data, value, onChange }) => {
+const DropdownComponent = ({ data, value, onChange, style, placeholderStyle, selectedTextStyle, placeholder = "Select an option", disabled = false, 
+}) => {
     return (
         <View style = {styles.container}>
             <Dropdown
-                style = {styles.dropdown}
+                style = {[ styles.dropdown, style, disabled && styles.disabled ]}
                 data = {data}
                 labelField = "label"
                 valueField = "value"
-                placeholder = "Select an option"
+                placeholder = {placeholder}
                 value = {value}
                 onChange = {(item) => {
                     onChange(item.value);
                 }}
+                placeholderStyle = {placeholderStyle}
+                selectedTextStyle = {selectedTextStyle}
+                disable = {disabled}
             />
         </View>
     );

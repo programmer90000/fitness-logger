@@ -55,3 +55,7 @@ package-lock.json
 # IDE settings
 .idea/
 .vscode/
+
+# Realm files
+default.realm
+default.realm.lock

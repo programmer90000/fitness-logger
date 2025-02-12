@@ -1,10 +1,10 @@
 import React from "react";
 import WorkoutForm from "../../components/workout-form/workout-form.js";
 
-const createANewWorkoutPreset = () => {
+const CreateANewWorkoutPreset = () => {
     return (
-        <WorkoutForm />
+        <WorkoutForm saveTo = "workoutPresets" />
     );
 };
 
-export default createANewWorkoutPreset;
+export default CreateANewWorkoutPreset;

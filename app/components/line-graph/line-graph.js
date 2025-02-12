@@ -2,53 +2,39 @@ import React from "react";
 import { View, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
-const LineChartComponent = () => {
+const LineChartComponent = ({ labels, dataPoints, lineColor, backgroundGradientFrom, backgroundGradientTo, labelColor, dotColor, decimalPlaces = 2 }) => {
     const data = {
-        "labels": ["January", "February", "March", "April", "May", "June", "July"],
+        labels,
         "datasets": [
             {
-                "data": [20, 45, 28, 80, 99, 43, 50],
-                "color": (opacity = 1) => { return `rgba(255, 0, 0, ${opacity})`; }, // Line color
-                "strokeWidth": 2, // Line thickness
+                "data": dataPoints,
+                "color": (opacity = 1) => { return lineColor.replace("1)", `${opacity})`); },
+                "strokeWidth": 2,
             },
         ],
     };
 
     const chartConfig = {
-        "backgroundColor": "#e26a00",
-        "backgroundGradientFrom": "#fb8c00",
-        "backgroundGradientTo": "#ffa726",
-        "decimalPlaces": 2, // Optional, defaults to 2 decimal places
-        "color": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Axis text color
-        "labelColor": (opacity = 1) => { return `rgba(255, 255, 255, ${opacity})`; }, // Label color
-        "style": {
-            "borderRadius": 16,
-        },
+        backgroundGradientFrom,
+        backgroundGradientTo,
+        decimalPlaces,
+        "color": (opacity = 1) => { return labelColor.replace("1)", `${opacity})`); },
+        "labelColor": (opacity = 1) => { return labelColor.replace("1)", `${opacity})`); },
+        "style": { "borderRadius": 16 },
         "propsForDots": {
             "r": "6",
             "strokeWidth": "2",
-            "stroke": "#ffa726", // Dot stroke color
+            "stroke": dotColor,
         },
     };
 
     const screenWidth = Dimensions.get("window").width;
 
     return (
-        <View style = {{ "flex": 1, "justifyContent": "center", "alignItems": "center" }}>
-            <LineChart
-                data = {data}
-                width = {screenWidth * 0.9} // Use 90% of the screen width for the chart
-                height = {220}
-                chartConfig = {chartConfig}
-                bezier
-                fromZero
-                style = {{
-                    "marginVertical": 8,
-                    "borderRadius": 16,
-                }}
-            />
+        <View style = {{ "justifyContent": "center", "alignItems": "center" }}>
+            <LineChart data = {data} width = {screenWidth * 0.9} height = {220} chartConfig = {chartConfig} bezier fromZero style = {{ "marginVertical": 8, "borderRadius": 16 }} />
         </View>
     );
 };
 
-export default LineChartComponent;
+export { LineChartComponent };

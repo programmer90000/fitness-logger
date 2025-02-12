@@ -7,6 +7,8 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
 import * as FileSystem from "expo-file-system";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
+import Realm from "realm";
 import { colours } from "../../constants/colours.js";
 
 const Settings = () => { 
@@ -14,7 +16,48 @@ const Settings = () => {
     const [weightValue, setWeightValue] = useState(null);
     const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
+    const [videoUri, setVideoUri] = useState("");
     const { isReady, colours } = useTheme();
+
+    
+    const shareData = async () => {
+        try {
+            const realm = await Realm.open({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges] });
+
+            const workoutPresetsRecords = realm.objects("WorkoutPresets");
+            const exercisesRecords = realm.objects("Exercises");
+            const workoutPresetsExercisesRecords = realm.objects("WorkoutPresetsExercises");
+            const previousWorkoutsRecords = realm.objects("PreviousWorkouts");
+            const previousWorkoutsExercisesRecords = realm.objects("PreviousWorkoutsExercises");
+            const goalsRecords = realm.objects("Goals");
+            const badgesRecords = realm.objects("Badges");
+
+            const workoutPresetsJson = JSON.stringify(workoutPresetsRecords, null, 2);
+            const exercisesJson = JSON.stringify(exercisesRecords, null, 2);
+            const workoutPresetsExercisesJson = JSON.stringify(workoutPresetsExercisesRecords, null, 2);
+            const previousWorkoutsJson = JSON.stringify(previousWorkoutsRecords, null, 2);
+            const previousWorkoutsExercisesJson = JSON.stringify(previousWorkoutsExercisesRecords, null, 2);
+            const goalsJson = JSON.stringify(goalsRecords, null, 2);
+            const badgesJson = JSON.stringify(badgesRecords, null, 2);
+
+            const fileContents = `{\n  "workoutPresets": ${workoutPresetsJson},\n  "exercises": ${exercisesJson},\n  "workoutPresetsExercises": ${workoutPresetsExercisesJson},\n  "previousWorkouts": ${previousWorkoutsJson},\n  "previousWorkoutsExercises": ${previousWorkoutsExercisesJson},\n  "goals": ${goalsJson},\n  "badges": ${badgesJson}\n}`;
+        
+            const fileName = "fitness-logger-database.json";
+            const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+
+            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+
+            const result = await Share.share({
+                "message": fileContents,
+                "title": "Fitness Logger Database",
+            });
+
+            realm.close();
+        } catch (error) {
+            console.error("Error sharing database:", error);
+        }
+    };
+
 
     if (!isReady) {
         return null;
@@ -111,7 +154,7 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {shareSettings}>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {shareData}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Share</Text>
                 </TouchableOpacity>
                 <Link href = "/screens/report-feedback/report-feedback" asChild>

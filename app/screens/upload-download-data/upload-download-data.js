@@ -74,7 +74,7 @@ const UploadDownloadData = () => {
             const result = await DocumentPicker.getDocumentAsync({
                 "type": "application/json",
             });
-            
+        
             if (result.assets[0].mimeType === "application/json") {
                 const fileUri = result.assets[0].uri;
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
@@ -82,97 +82,117 @@ const UploadDownloadData = () => {
                 setJsonData(parsedData);
                 const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercises = [] } = parsedData;
 
+                const recordExists = (realm, schemaName, record, uniqueFields) => {
+                    const query = uniqueFields.map((field) => { return `${field} == $${field}`; }).join(" AND ");
+                    const queryParams = {};
+                    uniqueFields.forEach((field) => {
+                        queryParams[field] = record[field];
+                    });
+                    return realm.objects(schemaName).filtered(query, queryParams).length > 0;
+                };
+
                 badgesArray.forEach((badge) => {
-                    delete badge.id;
-                    console.log("Badge:", badge);
                     const realm = new Realm({ "schema": [badges] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("Badges").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        let completedString = badge.properties.completed;
-                        let completed;
+                    const exists = recordExists(realm, "Badges", badge.properties, ["goalName", "exerciseName"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("Badges").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            let completedString = badge.properties.completed;
+                            let completed;
 
-                        if (completedString === "true") { completed = true; } else { completed = false; }
-
-                        realm.create("Badges", { "id": newId, "goalName": badge.properties.goalName, "exerciseName": badge.properties.exerciseName, "image": badge.properties.image, "details": badge.properties.details, "completed": completed });
-                    });
+                            if (completedString === "true") { completed = true; } else { completed = false; }
+                            realm.create("Badges", { "id": newId, "goalName": badge.properties.goalName, "exerciseName": badge.properties.exerciseName, "image": badge.properties.image, "details": badge.properties.details, "completed": completed });
+                        });
+                    }
                     realm.close();
                 });
-         
+     
                 goalsArray.forEach((goal) => {
-                    delete goal.id;
-                    console.log("Goal:", goal);
                     const realm = new Realm({ "schema": [goals] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("Goals").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        
-                        realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
-                    });
+                    const exists = recordExists(realm, "Goals", goal, ["name", "type", "value"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("Goals").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
+                        });
+                    }
+                    realm.close();
                 });
-                
+            
                 exercisesArray.forEach((exercise) => {
-                    delete exercise.id;
-                    console.log("Exercise:", exercise);
                     const realm = new Realm({ "schema": [exercises] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("Exercises").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest });
-                    });
+                    const exists = recordExists(realm, "Exercises", exercise, ["name", "type"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("Exercises").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest });
+                        });
+                    }
+                    realm.close();
                 });
-                
+            
                 previousWorkoutsArray.forEach((previousWorkout) => {
-                    delete previousWorkout.id;
-                    console.log("Previous Workout:", previousWorkout);
                     const realm = new Realm({ "schema": [previousWorkouts] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("PreviousWorkouts").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": new Date(previousWorkout.date) });
-                    });
+                    const exists = recordExists(realm, "PreviousWorkouts", previousWorkout, ["name", "date"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("PreviousWorkouts").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": new Date(previousWorkout.date) });
+                        });
+                    }
+                    realm.close();
                 });
-                
+            
                 previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
-                    delete previousWorkoutExercise.id;
-                    console.log("Previous Workout Exercise:", previousWorkoutExercise);
                     const realm = new Realm({ "schema": [previousWorkoutsExercises] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises });
-                    });        
+                    const exists = recordExists(realm, "PreviousWorkoutsExercises", previousWorkoutExercise, ["previousWorkouts", "exercises"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises });
+                        });
+                    }
+                    realm.close();
                 });
-                
+            
                 workoutPresetsArray.forEach((workoutPreset) => {
-                    delete workoutPreset.id;
-                    console.log("Workout Preset:", workoutPreset);
                     const realm = new Realm({ "schema": [workoutPresets] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("WorkoutPresets").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
-                    });
+                    const exists = recordExists(realm, "WorkoutPresets", workoutPreset, ["name"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("WorkoutPresets").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
+                        });
+                    }
                     realm.close();
                 });
-                
+            
                 workoutPresetsExercises.forEach((workoutPresetExercise) => {
-                    delete workoutPresetExercise.id;
-                    console.log("Workout Preset Exercise:", workoutPresetExercise);
                     const realm = new Realm({ "schema": [workoutPresetsExercises] });
-                    realm.write(() => {
-                        const currentHighestId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("WorkoutPresetsExercises", { "id": newId, "workoutPresets": workoutPresetExercise.workoutPresets, "exercises": workoutPresetExercise.exercises, "metrics": workoutPresetExercise.metrics, "volume": workoutPresetExercise.volume });
-                    });
+                    const exists = recordExists(realm, "WorkoutPresetsExercises", workoutPresetExercise, ["workoutPresets", "exercises"]);
+                    if (!exists) {
+                        realm.write(() => {
+                            const currentHighestId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("WorkoutPresetsExercises", { "id": newId, "workoutPresets": workoutPresetExercise.workoutPresets, "exercises": workoutPresetExercise.exercises, "metrics": workoutPresetExercise.metrics, "volume": workoutPresetExercise.volume });
+                        });
+                    }
                     realm.close();
                 });
-                
+            
+                Alert.alert("Success", "Data imported successfully");
             } else {
-                setError("No document selected");
+                Alert.alert("Error", "Please select a JSON file");
             }
         } catch (err) {
             console.error(err);
+            Alert.alert("Error", "Failed to import data");
         }
     };
     return (

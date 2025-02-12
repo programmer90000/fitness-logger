@@ -16,6 +16,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const [workoutDate, setWorkoutDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [realmInstance, setRealmInstance] = useState(null);
+    const [dropdownDisabled, setDropdownDisabled] = useState([]);
     const { control, handleSubmit, getValues, setValue, reset, watch } = useForm({ defaultValues });
     const { fields, append, insert, remove } = useFieldArray({
         control,
@@ -182,6 +183,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
             "duration": currentValues.duration,
             "reps": currentValues.reps,
         });
+
+        setDropdownDisabled((prev) => {
+            const newDisabled = [...prev];
+            newDisabled.splice(index + 1, 0, true);
+            return newDisabled;
+        });
+
         setRemovedButtons([...removedButtons, index]);
     };
     
@@ -220,6 +228,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                     "onPress": () => {
                         reset({ "workoutName": "", "workoutNotes": "", "exercises": [] });
                         setWorkoutDate(new Date());
+                        setDropdownDisabled([]);
                         AsyncStorage.removeItem("workoutFormData");
                     },
                 },
@@ -299,8 +308,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                         <DropdownComponent data = {names2} value = {watch(`exercises.${field.originalIndex}.name`)} onChange = {(name) => {
                                             setValue(`exercises.${field.originalIndex}.name`, name);
+                                            setDropdownDisabled((prev) => {
+                                                const newDisabled = [...prev];
+                                                newDisabled[field.originalIndex] = true;
+                                                return newDisabled;
+                                            });
                                             updateData();
-                                        }} style = {{ "width": 100 }} placeholder = "Exercise Name" />
+                                        }} style = {{ "width": 100 }} placeholder = "Exercise Name" disabled = {dropdownDisabled[field.originalIndex]} />
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
@@ -340,14 +354,17 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                     </View>
                                 </View>
                             ); })}
-                            <TouchableOpacity onPress = {() => { return addSet(group.sets[0].originalIndex); }} className = "mt-[10px] bg-[#2296f3] p-2 m-[5px]">
+                            <TouchableOpacity onPress = {() => { return addSet(group.sets[0].originalIndex); }} className = {`mt-[10px] p-2 m-[5px] ${!watch(`exercises.${group.sets[0].originalIndex}.name`) ? "bg-gray-400" : "bg-[#2296f3]"}`} disabled = {!watch(`exercises.${group.sets[0].originalIndex}.name`)} >
                                 <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Set</Text>
                             </TouchableOpacity>
                         </View>
                     );
                     })}
                 </View>
-                <TouchableOpacity onPress = {() => { return append({ "name": "", "duration": "", "reps": "" }); }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
+                <TouchableOpacity onPress = {() => {
+                    append({ "name": "", "duration": "", "reps": "" });
+                    setDropdownDisabled((prev) => { return [...prev, false]; });
+                }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
                     <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Add Exercise</Text>
                 </TouchableOpacity>
                 <View className = "mt-10">

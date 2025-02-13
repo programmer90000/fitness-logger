@@ -38,29 +38,34 @@ const UploadDownloadData = () => {
 
             const fileContents = `{\n  "workoutPresets": ${workoutPresetsJson},\n  "exercises": ${exercisesJson},\n  "workoutPresetsExercises": ${workoutPresetsExercisesJson},\n  "previousWorkouts": ${previousWorkoutsJson},\n  "previousWorkoutsExercises": ${previousWorkoutsExercisesJson},\n  "goals": ${goalsJson},\n  "badges": ${badgesJson}\n}`;
             
+            console.log(`
+${workoutPresetsExercisesJson}
+${previousWorkoutsExercisesJson}
+                `);
+            
             const fileName = "fitness-logger-database.json";
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
 
             // Write the content to the app's local file system
-            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+            //            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
             // Request permission to access external storage
-            const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+            //            const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
 
-            if (!permissions.granted) {
-                Alert.alert("Permission Denied", "Unable to access the Downloads folder.");
-                return;
-            }
+            //            if (!permissions.granted) {
+            //                Alert.alert("Permission Denied", "Unable to access the Downloads folder.");
+            //                return;
+            //            }
 
-            const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
-                permissions.directoryUri,
-                fileName,
-                "application/json",
-            );
+            //            const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
+            //                permissions.directoryUri,
+            //                fileName,
+            //               "application/json",
+            //            );
 
-            await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+            //            await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
-            Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
+            //            Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
             
             realm.close();
         } catch (error) {

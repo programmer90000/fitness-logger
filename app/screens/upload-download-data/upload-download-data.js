@@ -30,42 +30,37 @@ const UploadDownloadData = () => {
             // Convert records to JSON and add indentation for readability
             const workoutPresetsJson = JSON.stringify(workoutPresetsRecords, null, 2);
             const exercisesJson = JSON.stringify(exercisesRecords, null, 2);
-            const workoutPresetsExercisesJson = JSON.stringify(workoutPresetsExercisesRecords, null, 2);
+            const workoutPresetsExercisesJson = JSON.stringify(workoutPresetsExercisesRecords.map((record) => { return { "id": record.id, "workoutPresets": { "id": record.workoutPresets?.id }, "exercises": { "id": record.exercises?.id }, "metrics": record.metrics, "volume": record.volume }; }), null, 2);
             const previousWorkoutsJson = JSON.stringify(previousWorkoutsRecords, null, 2);
-            const previousWorkoutsExercisesJson = JSON.stringify(previousWorkoutsExercisesRecords, null, 2);
+            const previousWorkoutsExercisesJson = JSON.stringify(previousWorkoutsExercisesRecords.map((record) => { return { "id": record.id, "previousWorkouts": { "id": record.previousWorkouts?.id }, "exercises": { "id": record.exercises?.id }, "metrics": record.metrics, "volume": record.volume }; }), null, 2);
             const goalsJson = JSON.stringify(goalsRecords, null, 2);
             const badgesJson = JSON.stringify(badgesRecords, null, 2);
 
             const fileContents = `{\n  "workoutPresets": ${workoutPresetsJson},\n  "exercises": ${exercisesJson},\n  "workoutPresetsExercises": ${workoutPresetsExercisesJson},\n  "previousWorkouts": ${previousWorkoutsJson},\n  "previousWorkoutsExercises": ${previousWorkoutsExercisesJson},\n  "goals": ${goalsJson},\n  "badges": ${badgesJson}\n}`;
             
-            console.log(`
-${workoutPresetsExercisesJson}
-${previousWorkoutsExercisesJson}
-                `);
-            
             const fileName = "fitness-logger-database.json";
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
 
             // Write the content to the app's local file system
-            //            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
             // Request permission to access external storage
-            //            const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+            const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
 
-            //            if (!permissions.granted) {
-            //                Alert.alert("Permission Denied", "Unable to access the Downloads folder.");
-            //                return;
-            //            }
+            if (!permissions.granted) {
+                Alert.alert("Permission Denied", "Unable to access the Downloads folder.");
+                return;
+            }
 
-            //            const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
-            //                permissions.directoryUri,
-            //                fileName,
-            //               "application/json",
-            //            );
+            const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
+                permissions.directoryUri,
+                fileName,
+                "application/json",
+            );
 
-            //            await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+            await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
 
-            //            Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
+            Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
             
             realm.close();
         } catch (error) {

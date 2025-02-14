@@ -136,12 +136,16 @@ const UploadDownloadData = () => {
                 
                 previousWorkoutsArray.forEach((previousWorkout) => {
                     delete previousWorkout.id;
-                    console.log("Previous Workout:", previousWorkout);
                     const realm = new Realm({ "schema": [previousWorkouts] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("PreviousWorkouts").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": new Date(previousWorkout.date) });
+                        const date = new Date(previousWorkout.date);
+                        const existingPreviousWorkout = realm.objects("PreviousWorkouts").filtered("name = $0 AND notes = $1 AND date = $2", previousWorkout.name, previousWorkout.notes, date);
+
+                        if (existingPreviousWorkout.length === 0) {
+                            const currentHighestId = realm.objects("PreviousWorkouts").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": date });
+                        }
                     });
                 });
                 

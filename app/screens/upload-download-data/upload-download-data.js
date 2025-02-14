@@ -104,10 +104,18 @@ const UploadDownloadData = () => {
                     console.log("Goal:", goal);
                     const realm = new Realm({ "schema": [goals] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("Goals").max("id") || 0;
-                        const newId = currentHighestId + 1;
+                        const startDate = new Date(goal.startDate);
+                        const endDate = new Date(goal.endDate);
+                        const reminderDate = new Date(goal.reminders);
+
+                        const existingGoal = realm.objects("Goals").filtered("name = $0 AND type = $1 AND value = $2 AND startDate = $3 AND endDate = $4 AND reminders = $5 AND notes = $6", goal.name, goal.type, goal.value, startDate, endDate, reminderDate, goal.notes);
+
+                        if (existingGoal.length === 0) {
+                            const currentHighestId = realm.objects("Goals").max("id") || 0;
+                            const newId = currentHighestId + 1;
                         
-                        realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
+                            realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
+                        }
                     });
                 });
                 

@@ -74,7 +74,7 @@ const UploadDownloadData = () => {
             const result = await DocumentPicker.getDocumentAsync({
                 "type": "application/json",
             });
-            
+        
             if (result.assets[0].mimeType === "application/json") {
                 const fileUri = result.assets[0].uri;
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
@@ -82,9 +82,16 @@ const UploadDownloadData = () => {
                 setJsonData(parsedData);
                 const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercises = [] } = parsedData;
 
+                const recordExists = (realm, schemaName, record, uniqueFields) => {
+                    const query = uniqueFields.map((field) => { return `${field} == $${field}`; }).join(" AND ");
+                    const queryParams = {};
+                    uniqueFields.forEach((field) => {
+                        queryParams[field] = record[field];
+                    });
+                    return realm.objects(schemaName).filtered(query, queryParams).length > 0;
+                };
+
                 badgesArray.forEach((badge) => {
-                    delete badge.id;
-                    console.log("Badge:", badge);
                     const realm = new Realm({ "schema": [badges] });
                     realm.write(() => {
                         const existingBadge = realm.objects("Badges").filtered("image = $0 AND text = $1 AND completed = $2", badge.image, badge.text, badge.completed);
@@ -102,10 +109,8 @@ const UploadDownloadData = () => {
                     });
                     realm.close();
                 });
-         
+     
                 goalsArray.forEach((goal) => {
-                    delete goal.id;
-                    console.log("Goal:", goal);
                     const realm = new Realm({ "schema": [goals] });
                     realm.write(() => {
                         const startDate = new Date(goal.startDate);
@@ -122,10 +127,8 @@ const UploadDownloadData = () => {
                         }
                     });
                 });
-                
+            
                 exercisesArray.forEach((exercise) => {
-                    delete exercise.id;
-                    console.log("Exercise:", exercise);
                     const realm = new Realm({ "schema": [exercises] });
                     realm.write(() => {
                         const primaryMuscles = Array.isArray(exercise.primaryMuscles) ? exercise.primaryMuscles : [];
@@ -139,7 +142,7 @@ const UploadDownloadData = () => {
                         }
                     });
                 });
-                
+            
                 previousWorkoutsArray.forEach((previousWorkout) => {
                     delete previousWorkout.id;
                     const realm = new Realm({ "schema": [previousWorkouts] });
@@ -154,10 +157,8 @@ const UploadDownloadData = () => {
                         }
                     });
                 });
-                
+            
                 previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
-                    delete previousWorkoutExercise.id;
-                    console.log("Previous Workout Exercise:", previousWorkoutExercise);
                     const realm = new Realm({ "schema": [previousWorkoutsExercises] });
                     realm.write(() => {
                         const existingPreviousWorkoutExercise = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", 
@@ -170,10 +171,8 @@ const UploadDownloadData = () => {
                         }
                     });
                 });
-                
+            
                 workoutPresetsArray.forEach((workoutPreset) => {
-                    delete workoutPreset.id;
-                    console.log("Workout Preset:", workoutPreset);
                     const realm = new Realm({ "schema": [workoutPresets] });
                     realm.write(() => {
                         const existingWorkoutPreset = realm.objects("WorkoutPresets").filtered("name = $0 AND notes = $1", workoutPreset.name, workoutPreset.notes);
@@ -186,10 +185,8 @@ const UploadDownloadData = () => {
                     });
                     realm.close();
                 });
-                
+            
                 workoutPresetsExercises.forEach((workoutPresetExercise) => {
-                    delete workoutPresetExercise.id;
-                    console.log("Workout Preset Exercise:", workoutPresetExercise);
                     const realm = new Realm({ "schema": [workoutPresetsExercises] });
                     realm.write(() => {
                         const existingWorkoutPresetExercise = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", workoutPresetExercise.workoutPresets.id, workoutPresetExercise.exercises.id, workoutPresetExercise.metrics, workoutPresetExercise.volume);
@@ -201,12 +198,14 @@ const UploadDownloadData = () => {
                         }
                     });
                 });
-                
+            
+                Alert.alert("Success", "Data imported successfully");
             } else {
-                setError("No document selected");
+                Alert.alert("Error", "Please select a JSON file");
             }
         } catch (err) {
             console.error(err);
+            Alert.alert("Error", "Failed to import data");
         }
     };
     return (

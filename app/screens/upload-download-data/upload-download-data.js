@@ -128,9 +128,15 @@ const UploadDownloadData = () => {
                     console.log("Exercise:", exercise);
                     const realm = new Realm({ "schema": [exercises] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("Exercises").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest });
+                        const primaryMuscles = Array.isArray(exercise.primaryMuscles) ? exercise.primaryMuscles : [];
+                        const secondaryMuscles = Array.isArray(exercise.secondaryMuscles) ? exercise.secondaryMuscles : [];
+                        const existingExercise = realm.objects("Exercises").filtered("name = $0 AND type = $1 AND notes = $2 AND video = $3 AND personalBest = $4 AND isDeleted = $5", exercise.name, exercise.type, exercise.notes, exercise.video, exercise.personalBest, exercise.isDeleted);
+        
+                        if (existingExercise.length === 0) {
+                            const currentHighestId = realm.objects("Exercises").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest, "isDeleted": false, "primaryMuscles": primaryMuscles, "secondaryMuscles": secondaryMuscles });
+                        }
                     });
                 });
                 

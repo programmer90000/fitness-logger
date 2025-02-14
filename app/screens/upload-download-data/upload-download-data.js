@@ -150,10 +150,15 @@ const UploadDownloadData = () => {
                     console.log("Previous Workout Exercise:", previousWorkoutExercise);
                     const realm = new Realm({ "schema": [previousWorkoutsExercises] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises });
-                    });        
+                        const existingPreviousWorkoutExercise = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", 
+                            previousWorkoutExercise.previousWorkouts.id, previousWorkoutExercise.exercises.id, previousWorkoutExercise.metrics, previousWorkoutExercise.volume);
+        
+                        if (existingPreviousWorkoutExercise.length === 0) {
+                            const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises, "metrics": previousWorkoutExercise.metrics, "volume": previousWorkoutExercise.volume });
+                        }
+                    });
                 });
                 
                 workoutPresetsArray.forEach((workoutPreset) => {

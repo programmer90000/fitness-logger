@@ -157,9 +157,13 @@ const UploadDownloadData = () => {
                     console.log("Workout Preset:", workoutPreset);
                     const realm = new Realm({ "schema": [workoutPresets] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("WorkoutPresets").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
+                        const existingWorkoutPreset = realm.objects("WorkoutPresets").filtered("name = $0 AND notes = $1", workoutPreset.name, workoutPreset.notes);
+        
+                        if (existingWorkoutPreset.length === 0) {
+                            const currentHighestId = realm.objects("WorkoutPresets").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
+                        }
                     });
                     realm.close();
                 });

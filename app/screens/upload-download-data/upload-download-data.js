@@ -87,14 +87,18 @@ const UploadDownloadData = () => {
                     console.log("Badge:", badge);
                     const realm = new Realm({ "schema": [badges] });
                     realm.write(() => {
-                        const currentHighestId = realm.objects("Badges").max("id") || 0;
-                        const newId = currentHighestId + 1;
-                        let completedString = badge.properties.completed;
-                        let completed;
+                        const existingBadge = realm.objects("Badges").filtered("image = $0 AND text = $1 AND completed = $2", badge.image, badge.text, badge.completed);
+        
+                        if (existingBadge.length === 0) {
+                            const currentHighestId = realm.objects("Badges").max("id") || 0;
+                            const newId = currentHighestId + 1;
+                            let completedString = badge.properties.completed;
+                            let completed;
 
-                        if (completedString === "true") { completed = true; } else { completed = false; }
+                            if (completedString === "true") { completed = true; } else { completed = false; }
 
-                        realm.create("Badges", { "id": newId, "goalName": badge.properties.goalName, "exerciseName": badge.properties.exerciseName, "image": badge.properties.image, "details": badge.properties.details, "completed": completed });
+                            realm.create("Badges", { "id": newId, "image": badge.image, "text": badge.text, "completed": badge.completed });
+                        }
                     });
                     realm.close();
                 });

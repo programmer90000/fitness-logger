@@ -311,6 +311,14 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         return groups;
     };
 
+    const getPersonalBest = (exerciseName) => {
+        const exerciseRecords = realmInstance.objects("PreviousWorkoutsExercises")
+            .filtered("exercises.name == $0", exerciseName)
+            .sorted("metrics", true);
+    
+        return exerciseRecords.length > 0 ? `${exerciseRecords[0].metrics}kg x ${exerciseRecords[0].volume} reps` : "N/A";
+    };
+
     const groupedExercises = groupExercisesByName(fields);
 
     return (
@@ -362,6 +370,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                         <DropdownComponent data = {names2} value = {watch(`exercises.${field.originalIndex}.name`)} onChange = {(name) => {
                                             setValue(`exercises.${field.originalIndex}.name`, name);
+                                            setValue(`exercises.${field.originalIndex}.personalBest`, getPersonalBest(name));
                                             setDropdownDisabled((prev) => {
                                                 const newDisabled = [...prev];
                                                 newDisabled[field.originalIndex] = true;
@@ -372,7 +381,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
-                                        <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
+                                        <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">{watch(`exercises.${field.originalIndex}.personalBest`)}</Text>
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>

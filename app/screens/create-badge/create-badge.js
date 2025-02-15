@@ -27,8 +27,15 @@ const CreateBadge = () => {
         return null;
     }
 
+    const trimBadgeData = (formValues) => {
+        return {
+            ...formValues,
+            "badgeText": formValues.badgeText?.trim(),
+        };
+    };
+
     const onSubmit = () => {
-        const formValues = getValues();
+        const formValues = trimBadgeData(getValues());
         const realm = new Realm({ "schema": [badges] });
         realm.write(() => {
             if (id) {

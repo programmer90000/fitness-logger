@@ -8,6 +8,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
 
 const WorkoutForm = ({ saveTo, defaultValues }) => {
     const router = useRouter();
@@ -117,7 +118,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                     });
                 }
 
-                data.exercises.forEach((exercise) => {
+                data.exercises.forEach((exercise, index) => {
+                    if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) {
+                        console.warn(`Skipping invalid exercise at index ${index}:`, exercise);
+                        return;
+                    }
                     const currentWorkoutExercisesId = realmInstance.objects("WorkoutPresetsExercises").max("id") || 0;
                     const newWorkoutExercisesId = currentWorkoutExercisesId === 0 ? 1 : currentWorkoutExercisesId + 1;
 
@@ -236,6 +241,29 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         );
     };
     
+    const deleteSet = (originalIndex) => {
+        remove(originalIndex);
+
+        setDropdownDisabled((prev) => {
+            const newDisabled = [...prev];
+            newDisabled.splice(originalIndex, 1);
+            return newDisabled;
+        });
+
+        try {
+            realmInstance.write(() => {
+                const exerciseToDelete = realmInstance.objects("WorkoutPresetsExercises")
+                    .filtered("workoutPresets.id == $0", parseInt(id))[originalIndex];
+
+                if (exerciseToDelete) {
+                    realmInstance.delete(exerciseToDelete);
+                }
+            });
+        } catch (error) {
+            console.error("Error deleting exercise set from Realm:", error);
+        }
+    };
+    
     useEffect(() => {
         getAllWorkedMuscles();
     }, [fields, watch("exercises")]);
@@ -352,6 +380,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                             ); }}
                                         />
                                     </View>
+                                    <TouchableOpacity 
+                                        onPress = {() => { return deleteSet(field.originalIndex); }} 
+                                        className = "ml-2 self-center mt-7"
+                                    >
+                                        <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} />
+                                    </TouchableOpacity>
+
                                 </View>
                             ); })}
                             <TouchableOpacity onPress = {() => { return addSet(group.sets[0].originalIndex); }} className = {`mt-[10px] p-2 m-[5px] ${!watch(`exercises.${group.sets[0].originalIndex}.name`) ? "bg-gray-400" : "bg-[#2296f3]"}`} disabled = {!watch(`exercises.${group.sets[0].originalIndex}.name`)} >

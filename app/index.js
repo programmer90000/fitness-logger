@@ -6,7 +6,13 @@ import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
 import * as SplashScreen from "expo-splash-screen";
 import Carousel from "./components/carousel/carousel.js";
-import FAQComponent from "./components/collapsible/collapsible.js"; 
+import FAQComponent from "./components/collapsible/collapsible.js";
+import image1 from "./assets/slideshow-image-1.png";
+import image2 from "./assets/slideshow-image-2.png";
+import image3 from "./assets/slideshow-image-3.png";
+import image4 from "./assets/slideshow-image-4.png";
+import image5 from "./assets/slideshow-image-5.png";
+import image6 from "./assets/slideshow-image-6.png";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -18,9 +24,12 @@ export default function App() {
     }
 
     const carouselData = [
-        { "image": "https://imageplaceholder.net/300x200/bebebe", "text": "Slide 1" },
-        { "image": "https://imageplaceholder.net/300x200/9c9c9c", "text": "Slide 2" },
-        { "image": "https://imageplaceholder.net/300x200/716f6f", "text": "Slide 3" },
+        { "image": image1, "text": "Sahih Muslim 2664, Sahih" },
+        { "image": image2, "text": "Surat Al-Baqarah 2:195" },
+        { "image": image3, "text": "Surah Al-Araf 7:31" },
+        { "image": image4, "text": "Surah Al-Anfal 8:60" },
+        { "image": image5, "text": "Surah An-Najm 53:39" },
+        { "image": image6, "text": "Sunan Abi Dawood 4078, Sahih" },
     ];
     
     const faqData = [

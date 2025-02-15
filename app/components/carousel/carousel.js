@@ -69,7 +69,7 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
         <View className = {`h-[300px] ${style}`}>
             <FlatList ref = {flatListRef} data = {data} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} renderItem = {({ item }) => { return (
                 <View style = {styles.carouselItem}>
-                    {item.image && <Image source = {{ "uri": item.image }} style = {styles.image} />}
+                    {item.image && (<Image source = {typeof item.image === "number" ? item.image : { "uri": item.image }} style = {styles.image} />)}
                     {item.text && <Text style = {styles.text}>{item.text}</Text>}
                 </View>
             ); }} keyExtractor = {(item, index) => { return index.toString(); }} />

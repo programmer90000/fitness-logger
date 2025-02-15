@@ -380,9 +380,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                             ); }}
                                         />
                                     </View>
-                                    <TouchableOpacity onPress = {() => { return deleteSet(field.originalIndex); }} className = "ml-2">
+                                    <TouchableOpacity 
+                                        onPress = {() => { return deleteSet(field.originalIndex); }} 
+                                        className = "ml-2 self-center mt-7"
+                                    >
                                         <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} />
                                     </TouchableOpacity>
+
                                 </View>
                             ); })}
                             <TouchableOpacity onPress = {() => { return addSet(group.sets[0].originalIndex); }} className = {`mt-[10px] p-2 m-[5px] ${!watch(`exercises.${group.sets[0].originalIndex}.name`) ? "bg-gray-400" : "bg-[#2296f3]"}`} disabled = {!watch(`exercises.${group.sets[0].originalIndex}.name`)} >

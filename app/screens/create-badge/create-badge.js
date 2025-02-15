@@ -34,9 +34,20 @@ const CreateBadge = () => {
         };
     };
 
+    const checkForDuplicateName = (realm, name) => {
+        const existingItem = realm.objects("Badges").filtered("name == $0", formValues.text);
+        return existingItem.length > 0;
+    };
+
     const onSubmit = () => {
         const formValues = trimBadgeData(getValues());
         const realm = new Realm({ "schema": [badges] });
+
+        if (checkForDuplicateName(realm)) {
+            console.log("Badge name already exists");
+            return;
+        }
+
         realm.write(() => {
             if (id) {
                 const existingBadge = realm.objectForPrimaryKey("Badges", parseInt(id));

@@ -61,10 +61,19 @@ const CreateExercise = () => {
             "exerciseNotes": exerciseState.exerciseNotes?.trim(),
         };
     };
+
+    const checkForDuplicateName = (realm, name) => {
+        const existingItem = realm.objects("Exercises").filtered("name == $0", name);
+        return existingItem.length > 0;
+    };
     
     const handleAddExercise = () => {
         const trimmedExerciseState = trimExerciseData(exerciseState);
         const realm = new Realm({ "schema": [exercises] });
+        if (checkForDuplicateName(realm, formValues.name)) {
+            console.log("Badge name already exists");
+            return;
+        }
         realm.write(() => {
             if (trimmedExerciseState.id) {
                 const existingExercise = realm.objects("Exercises").filtered(`id == ${trimmedExerciseState.id}`)[0];

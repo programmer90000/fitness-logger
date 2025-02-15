@@ -1072,16 +1072,28 @@ exports[`index.js Test 1`] = `
         data={
           [
             {
-              "image": "https://imageplaceholder.net/300x200/bebebe",
-              "text": "Slide 1",
+              "image": 1,
+              "text": "Sahih Muslim 2664, Sahih",
             },
             {
-              "image": "https://imageplaceholder.net/300x200/9c9c9c",
-              "text": "Slide 2",
+              "image": 1,
+              "text": "Surat Al-Baqarah 2:195",
             },
             {
-              "image": "https://imageplaceholder.net/300x200/716f6f",
-              "text": "Slide 3",
+              "image": 1,
+              "text": "Surah Al-Araf 7:31",
+            },
+            {
+              "image": 1,
+              "text": "Surah Al-Anfal 8:60",
+            },
+            {
+              "image": 1,
+              "text": "Surah An-Najm 53:39",
+            },
+            {
+              "image": 1,
+              "text": "Sunan Abi Dawood 4078, Sahih",
             },
           ]
         }
@@ -1127,11 +1139,7 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={
-                  {
-                    "uri": "https://imageplaceholder.net/300x200/bebebe",
-                  }
-                }
+                source={1}
                 style={
                   {
                     "borderRadius": 10,
@@ -1150,7 +1158,7 @@ exports[`index.js Test 1`] = `
                   }
                 }
               >
-                Slide 1
+                Sahih Muslim 2664, Sahih
               </Text>
             </View>
           </View>
@@ -1176,11 +1184,7 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={
-                  {
-                    "uri": "https://imageplaceholder.net/300x200/9c9c9c",
-                  }
-                }
+                source={1}
                 style={
                   {
                     "borderRadius": 10,
@@ -1199,7 +1203,7 @@ exports[`index.js Test 1`] = `
                   }
                 }
               >
-                Slide 2
+                Surat Al-Baqarah 2:195
               </Text>
             </View>
           </View>
@@ -1225,11 +1229,7 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={
-                  {
-                    "uri": "https://imageplaceholder.net/300x200/716f6f",
-                  }
-                }
+                source={1}
                 style={
                   {
                     "borderRadius": 10,
@@ -1248,7 +1248,142 @@ exports[`index.js Test 1`] = `
                   }
                 }
               >
-                Slide 3
+                Surah Al-Araf 7:31
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surah Al-Anfal 8:60
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surah An-Najm 53:39
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Sunan Abi Dawood 4078, Sahih
               </Text>
             </View>
           </View>
@@ -1277,6 +1412,51 @@ exports[`index.js Test 1`] = `
               },
               {
                 "backgroundColor": "#333",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
               },
             ]
           }

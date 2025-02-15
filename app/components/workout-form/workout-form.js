@@ -68,6 +68,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
     };
 
+    const checkForDuplicateWorkoutPresetName = (name) => {
+        const existingWorkouts = realmInstance.objects("WorkoutPresets").filtered("name == $0", name);
+        return existingWorkouts.length > 0;
+    };
+
     useEffect(() => {
         const loadSavedData = async () => {
             if (!isReady) {
@@ -110,6 +115,11 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     const onSubmit = async (data) => {
         try {
             const trimmedData = trimWorkoutData(data);
+
+            if (saveTo === "workoutPresets" && checkForDuplicateWorkoutPresetName(trimmedData.workoutName)) {
+                console.log("Workout Preset name already exists");
+                return;
+            }
 
             realmInstance.write(() => {
                 let newId, newWorkout;

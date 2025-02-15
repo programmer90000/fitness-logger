@@ -7,13 +7,22 @@ const ReportFeedback = () => {
     const [description, setDescription] = useState("");
     
     const { isReady, colours } = useTheme();
-    
+
+    const trimFeedbackData = (data) => {
+        return {
+            "title": data.title.trim(),
+            "description": data.description.trim(),
+        };
+    };
 
     const handleSubmit = () => {
         if (!title || !description) {
             Alert.alert("Please fill out all fields before sending.");
             return;
         }
+        
+        setTitle(trimFeedbackData(title));
+        setDescription(trimFeedbackData(description));
 
         const to = "test564756@outlook.com"; // ! Replace with my actual email address
         const subject = `Feedback: ${title}`;

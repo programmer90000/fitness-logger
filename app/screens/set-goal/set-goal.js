@@ -79,9 +79,29 @@ const SetGoal = () => {
         setReminderPickerShow(true);
     };
     
+    const trimGoalData = (formValues) => {
+        return {
+            ...formValues,
+            "goalName": formValues.goalName?.trim(),
+            "goalValue": formValues.goalValue?.trim(),
+            "notes": formValues.notes?.trim(),
+        };
+    };
+    
+    const checkForDuplicateName = (realm, name) => {
+        const existingItem = realm.objects("Goals").filtered("name == $0", name);
+        return existingItem.length > 0;
+    };
+    
     const handleAddGoal = () => {
-        const formValues = getValues();
+        const formValues = trimGoalData(getValues());
         const realm = new Realm({ "schema": [goals] });
+
+        if (checkForDuplicateName(realm, formValues.name)) {
+            console.log("Goal name already exists");
+            return;
+        }
+
         realm.write(() => {
             if (id) {
                 const existingGoal = realm.objectForPrimaryKey("Goals", parseInt(id));

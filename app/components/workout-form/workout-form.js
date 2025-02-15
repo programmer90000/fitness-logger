@@ -54,6 +54,25 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         }
     };
 
+    const trimWorkoutData = (data) => {
+        return {
+            ...data,
+            "workoutName": data.workoutName?.trim(),
+            "workoutNotes": data.workoutNotes?.trim(),
+            "exercises": data.exercises?.map((exercise) => { return {
+                ...exercise,
+                "name": exercise.name?.trim(),
+                "duration": exercise.duration?.trim(),
+                "reps": exercise.reps?.trim(),
+            }; }),
+        };
+    };
+
+    const checkForDuplicateWorkoutPresetName = (name) => {
+        const existingWorkouts = realmInstance.objects("WorkoutPresets").filtered("name == $0", name);
+        return existingWorkouts.length > 0;
+    };
+
     useEffect(() => {
         const loadSavedData = async () => {
             if (!isReady) {
@@ -95,6 +114,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
     const onSubmit = async (data) => {
         try {
+            const trimmedData = trimWorkoutData(data);
+
+            if (saveTo === "workoutPresets" && checkForDuplicateWorkoutPresetName(trimmedData.workoutName)) {
+                console.log("Workout Preset name already exists");
+                return;
+            }
+
             realmInstance.write(() => {
                 let newId, newWorkout;
 
@@ -104,21 +130,21 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
                     newWorkout = realmInstance.create("WorkoutPresets", {
                         "id": newId,
-                        "name": data.workoutName,
-                        "notes": data.workoutNotes || "",
+                        "name": trimmedData.workoutName,
+                        "notes": trimmedData.workoutNotes || "",
                     });
                 } else if (saveTo === "previousWorkouts") {
                     const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
                     newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
                     newWorkout = realmInstance.create("PreviousWorkouts", {
                         "id": newId,
-                        "name": data.workoutName,
-                        "notes": data.workoutNotes || "",
+                        "name": trimmedData.workoutName,
+                        "notes": trimmedData.workoutNotes || "",
                         "date": workoutDate,
                     });
                 }
 
-                data.exercises.forEach((exercise, index) => {
+                trimmedData.exercises.forEach((exercise, index) => {
                     if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) {
                         console.warn(`Skipping invalid exercise at index ${index}:`, exercise);
                         return;

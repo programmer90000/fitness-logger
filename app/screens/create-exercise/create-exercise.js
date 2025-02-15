@@ -54,18 +54,27 @@ const CreateExercise = () => {
         return null;
     }
     
+    const trimExerciseData = (exerciseState) => {
+        return {
+            ...exerciseState,
+            "exerciseName": exerciseState.exerciseName?.trim(),
+            "exerciseNotes": exerciseState.exerciseNotes?.trim(),
+        };
+    };
+    
     const handleAddExercise = () => {
+        const trimmedExerciseState = trimExerciseData(exerciseState);
         const realm = new Realm({ "schema": [exercises] });
         realm.write(() => {
-            if (exerciseState.id) {
-                const existingExercise = realm.objects("Exercises").filtered(`id == ${exerciseState.id}`)[0];
+            if (trimmedExerciseState.id) {
+                const existingExercise = realm.objects("Exercises").filtered(`id == ${trimmedExerciseState.id}`)[0];
                 if (existingExercise) {
-                    existingExercise.name = exerciseState.exerciseName;
-                    existingExercise.type = exerciseState.exerciseType;
-                    existingExercise.notes = exerciseState.exerciseNotes;
-                    existingExercise.video = exerciseState.videoPath;
-                    existingExercise.primaryMuscles = exerciseState.primaryMuscles;
-                    existingExercise.secondaryMuscles = exerciseState.secondaryMuscles;
+                    existingExercise.name = trimmedExerciseState.exerciseName;
+                    existingExercise.type = trimmedExerciseState.exerciseType;
+                    existingExercise.notes = trimmedExerciseState.exerciseNotes;
+                    existingExercise.video = trimmedExerciseState.videoPath;
+                    existingExercise.primaryMuscles = trimmedExerciseState.primaryMuscles;
+                    existingExercise.secondaryMuscles = trimmedExerciseState.secondaryMuscles;
                 }
             } else {
                 const currentHighestId = realm.objects("Exercises").max("id") || 0;
@@ -78,7 +87,7 @@ const CreateExercise = () => {
                     newId = currentHighestId + 1;
                 }
             
-                realm.create("Exercises", { "id": newId, "name": exerciseState.exerciseName, "type": exerciseState.exerciseType, "notes": exerciseState.exerciseNotes, "video": exerciseState.videoPath, "personalBest": "N/A", "isDeleted": false, "primaryMuscles": exerciseState.primaryMuscles, "secondaryMuscles": exerciseState.secondaryMuscles });
+                realm.create("Exercises", { "id": newId, "name": trimmedExerciseState.exerciseName, "type": trimmedExerciseState.exerciseType, "notes": trimmedExerciseState.exerciseNotes, "video": trimmedExerciseState.videoPath, "personalBest": "N/A", "isDeleted": false, "primaryMuscles": trimmedExerciseState.primaryMuscles, "secondaryMuscles": trimmedExerciseState.secondaryMuscles });
             }
         });
         const allExercises = realm.objects("Exercises");

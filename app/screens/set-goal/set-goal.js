@@ -79,8 +79,17 @@ const SetGoal = () => {
         setReminderPickerShow(true);
     };
     
+    const trimGoalData = (formValues) => {
+        return {
+            ...formValues,
+            "goalName": formValues.goalName?.trim(),
+            "goalValue": formValues.goalValue?.trim(),
+            "notes": formValues.notes?.trim(),
+        };
+    };
+    
     const handleAddGoal = () => {
-        const formValues = getValues();
+        const formValues = trimGoalData(getValues());
         const realm = new Realm({ "schema": [goals] });
         realm.write(() => {
             if (id) {

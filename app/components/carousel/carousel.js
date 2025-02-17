@@ -3,9 +3,10 @@ import { FlatList, View, Image, Text, Dimensions, StyleSheet } from "react-nativ
 
 const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
     const flatListRef = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(1);
     const [userHasScrolled, setUserHasScrolled] = useState(false);
     const { width } = Dimensions.get("window");
+    const loopedData = [data[data.length - 1], ...data, data[0]];
 
     const handleScroll = (event) => {
         setUserHasScrolled(true);
@@ -14,12 +15,9 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
         setCurrentIndex(index);
     };
 
-
     const scrollToNext = () => {
-        if (flatListRef.current && currentIndex < data.length - 1) {
+        if (flatListRef.current) {
             flatListRef.current.scrollToIndex({ "index": currentIndex + 1, "animated": true });
-        } else if (flatListRef.current) {
-            flatListRef.current.scrollToIndex({ "index": 0, "animated": true });
         }
     };
 
@@ -30,6 +28,22 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
         }
         return () => { return clearInterval(timer); };
     }, [currentIndex, autoScroll, interval, userHasScrolled]);
+
+    useEffect(() => {
+        if (!flatListRef.current) { return; }
+
+        if (currentIndex === 0) {
+            setTimeout(() => {
+                flatListRef.current.scrollToIndex({ "index": data.length, "animated": false });
+                setCurrentIndex(data.length);
+            }, 300);
+        } else if (currentIndex === data.length + 1) {
+            setTimeout(() => {
+                flatListRef.current.scrollToIndex({ "index": 1, "animated": false });
+                setCurrentIndex(1);
+            }, 300);
+        }
+    }, [currentIndex]);
 
     const styles = StyleSheet.create({
         "carouselItem": {
@@ -72,16 +86,21 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
 
     return (
         <View className = {`h-[300px] ${style}`}>
-            <FlatList ref = {flatListRef} data = {data} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} renderItem = {({ item }) => { return (
+            <FlatList ref = {flatListRef} data = {loopedData} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} renderItem = {({ item }) => { return (
                 <View style = {styles.carouselItem}>
                     {item.image && (<Image source = {typeof item.image === "number" ? item.image : { "uri": item.image }} style = {styles.image} />)}
                     {item.text && <Text style = {styles.text}>{item.text}</Text>}
                 </View>
-            ); }} keyExtractor = {(item, index) => { return index.toString(); }} />
-            <View style = {styles.indicatorContainer}>{data.map((_, index) => { return (<View key = {index} style = {[ styles.indicator, currentIndex === index ? styles.activeIndicator : styles.inactiveIndicator]} />); })}</View>
+            ); }} keyExtractor = {(_, index) => { return index.toString(); }} initialScrollIndex = {1} getItemLayout = {(_, index) => { return {
+                "length": width,
+                "offset": width * index,
+                index,
+            }; }} />
+            <View style = {styles.indicatorContainer}>
+                {data.map((_, index) => { return (<View key = {index} style = {[ styles.indicator, currentIndex === index + 1 ? styles.activeIndicator : styles.inactiveIndicator ]} />); })}
+            </View>
         </View>
     );
 };
-
 
 export default Carousel;

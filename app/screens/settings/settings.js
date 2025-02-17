@@ -97,9 +97,6 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {shareJSONData}>
-                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Share Data</Text>
-                </TouchableOpacity>
                 <Link href = "/screens/report-feedback/report-feedback" asChild>
                     <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
                         <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report Feedback</Text>

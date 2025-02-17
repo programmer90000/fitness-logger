@@ -1,5 +1,213 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`backup-restore-data.js Test 1`] = `
+<RCTScrollView
+  style={
+    {
+      "backgroundColor": "#F1F1F1",
+    }
+  }
+>
+  <View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#FF0000",
+          "height": 80,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "marginTop": 5,
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": "66.666667%",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontWeight": "500",
+            },
+            {
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Backup Data
+      </Text>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#FF0000",
+          "height": 80,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "marginTop": 5,
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": "66.666667%",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontWeight": "500",
+            },
+            {
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Restore Data
+      </Text>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#FF0000",
+          "height": 80,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "marginTop": 5,
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": "66.666667%",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontWeight": "500",
+            },
+            {
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+            {
+              "color": "#060606",
+            },
+          ]
+        }
+      >
+        Share Data
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
 exports[`badges.js Test 1`] = `
 <RCTScrollView
   contentContainerStyle={
@@ -4146,67 +4354,6 @@ exports[`settings.js Test 1`] = `
             ]
           }
         >
-          Share Data
-        </Text>
-      </View>
-      <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#FF0000",
-            "marginTop": 15,
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-            "width": 224,
-          }
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "fontWeight": "700",
-              },
-              {
-                "fontSize": 20,
-                "lineHeight": 28,
-              },
-              {
-                "color": "#060606",
-              },
-            ]
-          }
-        >
           Report Feedback
         </Text>
       </View>
@@ -6416,149 +6563,6 @@ exports[`statistics.js Test 1`] = `
           </RNSVGGroup>
         </RNSVGSvgView>
       </View>
-    </View>
-  </View>
-</RCTScrollView>
-`;
-
-exports[`upload-download-data.js Test 1`] = `
-<RCTScrollView
-  style={
-    {
-      "backgroundColor": "#F1F1F1",
-    }
-  }
->
-  <View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Upload Data
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Download Data
-      </Text>
     </View>
   </View>
 </RCTScrollView>

@@ -9,7 +9,7 @@ import LogWorkout from "../app/screens/log-workout/log-workout.js";
 import SetGoal from "../app/screens/set-goal/set-goal.js";
 import Settings from "../app/screens/settings/settings.js";
 import Statistics from "../app/screens/statistics/statistics.js";
-import UploadDownloadData from "../app/screens/upload-download-data/upload-download-data.js";
+import BackupRestoreData from "../app/screens/backup-restore-data/backup-restore-data.js";
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
 import ReportFeedback from "../app/screens/report-feedback/report-feedback.js";
@@ -287,11 +287,11 @@ test("statistics.js Test", async () => {
     snapshot.unmount();
 });
 
-test("upload-download-data.js Test", async () => {
+test("backup-restore-data.js Test", async () => {
     let snapshot;
 
     await act(async () => {
-        snapshot = renderer.create(<UploadDownloadData />);
+        snapshot = renderer.create(<BackupRestoreData />);
     });
 
     const snapshotJSON = snapshot.toJSON();

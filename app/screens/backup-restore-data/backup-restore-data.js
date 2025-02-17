@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
+import * as Sharing from "expo-sharing";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 
-const UploadDownloadData = () => {
+const BackupRestoreData = () => {
     const [jsonData, setJsonData] = useState();
     const { isReady, colours } = useTheme();
 
@@ -68,6 +69,7 @@ const UploadDownloadData = () => {
             Alert.alert("Save Failed", "Something went wrong.");
         }
     };
+
     const pickDocument = async () => {
         try {
             // Open the document picker to allow users to select a file
@@ -208,16 +210,53 @@ const UploadDownloadData = () => {
             Alert.alert("Error", "Failed to import data");
         }
     };
+    
+    const shareJSONData = async () => {
+        try {
+            const realm = await Realm.open({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges] });
+
+            const workoutPresetsRecords = realm.objects("WorkoutPresets");
+            const exercisesRecords = realm.objects("Exercises");
+            const workoutPresetsExercisesRecords = realm.objects("WorkoutPresetsExercises");
+            const previousWorkoutsRecords = realm.objects("PreviousWorkouts");
+            const previousWorkoutsExercisesRecords = realm.objects("PreviousWorkoutsExercises");
+            const goalsRecords = realm.objects("Goals");
+            const badgesRecords = realm.objects("Badges");
+
+            const data = { "workoutPresets": workoutPresetsRecords, "exercises": exercisesRecords, "workoutPresetsExercises": workoutPresetsExercisesRecords, "previousWorkouts": previousWorkoutsRecords, "previousWorkoutsExercises": previousWorkoutsExercisesRecords, "goals": goalsRecords, "badges": badgesRecords };
+
+            const fileContents = JSON.stringify(data, null, 2);
+            realm.close();
+            const fileUri = `${FileSystem.cacheDirectory}fitness-logger-data.json`;
+            await FileSystem.writeAsStringAsync(fileUri, fileContents, {
+                "encoding": FileSystem.EncodingType.UTF8,
+            });
+            
+            if (!(await Sharing.isAvailableAsync())) {
+                Alert.alert("Error", "Sharing is not available on this device.");
+                return;
+            }
+
+            await Sharing.shareAsync(fileUri);
+        } catch (error) {
+            console.error("Error creating JSON data:", error);
+            throw error;
+        }
+    };
+    
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
-            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
-                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Upload Data</Text>
-            </TouchableOpacity>
             <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {downloadAllRecords}>
-                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Download Data</Text>
+                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Backup Data</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {pickDocument}>
+                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Restore Data</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5" onPress = {shareJSONData}>
+                <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Share Data</Text>
             </TouchableOpacity>
         </ScrollView>
     );
 };
 
-export default UploadDownloadData;
+export default BackupRestoreData;

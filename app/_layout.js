@@ -19,7 +19,7 @@ export default function Layout() {
                 <Drawer.Screen name = "screens/set-goal/set-goal" options = {{ "drawerLabel": "Set Goal", "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/view-goals/view-goals" options = {{ "drawerLabel": "View Goals", "title": "View Goals", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/view-individual-goals/view-individual-goals" options = {{ "drawerLabel": "View Individual Goals", "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }} />
-                <Drawer.Screen name = "screens/upload-download-data/upload-download-data" options = {{ "drawerLabel": "Upload/ Download data", "title": "Upload/ Download data", "drawerItemStyle": { "display": "flex" } }} />
+                <Drawer.Screen name = "screens/backup-restore-data/backup-restore-data" options = {{ "drawerLabel": "Backup/ Restore data", "title": "Backup/ Restore data", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/statistics/statistics" options = {{ "drawerLabel": "Statistics", "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/create-badge/create-badge" options = {{ "drawerLabel": "Create Badge", "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/badges/badges" options = {{ "drawerLabel": "Badges", "title": "Badges", "drawerItemStyle": { "display": "flex" } }} />

@@ -6421,7 +6421,7 @@ exports[`statistics.js Test 1`] = `
 </RCTScrollView>
 `;
 
-exports[`upload-download-data.js Test 1`] = `
+exports[`backup-restore-data.js Test 1`] = `
 <RCTScrollView
   style={
     {

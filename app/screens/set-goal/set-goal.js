@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -7,9 +7,11 @@ import { goals } from "../../../database/realm-database.js";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const SetGoal = () => {
-    const { control, getValues } = useForm({});
+    const router = useRouter();
+    const { control, getValues, reset } = useForm({});
     const [mode, setMode] = useState("date");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -19,6 +21,23 @@ const SetGoal = () => {
     const [reminderPickerShow, setReminderPickerShow] = useState(false);
     const [type, setType] = useState(null);
     const { isReady, colours } = useTheme();
+    
+    const { id, goalName, selectedGoalType, goalValue, goalStartDate, goalEndDate, goalReminders, goalNotes } = useLocalSearchParams();
+
+    useEffect(() => {
+        if (id || goalName || selectedGoalType || goalValue || goalStartDate || goalEndDate || goalReminders || goalNotes) {
+            reset({
+                "goalName": goalName || "",
+                "goalValue": goalValue || "",
+                "notes": goalNotes || "",
+            });
+            setType(selectedGoalType || null);
+            setStartDate(goalStartDate ? new Date(goalStartDate) : new Date());
+            setEndDate(goalEndDate ? new Date(goalEndDate) : new Date());
+            setReminderDate(goalReminders ? new Date(goalReminders) : new Date());
+        }
+    }, [id, goalName, selectedGoalType, goalValue, goalStartDate, goalEndDate, goalReminders, goalNotes]);
+
 
     if (!isReady) {
         return null;
@@ -60,24 +79,62 @@ const SetGoal = () => {
         setReminderPickerShow(true);
     };
     
-    const handleAddGoal = () => {
-        const formValues = getValues();
-        const realm = new Realm({ "schema": [goals] });
-        realm.write(() => {
-            const currentHighestId = realm.objects("Goals").max("id") || 0;
-            let newId;
-
-            if (currentHighestId === 0)
-            {
-                newId = 1;
-            } else {
-                newId = currentHighestId + 1;
-            }
-            realm.create("Goals", { "id": newId, "name": formValues.goalName, "type": type, "value": formValues.goalValue, "startDate": startDate, "endDate": endDate, "reminders": reminderDate, "notes": formValues.notes });
-        });
-        const allGoals = realm.objects("Goals");
-        realm.close();
+    const trimGoalData = (formValues) => {
+        return {
+            ...formValues,
+            "goalName": formValues.goalName?.trim(),
+            "goalValue": formValues.goalValue?.trim(),
+            "notes": formValues.notes?.trim(),
+        };
     };
+    
+    const checkForDuplicateName = (realm, name) => {
+        const existingItem = realm.objects("Goals").filtered("name == $0", name);
+        return existingItem.length > 0;
+    };
+    
+    const handleAddGoal = () => {
+        const formValues = trimGoalData(getValues());
+        const realm = new Realm({ "schema": [goals] });
+
+        if (checkForDuplicateName(realm, formValues.name)) {
+            console.log("Goal name already exists");
+            return;
+        }
+
+        realm.write(() => {
+            if (id) {
+                const existingGoal = realm.objectForPrimaryKey("Goals", parseInt(id));
+                if (existingGoal) {
+                    existingGoal.name = formValues.goalName;
+                    existingGoal.type = type;
+                    existingGoal.value = formValues.goalValue;
+                    existingGoal.startDate = startDate;
+                    existingGoal.endDate = endDate;
+                    existingGoal.reminders = reminderDate;
+                    existingGoal.notes = formValues.notes;
+                }
+            } else {
+                const currentHighestId = realm.objects("Goals").max("id") || 0;
+                let newId;
+
+                if (currentHighestId === 0)
+                {
+                    newId = 1;
+                } else {
+                    newId = currentHighestId + 1;
+                }
+            
+                realm.create("Goals", { "id": newId, "name": formValues.goalName, "type": type, "value": formValues.goalValue, "startDate": startDate, "endDate": endDate, "reminders": reminderDate, "notes": formValues.notes });
+            }
+        });
+        realm.close();
+        reset({ "goalName": "", "goalValue": "", "notes": "" });
+        setStartDate(new Date());
+        setEndDate(new Date());
+        setReminderDate(new Date());
+        setType(null);
+        router.push({ "pathname": "/screens/set-goal/set-goal", "params": {} }); };
 
     
     const possibleGoals = [

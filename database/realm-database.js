@@ -19,6 +19,9 @@ const exercises = {
         "notes": "string",
         "video": "string",
         "personalBest": "string",
+        "isDeleted": { "type": "bool", "default": false },
+        "primaryMuscles": "string[]",
+        "secondaryMuscles": "string[]",
     },
     "primaryKey": "id",
 };
@@ -52,6 +55,8 @@ const previousWorkoutsExercises = {
         "id": "int",
         "previousWorkouts": "PreviousWorkouts",
         "exercises": "Exercises",
+        "metrics": "string", // For Example, weight size
+        "volume": "string", // For Example, number of reps
     },
     "primaryKey": "id",
 };

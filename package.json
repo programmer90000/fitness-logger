@@ -8,7 +8,7 @@
         "ios": "expo start --ios",
         "web": "expo start --web",
         "server": "nodemon my_server_file.js",
-        "test": "jest --watchAll --runInBand --detectOpenHandles",
+        "test": "jest --watchAll --runInBand --detectOpenHandles --verbose",
         "lint": "npx eslint ."
     },
     "jest": {
@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@expo/vector-icons": "^14.0.4",
+        "@react-native-async-storage/async-storage": "1.23.1",
         "@react-native-community/datetimepicker": "^8.0.1",
         "@react-navigation/drawer": "^6.7.2",
         "@realm/react": "^0.11.0",
@@ -47,6 +48,7 @@
         "react-hook-form": "^7.53.0",
         "react-native": "0.74.5",
         "react-native-chart-kit": "^6.12.0",
+        "react-native-collapsible": "^1.6.2",
         "react-native-compressor": "^1.9.0",
         "react-native-element-dropdown": "^2.12.1",
         "react-native-gesture-handler": "~2.16.1",
@@ -56,10 +58,10 @@
         "react-native-screens": "3.31.1",
         "react-native-svg": "15.2.0",
         "react-native-table-component": "^1.2.2",
+        "react-native-video": "^6.9.1",
         "react-native-web": "~0.19.10",
         "react-test-renderer": "18.2.0",
-        "realm": "^20.0.0",
-        "@react-native-async-storage/async-storage": "1.23.1"
+        "realm": "^20.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",

@@ -17,297 +17,27 @@ exports[`badges.js Test 1`] = `
   }
 >
   <View>
-    <View
+    <Text
       style={
-        {
-          "margin": 20,
-        }
+        [
+          {
+            "fontSize": 20,
+            "lineHeight": 28,
+          },
+          {
+            "textAlign": "center",
+          },
+          {
+            "marginTop": 20,
+          },
+          {
+            "color": "#060606",
+          },
+        ]
       }
     >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#FFD700",
-            },
-          ]
-        }
-      >
-        Badge 1
-      </Text>
-      <Text
-        allowFontScaling={false}
-        selectable={false}
-        style={
-          [
-            {
-              "color": undefined,
-              "fontSize": 100,
-            },
-            {
-              "color": "#FFD700",
-            },
-            {
-              "fontFamily": "material-community",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-            },
-            {},
-          ]
-        }
-      >
-        󱗇
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#FFD700",
-            },
-          ]
-        }
-      >
-        Badge 2
-      </Text>
-      <Text />
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#FFD700",
-            },
-          ]
-        }
-      >
-        Badge 3
-      </Text>
-      <Text />
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#FFD700",
-            },
-          ]
-        }
-      >
-        Badge 4
-      </Text>
-      <Text
-        allowFontScaling={false}
-        selectable={false}
-        style={
-          [
-            {
-              "color": undefined,
-              "fontSize": 100,
-            },
-            {
-              "color": "#FFD700",
-            },
-            {
-              "fontFamily": "entypo",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-            },
-            {},
-          ]
-        }
-      >
-        
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#FFD700",
-            },
-          ]
-        }
-      >
-        Badge 5
-      </Text>
-      <Text />
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#000000",
-            },
-          ]
-        }
-      >
-        Badge 6
-      </Text>
-      <Text
-        allowFontScaling={false}
-        selectable={false}
-        style={
-          [
-            {
-              "color": undefined,
-              "fontSize": 100,
-            },
-            {
-              "color": "#000000",
-            },
-            {
-              "fontFamily": "entypo",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-            },
-            {},
-          ]
-        }
-      >
-        
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#000000",
-            },
-          ]
-        }
-      >
-        Badge 7
-      </Text>
-      <Text />
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#000000",
-            },
-          ]
-        }
-      >
-        Badge 8
-      </Text>
-      <Text />
-    </View>
-    <View
-      style={
-        {
-          "margin": 20,
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 32,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            {
-              "color": "#000000",
-            },
-          ]
-        }
-      >
-        Badge 9
-      </Text>
-      <Text />
-    </View>
+      No badges available
+    </Text>
   </View>
 </RCTScrollView>
 `;
@@ -519,6 +249,75 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
         </Text>
       </View>
       <View
+        style={
+          [
+            {
+              "marginTop": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "marginTop": 20,
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Not Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pectorals, Upper back, Lower back, Deltoids, Biceps, Triceps, Quadriceps, Hamstrings, Glutes, Calves, Abs, Obliques, Cardio
+        </Text>
+      </View>
+      <View
         accessibilityState={
           {
             "busy": undefined,
@@ -577,6 +376,67 @@ exports[`create-a-new-workout-preset.js Test 1`] = `
           }
         >
           Submit
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#00008b",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "700",
+              },
+              {
+                "fontSize": 16,
+              },
+              {
+                "color": "#F1F1F1",
+              },
+            ]
+          }
+        >
+          Reset Form
         </Text>
       </View>
     </View>
@@ -650,6 +510,7 @@ exports[`create-exercise.js 1`] = `
             },
           ]
         }
+        value=""
       />
       <Text
         style={
@@ -788,6 +649,7 @@ exports[`create-exercise.js 1`] = `
             },
           ]
         }
+        value=""
       />
       <View
         style={
@@ -802,6 +664,9 @@ exports[`create-exercise.js 1`] = `
             },
             {
               "alignItems": "center",
+            },
+            {
+              "marginBottom": 12,
             },
           ]
         }
@@ -861,6 +726,144 @@ exports[`create-exercise.js 1`] = `
           >
             Upload 
             Video
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "marginBottom": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#FF0000",
+              "marginTop": 1,
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "500",
+                },
+                {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#060606",
+                },
+              ]
+            }
+          >
+            Select Primary Muscles
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "marginBottom": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#FF0000",
+              "marginTop": 1,
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "500",
+                },
+                {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#060606",
+                },
+              ]
+            }
+          >
+            Select Secondary Muscles
           </Text>
         </View>
       </View>
@@ -957,7 +960,7 @@ exports[`create-workout.js Test 1`] = `
       }
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1029,334 +1032,22 @@ exports[`create-workout.js Test 1`] = `
     >
       Workout Presets
     </Text>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout Preset 1
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout Preset 2
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout Preset 3
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout Preset 4
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout Preset 5
-      </Text>
-    </View>
   </View>
 </RCTScrollView>
 `;
 
 exports[`index.js Test 1`] = `
-<View
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignItems": "center",
+    }
+  }
   style={
     [
       {
-        "alignItems": "center",
         "backgroundColor": "#F1F1F1",
         "flex": 1,
-        "justifyContent": "center",
       },
       {
         "backgroundColor": "#F1F1F1",
@@ -1364,71 +1055,1476 @@ exports[`index.js Test 1`] = `
     ]
   }
 >
-  <Text
-    style={
-      {
-        "color": "#000000",
+  <View>
+    <View
+      style={
+        [
+          {
+            "height": 300,
+          },
+          {
+            "marginTop": 12,
+          },
+        ]
       }
-    }
-  >
-    Open up App.js to start working on your app!
-  </Text>
-  <View
-    style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#D10000",
-        "bottom": 0,
-        "color": "#060606",
-        "display": "flex",
-        "flex": 1,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "space-evenly",
-        "paddingBottom": "1%",
-        "paddingTop": "1%",
-        "position": "absolute",
-        "width": "100%",
+    >
+      <RCTScrollView
+        data={
+          [
+            {
+              "image": 1,
+              "text": "Sunan Abi Dawood 4078, Sahih",
+            },
+            {
+              "image": 1,
+              "text": "Sahih Muslim 2664, Sahih",
+            },
+            {
+              "image": 1,
+              "text": "Surat Al-Baqarah 2:195",
+            },
+            {
+              "image": 1,
+              "text": "Surah Al-Araf 7:31",
+            },
+            {
+              "image": 1,
+              "text": "Surah Al-Anfal 8:60",
+            },
+            {
+              "image": 1,
+              "text": "Surah An-Najm 53:39",
+            },
+            {
+              "image": 1,
+              "text": "Sunan Abi Dawood 4078, Sahih",
+            },
+            {
+              "image": 1,
+              "text": "Sahih Muslim 2664, Sahih",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        getItemLayout={[Function]}
+        horizontal={true}
+        initialScrollIndex={1}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        onTouchStart={[Function]}
+        pagingEnabled={true}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={0.0001}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
+          <View
+            style={
+              {
+                "width": 750,
+              }
+            }
+          />
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Sahih Muslim 2664, Sahih
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surat Al-Baqarah 2:195
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surah Al-Araf 7:31
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surah Al-Anfal 8:60
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Surah An-Najm 53:39
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Sunan Abi Dawood 4078, Sahih
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Sahih Muslim 2664, Sahih
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "bottom": 10,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#333",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 5,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#ccc",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        [
+          {
+            "marginTop": 40,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
       }
-    }
-  >
-    <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
     >
-      <Text />
+      Why use a fitness logger app?
     </Text>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginBottom": 12,
+            "marginLeft": 12,
+            "marginRight": 12,
+            "marginTop": 12,
+          },
+        ]
+      }
     >
-      <Text />
+      Using a fitness logger app is a powerful way to take control of your health and fitness journey. It helps you monitor your progress, set achievable goals, and stay accountable by providing a clear picture of your workouts. By tracking your efforts, you can identify trends and make informed adjustments to your routine, ensuring you continue improving your fitness. Whether you're striving to lose weight, build strength, or simply maintain a healthy lifestyle, a fitness logger app makes it easier to turn your goals into lasting habits.
     </Text>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginTop": 20,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
+      }
     >
-      <Text />
+      FAQ
     </Text>
+    <View
+      style={
+        [
+          {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          },
+          {
+            "width": 384,
+          },
+          {
+            "marginTop": 12,
+          },
+        ]
+      }
+    >
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            What is React Native?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                React Native is a framework for building mobile apps.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            How does it work?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                It uses JavaScript and React to build native mobile apps.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Is it easy to learn?
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Yes, especially if you know JavaScript and React.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
     <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+      style={
+        [
+          {
+            "marginTop": 20,
+          },
+          {
+            "fontSize": 24,
+            "lineHeight": 32,
+          },
+        ]
+      }
     >
-      <Text />
+      Benefits Of Using A Fitness Logger
     </Text>
-    <Text
-      href="/"
-      onPress={[Function]}
-      role="link"
+    <View
+      style={
+        [
+          {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          },
+          {
+            "width": 384,
+          },
+          {
+            "marginBottom": 40,
+          },
+        ]
+      }
     >
-      <Text />
-    </Text>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Enhanced Awareness of Activity Levels
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                This fitness tracker app help you gain a better understanding of your time spent being active. This insight can reveal gaps in your routine and help you to make healthier choices, ensuring you stay on track toward your fitness goals.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Personalized Goal Setting
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                With this fitness tracker app, you can set realistic and achievable fitness goals tailored to your current fitness level. Whether it’s completing a number of push-ups or increasing your weekly exercise minutes, these apps guide you with measurable objectives that help you progress steadily.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Building Discipline
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Fitness tracker apps promote discipline by encouraging consistent effort over time. Progress charts keep you accountable, helping you establish a routine. Over time, this consistency strengthens your willpower and instills a habit of prioritizing physical activity.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Health Insights
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Fitness trackers store your health data over time, providing valuable insights into trends in your fitness level. These records can be shared with healthcare providers to support better-informed medical decisions.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#F1F1F1",
+              "borderBottomWidth": 1,
+              "borderLeftWidth": 1,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+              ]
+            }
+          >
+            Progress Visualization
+          </Text>
+        </View>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+            style={{}}
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "paddingTop": 10,
+                  },
+                ]
+              }
+            >
+              <Text>
+                The visual representation of your progress—graphs, charts, and milestones—can be a powerful motivator. Seeing how far you’ve come reinforces positive behavior and encourages you to keep pushing toward your fitness goals.Improving fitness through a fitness tracker app is not just about physical health; it’s about building habits, enhancing awareness, and creating a sustainable lifestyle change.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#D10000",
+          "bottom": 0,
+          "color": "#060606",
+          "display": "flex",
+          "flex": 1,
+          "flexDirection": "row",
+          "height": "auto",
+          "justifyContent": "space-evenly",
+          "paddingBottom": "1%",
+          "paddingTop": "1%",
+          "position": "absolute",
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "entypo",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "FontAwesome5Free-Solid",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {
+                "fontWeight": "700",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "anticon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "material-community",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          󰄪
+        </Text>
+      </Text>
+      <Text
+        href="/"
+        onPress={[Function]}
+        role="link"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            [
+              {
+                "color": "black",
+                "fontSize": 24,
+              },
+              undefined,
+              {
+                "fontFamily": "feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              {},
+            ]
+          }
+        >
+          
+        </Text>
+      </Text>
+    </View>
   </View>
-</View>
+</RCTScrollView>
 `;
 
 exports[`log-workout.js Test 1`] = `
@@ -1638,6 +2734,75 @@ exports[`log-workout.js Test 1`] = `
         </Text>
       </View>
       <View
+        style={
+          [
+            {
+              "marginTop": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "fontSize": 20,
+                "lineHeight": 28,
+              },
+              {
+                "textAlign": "center",
+              },
+              {
+                "marginTop": 20,
+              },
+              {
+                "color": "#060606",
+              },
+            ]
+          }
+        >
+          Muscles Not Worked
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pectorals, Upper back, Lower back, Deltoids, Biceps, Triceps, Quadriceps, Hamstrings, Glutes, Calves, Abs, Obliques, Cardio
+        </Text>
+      </View>
+      <View
         accessibilityState={
           {
             "busy": undefined,
@@ -1696,6 +2861,67 @@ exports[`log-workout.js Test 1`] = `
           }
         >
           Submit
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#00008b",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "700",
+              },
+              {
+                "fontSize": 16,
+              },
+              {
+                "color": "#F1F1F1",
+              },
+            ]
+          }
+        >
+          Reset Form
         </Text>
       </View>
     </View>
@@ -3051,7 +4277,12 @@ exports[`settings.js Test 1`] = `
 `;
 
 exports[`statistics.js Test 1`] = `
-<View
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "paddingBottom": 30,
+    }
+  }
   style={
     {
       "backgroundColor": "#F1F1F1",
@@ -3061,559 +4292,2133 @@ exports[`statistics.js Test 1`] = `
     }
   }
 >
-  <View
-    style={
-      [
-        undefined,
+  <View>
+    <Text>
+      Number of workouts completed: 
+      0
+    </Text>
+    <Text>
+      Number of exercises completed: 
+      0
+    </Text>
+    <Text>
+      Number of exercises measured by Reps completed: 
+      0
+    </Text>
+    <Text>
+      Number of exercises measured by Weight and Reps completed: 
+      0
+    </Text>
+    <Text>
+      Number of exercises measured by Distance and Time completed: 
+      0
+    </Text>
+    <Text>
+      Average number of exercises per workout: 
+      0
+    </Text>
+    <Text
+      style={
         {
-          "borderBottomWidth": 1,
-          "borderColor": "#000",
-          "borderLeftWidth": 1,
-        },
-      ]
-    }
-  >
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "marginTop": 30,
+        }
+      }
+    >
+      Reps
+    </Text>
     <View
       style={
         {
-          "backgroundColor": "#F1F8FF",
-          "flexDirection": "row",
-          "height": 40,
-          "overflow": "hidden",
+          "alignItems": "center",
+          "justifyContent": "center",
         }
       }
     >
       <View
         style={
           {
-            "borderColor": "#000",
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flex": 1,
-            "justifyContent": "center",
+            "borderRadius": 16,
+            "marginVertical": 8,
           }
         }
       >
-        <Text
+        <RNSVGSvgView
+          bbHeight={220}
+          bbWidth={675}
+          focusable={false}
+          height={220}
           style={
-            {
-              "backgroundColor": "transparent",
-              "color": "#000000",
-              "textAlign": "center",
-            }
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 220,
+                "width": 675,
+              },
+            ]
           }
-        />
-      </View>
-      <View
-        style={
-          {
-            "borderColor": "#000",
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flex": 2,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "backgroundColor": "transparent",
-              "color": "#000000",
-              "textAlign": "center",
-            }
-          }
+          width={675}
         >
-          Head1
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "borderColor": "#000",
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flex": 1,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "backgroundColor": "transparent",
-              "color": "#000000",
-              "textAlign": "center",
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
             }
-          }
-        >
-          Head2
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "borderColor": "#000",
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flex": 1,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "backgroundColor": "transparent",
-              "color": "#000000",
-              "textAlign": "center",
-            }
-          }
-        >
-          Head3
-        </Text>
+          >
+            <RNSVGRect
+              fill={
+                {
+                  "brushRef": "backgroundGradient",
+                  "type": 1,
+                }
+              }
+              fillOpacity={1}
+              height={220}
+              propList={
+                [
+                  "fill",
+                  "fillOpacity",
+                ]
+              }
+              rx={16}
+              ry={16}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              matrix={
+                [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+            >
+              <RNSVGDefs>
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      -32897,
+                      1,
+                      -2359296,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="backgroundGradient"
+                  x1={0}
+                  x2={675}
+                  y1={220}
+                  y2={0}
+                />
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      436207616,
+                      1,
+                      436207616,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="fillShadowGradientFrom"
+                  x1={0}
+                  x2={0}
+                  y1={0}
+                  y2={220}
+                />
+              </RNSVGDefs>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={16}
+                  y2={16}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={57.25}
+                  y2={57.25}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={98.5}
+                  y2={98.5}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={139.75}
+                  y2={139.75}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={181}
+                  y2={181}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      181,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      139.75,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.25"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      98.5,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.50"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      57.25,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.75"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      16,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="1.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M0,0"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={2}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M0,0 L-Infinity,181 L64,181 Z"
+                  fill={
+                    {
+                      "brushRef": "fillShadowGradientFrom",
+                      "type": 1,
+                    }
+                  }
+                  propList={
+                    [
+                      "fill",
+                      "strokeWidth",
+                    ]
+                  }
+                  strokeWidth={0}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </View>
     </View>
+    <Text
+      style={
+        {
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "marginTop": 30,
+        }
+      }
+    >
+      Weight/ Reps
+    </Text>
     <View
       style={
         {
-          "flexDirection": "row",
+          "alignItems": "center",
+          "justifyContent": "center",
         }
       }
     >
       <View
         style={
           {
-            "backgroundColor": "#F6F8FA",
-            "flex": 1,
-            "width": 1,
+            "borderRadius": 16,
+            "marginVertical": 8,
           }
         }
       >
-        <View
+        <RNSVGSvgView
+          bbHeight={220}
+          bbWidth={675}
+          focusable={false}
+          height={220}
           style={
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-              "height": 28,
-              "justifyContent": "center",
-            }
-          }
-        >
-          <Text
-            style={
+            [
               {
                 "backgroundColor": "transparent",
-                "color": "#000000",
-                "textAlign": "center",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 220,
+                "width": 675,
+              },
+            ]
+          }
+          width={675}
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
               }
             }
           >
-            Title
-          </Text>
-        </View>
-        <View
-          style={
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-              "height": 28,
-              "justifyContent": "center",
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "backgroundColor": "transparent",
-                "color": "#000000",
-                "textAlign": "center",
+            <RNSVGRect
+              fill={
+                {
+                  "brushRef": "backgroundGradient",
+                  "type": 1,
+                }
               }
-            }
-          >
-            Title2
-          </Text>
-        </View>
-        <View
-          style={
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-              "flex": 1,
-              "justifyContent": "center",
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "backgroundColor": "transparent",
-                "color": "#000000",
-                "textAlign": "center",
+              fillOpacity={1}
+              height={220}
+              propList={
+                [
+                  "fill",
+                  "fillOpacity",
+                ]
               }
-            }
-          >
-            Title3
-          </Text>
-        </View>
-        <View
-          style={
-            {
-              "borderColor": "#000",
-              "borderRightWidth": 1,
-              "borderTopWidth": 1,
-              "flex": 1,
-              "justifyContent": "center",
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "backgroundColor": "transparent",
-                "color": "#000000",
-                "textAlign": "center",
+              rx={16}
+              ry={16}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            }
-          >
-            Title4
-          </Text>
-        </View>
+              matrix={
+                [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+            >
+              <RNSVGDefs>
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      -32897,
+                      1,
+                      -2359296,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="backgroundGradient"
+                  x1={0}
+                  x2={675}
+                  y1={220}
+                  y2={0}
+                />
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      436207616,
+                      1,
+                      436207616,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="fillShadowGradientFrom"
+                  x1={0}
+                  x2={0}
+                  y1={0}
+                  y2={220}
+                />
+              </RNSVGDefs>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={16}
+                  y2={16}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={57.25}
+                  y2={57.25}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={98.5}
+                  y2={98.5}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={139.75}
+                  y2={139.75}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={181}
+                  y2={181}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      181,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      139.75,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.25"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      98.5,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.50"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      57.25,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.75"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      16,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="1.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M0,0"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={2}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M0,0 L-Infinity,181 L64,181 Z"
+                  fill={
+                    {
+                      "brushRef": "fillShadowGradientFrom",
+                      "type": 1,
+                    }
+                  }
+                  propList={
+                    [
+                      "fill",
+                      "strokeWidth",
+                    ]
+                  }
+                  strokeWidth={0}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </View>
+    </View>
+    <Text
+      style={
+        {
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "marginTop": 30,
+        }
+      }
+    >
+      Distance/ Time
+    </Text>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+        }
+      }
+    >
       <View
         style={
           {
-            "flex": 4,
+            "borderRadius": 16,
+            "marginVertical": 8,
           }
         }
       >
-        <View
+        <RNSVGSvgView
+          bbHeight={220}
+          bbWidth={675}
+          focusable={false}
+          height={220}
           style={
-            {
-              "color": "#000000",
-              "flexDirection": "row",
-              "height": 28,
-              "overflow": "hidden",
-            }
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 220,
+                "width": 675,
+              },
+            ]
           }
+          width={675}
         >
-          <View
-            style={
+          <RNSVGGroup
+            fill={
               {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 2,
-                "justifyContent": "center",
+                "payload": 4278190080,
+                "type": 0,
               }
             }
           >
-            <Text
-              style={
+            <RNSVGRect
+              fill={
                 {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+                  "brushRef": "backgroundGradient",
+                  "type": 1,
                 }
               }
-            >
-              1
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
+              fillOpacity={1}
+              height={220}
+              propList={
+                [
+                  "fill",
+                  "fillOpacity",
+                ]
               }
-            }
-          >
-            <Text
-              style={
+              rx={16}
+              ry={16}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGGroup
+              fill={
                 {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            >
-              2
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
+              matrix={
+                [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
               }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+            >
+              <RNSVGDefs>
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      -32897,
+                      1,
+                      -2359296,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="backgroundGradient"
+                  x1={0}
+                  x2={675}
+                  y1={220}
+                  y2={0}
+                />
+                <RNSVGLinearGradient
+                  gradient={
+                    [
+                      0,
+                      436207616,
+                      1,
+                      436207616,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={1}
+                  name="fillShadowGradientFrom"
+                  x1={0}
+                  x2={0}
+                  y1={0}
+                  y2={220}
+                />
+              </RNSVGDefs>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              3
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "color": "#000000",
-              "flexDirection": "row",
-              "height": 28,
-              "overflow": "hidden",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 2,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              >
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={16}
+                  y2={16}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={57.25}
+                  y2={57.25}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={98.5}
+                  y2={98.5}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={139.75}
+                  y2={139.75}
+                />
+                <RNSVGLine
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  propList={
+                    [
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeDasharray={
+                    [
+                      "5",
+                      "10",
+                    ]
+                  }
+                  strokeWidth={1}
+                  x1={64}
+                  x2={675}
+                  y1={181}
+                  y2={181}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              a
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              >
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      181,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      139.75,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.25"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      98.5,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.50"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      57.25,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="0.75"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+                <RNSVGText
+                  content={null}
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={
+                    {
+                      "fontSize": 12,
+                      "textAnchor": "end",
+                    }
+                  }
+                  matrix={
+                    [
+                      1,
+                      0,
+                      -0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  rotate={[]}
+                  x={
+                    [
+                      52,
+                    ]
+                  }
+                  y={
+                    [
+                      16,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="1.00"
+                    dx={[]}
+                    dy={[]}
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    font={{}}
+                    rotate={[]}
+                    x={[]}
+                    y={[]}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              b
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              c
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "color": "#000000",
-              "flexDirection": "row",
-              "height": 28,
-              "overflow": "hidden",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 2,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              1
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              >
+                <RNSVGPath
+                  d="M0,0"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={2}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              2
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              >
+                <RNSVGPath
+                  d="M0,0 L-Infinity,181 L64,181 Z"
+                  fill={
+                    {
+                      "brushRef": "fillShadowGradientFrom",
+                      "type": 1,
+                    }
+                  }
+                  propList={
+                    [
+                      "fill",
+                      "strokeWidth",
+                    ]
+                  }
+                  strokeWidth={0}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              3
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "color": "#000000",
-              "flexDirection": "row",
-              "height": 28,
-              "overflow": "hidden",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 2,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              a
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
+              />
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
                 }
-              }
-            >
-              b
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "borderColor": "#000",
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "backgroundColor": "transparent",
-                  "color": "#000000",
-                  "textAlign": "center",
-                }
-              }
-            >
-              c
-            </Text>
-          </View>
-        </View>
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </View>
     </View>
   </View>
-</View>
+</RCTScrollView>
 `;
 
 exports[`upload-download-data.js Test 1`] = `
@@ -3768,201 +6573,27 @@ exports[`view-goals.js Test 1`] = `
   }
 >
   <View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Text
       style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
+        [
+          {
+            "fontSize": 20,
+            "lineHeight": 28,
+          },
+          {
+            "textAlign": "center",
+          },
+          {
+            "marginTop": 20,
+          },
+          {
+            "color": "#060606",
+          },
+        ]
       }
     >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Goal 1
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Goal 2
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Goal 3
-      </Text>
-    </View>
+      No goals available
+    </Text>
   </View>
 </RCTScrollView>
 `;
@@ -3976,201 +6607,27 @@ exports[`workout-history.js Test 1`] = `
   }
 >
   <View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Text
       style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
+        [
+          {
+            "fontSize": 20,
+            "lineHeight": 28,
+          },
+          {
+            "textAlign": "center",
+          },
+          {
+            "marginTop": 20,
+          },
+          {
+            "color": "#060606",
+          },
+        ]
       }
     >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout 1
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout 2
-      </Text>
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#FF0000",
-          "height": 80,
-          "justifyContent": "center",
-          "marginBottom": 20,
-          "marginTop": 5,
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "66.666667%",
-        }
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "fontWeight": "500",
-            },
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-            {
-              "color": "#060606",
-            },
-          ]
-        }
-      >
-        Workout 3
-      </Text>
-    </View>
+      No workouts completed
+    </Text>
   </View>
 </RCTScrollView>
 `;

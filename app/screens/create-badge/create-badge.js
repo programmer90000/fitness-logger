@@ -1,117 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
-import DropdownComponent from "../../components/dropdown-box/dropdown-box";
-import { exercises, badges } from "../../../database/realm-database.js";
+import { badges } from "../../../database/realm-database.js";
 import Realm from "realm";
-import UploadMedia from "../../components/upload-media/upload-media.js";
+import UploadMedia from "../../components/upload-media/upload-media";
+import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
-const WorkoutForm = () => {
-    const [goalName, setGoalName] = useState(null);
-    const [selectedExerciseType, setSelectedExerciseType] = useState(null);
-    const { control, handleSubmit, getValues, setValue } = useForm({});
-    const [videoPath, setVideoPath] = useState(null);
-    const [name, setName] = useState(null);
-    
-    const { fields, append, insert, remove } = useFieldArray({ control, "name": "exercises" });
+const CreateBadge = () => {
+    const router = useRouter();
+    const [imagePath, setImagePath] = useState(null);
+    const { control, handleSubmit, getValues, setValue, reset } = useForm({});
+    const { id, image, text } = useLocalSearchParams();
 
-    const realm = new Realm({ "schema": [exercises] });
-    const allExercises = realm.objects("Exercises");
-    const names = allExercises.map((exercise) => {
-        return {
-            "label": exercise.name,
-            "value": exercise.name.replace(/\s/g, ""), // Remove spaces using regex
-            "type": exercise.type,
-        };
-    });
-    realm.close();
-    
+    useEffect(() => {
+        if (id || image || text) {
+            setValue("badgeText", text || "");
+            setImagePath(image || null);
+        }
+    }, [id, image, text, setValue]);
+
     const { isReady, colours } = useTheme();
 
     if (!isReady) {
         return null;
     }
 
+    const trimBadgeData = (formValues) => {
+        return {
+            ...formValues,
+            "badgeText": formValues.badgeText?.trim(),
+        };
+    };
+
+    const checkForDuplicateName = (realm, name) => {
+        const existingItem = realm.objects("Badges").filtered("name == $0", formValues.text);
+        return existingItem.length > 0;
+    };
+
     const onSubmit = () => {
-        const formValues = getValues();
+        const formValues = trimBadgeData(getValues());
         const realm = new Realm({ "schema": [badges] });
+
+        if (checkForDuplicateName(realm)) {
+            console.log("Badge name already exists");
+            return;
+        }
+
         realm.write(() => {
-            const currentHighestId = realm.objects("Badges").max("id") || 0;
-            const newId = currentHighestId + 1;
+            if (id) {
+                const existingBadge = realm.objectForPrimaryKey("Badges", parseInt(id));
+                if (existingBadge) {
+                    existingBadge.text = formValues.badgeText;
+                    existingBadge.image = imagePath;
+                }
+            } else {
+                const currentHighestId = realm.objects("Badges").max("id") || 0;
+                let newId;
 
-            let exerciseDetails = "";
-            if (selectedExerciseType === "reps") {
-                exerciseDetails = `Reps: ${formValues.reps}`;
-            } else if (selectedExerciseType === "weightAndReps") {
-                exerciseDetails = `Weight: ${formValues.weight}, Reps: ${formValues.reps}`;
-            } else if (selectedExerciseType === "distanceAndTime") {
-                exerciseDetails = `Distance: ${formValues.distance}, Time: ${formValues.time}`;
+                if (currentHighestId === 0) {
+                    newId = 1;
+                } else {
+                    newId = currentHighestId + 1;
+                }
+            
+                realm.create("Badges", { "id": newId, "image": imagePath, "text": formValues.badgeText, "completed": false });
             }
-
-            realm.create("Badges", {
-                "id": newId,
-                "goalName": formValues.goalName,
-                "exerciseName": name,
-                "image": videoPath || "",
-                "details": exerciseDetails,
-                "completed": false,
-            });
         });
-        const allBadges = realm.objects("Badges");
+        
         realm.close();
+        reset();
+        setImagePath(null); 
+        setValue("badgeText", ""); 
+        router.push({ "pathname": "/screens/create-badge/create-badge", "params": {} });
     };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
             <View className = "items-center m-[5px]">
-                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Goal Name</Text>
-                <Controller control = {control} name = "goalName" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {(text) => {
-                    onChange(text); 
-                    setGoalName(text);
-                }} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>
-                ); }} />
-                <DropdownComponent data = {names} value = {name} onChange = {(name) => {
-                    setName(name);
-                    setValue("exercises.name", name);
-                    setSelectedExerciseType(names.find((item) => { return item.value === name; })?.type);                 
-                }} style = {{ "width": 200 }} placeholder = "Exercise Name" />
-                
-                {selectedExerciseType === "reps" && (
-                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
-                        <Text>Number of Reps</Text>
-                        <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                        ); }} />
-                    </View>
-                )}
-                {selectedExerciseType === "weightAndReps" && (
-                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
-                        <Text>Amount of Weight</Text>
-                        <Controller control = {control} name = {"weight"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                        ); }} />
-                        <Text>Number of Reps</Text>
-                        <Controller control = {control} name = {"reps"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                        ); }} />
-                    </View>
-                )}
-                {selectedExerciseType === "distanceAndTime" && (
-                    <View className = "bg-[#f0f0f0] items-center flex-1 m-2.5 p-{20px} w-11/12">
-                        <Text>Distance</Text>
-                        <Controller control = {control} name = {"distance"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                        ); }} />
-                        <Text>Time</Text>
-                        <Controller control = {control} name = {"time"} render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {onChange} value = {value} keyboardType = "numeric" className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]" />
-                        ); }} />
-                    </View>
-                )}
-
-                <UploadMedia onMediaSelect = {(path) => { return setVideoPath(path); }} mediaFileName = {`${goalName}.mp4`} mediaType = "Image" />
+                <Text style = {{ "color": colours.heading_colour_2 }} className = "text-xl">Badge Name</Text>
+                <Controller control = {control} name = "badgeText" render = {({ "field": { onChange, onBlur, value } }) => { return (<TextInput onBlur = {onBlur} onChangeText = {(text) => { onChange(text); }} value = {value} className = "align-middle text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE]"/>);
+                }} />
+                <UploadMedia onMediaSelect = {(path) => { return setImagePath(path); }} mediaFileName = {`${imagePath || "default"}.mp4`} mediaType = "Image" />
                 <TouchableOpacity onPress = {handleSubmit(onSubmit)} style = {{ "backgroundColor": colours.button_background_1 }} className = "mt-[100px] bg-[#2296f3] p-2 m-[5px]">
-                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Create Goal</Text>
+                    <Text style = {{ "color": colours.button_background_2 }} className = "font-bold text-[16px]">Create Badge</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
     );
 };
 
-export default WorkoutForm;
+export default CreateBadge;

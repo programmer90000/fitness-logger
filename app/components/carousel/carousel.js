@@ -1,16 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FlatList, View, Image, Text, Dimensions, StyleSheet } from "react-native";
 
 const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
     const flatListRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [userHasScrolled, setUserHasScrolled] = useState(false);
     const { width } = Dimensions.get("window");
 
     const handleScroll = (event) => {
+        setUserHasScrolled(true);
         const offsetX = event.nativeEvent.contentOffset.x;
         const index = Math.round(offsetX / width);
         setCurrentIndex(index);
     };
+
 
     const scrollToNext = () => {
         if (flatListRef.current && currentIndex < data.length - 1) {
@@ -20,11 +23,13 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let timer;
-        if (autoScroll) { timer = setInterval(scrollToNext, interval); }
+        if (autoScroll && !userHasScrolled) {
+            timer = setInterval(scrollToNext, interval);
+        }
         return () => { return clearInterval(timer); };
-    }, [currentIndex, autoScroll, interval]);
+    }, [currentIndex, autoScroll, interval, userHasScrolled]);
 
     const styles = StyleSheet.create({
         "carouselItem": {

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
+import * as Sharing from "expo-sharing";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";

@@ -7,6 +7,9 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
 import { colours } from "../../constants/colours.js";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);
@@ -48,6 +51,41 @@ const Settings = () => {
     ];
     
     const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
+    
+    const shareJSONData = async () => {
+        try {
+            const realm = await Realm.open({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges] });
+
+            const workoutPresetsRecords = realm.objects("WorkoutPresets");
+            const exercisesRecords = realm.objects("Exercises");
+            const workoutPresetsExercisesRecords = realm.objects("WorkoutPresetsExercises");
+            const previousWorkoutsRecords = realm.objects("PreviousWorkouts");
+            const previousWorkoutsExercisesRecords = realm.objects("PreviousWorkoutsExercises");
+            const goalsRecords = realm.objects("Goals");
+            const badgesRecords = realm.objects("Badges");
+
+            const data = { "workoutPresets": workoutPresetsRecords, "exercises": exercisesRecords, "workoutPresetsExercises": workoutPresetsExercisesRecords, "previousWorkouts": previousWorkoutsRecords, "previousWorkoutsExercises": previousWorkoutsExercisesRecords, "goals": goalsRecords, "badges": badgesRecords };
+
+            const fileContents = JSON.stringify(data, null, 2);
+            realm.close();
+            const fileUri = `${FileSystem.cacheDirectory}fitness-logger-data.json`;
+            await FileSystem.writeAsStringAsync(fileUri, fileContents, {
+                "encoding": FileSystem.EncodingType.UTF8,
+            });
+            
+            if (!(await Sharing.isAvailableAsync())) {
+                Alert.alert("Error", "Sharing is not available on this device.");
+                return;
+            }
+
+            await Sharing.shareAsync(fileUri);
+        } catch (error) {
+            console.error("Error creating JSON data:", error);
+            throw error;
+        }
+    };
+
+
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -94,8 +132,8 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
-                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Sync With Drive</Text>
+                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {shareJSONData}>
+                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Share Data</Text>
                 </TouchableOpacity>
                 <Link href = "/screens/report-feedback/report-feedback" asChild>
                     <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">

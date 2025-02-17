@@ -61,7 +61,8 @@
         "react-native-video": "^6.9.1",
         "react-native-web": "~0.19.10",
         "react-test-renderer": "18.2.0",
-        "realm": "^20.0.0"
+        "realm": "^20.0.0",
+        "expo-sharing": "~12.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",

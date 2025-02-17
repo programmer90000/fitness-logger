@@ -1073,6 +1073,10 @@ exports[`index.js Test 1`] = `
           [
             {
               "image": 1,
+              "text": "Sunan Abi Dawood 4078, Sahih",
+            },
+            {
+              "image": 1,
               "text": "Sahih Muslim 2664, Sahih",
             },
             {
@@ -1095,11 +1099,17 @@ exports[`index.js Test 1`] = `
               "image": 1,
               "text": "Sunan Abi Dawood 4078, Sahih",
             },
+            {
+              "image": 1,
+              "text": "Sahih Muslim 2664, Sahih",
+            },
           ]
         }
         getItem={[Function]}
         getItemCount={[Function]}
+        getItemLayout={[Function]}
         horizontal={true}
+        initialScrollIndex={1}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
         onLayout={[Function]}
@@ -1108,6 +1118,7 @@ exports[`index.js Test 1`] = `
         onScroll={[Function]}
         onScrollBeginDrag={[Function]}
         onScrollEndDrag={[Function]}
+        onTouchStart={[Function]}
         pagingEnabled={true}
         removeClippedSubviews={false}
         renderItem={[Function]}
@@ -1118,8 +1129,14 @@ exports[`index.js Test 1`] = `
       >
         <View>
           <View
+            style={
+              {
+                "width": 750,
+              }
+            }
+          />
+          <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1164,7 +1181,6 @@ exports[`index.js Test 1`] = `
           </View>
           <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1209,7 +1225,6 @@ exports[`index.js Test 1`] = `
           </View>
           <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1254,7 +1269,6 @@ exports[`index.js Test 1`] = `
           </View>
           <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1299,7 +1313,6 @@ exports[`index.js Test 1`] = `
           </View>
           <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1344,7 +1357,6 @@ exports[`index.js Test 1`] = `
           </View>
           <View
             onFocusCapture={[Function]}
-            onLayout={[Function]}
             style={
               [
                 {
@@ -1384,6 +1396,50 @@ exports[`index.js Test 1`] = `
                 }
               >
                 Sunan Abi Dawood 4078, Sahih
+              </Text>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-start",
+                  "width": 750,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  {
+                    "borderRadius": 10,
+                    "height": 200,
+                    "resizeMode": "cover",
+                    "width": 675,
+                  }
+                }
+              />
+              <Text
+                style={
+                  {
+                    "color": "#333",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Sahih Muslim 2664, Sahih
               </Text>
             </View>
           </View>

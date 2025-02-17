@@ -54,6 +54,25 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         }
     };
 
+    const trimWorkoutData = (data) => {
+        return {
+            ...data,
+            "workoutName": data.workoutName?.trim(),
+            "workoutNotes": data.workoutNotes?.trim(),
+            "exercises": data.exercises?.map((exercise) => { return {
+                ...exercise,
+                "name": exercise.name?.trim(),
+                "duration": exercise.duration?.trim(),
+                "reps": exercise.reps?.trim(),
+            }; }),
+        };
+    };
+
+    const checkForDuplicateWorkoutPresetName = (name) => {
+        const existingWorkouts = realmInstance.objects("WorkoutPresets").filtered("name == $0", name);
+        return existingWorkouts.length > 0;
+    };
+
     useEffect(() => {
         const loadSavedData = async () => {
             if (!isReady) {
@@ -95,6 +114,13 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
     const onSubmit = async (data) => {
         try {
+            const trimmedData = trimWorkoutData(data);
+
+            if (saveTo === "workoutPresets" && checkForDuplicateWorkoutPresetName(trimmedData.workoutName)) {
+                console.log("Workout Preset name already exists");
+                return;
+            }
+
             realmInstance.write(() => {
                 let newId, newWorkout;
 
@@ -104,21 +130,21 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
 
                     newWorkout = realmInstance.create("WorkoutPresets", {
                         "id": newId,
-                        "name": data.workoutName,
-                        "notes": data.workoutNotes || "",
+                        "name": trimmedData.workoutName,
+                        "notes": trimmedData.workoutNotes || "",
                     });
                 } else if (saveTo === "previousWorkouts") {
                     const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
                     newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
                     newWorkout = realmInstance.create("PreviousWorkouts", {
                         "id": newId,
-                        "name": data.workoutName,
-                        "notes": data.workoutNotes || "",
+                        "name": trimmedData.workoutName,
+                        "notes": trimmedData.workoutNotes || "",
                         "date": workoutDate,
                     });
                 }
 
-                data.exercises.forEach((exercise, index) => {
+                trimmedData.exercises.forEach((exercise, index) => {
                     if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) {
                         console.warn(`Skipping invalid exercise at index ${index}:`, exercise);
                         return;
@@ -285,6 +311,14 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         return groups;
     };
 
+    const getPersonalBest = (exerciseName) => {
+        const exerciseRecords = realmInstance.objects("PreviousWorkoutsExercises")
+            .filtered("exercises.name == $0", exerciseName)
+            .sorted("metrics", true);
+    
+        return exerciseRecords.length > 0 ? `${exerciseRecords[0].metrics}kg x ${exerciseRecords[0].volume} reps` : "N/A";
+    };
+
     const groupedExercises = groupExercisesByName(fields);
 
     return (
@@ -336,6 +370,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Exercise Name</Text>
                                         <DropdownComponent data = {names2} value = {watch(`exercises.${field.originalIndex}.name`)} onChange = {(name) => {
                                             setValue(`exercises.${field.originalIndex}.name`, name);
+                                            setValue(`exercises.${field.originalIndex}.personalBest`, getPersonalBest(name));
                                             setDropdownDisabled((prev) => {
                                                 const newDisabled = [...prev];
                                                 newDisabled[field.originalIndex] = true;
@@ -346,7 +381,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Personal Best</Text>
-                                        <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">N/A</Text>
+                                        <Text className = "text-center w-11/12 flex-1 m-2.5 bg-[#DEDEDE] h-[27px] leading-[35px]">{watch(`exercises.${field.originalIndex}.personalBest`)}</Text>
                                     </View>
                                     <View className = "bg-[#f0f0f0] items-center min-h-[100px] flex-1 m-2.5 p-{20px}">
                                         <Text style = {{ "color": colours.heading_colour_2 }} className = "flex-1 text-[15px] h-5">Weight Size</Text>

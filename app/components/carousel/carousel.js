@@ -8,8 +8,11 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
     const { width } = Dimensions.get("window");
     const loopedData = [data[data.length - 1], ...data, data[0]];
 
-    const handleScroll = (event) => {
+    const handleTouchStart = () => {
         setUserHasScrolled(true);
+    };
+
+    const handleScroll = (event) => {
         const offsetX = event.nativeEvent.contentOffset.x;
         const index = Math.round(offsetX / width);
         setCurrentIndex(index);
@@ -86,7 +89,7 @@ const Carousel = ({ data, style, autoScroll = true, interval = 3000 }) => {
 
     return (
         <View className = {`h-[300px] ${style}`}>
-            <FlatList ref = {flatListRef} data = {loopedData} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} renderItem = {({ item }) => { return (
+            <FlatList ref = {flatListRef} data = {loopedData} horizontal pagingEnabled showsHorizontalScrollIndicator = {false} onScroll = {handleScroll} onTouchStart = {handleTouchStart} renderItem = {({ item }) => { return (
                 <View style = {styles.carouselItem}>
                     {item.image && (<Image source = {typeof item.image === "number" ? item.image : { "uri": item.image }} style = {styles.image} />)}
                     {item.text && <Text style = {styles.text}>{item.text}</Text>}

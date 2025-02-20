@@ -74,12 +74,14 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     };
 
     useEffect(() => {
+        let realm;
+        
         const loadSavedData = async () => {
             if (!isReady) {
                 return;
             }
 
-            const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
+            realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
             setRealmInstance(realm);
 
             if (id) {
@@ -110,6 +112,12 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
 
         loadSavedData();
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
     }, [isReady, reset, id]);
 
     const onSubmit = async (data) => {

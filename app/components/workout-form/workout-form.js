@@ -34,7 +34,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
     });
     const { isReady, colours } = useTheme();
-    const { id } = useLocalSearchParams();
+    const { id, source } = useLocalSearchParams();
     
     const saveFormData = async (data) => {
         try {
@@ -74,30 +74,51 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
     };
 
     useEffect(() => {
+        let realm;
+        
         const loadSavedData = async () => {
             if (!isReady) {
                 return;
             }
 
-            const realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
+            realm = new Realm({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises] });
             setRealmInstance(realm);
 
             if (id) {
-                const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
-                const exerciseRecords = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id == $0", parseInt(id));
+                if (source === "workout-history") {
+                    const workout = realm.objectForPrimaryKey("PreviousWorkouts", parseInt(id));
+                    const exerciseRecords = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id == $0", parseInt(id));
+                
+                    const exercisesData = exerciseRecords.map((exercise) => { return {
+                        "name": exercise.exercises.name,
+                        "duration": exercise.metrics,
+                        "reps": exercise.volume,
+                        "personalBest": "N/A",
+                    }; });
+                
+                    reset({
+                        "workoutName": workout.name,
+                        "workoutNotes": workout.notes,
+                        "exercises": exercisesData,
+                    });
+                
+                } else if (source === "workout-presets") {
+                    const workoutPreset = realm.objectForPrimaryKey("WorkoutPresets", parseInt(id));
+                    const exerciseRecords = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id == $0", parseInt(id));
             
-                const exercisesData = exerciseRecords.map((exercise) => { return {
-                    "name": exercise.exercises.name,
-                    "duration": exercise.metrics,
-                    "reps": exercise.volume,
-                    "personalBest": "N/A",
-                }; });
+                    const exercisesData = exerciseRecords.map((exercise) => { return {
+                        "name": exercise.exercises.name,
+                        "duration": exercise.metrics,
+                        "reps": exercise.volume,
+                        "personalBest": "N/A",
+                    }; });
             
-                reset({
-                    "workoutName": workoutPreset.name,
-                    "workoutNotes": workoutPreset.notes,
-                    "exercises": exercisesData,
-                });
+                    reset({
+                        "workoutName": workoutPreset.name,
+                        "workoutNotes": workoutPreset.notes,
+                        "exercises": exercisesData,
+                    });
+                }
             } else {
                 const savedData = await loadFormData();
                 if (savedData) {
@@ -110,75 +131,139 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
 
         loadSavedData();
+
+        return () => {
+            if (realm) {
+                realm.close();
+            }
+        };
     }, [isReady, reset, id]);
 
     const onSubmit = async (data) => {
         try {
             const trimmedData = trimWorkoutData(data);
 
-            if (saveTo === "workoutPresets" && checkForDuplicateWorkoutPresetName(trimmedData.workoutName)) {
-                console.log("Workout Preset name already exists");
-                return;
-            }
+            if (id) {
+                realmInstance.write(() => {
+                    if (source === "workout-history") {
+                        const existingWorkout = realmInstance.objectForPrimaryKey("PreviousWorkouts", parseInt(id));
+                        existingWorkout.name = trimmedData.workoutName;
+                        existingWorkout.notes = trimmedData.workoutNotes || "";
+                        existingWorkout.date = workoutDate;
 
-            realmInstance.write(() => {
-                let newId, newWorkout;
+                        const existingExercises = realmInstance.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id == $0", parseInt(id));
+                        realmInstance.delete(existingExercises);
 
-                if (saveTo === "workoutPresets") {
-                    const currentWorkoutId = realmInstance.objects("WorkoutPresets").max("id") || 0;
-                    newId = currentWorkoutId === 0 ? 1 : currentWorkoutId + 1;
+                        trimmedData.exercises.forEach((exercise) => {
+                            if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) { return; }
 
-                    newWorkout = realmInstance.create("WorkoutPresets", {
-                        "id": newId,
-                        "name": trimmedData.workoutName,
-                        "notes": trimmedData.workoutNotes || "",
-                    });
-                } else if (saveTo === "previousWorkouts") {
-                    const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
-                    newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
-                    newWorkout = realmInstance.create("PreviousWorkouts", {
-                        "id": newId,
-                        "name": trimmedData.workoutName,
-                        "notes": trimmedData.workoutNotes || "",
-                        "date": workoutDate,
-                    });
-                }
+                            const exerciseObj = realmInstance.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                            if (!exerciseObj) { return; }
 
-                trimmedData.exercises.forEach((exercise, index) => {
-                    if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) {
-                        console.warn(`Skipping invalid exercise at index ${index}:`, exercise);
-                        return;
-                    }
-                    const currentWorkoutExercisesId = realmInstance.objects("WorkoutPresetsExercises").max("id") || 0;
-                    const newWorkoutExercisesId = currentWorkoutExercisesId === 0 ? 1 : currentWorkoutExercisesId + 1;
+                            const currentExerciseId = realmInstance.objects("PreviousWorkoutsExercises").max("id") || 0;
+                            const newExerciseId = currentExerciseId + 1;
 
-                    const exerciseObj = realmInstance.objects("Exercises").filtered("name == $0", exercise.name)[0];
-                    if (!exerciseObj) {
-                        throw new Error(`Exercise with name "${exercise.name}" not found.`);
-                    }
-
-                    if (saveTo === "workoutPresets") {
-                        realmInstance.create("WorkoutPresetsExercises", {
-                            "id": newWorkoutExercisesId,
-                            "workoutPresets": newWorkout,
-                            "exercises": exerciseObj,
-                            "metrics": exercise.duration,
-                            "volume": exercise.reps.toString(),
+                            realmInstance.create("PreviousWorkoutsExercises", {
+                                "id": newExerciseId,
+                                "previousWorkouts": existingWorkout,
+                                "exercises": exerciseObj,
+                                "metrics": exercise.duration,
+                                "volume": exercise.reps.toString(),
+                            });
                         });
-                    } else if (saveTo === "previousWorkouts") {
-                        const currentPreviousWorkoutExercisesId = realmInstance.objects("PreviousWorkoutsExercises").max("id") || 0;
-                        const newPreviousWorkoutExercisesId = currentPreviousWorkoutExercisesId === 0 ? 1 : currentPreviousWorkoutExercisesId + 1;
+                    } else if (source === "workout-presets") {
+                        const existingPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", parseInt(id));
+                        existingPreset.name = trimmedData.workoutName;
+                        existingPreset.notes = trimmedData.workoutNotes || "";
 
-                        realmInstance.create("PreviousWorkoutsExercises", {
-                            "id": newPreviousWorkoutExercisesId,
-                            "previousWorkouts": newWorkout,
-                            "exercises": exerciseObj,
-                            "metrics": exercise.duration,
-                            "volume": exercise.reps.toString(),
+                        const existingExercises = realmInstance.objects("WorkoutPresetsExercises")
+                            .filtered("workoutPresets.id == $0", parseInt(id));
+                        realmInstance.delete(existingExercises);
+
+                        trimmedData.exercises.forEach((exercise) => {
+                            if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) { return; }
+
+                            const exerciseObj = realmInstance.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                            if (!exerciseObj) { return; }
+
+                            const currentExerciseId = realmInstance.objects("WorkoutPresetsExercises").max("id") || 0;
+                            const newExerciseId = currentExerciseId + 1;
+
+                            realmInstance.create("WorkoutPresetsExercises", {
+                                "id": newExerciseId,
+                                "workoutPresets": existingPreset,
+                                "exercises": exerciseObj,
+                                "metrics": exercise.duration,
+                                "volume": exercise.reps.toString(),
+                            });
                         });
                     }
                 });
-            });
+            } else {
+                if (saveTo === "workoutPresets" && checkForDuplicateWorkoutPresetName(trimmedData.workoutName)) {
+                    console.log("Workout Preset name already exists");
+                    return;
+                }
+
+                realmInstance.write(() => {
+                    let newId, newWorkout;
+
+                    if (saveTo === "workoutPresets") {
+                        const currentWorkoutId = realmInstance.objects("WorkoutPresets").max("id") || 0;
+                        newId = currentWorkoutId === 0 ? 1 : currentWorkoutId + 1;
+
+                        newWorkout = realmInstance.create("WorkoutPresets", {
+                            "id": newId,
+                            "name": trimmedData.workoutName,
+                            "notes": trimmedData.workoutNotes || "",
+                        });
+                    } else if (saveTo === "previousWorkouts") {
+                        const currentPreviousWorkoutId = realmInstance.objects("PreviousWorkouts").max("id") || 0;
+                        newId = currentPreviousWorkoutId === 0 ? 1 : currentPreviousWorkoutId + 1;
+                        newWorkout = realmInstance.create("PreviousWorkouts", {
+                            "id": newId,
+                            "name": trimmedData.workoutName,
+                            "notes": trimmedData.workoutNotes || "",
+                            "date": workoutDate,
+                        });
+                    }
+
+                    trimmedData.exercises.forEach((exercise, index) => {
+                        if (!exercise.name || isNaN(exercise.duration) || isNaN(exercise.reps)) {
+                            console.warn(`Skipping invalid exercise at index ${index}:`, exercise);
+                            return;
+                        }
+                        const currentWorkoutExercisesId = realmInstance.objects("WorkoutPresetsExercises").max("id") || 0;
+                        const newWorkoutExercisesId = currentWorkoutExercisesId === 0 ? 1 : currentWorkoutExercisesId + 1;
+
+                        const exerciseObj = realmInstance.objects("Exercises").filtered("name == $0", exercise.name)[0];
+                        if (!exerciseObj) {
+                            throw new Error(`Exercise with name "${exercise.name}" not found.`);
+                        }
+
+                        if (saveTo === "workoutPresets") {
+                            realmInstance.create("WorkoutPresetsExercises", {
+                                "id": newWorkoutExercisesId,
+                                "workoutPresets": newWorkout,
+                                "exercises": exerciseObj,
+                                "metrics": exercise.duration,
+                                "volume": exercise.reps.toString(),
+                            });
+                        } else if (saveTo === "previousWorkouts") {
+                            const currentPreviousWorkoutExercisesId = realmInstance.objects("PreviousWorkoutsExercises").max("id") || 0;
+                            const newPreviousWorkoutExercisesId = currentPreviousWorkoutExercisesId === 0 ? 1 : currentPreviousWorkoutExercisesId + 1;
+
+                            realmInstance.create("PreviousWorkoutsExercises", {
+                                "id": newPreviousWorkoutExercisesId,
+                                "previousWorkouts": newWorkout,
+                                "exercises": exerciseObj,
+                                "metrics": exercise.duration,
+                                "volume": exercise.reps.toString(),
+                            });
+                        }
+                    });
+                });
+            }
         } catch (error) {
             console.error("Error saving workout:", error);
         } finally {

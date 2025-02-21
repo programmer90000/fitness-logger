@@ -65,8 +65,20 @@ const ViewWorkouts = () => {
             ],
         );
     };
-    
-            
+
+    const handleEditPreviousWorkout = (workoutPresetId) => {
+        const workoutPreset = realmInstance.objectForPrimaryKey("PreviousWorkouts", workoutPresetId);
+        if (workoutPreset) {
+            router.push({
+                "pathname": "/screens/record-workout/record-workout",
+                "params": {
+                    "id": workoutPreset.id,
+                    "source": "workout-history",
+                },
+            });
+        }
+    };
+
     const handleViewPreviousWorkout = (previousWorkoutId) => {
         const previousWorkout = realmInstance.objectForPrimaryKey("PreviousWorkouts", previousWorkoutId);
         
@@ -87,7 +99,7 @@ const ViewWorkouts = () => {
                     <TouchableOpacity key = {previousWorkout.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return handleViewPreviousWorkout(previousWorkout.id); }} >
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{previousWorkout.name}</Text>
                         <View className = "flex-row justify-end items-center">
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} />
+                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditPreviousWorkout(previousWorkout.id); }} />
                             <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(previousWorkout.id); }} />
                         </View>
                     </TouchableOpacity>

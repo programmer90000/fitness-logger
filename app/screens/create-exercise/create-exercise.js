@@ -70,7 +70,7 @@ const CreateExercise = () => {
     const handleAddExercise = () => {
         const trimmedExerciseState = trimExerciseData(exerciseState);
         const realm = new Realm({ "schema": [exercises] });
-        if (checkForDuplicateName(realm, formValues.name)) {
+        if (checkForDuplicateName(realm, trimmedExerciseState.exerciseName)) {
             console.log("Badge name already exists");
             return;
         }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, Linking } from "react-native";
 import { Link } from "expo-router";
-import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
@@ -50,7 +49,7 @@ const Settings = () => {
         { "label": "Imperial (M)", "value": "imperial" },
     ];
     
-    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
+    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com").catch((err) => { return console.error("Error opening webpage", err); }); };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>

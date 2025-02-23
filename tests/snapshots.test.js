@@ -131,6 +131,7 @@ jest.mock("@react-native-async-storage/async-storage", () => {
     };
 });
 
+jest.mock("react-native-fs");
 
 // Set a fixed date and time when running the tests
 const fixedDate = new Date("2024-10-21T00:00:00Z");

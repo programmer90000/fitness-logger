@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import * as DocumentPicker from "expo-document-picker";
+import DocumentPicker from "react-native-document-picker";
 import * as FileSystem from "expo-file-system";
 import { Video, Image } from "react-native-compressor";
 import { colours } from "../../constants/colours.js";
@@ -64,15 +64,20 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         } else {
             throw new Error("Invalid media type");
         }
-        let result = await DocumentPicker.getDocumentAsync({
-            "type": typeOfMedia,
-            "copyToCacheDirectory": true,
-        });
+    
+        try {
+            const result = await DocumentPicker.pick({ "type": [typeOfMedia], "copyTo": "cachesDirectory" });
         
-        if (result.assets && result.assets[0]?.uri) {
-            const uri = result.assets[0].uri;
-            setMedia(result);
-            downloadMedia(uri, result.assets[0].name);
+            if (result[0]?.fileCopyUri) {
+                const uri = result[0].fileCopyUri;
+                setMedia(result);
+                downloadMedia(uri, result[0].name);
+            }
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+                return;
+            }
+            throw err;
         }
     };
 

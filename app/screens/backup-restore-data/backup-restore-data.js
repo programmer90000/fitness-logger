@@ -2,7 +2,7 @@ import { ScrollView, Text, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
-import * as DocumentPicker from "expo-document-picker";
+import DocumentPicker from "react-native-document-picker";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
@@ -74,12 +74,10 @@ const BackupRestoreData = () => {
     const pickDocument = async () => {
         try {
             // Open the document picker to allow users to select a file
-            const result = await DocumentPicker.getDocumentAsync({
-                "type": "application/json",
-            });
+            const result = await DocumentPicker.pick({ "type": ["application/json"], "copyTo": "cachesDirectory" });
         
-            if (result.assets[0].mimeType === "application/json") {
-                const fileUri = result.assets[0].uri;
+            if (result[0]?.fileCopyUri && result[0].type === "application/json") {
+                const fileUri = result[0].fileCopyUri;
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);

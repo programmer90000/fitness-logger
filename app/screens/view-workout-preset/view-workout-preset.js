@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "react-native-vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { workoutPresets } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";

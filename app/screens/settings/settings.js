@@ -7,7 +7,6 @@ import { getSettings, updateSetting, subscribeToSettings } from "../../utils/set
 import { storeData, retrieveData } from "../../utils/async-storage.js";
 import { colours } from "../../constants/colours.js";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
-import * as FileSystem from "expo-file-system";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);

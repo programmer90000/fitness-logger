@@ -28,7 +28,7 @@ const Drawer = createDrawerNavigator();
 export default function Layout() {
     return (
         <GestureHandlerRootView style = {{ "flex": 1 }}>
-            <Drawer.Navigator screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true }} >
+            <Drawer.Navigator initialRouteName = "index" screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true }} >
                 <Drawer.Screen name = "index" component = {App} options = {{ "drawerLabel": "Home", "title": "Home", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/create-a-new-workout-preset/create-a-new-workout-preset" component = {CreateANewWorkoutPreset} options = {{ "drawerLabel": "Create A New Workout Preset", "title": "Create A New Workout Preset", "drawerItemStyle": { "display": "flex" } }} />
                 <Drawer.Screen name = "screens/view-workout-preset/view-workout-preset" component = {ViewWorkoutPresets} options = {{ "drawerLabel": "View Workout Presets", "title": "View Workout Presets", "drawerItemStyle": { "display": "flex" } }} />

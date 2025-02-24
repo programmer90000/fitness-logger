@@ -2594,141 +2594,116 @@ exports[`index.js Test 1`] = `
       }
     >
       <Text
-        href="/"
+        allowFontScaling={false}
         onPress={[Function]}
-        role="link"
+        selectable={false}
+        style={
+          [
+            {
+              "color": "black",
+              "fontSize": 24,
+            },
+            undefined,
+            {
+              "fontFamily": "entypo",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
+        }
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "entypo",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
+        
       </Text>
       <Text
-        href="/"
+        allowFontScaling={false}
         onPress={[Function]}
-        role="link"
+        selectable={false}
+        style={
+          [
+            {
+              "color": "black",
+              "fontSize": 24,
+            },
+            undefined,
+            {
+              "fontFamily": "FontAwesome5Free-Solid",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {
+              "fontWeight": "700",
+            },
+          ]
+        }
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "FontAwesome5Free-Solid",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {
-                "fontWeight": "700",
-              },
-            ]
-          }
-        >
-          
-        </Text>
+        
       </Text>
       <Text
-        href="/"
+        allowFontScaling={false}
         onPress={[Function]}
-        role="link"
+        selectable={false}
+        style={
+          [
+            {
+              "color": "black",
+              "fontSize": 24,
+            },
+            undefined,
+            {
+              "fontFamily": "anticon",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
+        }
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "anticon",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
+        
       </Text>
       <Text
-        href="/"
+        allowFontScaling={false}
         onPress={[Function]}
-        role="link"
+        selectable={false}
+        style={
+          [
+            {
+              "color": "black",
+              "fontSize": 24,
+            },
+            undefined,
+            {
+              "fontFamily": "material-community",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
+        }
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "material-community",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          󰄪
-        </Text>
+        󰄪
       </Text>
       <Text
-        href="/"
+        allowFontScaling={false}
         onPress={[Function]}
-        role="link"
+        selectable={false}
+        style={
+          [
+            {
+              "color": "black",
+              "fontSize": 24,
+            },
+            undefined,
+            {
+              "fontFamily": "feather",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
+        }
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "feather",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
+        
       </Text>
     </View>
   </View>

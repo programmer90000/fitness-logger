@@ -1,5 +1,6 @@
 import { React } from "react";
 import renderer, { act } from "react-test-renderer";
+import { NavigationContainer } from "@react-navigation/native";
 import App from "../app/index";
 import Badges from "../app/screens/badges/badges";
 import CreateANewWorkoutPreset from "../app/screens/create-a-new-workout-preset/create-a-new-workout-preset";
@@ -184,7 +185,11 @@ test("index.js Test", async () => {
     let snapshot;
 
     await act(async () => {
-        snapshot = renderer.create(<App />);
+        snapshot = renderer.create(
+            <NavigationContainer>
+                <App />
+            </NavigationContainer>,
+        );
     });
 
     const snapshotJSON = snapshot.toJSON();

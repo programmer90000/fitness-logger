@@ -41,28 +41,14 @@ const BackupRestoreData = () => {
             const fileContents = `{\n  "workoutPresets": ${workoutPresetsJson},\n  "exercises": ${exercisesJson},\n  "workoutPresetsExercises": ${workoutPresetsExercisesJson},\n  "previousWorkouts": ${previousWorkoutsJson},\n  "previousWorkoutsExercises": ${previousWorkoutsExercisesJson},\n  "goals": ${goalsJson},\n  "badges": ${badgesJson}\n}`;
             
             const fileName = "fitness-logger-database.json";
-            const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+            const fileUri = `${RNFS.DocumentDirectoryPath}/${fileName}`;
 
             // Write the content to the app's local file system
-            await FileSystem.writeAsStringAsync(fileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
+            await RNFS.writeFile(fileUri, fileContents, "utf8");
 
-            // Request permission to access external storage
-            const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
-
-            if (!permissions.granted) {
-                Alert.alert("Permission Denied", "Unable to access the Downloads folder.");
-                return;
-            }
-
-            const savedFileUri = await FileSystem.StorageAccessFramework.createFileAsync(
-                permissions.directoryUri,
-                fileName,
-                "application/json",
-            );
-
-            await FileSystem.writeAsStringAsync(savedFileUri, fileContents, { "encoding": FileSystem.EncodingType.UTF8 });
-
-            Alert.alert("File Saved", `File saved to: ${savedFileUri}`);
+            const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
+            await RNFS.writeFile(downloadPath, fileContents, "utf8");
+            Alert.alert("File Saved", `File saved to: ${downloadPath}`);
             
             realm.close();
         } catch (error) {
@@ -91,9 +77,10 @@ const BackupRestoreData = () => {
                     });
                     return realm.objects(schemaName).filtered(query, queryParams).length > 0;
                 };
+                
+                const realm = await Realm.open({ "schema": [workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges] });
 
                 badgesArray.forEach((badge) => {
-                    const realm = new Realm({ "schema": [badges] });
                     realm.write(() => {
                         const existingBadge = realm.objects("Badges").filtered("image = $0 AND text = $1 AND completed = $2", badge.image, badge.text, badge.completed);
         
@@ -108,11 +95,9 @@ const BackupRestoreData = () => {
                             realm.create("Badges", { "id": newId, "image": badge.image, "text": badge.text, "completed": badge.completed });
                         }
                     });
-                    realm.close();
                 });
      
                 goalsArray.forEach((goal) => {
-                    const realm = new Realm({ "schema": [goals] });
                     realm.write(() => {
                         const startDate = new Date(goal.startDate);
                         const endDate = new Date(goal.endDate);
@@ -130,7 +115,6 @@ const BackupRestoreData = () => {
                 });
             
                 exercisesArray.forEach((exercise) => {
-                    const realm = new Realm({ "schema": [exercises] });
                     realm.write(() => {
                         const primaryMuscles = Array.isArray(exercise.primaryMuscles) ? exercise.primaryMuscles : [];
                         const secondaryMuscles = Array.isArray(exercise.secondaryMuscles) ? exercise.secondaryMuscles : [];
@@ -146,7 +130,6 @@ const BackupRestoreData = () => {
             
                 previousWorkoutsArray.forEach((previousWorkout) => {
                     delete previousWorkout.id;
-                    const realm = new Realm({ "schema": [previousWorkouts] });
                     realm.write(() => {
                         const date = new Date(previousWorkout.date);
                         const existingPreviousWorkout = realm.objects("PreviousWorkouts").filtered("name = $0 AND notes = $1 AND date = $2", previousWorkout.name, previousWorkout.notes, date);
@@ -160,7 +143,6 @@ const BackupRestoreData = () => {
                 });
             
                 previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
-                    const realm = new Realm({ "schema": [previousWorkoutsExercises] });
                     realm.write(() => {
                         const existingPreviousWorkoutExercise = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", 
                             previousWorkoutExercise.previousWorkouts.id, previousWorkoutExercise.exercises.id, previousWorkoutExercise.metrics, previousWorkoutExercise.volume);
@@ -174,7 +156,6 @@ const BackupRestoreData = () => {
                 });
             
                 workoutPresetsArray.forEach((workoutPreset) => {
-                    const realm = new Realm({ "schema": [workoutPresets] });
                     realm.write(() => {
                         const existingWorkoutPreset = realm.objects("WorkoutPresets").filtered("name = $0 AND notes = $1", workoutPreset.name, workoutPreset.notes);
         
@@ -184,11 +165,9 @@ const BackupRestoreData = () => {
                             realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
                         }
                     });
-                    realm.close();
                 });
             
                 workoutPresetsExercises.forEach((workoutPresetExercise) => {
-                    const realm = new Realm({ "schema": [workoutPresetsExercises] });
                     realm.write(() => {
                         const existingWorkoutPresetExercise = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", workoutPresetExercise.workoutPresets.id, workoutPresetExercise.exercises.id, workoutPresetExercise.metrics, workoutPresetExercise.volume);
         
@@ -199,6 +178,7 @@ const BackupRestoreData = () => {
                         }
                     });
                 });
+                realm.close();
             
                 Alert.alert("Success", "Data imported successfully");
             } else {
@@ -226,10 +206,8 @@ const BackupRestoreData = () => {
 
             const fileContents = JSON.stringify(data, null, 2);
             realm.close();
-            const fileUri = `${FileSystem.cacheDirectory}fitness-logger-data.json`;
-            await FileSystem.writeAsStringAsync(fileUri, fileContents, {
-                "encoding": FileSystem.EncodingType.UTF8,
-            });
+            const fileUri = `${RNFS.CachesDirectoryPath}/fitness-logger-data.json`;
+            await RNFS.writeFile(fileUri, fileContents, "utf8");
             
             const shareOptions = { "title": "Share JSON File", "url": `file://${fileUri}`, "type": "application/json" };
 

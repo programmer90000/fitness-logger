@@ -83,7 +83,7 @@ const BackupRestoreData = () => {
                 const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercises = [] } = parsedData;
+                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercisesArray = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercisesArray = [] } = parsedData;
 
                 const recordExists = (realm, schemaName, record, uniqueFields) => {
                     const query = uniqueFields.map((field) => { return `${field} == $${field}`; }).join(" AND ");
@@ -149,10 +149,10 @@ const BackupRestoreData = () => {
                         }
                     });
 
-                    previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
+                    previousWorkoutsExercisesArray.forEach((previousWorkoutExercise) => {
                         const existingPreviousWorkoutExercise = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", 
                             previousWorkoutExercise.previousWorkouts.id, previousWorkoutExercise.exercises.id, previousWorkoutExercise.metrics, previousWorkoutExercise.volume);
-        
+    
                         if (existingPreviousWorkoutExercise.length === 0) {
                             const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
                             const newId = currentHighestId + 1;
@@ -170,7 +170,7 @@ const BackupRestoreData = () => {
                         }
                     });
 
-                    workoutPresetsExercises.forEach((workoutPresetExercise) => {
+                    workoutPresetsExercisesArray.forEach((workoutPresetExercise) => {
                         const existingWorkoutPresetExercise = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", workoutPresetExercise.workoutPresets.id, workoutPresetExercise.exercises.id, workoutPresetExercise.metrics, workoutPresetExercise.volume);
 
                         if (existingWorkoutPresetExercise.length === 0) {

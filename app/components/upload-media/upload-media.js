@@ -35,7 +35,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
 
         const mediaFileName = fileName.split("/").pop();
         const uniqueFileName = await getUniqueFileName(mediaFileName);
-        const destinationUri = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;
+        const destinationUri = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;  
         onMediaSelect(destinationUri);
         let compressedMedia;
         if (mediaType === "Video") {
@@ -64,14 +64,14 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         } else {
             throw new Error("Invalid media type");
         }
-    
+
         try {
             const result = await DocumentPicker.pick({ "type": [typeOfMedia], "copyTo": "cachesDirectory" });
-        
+    
             if (result[0]?.fileCopyUri) {
                 const uri = result[0].fileCopyUri;
                 setMedia(result);
-                downloadMedia(uri, result[0].name);
+                downloadMedia(uri, result[0].name, mediaType, onMediaSelect, Video, Image);
             }
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {

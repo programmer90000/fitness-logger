@@ -94,7 +94,7 @@ const BackupRestoreData = () => {
                     return realm.objects(schemaName).filtered(query, queryParams).length > 0;
                 };
 
-                const realm = new Realm({ "schema": [badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises] });
+                const realm = await Realm.open({ "schema": [badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises] });
 
                 realm.write(() => {
                     badgesArray.forEach((badge) => {

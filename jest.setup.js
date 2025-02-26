@@ -23,3 +23,11 @@ jest.mock("@react-navigation/native", () => { return {
         "params": {},
     }; },
 }; });
+
+jest.mock("react-native-bootsplash", () => {
+    return {
+        "hide": jest.fn().mockResolvedValue(),
+        "show": jest.fn().mockResolvedValue(),
+        "getVisibilityStatus": jest.fn().mockResolvedValue(),
+    };
+});

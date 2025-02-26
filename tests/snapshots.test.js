@@ -119,14 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("react-native-bootsplash", () => {
-    return {
-        "hide": jest.fn().mockResolvedValue(),
-        "show": jest.fn().mockResolvedValue(),
-        "getVisibilityStatus": jest.fn().mockResolvedValue(),
-    };
-});
-
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
 jest.mock("react-native/Libraries/Utilities/Platform", () => { return {

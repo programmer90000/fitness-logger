@@ -119,11 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-// Mock Expo modules
-jest.mock("expo", () => { return {
-    "registerRootComponent": jest.fn(),
-}; });
-
 jest.mock("expo-modules-core", () => { return {
     "NativeModulesProxy": {},
     "NativeModule": {},

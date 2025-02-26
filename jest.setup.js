@@ -38,3 +38,7 @@ jest.mock("react-native/Libraries/Utilities/Platform", () => { return {
     "OS": "android",
     "select": jest.fn((obj) => { return obj.android; }),
 }; });
+
+jest.mock("expo", () => { return {
+    "registerRootComponent": jest.fn(),
+}; });

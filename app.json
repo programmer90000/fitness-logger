@@ -50,7 +50,8 @@
         "primaryColor": "#000000",
         "plugins": [
             "react-native-compressor",
-            "react-native-video"
+            "react-native-video",
+            "react-native-bootsplash"
         ],
         "extra": {
             "eas": {

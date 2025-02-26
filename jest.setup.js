@@ -12,3 +12,14 @@ jest.mock("@react-native-async-storage/async-storage", () => {
         "multiRemove": jest.fn(() => { return Promise.resolve(); }),
     };
 });
+
+jest.mock("@react-navigation/native", () => { return {
+    ...jest.requireActual("@react-navigation/native"),
+    "useNavigation": () => { return {
+        "navigate": jest.fn(),
+        "goBack": jest.fn(),
+    }; },
+    "useRoute": () => { return {
+        "params": {},
+    }; },
+}; });

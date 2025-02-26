@@ -119,17 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("@react-navigation/native", () => { return {
-    ...jest.requireActual("@react-navigation/native"),
-    "useNavigation": () => { return {
-        "navigate": jest.fn(),
-        "goBack": jest.fn(),
-    }; },
-    "useRoute": () => { return {
-        "params": {},
-    }; },
-}; });
-
 jest.mock("react-native-bootsplash", () => {
     return {
         "hide": jest.fn().mockResolvedValue(),

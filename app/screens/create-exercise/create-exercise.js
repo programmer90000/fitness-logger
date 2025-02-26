@@ -7,7 +7,8 @@ import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 import { PickerModal } from "./picker-modal.js";
 
 const CreateExercise = () => {
@@ -32,8 +33,8 @@ const CreateExercise = () => {
     const muscles = ["Pectorals", "Upper back", "Lower back", "Deltoids", "Biceps", "Triceps", "Quadriceps", "Hamstrings", "Glutes", "Calves", "Abs", "Obliques", "Cardio"];
     
     const { isReady, colours } = useTheme();
-    
-    const { id, exerciseName, selectedExerciseType, exerciseNotes, videoPath } = useLocalSearchParams();
+    const route = useRoute();
+    const { id, exerciseName, selectedExerciseType, exerciseNotes, videoPath } = route.params || {};
 
     useEffect(() => {
         if (id || exerciseName || selectedExerciseType || exerciseNotes || videoPath) {

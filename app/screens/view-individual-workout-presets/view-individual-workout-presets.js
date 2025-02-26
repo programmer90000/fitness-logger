@@ -3,13 +3,15 @@ import { View, Text, ScrollView } from "react-native";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { workoutPresets, exercises, workoutPresetsExercises } from "../../../database/realm-database.js";
-import { useLocalSearchParams } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 
 const ViewWorkoutPresetDetails = () => {
     const [workoutPreset, setWorkoutPreset] = useState(null);
     const [realmInstance, setRealmInstance] = useState(null);
     const { isReady, colours } = useTheme();
-    const { id } = useLocalSearchParams();
+    
+    const route = useRoute();
+    const { id } = route.params || {};
 
     useEffect(() => {
         if (!isReady) {

@@ -3,13 +3,15 @@ import { View, Text, ScrollView } from "react-native";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { goals } from "../../../database/realm-database.js";
-import { useLocalSearchParams } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 
 const ViewGoalDetails = () => {
     const [goal, setGoal] = useState(null);
     const [realmInstance, setRealmInstance] = useState(null);
     const { isReady, colours } = useTheme();
-    const { id } = useLocalSearchParams();
+    
+    const route = useRoute();
+    const { id } = route.params || {};
 
     useEffect(() => {
         if (!isReady) {

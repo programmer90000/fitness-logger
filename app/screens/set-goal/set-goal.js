@@ -7,7 +7,8 @@ import { goals } from "../../../database/realm-database.js";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 
 const SetGoal = () => {
     const router = useRouter();
@@ -22,7 +23,8 @@ const SetGoal = () => {
     const [type, setType] = useState(null);
     const { isReady, colours } = useTheme();
     
-    const { id, goalName, selectedGoalType, goalValue, goalStartDate, goalEndDate, goalReminders, goalNotes } = useLocalSearchParams();
+    const route = useRoute();
+    const { id, goalName, selectedGoalType, goalValue, goalStartDate, goalEndDate, goalReminders, goalNotes } = route.params || {};
 
     useEffect(() => {
         if (id || goalName || selectedGoalType || goalValue || goalStartDate || goalEndDate || goalReminders || goalNotes) {

@@ -6,13 +6,15 @@ import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 
 const CreateBadge = () => {
     const router = useRouter();
     const [imagePath, setImagePath] = useState(null);
     const { control, handleSubmit, getValues, setValue, reset } = useForm({});
-    const { id, image, text } = useLocalSearchParams();
+    const route = useRoute();
+    const { id, image, text } = route.params || {};
 
     useEffect(() => {
         if (id || image || text) {

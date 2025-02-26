@@ -33,3 +33,8 @@ jest.mock("react-native-bootsplash", () => {
 });
 
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+
+jest.mock("react-native/Libraries/Utilities/Platform", () => { return {
+    "OS": "android",
+    "select": jest.fn((obj) => { return obj.android; }),
+}; });

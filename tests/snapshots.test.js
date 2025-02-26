@@ -119,11 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("react-native/Libraries/Utilities/Platform", () => { return {
-    "OS": "android",
-    "select": jest.fn((obj) => { return obj.android; }),
-}; });
-
 // Mock Expo modules
 jest.mock("expo", () => { return {
     "registerRootComponent": jest.fn(),

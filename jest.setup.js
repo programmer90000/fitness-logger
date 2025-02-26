@@ -31,3 +31,5 @@ jest.mock("react-native-bootsplash", () => {
         "getVisibilityStatus": jest.fn().mockResolvedValue(),
     };
 });
+
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");

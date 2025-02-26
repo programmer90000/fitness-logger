@@ -14,8 +14,6 @@ import image4 from "./assets/slideshow-image-4.png";
 import image5 from "./assets/slideshow-image-5.png";
 import image6 from "./assets/slideshow-image-6.png";
 
-SplashScreen.preventAutoHideAsync();
-
 export default function App() {
     const { isReady, colours } = useTheme();
 

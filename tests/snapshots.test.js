@@ -143,6 +143,14 @@ jest.mock("@react-navigation/native", () => { return {
     }; },
 }; });
 
+jest.mock("react-native-bootsplash", () => {
+    return {
+        "hide": jest.fn().mockResolvedValue(),
+        "show": jest.fn().mockResolvedValue(),
+        "getVisibilityStatus": jest.fn().mockResolvedValue(),
+    };
+});
+
 jest.mock("react-native-fs");
 
 // Set a fixed date and time when running the tests

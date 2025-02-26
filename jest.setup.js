@@ -57,3 +57,5 @@ jest.mock("expo-file-system", () => { return {
     "getInfoAsync": jest.fn(),
     "downloadAsync": jest.fn(),
 }; });
+
+jest.mock("react-native-fs");

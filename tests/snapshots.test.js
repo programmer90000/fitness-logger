@@ -1,6 +1,7 @@
 import { React } from "react";
 import renderer, { act } from "react-test-renderer";
 import { NavigationContainer } from "@react-navigation/native";
+import { hooks } from "./snapshot-hooks";
 import App from "../app/index";
 import Badges from "../app/screens/badges/badges";
 import CreateANewWorkoutPreset from "../app/screens/create-a-new-workout-preset/create-a-new-workout-preset";
@@ -117,23 +118,6 @@ jest.mock("realm", () => {
     mockRealm.deleteRealmIfMigrationNeeded = true;
 
     return jest.fn(() => { return mockRealm; });
-});
-
-// Set a fixed date and time when running the tests
-const fixedDate = new Date("2024-10-21T00:00:00Z");
-const OriginalDate = global.Date;
-
-beforeAll(() => {
-    global.Date = class extends Date {
-        constructor() {
-            super();
-            return fixedDate;
-        }
-    };
-});
-
-afterAll(() => {
-    global.Date = OriginalDate;
 });
 
 beforeEach(() => {

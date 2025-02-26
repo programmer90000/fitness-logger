@@ -119,12 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("expo-modules-core", () => { return {
-    "NativeModulesProxy": {},
-    "NativeModule": {},
-    "requireOptionalNativeModule": jest.fn(),
-}; });
-
 jest.mock("expo-file-system", () => { return {
     "documentDirectory": "file:///mock/path/",
     "readAsStringAsync": jest.fn(),

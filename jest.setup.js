@@ -42,3 +42,9 @@ jest.mock("react-native/Libraries/Utilities/Platform", () => { return {
 jest.mock("expo", () => { return {
     "registerRootComponent": jest.fn(),
 }; });
+
+jest.mock("expo-modules-core", () => { return {
+    "NativeModulesProxy": {},
+    "NativeModule": {},
+    "requireOptionalNativeModule": jest.fn(),
+}; });

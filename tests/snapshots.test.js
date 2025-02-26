@@ -132,6 +132,17 @@ jest.mock("@react-native-async-storage/async-storage", () => {
     };
 });
 
+jest.mock("@react-navigation/native", () => { return {
+    ...jest.requireActual("@react-navigation/native"),
+    "useNavigation": () => { return {
+        "navigate": jest.fn(),
+        "goBack": jest.fn(),
+    }; },
+    "useRoute": () => { return {
+        "params": {},
+    }; },
+}; });
+
 jest.mock("react-native-fs");
 
 // Set a fixed date and time when running the tests

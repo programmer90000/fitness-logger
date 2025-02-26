@@ -119,15 +119,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("expo-file-system", () => { return {
-    "documentDirectory": "file:///mock/path/",
-    "readAsStringAsync": jest.fn(),
-    "writeAsStringAsync": jest.fn(),
-    "deleteAsync": jest.fn(),
-    "getInfoAsync": jest.fn(),
-    "downloadAsync": jest.fn(),
-}; });
-
 jest.mock("react-native-fs");
 
 // Set a fixed date and time when running the tests

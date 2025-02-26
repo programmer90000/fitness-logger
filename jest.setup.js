@@ -48,3 +48,12 @@ jest.mock("expo-modules-core", () => { return {
     "NativeModule": {},
     "requireOptionalNativeModule": jest.fn(),
 }; });
+
+jest.mock("expo-file-system", () => { return {
+    "documentDirectory": "file:///mock/path/",
+    "readAsStringAsync": jest.fn(),
+    "writeAsStringAsync": jest.fn(),
+    "deleteAsync": jest.fn(),
+    "getInfoAsync": jest.fn(),
+    "downloadAsync": jest.fn(),
+}; });

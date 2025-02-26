@@ -151,6 +151,33 @@ jest.mock("react-native-bootsplash", () => {
     };
 });
 
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+
+jest.mock("react-native/Libraries/Utilities/Platform", () => { return {
+    "OS": "android",
+    "select": jest.fn((obj) => { return obj.android; }),
+}; });
+
+// Mock Expo modules
+jest.mock("expo", () => { return {
+    "registerRootComponent": jest.fn(),
+}; });
+
+jest.mock("expo-modules-core", () => { return {
+    "NativeModulesProxy": {},
+    "NativeModule": {},
+    "requireOptionalNativeModule": jest.fn(),
+}; });
+
+jest.mock("expo-file-system", () => { return {
+    "documentDirectory": "file:///mock/path/",
+    "readAsStringAsync": jest.fn(),
+    "writeAsStringAsync": jest.fn(),
+    "deleteAsync": jest.fn(),
+    "getInfoAsync": jest.fn(),
+    "downloadAsync": jest.fn(),
+}; });
+
 jest.mock("react-native-fs");
 
 // Set a fixed date and time when running the tests

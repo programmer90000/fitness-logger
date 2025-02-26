@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, ScrollView, StatusBar } from "react-native";
 import { registerRootComponent } from "expo";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
-import * as SplashScreen from "expo-splash-screen";
+import RNBootSplash from "react-native-bootsplash";
 import Carousel from "./components/carousel/carousel.js";
 import FAQComponent from "./components/collapsible/collapsible.js";
 import image1 from "./assets/slideshow-image-1.png";
@@ -22,6 +22,12 @@ export default function App() {
     if (!isReady) {
         return null;
     }
+
+    useEffect(() => {
+        if (isReady) {
+            RNBootSplash.hide();
+        }
+    }, [isReady]);
 
     const carouselData = [
         { "image": image1, "text": "Sahih Muslim 2664, Sahih" },

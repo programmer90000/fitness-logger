@@ -7,11 +7,9 @@ import { goals } from "../../../database/realm-database.js";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter } from "expo-router";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const SetGoal = () => {
-    const router = useRouter();
     const { control, getValues, reset } = useForm({});
     const [mode, setMode] = useState("date");
     const [startDate, setStartDate] = useState(new Date());
@@ -22,6 +20,8 @@ const SetGoal = () => {
     const [reminderPickerShow, setReminderPickerShow] = useState(false);
     const [type, setType] = useState(null);
     const { isReady, colours } = useTheme();
+    
+    const navigation = useNavigation();
     
     const route = useRoute();
     const { id, goalName, selectedGoalType, goalValue, goalStartDate, goalEndDate, goalReminders, goalNotes } = route.params || {};
@@ -120,8 +120,7 @@ const SetGoal = () => {
                 const currentHighestId = realm.objects("Goals").max("id") || 0;
                 let newId;
 
-                if (currentHighestId === 0)
-                {
+                if (currentHighestId === 0) {
                     newId = 1;
                 } else {
                     newId = currentHighestId + 1;
@@ -136,7 +135,8 @@ const SetGoal = () => {
         setEndDate(new Date());
         setReminderDate(new Date());
         setType(null);
-        router.push({ "pathname": "/screens/set-goal/set-goal", "params": {} }); };
+        navigation.navigate("screens/set-goal/set-goal", {});
+    };
 
     
     const possibleGoals = [

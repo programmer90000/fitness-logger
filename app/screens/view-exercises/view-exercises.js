@@ -5,13 +5,14 @@ import { Ionicons } from "react-native-vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { exercises } from "../../../database/realm-database.js";
-import { useRouter } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 const ViewExercise = () => {
     const { isReady, colours } = useTheme();
     const [exercisesList, setExercisesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-    const router = useRouter(); // Initialize the router
+    
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (!isReady) {
@@ -70,16 +71,8 @@ const ViewExercise = () => {
     const handleEditExercise = (exerciseId) => {
         const exercise = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
         if (exercise) {
-            router.push({
-                "pathname": "/screens/create-exercise/create-exercise",
-                "params": {
-                    "id": exercise.id,
-                    "exerciseName": exercise.name,
-                    "selectedExerciseType": exercise.type,
-                    "exerciseNotes": exercise.notes,
-                    "videoPath": exercise.video,
-                },
-            });
+            navigation.navigate("screens/create-exercise/create-exercise", { "id": exercise.id, "exerciseName": exercise.name, "selectedExerciseType": exercise.type, "exerciseNotes": exercise.notes, "videoPath": exercise.video });
+
         }
     };
         
@@ -87,10 +80,7 @@ const ViewExercise = () => {
         const exercise = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
         
         if (exercise) {
-            router.push({
-                "pathname": "/screens/view-individual-exercises/view-individual-exercises",
-                "params": { "id": exerciseId },
-            });
+            navigation.navigate("screens/view-individual-exercises/view-individual-exercises", { "id": exerciseId });
         }
     };
 

@@ -5,13 +5,14 @@ import { Ionicons } from "react-native-vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { previousWorkouts } from "../../../database/realm-database.js";
-import { useRouter } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 const ViewWorkouts = () => {
     const { isReady, colours } = useTheme();
     const [previousWorkoutsList, setPreviousWorkoutsList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-    const router = useRouter();
+
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (!isReady) {
@@ -69,13 +70,7 @@ const ViewWorkouts = () => {
     const handleEditPreviousWorkout = (workoutPresetId) => {
         const workoutPreset = realmInstance.objectForPrimaryKey("PreviousWorkouts", workoutPresetId);
         if (workoutPreset) {
-            router.push({
-                "pathname": "/screens/record-workout/record-workout",
-                "params": {
-                    "id": workoutPreset.id,
-                    "source": "workout-history",
-                },
-            });
+            navigation.navigate("screens/record-workout/record-workout", { "id": workoutPreset.id, "source": "workout-history" });
         }
     };
 
@@ -83,10 +78,7 @@ const ViewWorkouts = () => {
         const previousWorkout = realmInstance.objectForPrimaryKey("PreviousWorkouts", previousWorkoutId);
         
         if (previousWorkout) {
-            router.push({
-                "pathname": "/screens/view-previous-workout/view-previous-workout",
-                "params": { "id": previousWorkoutId },
-            });
+            navigation.navigate("screens/view-previous-workout/view-previous-workout", { "id": previousWorkoutId });
         }
     };
 

@@ -6,15 +6,15 @@ import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter } from "expo-router";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 
 const CreateBadge = () => {
-    const router = useRouter();
     const [imagePath, setImagePath] = useState(null);
     const { control, handleSubmit, getValues, setValue, reset } = useForm({});
     const route = useRoute();
     const { id, image, text } = route.params || {};
+    
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (id || image || text) {
@@ -75,7 +75,7 @@ const CreateBadge = () => {
         reset();
         setImagePath(null); 
         setValue("badgeText", ""); 
-        router.push({ "pathname": "/screens/create-badge/create-badge", "params": {} });
+        navigation.navigate("screens/create-badge/create-badge", {});
     };
 
     return (

@@ -5,10 +5,10 @@ import { Ionicons } from "react-native-vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { goals } from "../../../database/realm-database.js";
-import { useRouter } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 const ViewGoals = () => {
-    const router = useRouter();
+    const navigation = useNavigation();
     const { isReady, colours } = useTheme();
     const [goalList, setGoalList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
@@ -69,19 +69,7 @@ const ViewGoals = () => {
     const handleEditGoal = (goalId) => {
         const goal = realmInstance.objectForPrimaryKey("Goals", goalId);
         if (goal) {
-            router.push({
-                "pathname": "/screens/set-goal/set-goal",
-                "params": {
-                    "id": goal.id,
-                    "goalName": goal.name,
-                    "selectedGoalType": goal.type,
-                    "goalValue": goal.value,
-                    "goalStartDate": goal.startDate.toISOString(),
-                    "goalEndDate": goal.endDate.toISOString(),
-                    "goalReminders": goal.reminders.toISOString(),
-                    "goalNotes": goal.notes,
-                },
-            });
+            navigation.navigate("screens/set-goal/set-goal", { "id": goal.id, "goalName": goal.name, "selectedGoalType": goal.type, "goalValue": goal.value, "goalStartDate": goal.startDate.toISOString(), "goalEndDate": goal.endDate.toISOString(), "goalReminders": goal.reminders.toISOString(), "goalNotes": goal.notes });
         }
     };
 
@@ -89,10 +77,7 @@ const ViewGoals = () => {
         const goal = realmInstance.objectForPrimaryKey("Goals", goalId);
         
         if (goal) {
-            router.push({
-                "pathname": "/screens/view-individual-goals/view-individual-goals",
-                "params": { "id": goalId },
-            });
+            navigation.navigate("screens/view-individual-goals/view-individual-goals", { "id": goalId });
         }
     };
 

@@ -120,10 +120,6 @@ jest.mock("realm", () => {
     return jest.fn(() => { return mockRealm; });
 });
 
-jest.mock("../app/hooks/useTheme.js", () => { return {
-    "useTheme": jest.fn(),
-}; });
-
 test("index.js Test", async () => {
     let snapshot;
 

@@ -15,7 +15,6 @@ import BackupRestoreData from "../app/screens/backup-restore-data/backup-restore
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
 import ReportFeedback from "../app/screens/report-feedback/report-feedback.js";
-import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../database/realm-database.js";
 
 jest.mock("realm", () => { return require("./realm-mock"); });
 

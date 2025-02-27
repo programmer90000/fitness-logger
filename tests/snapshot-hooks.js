@@ -1,7 +1,7 @@
 export const hooks = {
-    "beforeAll": () => {
+    "OriginalDate": global.Date,
+    "beforeAll": function () {
         const fixedDate = new Date("2024-10-21T00:00:00Z");
-        const OriginalDate = global.Date;
         global.Date = class extends Date {
             constructor() {
                 super();
@@ -10,8 +10,8 @@ export const hooks = {
         };
     },
 
-    "afterAll": () => {
-        global.Date = OriginalDate;
+    "afterAll": function () {
+        global.Date = this.OriginalDate;
     },
 };
 

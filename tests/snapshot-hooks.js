@@ -13,6 +13,10 @@ export const hooks = {
     "afterAll": function () {
         global.Date = this.OriginalDate;
     },
+
+    "afterEach": function () {
+        jest.clearAllMocks();
+    },
 };
 
 jest.mock("../app/hooks/useTheme.js", () => { return {

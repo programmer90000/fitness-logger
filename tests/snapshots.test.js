@@ -124,10 +124,6 @@ jest.mock("../app/hooks/useTheme.js", () => { return {
     "useTheme": jest.fn(),
 }; });
 
-afterEach(() => {
-    jest.clearAllMocks();
-});
-
 test("index.js Test", async () => {
     let snapshot;
 

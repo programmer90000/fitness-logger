@@ -1,7 +1,5 @@
 import { React } from "react";
 import renderer, { act } from "react-test-renderer";
-import { NavigationContainer } from "@react-navigation/native";
-import { hooks } from "./snapshot-hooks";
 import App from "../app/index";
 import Badges from "../app/screens/badges/badges";
 import CreateANewWorkoutPreset from "../app/screens/create-a-new-workout-preset/create-a-new-workout-preset";
@@ -15,18 +13,177 @@ import BackupRestoreData from "../app/screens/backup-restore-data/backup-restore
 import ViewGoals from "../app/screens/view-goals/view-goals.js";
 import WorkoutHistory from "../app/screens/workout-history/workout-history.js";
 import ReportFeedback from "../app/screens/report-feedback/report-feedback.js";
+import { useTheme } from "../app/hooks/useTheme.js";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../database/realm-database.js";
 
-jest.mock("realm", () => { return require("./realm-mock"); });
+jest.mock("realm", () => {
+    const mockRealm = {
+        "objects": jest.fn(() => {
+            const results = [];
+            results.filtered = jest.fn(() => { return results; });
+            results.map = jest.fn(() => { return []; });
+            return results;
+        }),
+        "write": jest.fn((callback) => { return callback(); }),
+        "create": jest.fn(),
+        "deleteAll": jest.fn(),
+        "close": jest.fn(),
+        "addListener": jest.fn(),
+        "removeListener": jest.fn(),
+    };
+
+    mockRealm.open = jest.fn().mockResolvedValue(mockRealm);
+    mockRealm.schema = [
+        {
+            "name": "WorkoutPresets",
+            "properties": {
+                "id": "int",
+                "name": "string",
+                "notes": "string",
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "Exercises",
+            "properties": {
+                "id": "int",
+                "name": "string",
+                "type": "string",
+                "notes": "string",
+                "video": "string",
+                "personalBest": "string",
+                "isDeleted": { "type": "bool", "default": false },
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "WorkoutPresetsExercises",
+            "properties": {
+                "id": "int",
+                "workoutPresets": "WorkoutPresets",
+                "exercises": "Exercises",
+                "metrics": "string",
+                "volume": "string",
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "PreviousWorkouts",
+            "properties": {
+                "id": "int",
+                "name": "string",
+                "notes": "string",
+                "date": "date",
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "PreviousWorkoutsExercises",
+            "properties": {
+                "id": "int",
+                "previousWorkouts": "PreviousWorkouts",
+                "exercises": "Exercises",
+                "metrics": "string", 
+                "volume": "string",
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "Goals",
+            "properties": {
+                "id": "int",
+                "name": "string",
+                "type": "string",
+                "value": "string",
+                "startDate": "date",
+                "endDate": "date",
+                "reminders": "date",
+                "notes": "string",
+            },
+            "primaryKey": "id",
+        },
+        {
+            "name": "Badges",
+            "properties": {
+                "id": "int",
+                "image": "string",
+                "text": "string",
+                "completed": "bool",
+            },
+            "primaryKey": "id",
+        },
+    ];
+    mockRealm.deleteRealmIfMigrationNeeded = true;
+
+    return jest.fn(() => { return mockRealm; });
+});
+
+jest.mock("@react-native-async-storage/async-storage", () => {
+    return {
+        "getItem": jest.fn(() => { return Promise.resolve(null); }),
+        "setItem": jest.fn(() => { return Promise.resolve(); }),
+        "removeItem": jest.fn(() => { return Promise.resolve(); }),
+        "clear": jest.fn(() => { return Promise.resolve(); }),
+        "getAllKeys": jest.fn(() => { return Promise.resolve([]); }),
+        "multiGet": jest.fn(() => { return Promise.resolve([]); }),
+        "multiSet": jest.fn(() => { return Promise.resolve(); }),
+        "multiRemove": jest.fn(() => { return Promise.resolve(); }),
+    };
+});
+
+
+// Set a fixed date and time when running the tests
+const fixedDate = new Date("2024-10-21T00:00:00Z");
+const OriginalDate = global.Date;
+
+beforeAll(() => {
+    global.Date = class extends Date {
+        constructor() {
+            super();
+            return fixedDate;
+        }
+    };
+});
+
+afterAll(() => {
+    global.Date = OriginalDate;
+});
+
+beforeEach(() => {
+    useTheme.mockReturnValue({
+        "isReady": true,
+        "colours": {
+            "main_background": "#F1F1F1",
+            "button_background_1": "#FF0000",
+            "button_background_2": "#F1F1F1",
+            "button_text_1": "#060606",
+            "text_1": "#060606",
+            "input_field_background_1": "#DEDEDE",
+            "badge_completed": "#FFD700",
+            "badge_uncompleted": "#000000",
+            "footer_background": "#D10000",
+            "footer_images": "#060606",
+            "statistics_title": "#F6F8FA",
+            "statistics_head": "#F1F8FF",
+            "heading_colour_1": "#000000",
+            "heading_colour_2": "#060606",
+        },
+    });
+});
+
+jest.mock("../app/hooks/useTheme.js", () => { return {
+    "useTheme": jest.fn(),
+}; });
+
+afterEach(() => {
+    jest.clearAllMocks();
+});
 
 test("index.js Test", async () => {
     let snapshot;
 
     await act(async () => {
-        snapshot = renderer.create(
-            <NavigationContainer>
-                <App />
-            </NavigationContainer>,
-        );
+        snapshot = renderer.create(<App />);
     });
 
     const snapshotJSON = snapshot.toJSON();

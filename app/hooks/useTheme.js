@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { retrieveData } from "../utils/async-storage.js";
 import { loadResource } from "../constants/colours.js";
-import RNBootSplash from "react-native-bootsplash";
+import * as SplashScreen from "expo-splash-screen";
 
 export const useTheme = () => {
     const [isReady, setIsReady] = useState(false);
@@ -23,7 +23,7 @@ export const useTheme = () => {
             const colours = await loadResource();
             setColour(colours);
             setIsReady(true);
-            await RNBootSplash.hide();
+            await SplashScreen.hideAsync();
         };
 
         initializeApp();

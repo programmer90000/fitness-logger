@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "react-native-vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { exercises } from "../../../database/realm-database.js";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const ViewExercise = () => {
     const { isReady, colours } = useTheme();
     const [exercisesList, setExercisesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-    
-    const navigation = useNavigation();
+    const router = useRouter(); // Initialize the router
 
     useEffect(() => {
         if (!isReady) {
@@ -71,8 +70,16 @@ const ViewExercise = () => {
     const handleEditExercise = (exerciseId) => {
         const exercise = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
         if (exercise) {
-            navigation.navigate("screens/create-exercise/create-exercise", { "id": exercise.id, "exerciseName": exercise.name, "selectedExerciseType": exercise.type, "exerciseNotes": exercise.notes, "videoPath": exercise.video });
-
+            router.push({
+                "pathname": "/screens/create-exercise/create-exercise",
+                "params": {
+                    "id": exercise.id,
+                    "exerciseName": exercise.name,
+                    "selectedExerciseType": exercise.type,
+                    "exerciseNotes": exercise.notes,
+                    "videoPath": exercise.video,
+                },
+            });
         }
     };
         
@@ -80,7 +87,10 @@ const ViewExercise = () => {
         const exercise = realmInstance.objectForPrimaryKey("Exercises", exerciseId);
         
         if (exercise) {
-            navigation.navigate("screens/view-individual-exercises/view-individual-exercises", { "id": exerciseId });
+            router.push({
+                "pathname": "/screens/view-individual-exercises/view-individual-exercises",
+                "params": { "id": exerciseId },
+            });
         }
     };
 

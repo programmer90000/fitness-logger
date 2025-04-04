@@ -1,10 +1,9 @@
 import React from "react";
-import { useRoute } from "@react-navigation/native";
+import { useLocalSearchParams } from "expo-router";
 import WorkoutForm from "../../components/workout-form/workout-form.js";
 
 const RecordWorkout = () => {
-    const route = useRoute();
-    const params = route.params || {};
+    const params = useLocalSearchParams();
     
     const defaultValues = params.workoutName ? {
         "workoutName": params.workoutName,

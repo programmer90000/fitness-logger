@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "react-native-vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { previousWorkouts } from "../../../database/realm-database.js";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const ViewWorkouts = () => {
     const { isReady, colours } = useTheme();
     const [previousWorkoutsList, setPreviousWorkoutsList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-
-    const navigation = useNavigation();
+    const router = useRouter();
 
     useEffect(() => {
         if (!isReady) {
@@ -70,7 +69,13 @@ const ViewWorkouts = () => {
     const handleEditPreviousWorkout = (workoutPresetId) => {
         const workoutPreset = realmInstance.objectForPrimaryKey("PreviousWorkouts", workoutPresetId);
         if (workoutPreset) {
-            navigation.navigate("screens/record-workout/record-workout", { "id": workoutPreset.id, "source": "workout-history" });
+            router.push({
+                "pathname": "/screens/record-workout/record-workout",
+                "params": {
+                    "id": workoutPreset.id,
+                    "source": "workout-history",
+                },
+            });
         }
     };
 
@@ -78,7 +83,10 @@ const ViewWorkouts = () => {
         const previousWorkout = realmInstance.objectForPrimaryKey("PreviousWorkouts", previousWorkoutId);
         
         if (previousWorkout) {
-            navigation.navigate("screens/view-previous-workout/view-previous-workout", { "id": previousWorkoutId });
+            router.push({
+                "pathname": "/screens/view-previous-workout/view-previous-workout",
+                "params": { "id": previousWorkoutId },
+            });
         }
     };
 

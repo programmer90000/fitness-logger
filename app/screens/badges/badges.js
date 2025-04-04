@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
-import { Ionicons } from "react-native-vector-icons";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { Ionicons } from "@expo/vector-icons";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 export default function Badges() {
+    const router = useRouter();
     const { isReady, colours } = useTheme();
     const [badgesList, setBadgesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-    
-    const navigation = useNavigation();
 
     useEffect(() => {
         if (!isReady) {
@@ -78,7 +77,14 @@ export default function Badges() {
     const handleEditBadge = (badgeId) => {
         const badge = realmInstance.objectForPrimaryKey("Badges", badgeId);
         if (badge) {
-            navigation.navigate("screens/create-badge/create-badge", { "id": badge.id, "image": badge.image, "text": badge.text });
+            router.push({
+                "pathname": "/screens/create-badge/create-badge",
+                "params": {
+                    "id": badge.id,
+                    "image": badge.image,
+                    "text": badge.text,
+                },
+            });
         }
     };
 

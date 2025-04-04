@@ -2,9 +2,8 @@ import { ScrollView, Text, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
-import DocumentPicker from "react-native-document-picker";
-import RNFS from "react-native-fs";
-import Share from "react-native-share";
+import * as DocumentPicker from "expo-document-picker";
+import * as Sharing from "expo-sharing";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
@@ -74,13 +73,16 @@ const BackupRestoreData = () => {
     const pickDocument = async () => {
         try {
             // Open the document picker to allow users to select a file
-            const result = await DocumentPicker.pick({ "type": [DocumentPicker.types.json] });            
-            if (result[0].type === "application/json") {
-                const fileUri = result[0].uri;
-                const fileContent = await RNFS.readFile(fileUri, "utf8");
+            const result = await DocumentPicker.getDocumentAsync({
+                "type": "application/json",
+            });
+        
+            if (result.assets[0].mimeType === "application/json") {
+                const fileUri = result.assets[0].uri;
+                const fileContent = await FileSystem.readAsStringAsync(fileUri);
                 const parsedData = JSON.parse(fileContent);
                 setJsonData(parsedData);
-                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercisesArray = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercisesArray = [] } = parsedData;
+                const { "badges": badgesArray = [], "goals": goalsArray = [], "exercises": exercisesArray = [], "previousWorkouts": previousWorkoutsArray = [], previousWorkoutsExercises = [], "workoutPresets": workoutPresetsArray = [], workoutPresetsExercises = [] } = parsedData;
 
                 const recordExists = (realm, schemaName, record, uniqueFields) => {
                     const query = uniqueFields.map((field) => { return `${field} == $${field}`; }).join(" AND ");
@@ -91,10 +93,9 @@ const BackupRestoreData = () => {
                     return realm.objects(schemaName).filtered(query, queryParams).length > 0;
                 };
 
-                const realm = await Realm.open({ "schema": [badges, goals, exercises, previousWorkouts, previousWorkoutsExercises, workoutPresets, workoutPresetsExercises] });
-
-                realm.write(() => {
-                    badgesArray.forEach((badge) => {
+                badgesArray.forEach((badge) => {
+                    const realm = new Realm({ "schema": [badges] });
+                    realm.write(() => {
                         const existingBadge = realm.objects("Badges").filtered("image = $0 AND text = $1 AND completed = $2", badge.image, badge.text, badge.completed);
         
                         if (existingBadge.length === 0) {
@@ -108,21 +109,30 @@ const BackupRestoreData = () => {
                             realm.create("Badges", { "id": newId, "image": badge.image, "text": badge.text, "completed": badge.completed });
                         }
                     });
-
-                    goalsArray.forEach((goal) => {
+                    realm.close();
+                });
+     
+                goalsArray.forEach((goal) => {
+                    const realm = new Realm({ "schema": [goals] });
+                    realm.write(() => {
                         const startDate = new Date(goal.startDate);
                         const endDate = new Date(goal.endDate);
                         const reminderDate = new Date(goal.reminders);
+
                         const existingGoal = realm.objects("Goals").filtered("name = $0 AND type = $1 AND value = $2 AND startDate = $3 AND endDate = $4 AND reminders = $5 AND notes = $6", goal.name, goal.type, goal.value, startDate, endDate, reminderDate, goal.notes);
 
                         if (existingGoal.length === 0) {
                             const currentHighestId = realm.objects("Goals").max("id") || 0;
                             const newId = currentHighestId + 1;
+                        
                             realm.create("Goals", { "id": newId, "name": goal.name, "type": goal.type, "value": goal.value, "startDate": new Date(goal.startDate), "endDate": new Date(goal.endDate), "reminders": new Date(goal.reminders), "notes": goal.notes });
                         }
                     });
-
-                    exercisesArray.forEach((exercise) => {
+                });
+            
+                exercisesArray.forEach((exercise) => {
+                    const realm = new Realm({ "schema": [exercises] });
+                    realm.write(() => {
                         const primaryMuscles = Array.isArray(exercise.primaryMuscles) ? exercise.primaryMuscles : [];
                         const secondaryMuscles = Array.isArray(exercise.secondaryMuscles) ? exercise.secondaryMuscles : [];
                         const existingExercise = realm.objects("Exercises").filtered("name = $0 AND type = $1 AND notes = $2 AND video = $3 AND personalBest = $4 AND isDeleted = $5", exercise.name, exercise.type, exercise.notes, exercise.video, exercise.personalBest, exercise.isDeleted);
@@ -133,9 +143,12 @@ const BackupRestoreData = () => {
                             realm.create("Exercises", { "id": newId, "name": exercise.name, "type": exercise.type, "notes": exercise.notes, "video": exercise.video, "personalBest": exercise.personalBest, "isDeleted": false, "primaryMuscles": primaryMuscles, "secondaryMuscles": secondaryMuscles });
                         }
                     });
-
-                    previousWorkoutsArray.forEach((previousWorkout) => {
-                        delete previousWorkout.id;
+                });
+            
+                previousWorkoutsArray.forEach((previousWorkout) => {
+                    delete previousWorkout.id;
+                    const realm = new Realm({ "schema": [previousWorkouts] });
+                    realm.write(() => {
                         const date = new Date(previousWorkout.date);
                         const existingPreviousWorkout = realm.objects("PreviousWorkouts").filtered("name = $0 AND notes = $1 AND date = $2", previousWorkout.name, previousWorkout.notes, date);
 
@@ -145,19 +158,25 @@ const BackupRestoreData = () => {
                             realm.create("PreviousWorkouts", { "id": newId, "name": previousWorkout.name, "notes": previousWorkout.notes, "date": date });
                         }
                     });
-
-                    previousWorkoutsExercisesArray.forEach((previousWorkoutExercise) => {
+                });
+            
+                previousWorkoutsExercises.forEach((previousWorkoutExercise) => {
+                    const realm = new Realm({ "schema": [previousWorkoutsExercises] });
+                    realm.write(() => {
                         const existingPreviousWorkoutExercise = realm.objects("PreviousWorkoutsExercises").filtered("previousWorkouts.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", 
                             previousWorkoutExercise.previousWorkouts.id, previousWorkoutExercise.exercises.id, previousWorkoutExercise.metrics, previousWorkoutExercise.volume);
-    
+        
                         if (existingPreviousWorkoutExercise.length === 0) {
                             const currentHighestId = realm.objects("PreviousWorkoutsExercises").max("id") || 0;
                             const newId = currentHighestId + 1;
                             realm.create("PreviousWorkoutsExercises", { "id": newId, "previousWorkouts": previousWorkoutExercise.previousWorkouts, "exercises": previousWorkoutExercise.exercises, "metrics": previousWorkoutExercise.metrics, "volume": previousWorkoutExercise.volume });
                         }
                     });
-
-                    workoutPresetsArray.forEach((workoutPreset) => {
+                });
+            
+                workoutPresetsArray.forEach((workoutPreset) => {
+                    const realm = new Realm({ "schema": [workoutPresets] });
+                    realm.write(() => {
                         const existingWorkoutPreset = realm.objects("WorkoutPresets").filtered("name = $0 AND notes = $1", workoutPreset.name, workoutPreset.notes);
         
                         if (existingWorkoutPreset.length === 0) {
@@ -166,10 +185,14 @@ const BackupRestoreData = () => {
                             realm.create("WorkoutPresets", { "id": newId, "name": workoutPreset.name, "notes": workoutPreset.notes });
                         }
                     });
-
-                    workoutPresetsExercisesArray.forEach((workoutPresetExercise) => {
+                    realm.close();
+                });
+            
+                workoutPresetsExercises.forEach((workoutPresetExercise) => {
+                    const realm = new Realm({ "schema": [workoutPresetsExercises] });
+                    realm.write(() => {
                         const existingWorkoutPresetExercise = realm.objects("WorkoutPresetsExercises").filtered("workoutPresets.id = $0 AND exercises.id = $1 AND metrics = $2 AND volume = $3", workoutPresetExercise.workoutPresets.id, workoutPresetExercise.exercises.id, workoutPresetExercise.metrics, workoutPresetExercise.volume);
-
+        
                         if (existingWorkoutPresetExercise.length === 0) {
                             const currentHighestId = realm.objects("WorkoutPresetsExercises").max("id") || 0;
                             const newId = currentHighestId + 1;
@@ -177,9 +200,7 @@ const BackupRestoreData = () => {
                         }
                     });
                 });
-
-                realm.close();
-
+            
                 Alert.alert("Success", "Data imported successfully");
             } else {
                 Alert.alert("Error", "Please select a JSON file");
@@ -211,11 +232,14 @@ const BackupRestoreData = () => {
                 "encoding": FileSystem.EncodingType.UTF8,
             });
             
-            const shareOptions = { "title": "Share JSON File", "url": `file://${fileUri}`, "type": "application/json" };
+            if (!(await Sharing.isAvailableAsync())) {
+                Alert.alert("Error", "Sharing is not available on this device.");
+                return;
+            }
 
-            await Share.open(shareOptions);
+            await Sharing.shareAsync(fileUri);
         } catch (error) {
-            Alert.alert("Error", "Failed to share the JSON file.");
+            console.error("Error creating JSON data:", error);
             throw error;
         }
     };

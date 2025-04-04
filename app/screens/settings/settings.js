@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TouchableOpacity, Linking } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
+import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
 import { colours } from "../../constants/colours.js";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);
@@ -14,8 +17,6 @@ const Settings = () => {
     const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
     const { isReady, colours } = useTheme();
-    
-    const navigation = useNavigation();
 
     if (!isReady) {
         return null;
@@ -49,7 +50,7 @@ const Settings = () => {
         { "label": "Imperial (M)", "value": "imperial" },
     ];
     
-    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com").catch((err) => { return console.error("Error opening webpage", err); }); };
+    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
@@ -96,9 +97,11 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {() => { return navigation.navigate("ReportFeedback"); }}>
-                    <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report Feedback</Text>
-                </TouchableOpacity>
+                <Link href = "/screens/report-feedback/report-feedback" asChild>
+                    <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
+                        <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report Feedback</Text>
+                    </TouchableOpacity>
+                </Link>
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>

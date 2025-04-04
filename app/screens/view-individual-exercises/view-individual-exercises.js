@@ -4,15 +4,13 @@ import Realm from "realm";
 import Video from "react-native-video";
 import { useTheme } from "../../hooks/useTheme.js";
 import { exercises } from "../../../database/realm-database.js";
-import { useRoute } from "@react-navigation/native";
+import { useLocalSearchParams } from "expo-router";
 
 const ViewExerciseDetails = () => {
     const [exercise, setExercise] = useState(null);
     const [realmInstance, setRealmInstance] = useState(null);
     const { isReady, colours } = useTheme();
-    
-    const route = useRoute();
-    const { id } = route.params || {};
+    const { id } = useLocalSearchParams();
 
     useEffect(() => {
         if (!isReady) {

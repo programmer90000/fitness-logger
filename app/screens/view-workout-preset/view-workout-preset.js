@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "react-native-vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { workoutPresets } from "../../../database/realm-database.js";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const ViewWorkoutPresets = () => {
+    const router = useRouter();
     const { isReady, colours } = useTheme();
     const [workoutPresetsList, setWorkoutPresetsList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
-    
-    const navigation = useNavigation();
 
     useEffect(() => {
         if (!isReady) {
@@ -70,14 +69,21 @@ const ViewWorkoutPresets = () => {
         const workoutPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", workoutPresetId);
         
         if (workoutPreset) {
-            navigation.navigate("screens/create-a-new-workout-preset/create-a-new-workout-preset", { "id": workoutPresetId, "source": "workout-presets" });
+            router.push({
+                "pathname": "/screens/create-a-new-workout-preset/create-a-new-workout-preset",
+                "params": { "id": workoutPresetId, "source": "workout-presets" },
+            });
         }
     };
     
     const handleViewWorkoutPreset = (workoutPresetId) => {
         const workoutPreset = realmInstance.objectForPrimaryKey("WorkoutPresets", workoutPresetId);
         
-        if (workoutPreset) { navigation.navigate("screens/view-individual-workout-presets/view-individual-workout-presets", { "id": workoutPresetId });
+        if (workoutPreset) {
+            router.push({
+                "pathname": "/screens/view-individual-workout-presets/view-individual-workout-presets",
+                "params": { "id": workoutPresetId },
+            });
         }
     };
 

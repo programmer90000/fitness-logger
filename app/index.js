@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Text, ScrollView, StatusBar } from "react-native";
-import { registerRootComponent } from "expo";
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { Text, ScrollView } from "react-native";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
-import RNBootSplash from "react-native-bootsplash";
+import * as SplashScreen from "expo-splash-screen";
 import Carousel from "./components/carousel/carousel.js";
 import FAQComponent from "./components/collapsible/collapsible.js";
 import image1 from "./assets/slideshow-image-1.png";
@@ -14,18 +14,14 @@ import image4 from "./assets/slideshow-image-4.png";
 import image5 from "./assets/slideshow-image-5.png";
 import image6 from "./assets/slideshow-image-6.png";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
     const { isReady, colours } = useTheme();
 
     if (!isReady) {
         return null;
     }
-
-    useEffect(() => {
-        if (isReady) {
-            RNBootSplash.hide();
-        }
-    }, [isReady]);
 
     const carouselData = [
         { "image": image1, "text": "Sahih Muslim 2664, Sahih" },
@@ -60,9 +56,8 @@ export default function App() {
             <FAQComponent faqData = {faqData} style = "mt-3" />
             <Text className = "mt-5 text-2xl">Benefits Of Using A Fitness Logger</Text>
             <FAQComponent faqData = {benefitsOfUsingFitnessLogger} style = "mb-10" />
-            <StatusBar barStyle = "light-content" backgroundColor = {colours.button_background_1} />
+            <StatusBar style = "auto" />
+            <Footer />
         </ScrollView>
     );
 }
-registerRootComponent(App);
-

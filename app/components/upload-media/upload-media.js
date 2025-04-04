@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import DocumentPicker from "react-native-document-picker";
-import RNFS from "react-native-fs";
+import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
 import { Video, Image } from "react-native-compressor";
 import { colours } from "../../constants/colours.js";
 
@@ -12,14 +12,15 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         let formattedName = mediaFileName.replace(/\s+/g, "-");
         let fileName = formattedName;
         let counter = 1;
-        const dirPath = RNFS.DocumentDirectoryPath;
     
         while (true) {
-            const filePath = `${dirPath}/${fileName}`;
-            const fileExists = await RNFS.exists(filePath);
-            if (!fileExists) {
+            const filePath = `${FileSystem.documentDirectory}${fileName}`;
+            const fileExists = await FileSystem.getInfoAsync(filePath);
+        
+            if (!fileExists.exists) {
                 return fileName;
             }
+        
             const nameWithoutExt = formattedName.replace(/\.[^/.]+$/, "");
             const extension = formattedName.split(".").pop();
             fileName = `${nameWithoutExt}-${counter}.${extension}`;
@@ -27,7 +28,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         }
     };
 
-    const downloadMedia = async (mediaUri, fileName, mediaType, onMediaSelect, Video, Image) => {
+    const downloadMedia = async (mediaUri, fileName) => {
         if (!mediaUri) {
             console.error(`Media URI is null. Please select a valid ${mediaType}.`);
             return;
@@ -35,7 +36,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
 
         const mediaFileName = fileName.split("/").pop();
         const uniqueFileName = await getUniqueFileName(mediaFileName);
-        const destinationUri = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;  
+        const destinationUri = `${FileSystem.documentDirectory}${uniqueFileName}`;
         onMediaSelect(destinationUri);
         let compressedMedia;
         if (mediaType === "Video") {
@@ -44,8 +45,7 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
             compressedMedia = await Image.compress(mediaUri, {}, (progress) => { });
         }
         try {
-            await RNFS.copyFile(compressedMedia, destinationUri);
-            console.log(`${mediaType} successfully saved to:`, destinationUri);
+            await FileSystem.copyAsync({ "from": compressedMedia, "to": destinationUri });
         } catch (error) {
             console.error(`Error downloading ${mediaType}:`, error);
         }
@@ -64,20 +64,15 @@ const UploadMedia = ({ onMediaSelect, mediaFileName, mediaType }) => {
         } else {
             throw new Error("Invalid media type");
         }
-
-        try {
-            const result = await DocumentPicker.pick({ "type": [typeOfMedia], "copyTo": "cachesDirectory" });
-    
-            if (result[0]?.fileCopyUri) {
-                const uri = result[0].fileCopyUri;
-                setMedia(result);
-                downloadMedia(uri, result[0].name, mediaType, onMediaSelect, Video, Image);
-            }
-        } catch (err) {
-            if (DocumentPicker.isCancel(err)) {
-                return;
-            }
-            throw err;
+        let result = await DocumentPicker.getDocumentAsync({
+            "type": typeOfMedia,
+            "copyToCacheDirectory": true,
+        });
+        
+        if (result.assets && result.assets[0]?.uri) {
+            const uri = result.assets[0].uri;
+            setMedia(result);
+            downloadMedia(uri, result.assets[0].name);
         }
     };
 

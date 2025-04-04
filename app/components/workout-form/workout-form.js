@@ -6,11 +6,12 @@ import { exercises, workoutPresets, workoutPresetsExercises, previousWorkouts, p
 import Realm from "realm";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
-import { useRoute } from "@react-navigation/native";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "react-native-vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const WorkoutForm = ({ saveTo, defaultValues }) => {
+    const router = useRouter();
     const [removedButtons, setRemovedButtons] = useState([]);
     const [workoutName, setWorkoutName] = useState(null);
     const [workoutDate, setWorkoutDate] = useState(new Date());
@@ -33,8 +34,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
         };
     });
     const { isReady, colours } = useTheme();
-    const route = useRoute();
-    const { id, source } = route.params || {};
+    const { id, source } = useLocalSearchParams();
     
     const saveFormData = async (data) => {
         try {

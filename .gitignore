@@ -59,3 +59,22 @@ package-lock.json
 # Realm files
 default.realm
 default.realm.lock
+
+# Android files
+android/*.iml
+android/.gradle/
+android/.idea/
+android/build/
+android/app/build/
+android/local.properties
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/assets/sourcemaps/
+
+# iOS files
+ios/Pods/
+ios/build/
+ios/*.xcodeproj/
+ios/*.xcworkspace/
+ios/*.xcuserdata/
+ios/*.xcuserdatad/
+ios/*.xcuserstate

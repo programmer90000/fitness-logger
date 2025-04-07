@@ -1,0 +1,40 @@
+import "react-native-gesture-handler/jestSetup";
+
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+
+jest.mock("expo-modules-core", () => {
+    return {
+        "NativeModulesProxy": {},
+        "requireNativeModule": jest.fn(() => { return {}; }),
+        "requireOptionalNativeModule": jest.fn(() => { return {}; }), // <== ADD THIS LINE
+        "EventEmitter": jest.fn(),
+        "Platform": {},
+        "CodedError": class CodedError extends Error {},
+        "UnavailabilityError": class UnavailabilityError extends Error {},
+    };
+});
+
+
+jest.mock("expo-router", () => { return {
+    "Link": () => { return null; },
+    "Stack": () => { return null; },
+    "useRouter": () => { return { "push": jest.fn() }; },
+    "useLocalSearchParams": () => { return {}; },
+    "useNavigation": () => { return { "navigate": jest.fn() }; },
+}; });
+
+jest.mock("@expo/vector-icons/Entypo", () => { return "Entypo"; });
+jest.mock("@expo/vector-icons/FontAwesome5", () => { return "FontAwesome5"; });
+
+jest.mock("expo-splash-screen", () => { return {
+    "preventAutoHideAsync": jest.fn(),
+    "hideAsync": jest.fn(),
+};
+});
+
+jest.mock("@expo/vector-icons/AntDesign", () => { return "AntDesign"; });
+jest.mock("@expo/vector-icons/MaterialCommunityIcons", () => { return "MaterialCommunityIcons"; });
+jest.mock("@expo/vector-icons/Feather", () => { return "Feather"; });
+jest.mock("@expo/vector-icons/FontAwesome6", () => { return "FontAwesome6"; });
+jest.mock("@expo/vector-icons", () => { return "Ionicons"; });
+

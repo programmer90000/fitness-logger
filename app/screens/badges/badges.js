@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { Ionicons } from "@expo/vector-icons";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import { Ionicons } from "react-native-vector-icons";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";

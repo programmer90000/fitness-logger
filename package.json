@@ -27,7 +27,6 @@
         }
     },
     "dependencies": {
-        "@expo/vector-icons": "^14.0.4",
         "@react-native-async-storage/async-storage": "1.23.1",
         "@react-native-community/datetimepicker": "^8.0.1",
         "@react-navigation/drawer": "^6.7.2",
@@ -60,6 +59,7 @@
         "react-native-screens": "3.31.1",
         "react-native-svg": "15.2.0",
         "react-native-table-component": "^1.2.2",
+        "react-native-vector-icons": "^10.2.0",
         "react-native-video": "^6.9.1",
         "react-native-web": "~0.19.10",
         "react-test-renderer": "18.2.0",

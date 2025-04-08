@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Realm from "realm";
 import * as FileSystem from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
-import * as Sharing from "expo-sharing";
+import Share from "react-native-share";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
@@ -232,12 +232,10 @@ const BackupRestoreData = () => {
                 "encoding": FileSystem.EncodingType.UTF8,
             });
             
-            if (!(await Sharing.isAvailableAsync())) {
-                Alert.alert("Error", "Sharing is not available on this device.");
-                return;
-            }
-
-            await Sharing.shareAsync(fileUri);
+            await Share.open({
+                "url": `file://${fileUri}`,
+                "title": "Share File",
+            });
         } catch (error) {
             console.error("Error creating JSON data:", error);
             throw error;

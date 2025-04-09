@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, ScrollView, Text, TouchableOpacity, Linking } from "react-native";
 import { Link } from "expo-router";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
-import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
+import { getSettings, updateSetting } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
-import { colours } from "../../constants/colours.js";
-import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
-import * as FileSystem from "expo-file-system";
-import * as Sharing from "expo-sharing";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);

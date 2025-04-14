@@ -3446,7 +3446,11 @@ exports[`set-goal.js Test 1`] = `
                 Select an option
               </Text>
               <Image
-                source={1}
+                source={
+                  {
+                    "testUri": "../../react-native-element-dropdown/lib/commonjs/assets/down.png",
+                  }
+                }
                 style={
                   {
                     "height": 20,

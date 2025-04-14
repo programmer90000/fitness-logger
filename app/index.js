@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, ScrollView, StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Text, ScrollView } from "react-native";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
@@ -55,7 +56,7 @@ export default function App() {
             <FAQComponent faqData = {faqData} style = "mt-3" />
             <Text className = "mt-5 text-2xl">Benefits Of Using A Fitness Logger</Text>
             <FAQComponent faqData = {benefitsOfUsingFitnessLogger} style = "mb-10" />
-            <StatusBar barStyle = "light-content" backgroundColor = {colours.button_background_1} />
+            <StatusBar style = "auto" />
             <Footer />
         </ScrollView>
     );

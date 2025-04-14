@@ -1,10 +1,15 @@
-import React, { useState } from "react";
-import { View, ScrollView, Text, TouchableOpacity, Linking } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
+import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
-import { getSettings, updateSetting } from "../../utils/settings-store.js";
+import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";
 import { storeData, retrieveData } from "../../utils/async-storage.js";
+import { colours } from "../../constants/colours.js";
+import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);
@@ -45,7 +50,7 @@ const Settings = () => {
         { "label": "Imperial (M)", "value": "imperial" },
     ];
     
-    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com").catch((err) => { return console.error("Error opening webpage:", err); }); };
+    const openHowToUseAppWebpage = () => { Linking.openURL("https://example.com"); };
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>

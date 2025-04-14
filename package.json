@@ -20,7 +20,8 @@
             "^.+\\.jsx?$": "babel-jest"
         },
         "moduleNameMapper": {
-            "react-native-compressor": "<rootDir>/__mocks__/react-native-compressor.js"
+            "react-native-compressor": "<rootDir>/__mocks__/react-native-compressor.js",
+            "expo-router": "<rootDir>/__mocks__/expo-router.js"
         }
     },
     "dependencies": {

@@ -4050,7 +4050,11 @@ exports[`settings.js Test 1`] = `
                 Select an option
               </Text>
               <Image
-                source={1}
+                source={
+                  {
+                    "testUri": "../../react-native-element-dropdown/lib/commonjs/assets/down.png",
+                  }
+                }
                 style={
                   {
                     "height": 20,
@@ -4156,7 +4160,11 @@ exports[`settings.js Test 1`] = `
                 Select an option
               </Text>
               <Image
-                source={1}
+                source={
+                  {
+                    "testUri": "../../react-native-element-dropdown/lib/commonjs/assets/down.png",
+                  }
+                }
                 style={
                   {
                     "height": 20,
@@ -4262,7 +4270,11 @@ exports[`settings.js Test 1`] = `
                 Select an option
               </Text>
               <Image
-                source={1}
+                source={
+                  {
+                    "testUri": "../../react-native-element-dropdown/lib/commonjs/assets/down.png",
+                  }
+                }
                 style={
                   {
                     "height": 20,
@@ -4275,67 +4287,72 @@ exports[`settings.js Test 1`] = `
           </View>
         </View>
       </View>
-      <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#FF0000",
-            "marginTop": 15,
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-            "width": 224,
-          }
-        }
+      <Link
+        asChild={true}
+        href="/screens/report-feedback/report-feedback"
       >
-        <Text
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            [
-              {
-                "fontWeight": "700",
-              },
-              {
-                "fontSize": 20,
-                "lineHeight": 28,
-              },
-              {
-                "color": "#060606",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FF0000",
+              "marginTop": 15,
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "width": 224,
+            }
           }
         >
-          Report Feedback
-        </Text>
-      </View>
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 20,
+                  "lineHeight": 28,
+                },
+                {
+                  "color": "#060606",
+                },
+              ]
+            }
+          >
+            Report Feedback
+          </Text>
+        </View>
+      </Link>
       <View
         accessibilityState={
           {

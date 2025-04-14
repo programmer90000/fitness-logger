@@ -1289,35 +1289,51 @@ exports[`index.js Test 1`] = `
         data={
           [
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-6.png",
+              },
               "text": "Sunan Abi Dawood 4078, Sahih",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-1.png",
+              },
               "text": "Sahih Muslim 2664, Sahih",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-2.png",
+              },
               "text": "Surat Al-Baqarah 2:195",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-3.png",
+              },
               "text": "Surah Al-Araf 7:31",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-4.png",
+              },
               "text": "Surah Al-Anfal 8:60",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-5.png",
+              },
               "text": "Surah An-Najm 53:39",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-6.png",
+              },
               "text": "Sunan Abi Dawood 4078, Sahih",
             },
             {
-              "image": 1,
+              "image": {
+                "testUri": "../../../app/assets/slideshow-image-1.png",
+              },
               "text": "Sahih Muslim 2664, Sahih",
             },
           ]
@@ -1373,7 +1389,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-1.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1417,7 +1439,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-2.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1461,7 +1489,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-3.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1505,7 +1539,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-4.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1549,7 +1589,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-5.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1593,7 +1639,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-6.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -1637,7 +1689,13 @@ exports[`index.js Test 1`] = `
               }
             >
               <Image
-                source={1}
+                source={
+                  {
+                    "uri": {
+                      "testUri": "../../../app/assets/slideshow-image-1.png",
+                    },
+                  }
+                }
                 style={
                   {
                     "borderRadius": 10,
@@ -2602,143 +2660,51 @@ exports[`index.js Test 1`] = `
         }
       }
     >
-      <Text
+      <Link
         href="/"
-        onPress={[Function]}
-        role="link"
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "entypo",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
-      </Text>
-      <Text
+        <Entypo-Mock
+          color="black"
+          name="home"
+          size={24}
+        />
+      </Link>
+      <Link
         href="/"
-        onPress={[Function]}
-        role="link"
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "FontAwesome5Free-Solid",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {
-                "fontWeight": "700",
-              },
-            ]
-          }
-        >
-          
-        </Text>
-      </Text>
-      <Text
+        <FontAwesome5-Mock
+          color="black"
+          name="history"
+          size={24}
+        />
+      </Link>
+      <Link
         href="/"
-        onPress={[Function]}
-        role="link"
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "anticon",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
-      </Text>
-      <Text
+        <AntDesign-Mock
+          color="black"
+          name="plussquare"
+          size={24}
+        />
+      </Link>
+      <Link
         href="/"
-        onPress={[Function]}
-        role="link"
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "material-community",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          󰄪
-        </Text>
-      </Text>
-      <Text
+        <MaterialCommunityIcons-Mock
+          color="black"
+          name="chart-line"
+          size={24}
+        />
+      </Link>
+      <Link
         href="/"
-        onPress={[Function]}
-        role="link"
       >
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={
-            [
-              {
-                "color": "black",
-                "fontSize": 24,
-              },
-              undefined,
-              {
-                "fontFamily": "feather",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              {},
-            ]
-          }
-        >
-          
-        </Text>
-      </Text>
+        <Feather-Mock
+          color="black"
+          name="settings"
+          size={24}
+        />
+      </Link>
     </View>
   </View>
 </RCTScrollView>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
-import { PencilIcon, TrashIcon } from "../../components/icons/icons.js";
+import { PencilIcon, TrashIcon, TrophyIcon } from "../../components/icons/icons.js";
 
 export default function Badges() {
     const router = useRouter();
@@ -98,6 +97,7 @@ export default function Badges() {
             "fontWeight": "bold",
             "textAlign": "center",
             "paddingTop": 4,
+            "marginBottom": 12,
         },
         "icons": {
             "textAlign": "center",
@@ -120,7 +120,7 @@ export default function Badges() {
                     <View key = {badge.id} style = {styles.badge}>
                         <TouchableOpacity key = {badge.id} style = {styles.badge} onPress = {() => { return toggleBadgeCompletion(badge); }}>
                             <Text className = "text-xl text-center" style = {styles.text}>{badge.text}</Text>
-                            <FontAwesome6 name = "trophy" size = {100} style = {badge.completed ? styles.completed : styles.unCompleted} />
+                            <TrophyIcon size = {100} color = {badge.completed ? colours.badge_completed : colours.badge_uncompleted}/>
                         </TouchableOpacity>
                         <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
                             <PencilIcon size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return handleEditBadge(badge.id); }} />

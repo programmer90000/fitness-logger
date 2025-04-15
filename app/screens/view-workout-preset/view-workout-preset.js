@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { workoutPresets } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
-import { TrashIcon } from "../../components/icons/icons.js";
+import { PencilIcon, TrashIcon } from "../../components/icons/icons.js";
 
 const ViewWorkoutPresets = () => {
     const router = useRouter();
@@ -98,7 +97,7 @@ const ViewWorkoutPresets = () => {
                         <TouchableOpacity key = {workoutPreset.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return handleViewWorkoutPreset(workoutPreset.id); }} >
                             <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{workoutPreset.name}</Text>
                             <View className = "flex-row justify-end items-center">
-                                <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditWorkoutPreset(workoutPreset.id); }} />
+                                <PencilIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditWorkoutPreset(workoutPreset.id); }} />
                                 <TrashIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(workoutPreset.id); }} />
                             </View>
                         </TouchableOpacity>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TouchableOpacity, Alert } from "react-native";
 import Realm from "realm";
-import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { previousWorkouts } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
-import { TrashIcon } from "../../components/icons/icons.js";
+import { PencilIcon, TrashIcon } from "../../components/icons/icons.js";
 
 const ViewWorkouts = () => {
     const { isReady, colours } = useTheme();
@@ -100,7 +99,7 @@ const ViewWorkouts = () => {
                     <TouchableOpacity key = {previousWorkout.id} className = "flex-row p-2.5 h-20 justify-between items-center mt-1.5 w-4/5 self-center mb-1.5" style = {{ "backgroundColor": colours.button_background_1 }} onPress = {() => { return handleViewPreviousWorkout(previousWorkout.id); }} >
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{previousWorkout.name}</Text>
                         <View className = "flex-row justify-end items-center">
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditPreviousWorkout(previousWorkout.id); }} />
+                            <PencilIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditPreviousWorkout(previousWorkout.id); }} />
                             <TrashIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(previousWorkout.id); }} />
                         </View>
                     </TouchableOpacity>

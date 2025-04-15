@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { Ionicons } from "@expo/vector-icons";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
-import { TrashIcon } from "../../components/icons/icons.js";
+import { PencilIcon, TrashIcon } from "../../components/icons/icons.js";
 
 export default function Badges() {
     const router = useRouter();
@@ -124,7 +123,7 @@ export default function Badges() {
                             <FontAwesome6 name = "trophy" size = {100} style = {badge.completed ? styles.completed : styles.unCompleted} />
                         </TouchableOpacity>
                         <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
-                            <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return handleEditBadge(badge.id); }} />
+                            <PencilIcon size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return handleEditBadge(badge.id); }} />
                             <TrashIcon size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return confirmDelete(badge.id); }} />
                         </View>
                     </View>

@@ -6,6 +6,7 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { goals } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
+import { TrashIcon } from "../../components/icons/icons.js";
 
 const ViewGoals = () => {
     const router = useRouter();
@@ -106,7 +107,7 @@ const ViewGoals = () => {
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{goal.name}</Text>
                         <View className = "flex-row justify-end items-center">
                             <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditGoal(goal.id); } } />
-                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(goal.id); }} />
+                            <TrashIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(goal.id); }} />
                         </View>
                     </TouchableOpacity>
                 ); })

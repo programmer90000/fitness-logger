@@ -6,6 +6,7 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { previousWorkouts } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
+import { TrashIcon } from "../../components/icons/icons.js";
 
 const ViewWorkouts = () => {
     const { isReady, colours } = useTheme();
@@ -100,7 +101,7 @@ const ViewWorkouts = () => {
                         <Text className = "text-xl text-left flex-1" style = {{ "color": colours.button_text_1 }}>{previousWorkout.name}</Text>
                         <View className = "flex-row justify-end items-center">
                             <Ionicons name = "pencil" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return handleEditPreviousWorkout(previousWorkout.id); }} />
-                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(previousWorkout.id); }} />
+                            <TrashIcon size = {24} color = {colours.button_icon_1} style = {{ "marginRight": 10 }} onPress = {() => { return confirmDelete(previousWorkout.id); }} />
                         </View>
                     </TouchableOpacity>
                 ); })

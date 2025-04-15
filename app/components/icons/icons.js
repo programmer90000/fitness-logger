@@ -56,15 +56,17 @@ const GearIcon = ({ size = 30, color = "black" }) => {
     );
 };
 
-const TrashIcon = ({ size = 24, colour = "black" }) => {
+const TrashIcon = ({ size = 24, color = "black" }) => {
     return (
-        <Svg width = {size} height = {size} viewBox = "0 0 24 24" >
-            <Path d = "M3 6h18v2H3V6z" fill = {colour} />
-            <Path d = "M8 4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2H8V4z" fill = {colour} />
-            <Path d = "M5 8h14l-1.5 12.5a1 1 0 0 1-1 .9H7.5a1 1 0 0 1-1-.9L5 8z" fill = {colour} />
-            <Path d = "M10 11v6" stroke = "#fff" strokeWidth = {2} strokeLinecap = "round" />
-            <Path d = "M14 11v6" stroke = "#fff" strokeWidth = {2} strokeLinecap = "round" />
+        <Svg width = {size} height = {size} viewBox = "0 0 24 24" fill = "none">
+            <Path d = "M3 6h18" stroke = {color} strokeWidth = {2} strokeLinecap = "round" />
+            <Path d = "M8 6V4h8v2" stroke = {color} strokeWidth = {2} strokeLinecap = "round" strokeLinejoin = "round" />
+            <Path d = "M6 6l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13H6z" stroke = {color} strokeWidth = {2} strokeLinejoin = "round" fill = "none" />
+            <Path d = "M10 11v6" stroke = {color} strokeWidth = {2} strokeLinecap = "round" />
+            <Path d = "M14 11v6" stroke = {color} strokeWidth = {2} strokeLinecap = "round" />
         </Svg>
-    ); };
+    );
+};
+
 
 export { HouseIcon, ClockIcon, PlusIcon, LineChartIcon, GearIcon, TrashIcon };

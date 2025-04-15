@@ -7,6 +7,7 @@ import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
 import { useRouter } from "expo-router";
+import { TrashIcon } from "../../components/icons/icons.js";
 
 export default function Badges() {
     const router = useRouter();
@@ -124,7 +125,7 @@ export default function Badges() {
                         </TouchableOpacity>
                         <View style = {{ "display": "flex", "flexDirection": "row", "justifyContent": "center", "gap": 30 }}>
                             <Ionicons name = "pencil" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return handleEditBadge(badge.id); }} />
-                            <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return confirmDelete(badge.id); }} />
+                            <TrashIcon size = {24} color = {colours.button_icon_2} style = {styles.icons} onPress = {() => { return confirmDelete(badge.id); }} />
                         </View>
                     </View>
                 ); })

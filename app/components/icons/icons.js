@@ -33,5 +33,16 @@ const PlusIcon = ({ size = 30, color = "black" }) => { return (
     </Svg>
 ); };
 
-
-export { HouseIcon, ClockIcon, PlusIcon };
+const LineChartIcon = ({ size = 30, color = "black" }) => {
+    return (
+        <Svg width = {size} height = {size} viewBox = "0 0 24 24" fill = "none" >
+            <Path d = "M3 3v18h18" stroke = {color} strokeWidth = "2" />
+            <Path d = "M6 14L10 10L15 15L20 8" stroke = {color} strokeWidth = "2" fill = "none" />
+            <Circle cx = "6" cy = "14" r = "1.5" fill = {color} />
+            <Circle cx = "10" cy = "10" r = "1.5" fill = {color} />
+            <Circle cx = "15" cy = "15" r = "1.5" fill = {color} />
+            <Circle cx = "20" cy = "8" r = "1.5" fill = {color} />
+        </Svg>
+    );
+};
+export { HouseIcon, ClockIcon, PlusIcon, LineChartIcon };

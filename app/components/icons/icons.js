@@ -45,4 +45,15 @@ const LineChartIcon = ({ size = 30, color = "black" }) => {
         </Svg>
     );
 };
-export { HouseIcon, ClockIcon, PlusIcon, LineChartIcon };
+
+const GearIcon = ({ size = 30, color = "black" }) => {
+    return (
+        <Svg width = {size} height = {size} viewBox = "0 0 24 24" fill = "none" >
+            <Circle cx = "12" cy = "12" r = "8" stroke = {color} strokeWidth = "2" />
+            <Path d = "M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke = {color} strokeWidth = "4" />
+            <Circle cx = "12" cy = "12" r = "4" stroke = {color} strokeWidth = "2" />
+        </Svg>
+    );
+};
+
+export { HouseIcon, ClockIcon, PlusIcon, LineChartIcon, GearIcon };

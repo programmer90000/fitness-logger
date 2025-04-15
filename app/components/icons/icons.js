@@ -27,4 +27,11 @@ const ClockIcon = ({ size = 30, strokeWidth = 3, colour = "black" }) => {
     );
 };
 
-export { HouseIcon, ClockIcon };
+const PlusIcon = ({ size = 30, color = "black" }) => { return (
+    <Svg width = {size} height = {size} viewBox = "0 0 24 24" fill = {color}>
+        <Path d = "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill = {color} />
+    </Svg>
+); };
+
+
+export { HouseIcon, ClockIcon, PlusIcon };

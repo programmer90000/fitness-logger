@@ -2662,48 +2662,514 @@ exports[`index.js Test 1`] = `
     >
       <Link
         href="/"
+        style={
+          {
+            "height": 30,
+            "width": 30,
+          }
+        }
       >
-        <Entypo-Mock
-          color="black"
-          name="home"
-          size={24}
-        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={30}
+          bbWidth={30}
+          fill="black"
+          focusable={false}
+          height={30}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 30,
+                "width": 30,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={30}
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M12 3L2 12h2v8h5v-5h6v5h5v-8h2L12 3z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </Link>
       <Link
         href="/"
+        style={
+          {
+            "height": 30,
+            "width": 30,
+          }
+        }
       >
-        <FontAwesome5-Mock
-          color="black"
-          name="history"
-          size={24}
-        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={30}
+          bbWidth={30}
+          focusable={false}
+          height={30}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 30,
+                "width": 30,
+              },
+            ]
+          }
+          vbHeight={30}
+          vbWidth={30}
+          width={30}
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
+            <RNSVGCircle
+              cx={15}
+              cy={15}
+              fill={null}
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              r={12}
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth={3}
+            />
+            <RNSVGLine
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth={3}
+              x1={15}
+              x2={15}
+              y1={15}
+              y2={5}
+            />
+            <RNSVGLine
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth={3}
+              x1={15}
+              x2={25}
+              y1={15}
+              y2={15}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </Link>
       <Link
         href="/"
+        style={
+          {
+            "height": 30,
+            "width": 30,
+          }
+        }
       >
-        <AntDesign-Mock
-          color="black"
-          name="plussquare"
-          size={24}
-        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={30}
+          bbWidth={30}
+          fill="black"
+          focusable={false}
+          height={30}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 30,
+                "width": 30,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={30}
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </Link>
       <Link
         href="/"
+        style={
+          {
+            "height": 30,
+            "width": 30,
+          }
+        }
       >
-        <MaterialCommunityIcons-Mock
-          color="black"
-          name="chart-line"
-          size={24}
-        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={30}
+          bbWidth={30}
+          fill="none"
+          focusable={false}
+          height={30}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 30,
+                "width": 30,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={30}
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M3 3v18h18"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth="2"
+            />
+            <RNSVGPath
+              d="M6 14L10 10L15 15L20 8"
+              fill={null}
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth="2"
+            />
+            <RNSVGCircle
+              cx="6"
+              cy="14"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              r="1.5"
+            />
+            <RNSVGCircle
+              cx="10"
+              cy="10"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              r="1.5"
+            />
+            <RNSVGCircle
+              cx="15"
+              cy="15"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              r="1.5"
+            />
+            <RNSVGCircle
+              cx="20"
+              cy="8"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              r="1.5"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </Link>
       <Link
         href="/"
+        style={
+          {
+            "height": 30,
+            "width": 30,
+          }
+        }
       >
-        <Feather-Mock
-          color="black"
-          name="settings"
-          size={24}
-        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={30}
+          bbWidth={30}
+          fill="none"
+          focusable={false}
+          height={30}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 30,
+                "width": 30,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={30}
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGCircle
+              cx="12"
+              cy="12"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              r="8"
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth="2"
+            />
+            <RNSVGPath
+              d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth="4"
+            />
+            <RNSVGCircle
+              cx="12"
+              cy="12"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              r="4"
+              stroke={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              strokeWidth="2"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
       </Link>
     </View>
   </View>

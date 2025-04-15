@@ -8,7 +8,7 @@ import DropdownComponent from "../../components/dropdown-box/dropdown-box";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
+import { TrashIcon } from "../icons/icons.js";
 
 const WorkoutForm = ({ saveTo, defaultValues }) => {
     const router = useRouter();
@@ -504,7 +504,7 @@ const WorkoutForm = ({ saveTo, defaultValues }) => {
                                         onPress = {() => { return deleteSet(field.originalIndex); }} 
                                         className = "ml-2 self-center mt-7"
                                     >
-                                        <Ionicons name = "trash" size = {24} color = {colours.button_icon_2} />
+                                        <TrashIcon size = {24} color = {colours.button_icon_2} />
                                     </TouchableOpacity>
 
                                 </View>

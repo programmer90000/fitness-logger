@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { getSettings, updateSetting, subscribeToSettings } from "../../utils/settings-store.js";

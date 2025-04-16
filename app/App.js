@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
+import { StatusBar, StyleSheet, View, ScrollView } from "react-native";
 import { registerRootComponent } from "expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -43,9 +43,11 @@ const styles = StyleSheet.create({
 
 function ScreenWithFooter({ "component": Component, ...rest }) {
     return (
-        <View style = {styles.container}>
-            <Component {...rest} />
-            <Footer />
+        <View style = {{ "flex": 1 }}>
+            <ScrollView contentContainerStyle = {{ "flexGrow": 1 }}>
+                <Component {...rest} />
+                <Footer />
+            </ScrollView>
         </View>
     );
 }
@@ -90,3 +92,4 @@ export default function App() {
 }
 
 registerRootComponent(App);
+

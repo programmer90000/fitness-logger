@@ -7,11 +7,10 @@ import { goals } from "../../../database/realm-database.js";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter } from "expo-router";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const SetGoal = () => {
-    const router = useRouter();
+    const navigation = useNavigation();
     const route = useRoute();
     const { control, getValues, reset } = useForm({});
     const [mode, setMode] = useState("date");
@@ -136,8 +135,8 @@ const SetGoal = () => {
         setEndDate(new Date());
         setReminderDate(new Date());
         setType(null);
-        router.push({ "pathname": "/screens/set-goal/set-goal", "params": {} }); };
-
+        navigation.navigate("SetGoal");
+    };
     
     const possibleGoals = [
         { "label": "Increase Weight", "value": "weight" },

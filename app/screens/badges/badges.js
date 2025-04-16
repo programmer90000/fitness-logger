@@ -4,11 +4,11 @@ import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
 import { badges } from "../../../database/realm-database.js";
-import { useRouter } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 import { PencilIcon, TrashIcon, TrophyIcon } from "../../components/icons/icons.js";
 
 export default function Badges() {
-    const router = useRouter();
+    const navigation = useNavigation();
     const { isReady, colours } = useTheme();
     const [badgesList, setBadgesList] = useState([]);
     const [realmInstance, setRealmInstance] = useState(null);
@@ -76,14 +76,7 @@ export default function Badges() {
     const handleEditBadge = (badgeId) => {
         const badge = realmInstance.objectForPrimaryKey("Badges", badgeId);
         if (badge) {
-            router.push({
-                "pathname": "/screens/create-badge/create-badge",
-                "params": {
-                    "id": badge.id,
-                    "image": badge.image,
-                    "text": badge.text,
-                },
-            });
+            navigation.navigate("CreateBadge", { "id": badge.id, "image": badge.image, "text": badge.text });
         }
     };
 

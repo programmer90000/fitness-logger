@@ -6,10 +6,10 @@ import Realm from "realm";
 import UploadMedia from "../../components/upload-media/upload-media";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
-import { useRouter } from "expo-router";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const CreateBadge = () => {
+    const navigation = useNavigation();
     const route = useRoute();
     const [imagePath, setImagePath] = useState(null);
     const { control, handleSubmit, getValues, setValue, reset } = useForm({});
@@ -74,7 +74,7 @@ const CreateBadge = () => {
         reset();
         setImagePath(null); 
         setValue("badgeText", ""); 
-        router.push({ "pathname": "/screens/create-badge/create-badge", "params": {} });
+        navigation.navigate("CreateBadge");
     };
 
     return (

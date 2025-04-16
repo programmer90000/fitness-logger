@@ -44,8 +44,10 @@ const styles = StyleSheet.create({
 function ScreenWithFooter({ "component": Component, ...rest }) {
     return (
         <View style = {{ "flex": 1 }}>
-            <ScrollView contentContainerStyle = {{ "flexGrow": 1 }}>
-                <Component {...rest} />
+            <ScrollView contentContainerStyle = {{ "flexGrow": 1, "flexDirection": "column", "justifyContent": "space-between" }} >
+                <View style = {{ "flex": 1 }}>
+                    <Component {...rest} />
+                </View>
                 <Footer />
             </ScrollView>
         </View>

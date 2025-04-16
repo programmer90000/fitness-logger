@@ -1,11 +1,13 @@
 import React from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, StyleSheet, View } from "react-native";
 import { registerRootComponent } from "expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useTheme } from "./hooks/useTheme.js";
+import Footer from "./components/Footer/Footer.js";
 
+// Importing all screens
 import HomeScreen from "./index";
 import CreateWorkoutPreset from "./screens/create-a-new-workout-preset/create-a-new-workout-preset";
 import ViewWorkoutPreset from "./screens/view-workout-preset/view-workout-preset";
@@ -30,6 +32,24 @@ import ReportFeedback from "./screens/report-feedback/report-feedback";
 
 const Drawer = createDrawerNavigator();
 
+const styles = StyleSheet.create({
+    "container": {
+        "flex": 1,
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+    },
+});
+
+function ScreenWithFooter({ "component": Component, ...rest }) {
+    return (
+        <View style = {styles.container}>
+            <Component {...rest} />
+            <Footer />
+        </View>
+    );
+}
+
 export default function App() {
     const { isReady, colours } = useTheme();
     
@@ -42,28 +62,27 @@ export default function App() {
             <StatusBar barStyle = "light-content" backgroundColor = {colours.button_background_1} />
             <NavigationContainer>
                 <Drawer.Navigator screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true, "headerShown": true }} >
-                    <Drawer.Screen name = "Home" component = {HomeScreen} options = {{ "title": "Home", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "CreateWorkoutPreset" component = {CreateWorkoutPreset} options = {{ "title": "Create Workout Preset", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewWorkoutPreset" component = {ViewWorkoutPreset} options = {{ "title": "View Workout Presets", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualWorkoutPresets" component = {ViewIndividualWorkoutPresets} options = {{ "title": "View Individual Workout Presets", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "CreateExercise" component = {CreateExercise} options = {{ "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewExercises" component = {ViewExercises} options = {{ "title": "View Exercises", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualExercises" component = {ViewIndividualExercises} options = {{ "title": "View Individual Exercises", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "CreateWorkout" component = {CreateWorkout} options = {{ "title": "Begin Workout", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "RecordWorkout" component = {RecordWorkout} options = {{ "title": "Record Workout", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "WorkoutHistory" component = {WorkoutHistory} options = {{ "title": "Workout History", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewPreviousWorkout" component = {ViewPreviousWorkout} options = {{ "title": "View Previous Workout", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "SetGoal" component = {SetGoal} options = {{ "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewGoals" component = {ViewGoals} options = {{ "title": "View Goals", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualGoals" component = {ViewIndividualGoals} options = {{ "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "BackupRestoreData" component = {BackupRestoreData} options = {{ "title": "Backup/ Restore data", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Statistics" component = {Statistics} options = {{ "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "CreateBadge" component = {CreateBadge} options = {{ "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Badges" component = {Badges} options = {{
-                        "title": "Badges", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Calculator" component = {Calculator} options = {{ "title": "Calculator", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Settings" component = {Settings} options = {{ "title": "Settings", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ReportFeedback" component = {ReportFeedback} options = {{ "title": "Report Feedback", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "Home" options = {{ "title": "Home", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {HomeScreen} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "CreateWorkoutPreset" options = {{ "title": "Create Workout Preset", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {CreateWorkoutPreset} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewWorkoutPreset" options = {{ "title": "View Workout Presets", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {ViewWorkoutPreset} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewIndividualWorkoutPresets" options = {{ "title": "View Individual Workout Presets", "drawerItemStyle": { "display": "none" } }}>{(props) => { return <ScreenWithFooter component = {ViewIndividualWorkoutPresets} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "CreateExercise" options = {{ "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {CreateExercise} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewExercises" options = {{ "title": "View Exercises", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {ViewExercises} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewIndividualExercises" options = {{ "title": "View Individual Exercises", "drawerItemStyle": { "display": "none" } }}>{(props) => { return <ScreenWithFooter component = {ViewIndividualExercises} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "CreateWorkout" options = {{ "title": "Begin Workout", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {CreateWorkout} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "RecordWorkout" options = {{ "title": "Record Workout", "drawerItemStyle": { "display": "none" } }}>{(props) => { return <ScreenWithFooter component = {RecordWorkout} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "WorkoutHistory" options = {{ "title": "Workout History", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {WorkoutHistory} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewPreviousWorkout" options = {{ "title": "View Previous Workout", "drawerItemStyle": { "display": "none" } }}>{(props) => { return <ScreenWithFooter component = {ViewPreviousWorkout} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "SetGoal" options = {{ "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {SetGoal} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewGoals" options = {{ "title": "View Goals", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {ViewGoals} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ViewIndividualGoals" options = {{ "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }}>{(props) => { return <ScreenWithFooter component = {ViewIndividualGoals} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "BackupRestoreData" options = {{ "title": "Backup/ Restore data", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {BackupRestoreData} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "Statistics" options = {{ "title": "Statistics", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {Statistics} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "CreateBadge" options = {{ "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {CreateBadge} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "Badges" options = {{ "title": "Badges", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {Badges} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "Calculator" options = {{ "title": "Calculator", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {Calculator} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "Settings" options = {{ "title": "Settings", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {Settings} {...props} />; }}</Drawer.Screen>
+                    <Drawer.Screen name = "ReportFeedback" options = {{ "title": "Report Feedback", "drawerItemStyle": { "display": "flex" } }}>{(props) => { return <ScreenWithFooter component = {ReportFeedback} {...props} />; }}</Drawer.Screen>
                 </Drawer.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>

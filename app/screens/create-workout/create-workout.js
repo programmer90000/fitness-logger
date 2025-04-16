@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 import Realm from "realm";
 import { useTheme } from "../../hooks/useTheme.js";
 import { colours } from "../../constants/colours.js";
@@ -9,6 +9,7 @@ import { workoutPresets, workoutPresetsExercises, exercises } from "../../../dat
 const CreateWorkout = () => {
     const [allWorkoutPresets, setAllWorkoutPresets] = useState([]);
     const { isReady, colours } = useTheme();
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (!isReady) {
@@ -37,11 +38,11 @@ const CreateWorkout = () => {
 
     return (
         <ScrollView style = {{ "backgroundColor": colours.main_background }}>
-            <Link href = "/screens/record-workout/record-workout" asChild>
+            <TouchableOpacity onPress = {() => { return navigation.navigate("RecordWorkout"); }}>
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 h-20 justify-center mt-[5px] w-4/6 items-center self-center mb-5">
                     <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>Begin Empty Workout</Text>
                 </TouchableOpacity>
-            </Link>
+            </TouchableOpacity>
             <Text className = "text-2xl self-center m-10 mb-5" style = {{ "color": colours.text_1 }}>Workout Presets</Text>
             {allWorkoutPresets.map((preset, index) => {
                 const realm = new Realm({ "schema": [workoutPresets, workoutPresetsExercises, exercises] });
@@ -55,11 +56,11 @@ const CreateWorkout = () => {
                 realm.close();
 
                 return (
-                    <Link key = {index} href = {{ "pathname": "/screens/record-workout/record-workout", "params": { "workoutName": preset.name, "workoutNotes": preset.notes, "exercises": JSON.stringify(exerciseData) } }} asChild >
+                    <TouchableOpacity onPress = {() => { return navigation.navigate("RecordWorkout", { "workoutName": preset.name, "workoutNotes": preset.notes, "exercises": JSON.stringify(exerciseData) }); }} >
                         <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[5px] w-4/6 items-center self-center mb-5">
                             <Text className = "font-medium text-base" style = {{ "color": colours.button_text_1 }}>{preset.name}</Text>
                         </TouchableOpacity>
-                    </Link>
+                    </TouchableOpacity>
                 ); })}
 
         </ScrollView>

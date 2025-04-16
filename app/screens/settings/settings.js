@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 import DropdownComponent from "../../components/dropdown-box/dropdown-box.js";
 import { useTheme } from "../../hooks/useTheme.js";
@@ -17,6 +17,7 @@ const Settings = () => {
     const [distanceValue, setDistanceValue] = useState(null);
     const [settings, setSettings] = useState(getSettings());
     const { isReady, colours } = useTheme();
+    const navigation = useNavigation();
 
     if (!isReady) {
         return null;
@@ -97,11 +98,11 @@ const Settings = () => {
                         }}
                     />
                 </View>
-                <Link href = "/screens/report-feedback/report-feedback" asChild>
+                <TouchableOpacity onPress = {() => { navigation.navigate("ReportFeedback"); }}>
                     <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center">
                         <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">Report Feedback</Text>
                     </TouchableOpacity>
-                </Link>
+                </TouchableOpacity>
                 <TouchableOpacity style = {{ "backgroundColor": colours.button_background_1 }} className = "p-2 mt-[15px] w-56 items-center" onPress = {openHowToUseAppWebpage}>
                     <Text style = {{ "color": colours.button_text_1 }} className = "font-bold text-xl">How To Use The App</Text>
                 </TouchableOpacity>

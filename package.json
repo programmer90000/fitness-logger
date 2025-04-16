@@ -1,7 +1,7 @@
 {
     "name": "fitness-logger",
     "version": "1.0.0",
-    "main": "expo-router/entry",
+    "main": "./app/App.js",
     "scripts": {
         "start": "expo start",
         "android": "expo start --android",
@@ -20,15 +20,15 @@
             "^.+\\.jsx?$": "babel-jest"
         },
         "moduleNameMapper": {
-            "react-native-compressor": "<rootDir>/__mocks__/react-native-compressor.js",
-            "expo-router": "<rootDir>/__mocks__/expo-router.js",
-            "expo-splash-screen": "<rootDir>/__mocks__/expo-splash-screen.js"
+            "react-native-compressor": "<rootDir>/__mocks__/react-native-compressor.js"
         }
     },
     "dependencies": {
         "@react-native-async-storage/async-storage": "1.23.1",
         "@react-native-community/datetimepicker": "8.3.0",
         "@react-navigation/drawer": "6.7.2",
+        "@react-navigation/native": "6.1.18",
+        "@react-navigation/native-stack": "6.9.12",
         "@realm/react": "0.11.0",
         "@testing-library/react-native": "12.9.0",
         "babel-preset-expo": "11.0.15",
@@ -38,7 +38,6 @@
         "expo-document-picker": "12.0.2",
         "expo-file-system": "17.0.1",
         "expo-linking": "6.3.1",
-        "expo-router": "3.5.24",
         "expo-sharing": "12.0.1",
         "nativewind": "2.0.11",
         "react": "18.2.0",
@@ -56,9 +55,11 @@
         "react-native-screens": "3.31.1",
         "react-native-svg": "15.2.0",
         "react-native-table-component": "1.2.2",
+        "react-native-vector-icons": "10.2.0",
         "react-native-video": "6.10.1",
         "react-native-web": "0.19.13",
-        "realm": "20.1.0"
+        "realm": "20.1.0",
+        "expo-splash-screen": "~0.27.7"
     },
     "devDependencies": {
         "@babel/core": "7.26.9",

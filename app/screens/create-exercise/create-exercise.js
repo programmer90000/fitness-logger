@@ -7,12 +7,11 @@ import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
-import { useRouter } from "expo-router";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { PickerModal } from "./picker-modal.js";
 
 const CreateExercise = () => {
-    const router = useRouter();
+    const navigation = useNavigation();
     const route = useRoute();
     const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
@@ -113,10 +112,7 @@ const CreateExercise = () => {
             "primaryMuscles": [],
             "secondaryMuscles": [],
         });
-        router.push({
-            "pathname": "/screens/create-exercise/create-exercise",
-            "params": {},
-        });
+        navigation.navigate("CreateExercise");
     };
 
     const updateExerciseState = (field, value) => {

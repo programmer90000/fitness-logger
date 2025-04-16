@@ -1,8 +1,10 @@
 import React from "react";
+import { StatusBar } from "react-native";
 import { registerRootComponent } from "expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useTheme } from "./hooks/useTheme.js";
 
 import HomeScreen from "./index";
 import CreateWorkoutPreset from "./screens/create-a-new-workout-preset/create-a-new-workout-preset";
@@ -29,8 +31,15 @@ import ReportFeedback from "./screens/report-feedback/report-feedback";
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+    const { isReady, colours } = useTheme();
+    
+    if (!isReady) {
+        return null;
+    }
+    
     return (
         <GestureHandlerRootView style = {{ "flex": 1 }}>
+            <StatusBar barStyle = "light-content" backgroundColor = {colours.button_background_1} />
             <NavigationContainer>
                 <Drawer.Navigator screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true, "headerShown": true }} >
                     <Drawer.Screen name = "Home" component = {HomeScreen} options = {{ "title": "Home", "drawerItemStyle": { "display": "flex" } }} />

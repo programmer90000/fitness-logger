@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, ScrollView, StatusBar } from "react-native";
-import { registerRootComponent } from "expo";
 import { styles } from "./style.js";
 import Footer from "./components/Footer/Footer.js";
 import { useTheme } from "./hooks/useTheme.js";
@@ -60,5 +59,3 @@ export default function App() {
         </ScrollView>
     );
 }
-
-registerRootComponent(App);

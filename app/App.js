@@ -1,4 +1,5 @@
 import React from "react";
+import { registerRootComponent } from "expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -31,32 +32,33 @@ export default function App() {
     return (
         <GestureHandlerRootView style = {{ "flex": 1 }}>
             <NavigationContainer>
-                <Drawer.Navigator screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true }} >
-                    <Drawer.Screen name = "Home" component = {HomeScreen} options = {{ "drawerLabel": "Home", "title": "Home", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "CreateWorkoutPreset" component = {CreateWorkoutPreset} options = {{ "drawerLabel": "Create A New Workout", "title": "Create A New Workout", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewWorkoutPreset" component = {ViewWorkoutPreset} options = {{
-                        "drawerLabel": "View Workout Presets", "title": "View Workout Presets", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualWorkoutPresets" component = {ViewIndividualWorkoutPresets} options = {{ "drawerLabel": "View Individual Workout Presets", "title": "View Individual Workout Presets", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "CreateExercise" component = {CreateExercise} options = {{ "drawerLabel": "Create Exercise", "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewExercises" component = {ViewExercises} options = {{ "drawerLabel": "View Exercises", "title": "View Exercises", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualExercises" component = {ViewIndividualExercises} options = {{ "drawerLabel": "View Individual Exercises", "title": "View Individual Exercises", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "CreateWorkout" component = {CreateWorkout} options = {{ "drawerLabel": "Begin Workout", "title": "Begin Workout", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "RecordWorkout" component = {RecordWorkout} options = {{ "drawerLabel": "Record Workout", "title": "Record Workout", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "WorkoutHistory" component = {WorkoutHistory} options = {{ "drawerLabel": "Workout History", "title": "Workout History", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewPreviousWorkout" component = {ViewPreviousWorkout} options = {{ "drawerLabel": "View Previous Workout", "title": "View Previous Workout", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "SetGoal" component = {SetGoal} options = {{ "drawerLabel": "Set Goal", "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewGoals" component = {ViewGoals} options = {{ "drawerLabel": "View Goals", "title": "View Goals", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ViewIndividualGoals" component = {ViewIndividualGoals} options = {{ "drawerLabel": "View Individual Goals", "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }} />
-                    <Drawer.Screen name = "BackupRestoreData" component = {BackupRestoreData} options = {{ "drawerLabel": "Backup/ Restore data", "title": "Backup/ Restore data", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Statistics" component = {Statistics} options = {{ "drawerLabel": "Statistics", "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "CreateBadge" component = {CreateBadge} options = {{ "drawerLabel": "Create Badge", "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />
+                <Drawer.Navigator screenOptions = {{ "headerStyle": { "backgroundColor": "#FF0000" }, "drawerStyle": { "backgroundColor": "#FF0000" }, "drawerActiveTintColor": "#F1F1F1", "drawerActiveBackgroundColor": "transparent", "drawerInactiveTintColor": "#060606", "drawerInactiveBackgroundColor": "transparent", "unmountOnBlur": true, "headerShown": true }} >
+                    <Drawer.Screen name = "Home" component = {HomeScreen} options = {{ "title": "Home", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "CreateWorkoutPreset" component = {CreateWorkoutPreset} options = {{ "title": "Create Workout Preset", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewWorkoutPreset" component = {ViewWorkoutPreset} options = {{ "title": "View Workout Presets", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewIndividualWorkoutPresets" component = {ViewIndividualWorkoutPresets} options = {{ "title": "View Individual Workout Presets", "drawerItemStyle": { "display": "none" } }} />
+                    <Drawer.Screen name = "CreateExercise" component = {CreateExercise} options = {{ "title": "Create Exercise", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewExercises" component = {ViewExercises} options = {{ "title": "View Exercises", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewIndividualExercises" component = {ViewIndividualExercises} options = {{ "title": "View Individual Exercises", "drawerItemStyle": { "display": "none" } }} />
+                    <Drawer.Screen name = "CreateWorkout" component = {CreateWorkout} options = {{ "title": "Begin Workout", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "RecordWorkout" component = {RecordWorkout} options = {{ "title": "Record Workout", "drawerItemStyle": { "display": "none" } }} />
+                    <Drawer.Screen name = "WorkoutHistory" component = {WorkoutHistory} options = {{ "title": "Workout History", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewPreviousWorkout" component = {ViewPreviousWorkout} options = {{ "title": "View Previous Workout", "drawerItemStyle": { "display": "none" } }} />
+                    <Drawer.Screen name = "SetGoal" component = {SetGoal} options = {{ "title": "Set Goal", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewGoals" component = {ViewGoals} options = {{ "title": "View Goals", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ViewIndividualGoals" component = {ViewIndividualGoals} options = {{ "title": "View Individual Goals", "drawerItemStyle": { "display": "none" } }} />
+                    <Drawer.Screen name = "BackupRestoreData" component = {BackupRestoreData} options = {{ "title": "Backup/ Restore data", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "Statistics" component = {Statistics} options = {{ "title": "Statistics", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "CreateBadge" component = {CreateBadge} options = {{ "title": "Create Badge", "drawerItemStyle": { "display": "flex" } }} />
                     <Drawer.Screen name = "Badges" component = {Badges} options = {{
-                        "drawerLabel": "Badges", "title": "Badges", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Calculator" component = {Calculator} options = {{ "drawerLabel": "Calculator", "title": "Calculator", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "Settings" component = {Settings} options = {{ "drawerLabel": "Settings", "title": "Settings", "drawerItemStyle": { "display": "flex" } }} />
-                    <Drawer.Screen name = "ReportFeedback" component = {ReportFeedback} options = {{ "drawerLabel": "Report Feedback", "title": "Report Feedback", "drawerItemStyle": { "display": "flex" } }} />
+                        "title": "Badges", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "Calculator" component = {Calculator} options = {{ "title": "Calculator", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "Settings" component = {Settings} options = {{ "title": "Settings", "drawerItemStyle": { "display": "flex" } }} />
+                    <Drawer.Screen name = "ReportFeedback" component = {ReportFeedback} options = {{ "title": "Report Feedback", "drawerItemStyle": { "display": "flex" } }} />
                 </Drawer.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>
     );
 }
+
+registerRootComponent(App);

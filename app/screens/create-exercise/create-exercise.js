@@ -7,11 +7,13 @@ import { exercises } from "../../../database/realm-database.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import Realm from "realm";
 import { colours } from "../../constants/colours.js";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 import { PickerModal } from "./picker-modal.js";
 
 const CreateExercise = () => {
     const router = useRouter();
+    const route = useRoute();
     const { control, getValues, reset } = useForm({});
     const [exerciseState, setExerciseState] = useState({
         "id": null,
@@ -33,7 +35,7 @@ const CreateExercise = () => {
     
     const { isReady, colours } = useTheme();
     
-    const { id, exerciseName, selectedExerciseType, exerciseNotes, videoPath } = useLocalSearchParams();
+    const { id, exerciseName, selectedExerciseType, exerciseNotes, videoPath } = route.params || {};
 
     useEffect(() => {
         if (id || exerciseName || selectedExerciseType || exerciseNotes || videoPath) {

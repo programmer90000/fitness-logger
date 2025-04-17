@@ -41,11 +41,16 @@ const styles = StyleSheet.create({
     },
 });
 
-function ScreenWithFooter({ "component": Component, ...rest }) {
+function ScreenWithFooter({ "component": Component, onLayout, ...rest }) {
+    function handleLayout(event) {
+        const { height } = event.nativeEvent.layout;
+        console.log("Height:", height);
+    }
+
     return (
         <View style = {{ "flex": 1 }}>
             <ScrollView contentContainerStyle = {{ "flexGrow": 1, "flexDirection": "column", "justifyContent": "space-between" }} >
-                <View style = {{ "flex": 1 }}>
+                <View style = {{ "flex": 1 }} onLayout = {handleLayout}>
                     <Component {...rest} />
                 </View>
                 <Footer />

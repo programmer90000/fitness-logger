@@ -16,89 +16,129 @@ jobs:
         run: npm install
       - name: Run Expo Prebuild
         run: npx expo prebuild
-      - name: Check and Upload ios directory
+
+      - name: Check if ios directory exists
+        id: ios_check
         run: |
           if [ -d "ios" ]; then
             echo "iOS directory exists."
-            # Upload iOS directory
-            mkdir -p ios
-            actions/upload-artifact@v4:
-              name: ios-directory
-              path: ios/
+            echo "ios_directory=true" >> $GITHUB_ENV
           else
             echo "iOS directory does not exist."
+            echo "ios_directory=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload android directory
+      - name: Upload ios directory
+        if: env.ios_directory == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-directory
+          path: ios/
+
+      - name: Check if android directory exists
+        id: android_check
         run: |
           if [ -d "android" ]; then
             echo "Android directory exists."
-            # Upload Android directory
-            mkdir -p android
-            actions/upload-artifact@v4:
-              name: android-directory
-              path: android/
+            echo "android_directory=true" >> $GITHUB_ENV
           else
             echo "Android directory does not exist."
+            echo "android_directory=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload assets directory
+      - name: Upload android directory
+        if: env.android_directory == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-directory
+          path: android/
+
+      - name: Check if assets directory exists
+        id: assets_check
         run: |
           if [ -d "assets" ]; then
             echo "Assets directory exists."
-            # Upload assets directory
-            mkdir -p assets
-            actions/upload-artifact@v4:
-              name: assets-directory
-              path: assets/
+            echo "assets_directory=true" >> $GITHUB_ENV
           else
             echo "Assets directory does not exist."
+            echo "assets_directory=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload eas.json
+      - name: Upload assets directory
+        if: env.assets_directory == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: assets-directory
+          path: assets/
+
+      - name: Check if eas.json exists
+        id: eas_json_check
         run: |
           if [ -f "eas.json" ]; then
             echo "eas.json exists."
-            # Upload eas.json file
-            actions/upload-artifact@v4:
-              name: eas-json
-              path: eas.json
+            echo "eas_json=true" >> $GITHUB_ENV
           else
             echo "eas.json does not exist."
+            echo "eas_json=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload App.json
+      - name: Upload eas.json
+        if: env.eas_json == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: eas-json
+          path: eas.json
+
+      - name: Check if App.json exists
+        id: app_json_check
         run: |
           if [ -f "App.json" ]; then
             echo "App.json exists."
-            # Upload App.json file
-            actions/upload-artifact@v4:
-              name: app-json
-              path: App.json
+            echo "app_json=true" >> $GITHUB_ENV
           else
             echo "App.json does not exist."
+            echo "app_json=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload app.config.js
+      - name: Upload App.json
+        if: env.app_json == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-json
+          path: App.json
+
+      - name: Check if app.config.js exists
+        id: app_config_js_check
         run: |
           if [ -f "app.config.js" ]; then
             echo "app.config.js exists."
-            # Upload app.config.js file
-            actions/upload-artifact@v4:
-              name: app-config-js
-              path: app.config.js
+            echo "app_config_js=true" >> $GITHUB_ENV
           else
             echo "app.config.js does not exist."
+            echo "app_config_js=false" >> $GITHUB_ENV
           fi
 
-      - name: Check and Upload package.json
+      - name: Upload app.config.js
+        if: env.app_config_js == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-config-js
+          path: app.config.js
+
+      - name: Check if package.json exists
+        id: package_json_check
         run: |
           if [ -f "package.json" ]; then
             echo "package.json exists."
-            # Upload package.json file
-            actions/upload-artifact@v4:
-              name: package-json
-              path: package.json
+            echo "package_json=true" >> $GITHUB_ENV
           else
             echo "package.json does not exist."
+            echo "package_json=false" >> $GITHUB_ENV
           fi
+
+      - name: Upload package.json
+        if: env.package_json == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-json
+          path: package.json

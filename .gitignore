@@ -20,6 +20,7 @@ web-build/
 .metro-health-check*
 
 # Debug
+debug/
 npm-debug.*
 yarn-debug.*
 yarn-error.*
@@ -30,6 +31,7 @@ yarn-error.*
 
 # Local env files
 .env*.local
+.env
 
 # Typescript
 *.tsbuildinfo
@@ -59,3 +61,22 @@ package-lock.json
 # Realm files
 default.realm
 default.realm.lock
+
+# iOS
+ios/Pods/
+ios/Podfile.lock
+ios/build/
+ios/*.xcworkspace
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcsettings/
+ios/*.xcuserstate
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/gradle/wrapper/gradle-wrapper.jar
+.gradle/

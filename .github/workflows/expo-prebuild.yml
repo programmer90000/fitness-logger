@@ -28,12 +28,12 @@ jobs:
           ./gradlew assembleDebug
         working-directory: ./android
       - name: Upload iOS directory
-        uses: actions/upload-artifact@v2.3.0
+        uses: actions/upload-artifact@v4
         with:
           name: ios-directory
           path: ios/
       - name: Upload Android directory
-        uses: actions/upload-artifact@v2.3.0
+        uses: actions/upload-artifact@v4
         with:
           name: android-directory
           path: android/

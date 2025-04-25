@@ -16,24 +16,89 @@ jobs:
         run: npm install
       - name: Run Expo Prebuild
         run: npx expo prebuild
-      - name: Install CocoaPods dependencies for iOS
+      - name: Check and Upload ios directory
         run: |
-          cd ios
-          pod install
-        working-directory: ./ios
-      - name: Install Android dependencies
+          if [ -d "ios" ]; then
+            echo "iOS directory exists."
+            # Upload iOS directory
+            mkdir -p ios
+            actions/upload-artifact@v4:
+              name: ios-directory
+              path: ios/
+          else
+            echo "iOS directory does not exist."
+          fi
+
+      - name: Check and Upload android directory
         run: |
-          cd android
-          ./gradlew clean
-          ./gradlew assembleDebug
-        working-directory: ./android
-      - name: Upload iOS directory
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-directory
-          path: ios/
-      - name: Upload Android directory
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-directory
-          path: android/
+          if [ -d "android" ]; then
+            echo "Android directory exists."
+            # Upload Android directory
+            mkdir -p android
+            actions/upload-artifact@v4:
+              name: android-directory
+              path: android/
+          else
+            echo "Android directory does not exist."
+          fi
+
+      - name: Check and Upload assets directory
+        run: |
+          if [ -d "assets" ]; then
+            echo "Assets directory exists."
+            # Upload assets directory
+            mkdir -p assets
+            actions/upload-artifact@v4:
+              name: assets-directory
+              path: assets/
+          else
+            echo "Assets directory does not exist."
+          fi
+
+      - name: Check and Upload eas.json
+        run: |
+          if [ -f "eas.json" ]; then
+            echo "eas.json exists."
+            # Upload eas.json file
+            actions/upload-artifact@v4:
+              name: eas-json
+              path: eas.json
+          else
+            echo "eas.json does not exist."
+          fi
+
+      - name: Check and Upload App.json
+        run: |
+          if [ -f "App.json" ]; then
+            echo "App.json exists."
+            # Upload App.json file
+            actions/upload-artifact@v4:
+              name: app-json
+              path: App.json
+          else
+            echo "App.json does not exist."
+          fi
+
+      - name: Check and Upload app.config.js
+        run: |
+          if [ -f "app.config.js" ]; then
+            echo "app.config.js exists."
+            # Upload app.config.js file
+            actions/upload-artifact@v4:
+              name: app-config-js
+              path: app.config.js
+          else
+            echo "app.config.js does not exist."
+          fi
+
+      - name: Check and Upload package.json
+        run: |
+          if [ -f "package.json" ]; then
+            echo "package.json exists."
+            # Upload package.json file
+            actions/upload-artifact@v4:
+              name: package-json
+              path: package.json
+          else
+            echo "package.json does not exist."
+          fi

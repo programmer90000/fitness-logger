@@ -1,3 +1,4 @@
+import React from "react";
 import Svg, { Path, Circle, Line, G, Polygon } from "react-native-svg";
 
 const HouseIcon = ({ size = 30, color = "black" }) => {

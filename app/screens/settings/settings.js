@@ -8,7 +8,6 @@ import { storeData, retrieveData } from "../../utils/async-storage.js";
 import { colours } from "../../constants/colours.js";
 import { workoutPresets, exercises, workoutPresetsExercises, previousWorkouts, previousWorkoutsExercises, goals, badges } from "../../../database/realm-database.js";
 import * as FileSystem from "expo-file-system";
-import * as Sharing from "expo-sharing";
 
 const Settings = () => { 
     const [themeValue, setThemeValue] = useState(null);

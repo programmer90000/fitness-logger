@@ -10,8 +10,12 @@
         "test": "jest"
     },
     "dependencies": {
+        "@react-native-async-storage/async-storage": "1.23.1",
+        "@react-native-community/datetimepicker": "8.3.0",
+        "@react-navigation/native": "6.1.18",
         "nativewind": "2.0.11",
         "react": "19.0.0",
+        "react-hook-form": "7.54.2",
         "react-native": "0.79.2",
         "react-native-chart-kit": "6.12.0",
         "react-native-collapsible": "1.6.2",

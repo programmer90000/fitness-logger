@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import Collapsible from "react-native-collapsible";
 import { colours } from "../../constants/colours.js";
 
-const Collapsible = ({ faqData, style }) => {
+const Accordion = ({ faqData, style }) => {
     const [collapsed, setCollapsed] = useState(faqData.map(() => { return true; }));
 
     const toggleExpanded = (index) => {
@@ -34,4 +34,4 @@ const Collapsible = ({ faqData, style }) => {
     );
 };
 
-export default Collapsible;
+export default Accordion;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Link } from '@react-navigation/native';
-import colours from '../../utils/colours';
+import colours from '../../constants/colours';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -9,11 +9,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Feather from 'react-native-vector-icons/Feather';
 
 export default function Footer() {
+    // TODO: Set the footer background and colour to the theme colour
     const styles = StyleSheet.create({
         "container": {
             "flex": 1,
-            "backgroundColor": colours.footer_background,
-            "color": colours.footer_images,
+            "backgroundColor": "#D10000",
+            "color": "#060606",
             "display": "flex",
             "alignItems": "center",
             "justifyContent": "space-evenly",

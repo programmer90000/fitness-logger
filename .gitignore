@@ -1,12 +1,5 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
 # Dependencies
 node_modules/
-
-# Expo
-.expo/
-dist/
-web-build/
 
 # Native
 *.orig.*
@@ -15,6 +8,7 @@ web-build/
 *.p12
 *.key
 *.mobileprovision
+*.keystore
 
 # Metro
 .metro-health-check*
@@ -28,17 +22,18 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# Local env files
-.env*.local
+# env files
+.env
 
 # Typescript
 *.tsbuildinfo
 
 # Log files
-.log
+*.log
 
 # Temporary files
 .tmp
+.temp
 .swp
 .bak
 
@@ -59,3 +54,21 @@ package-lock.json
 # Realm files
 default.realm
 default.realm.lock
+
+# Android
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/.idea/
+android/app/*.keystore
+android/captures/
+
+# iOS
+ios/Pods/
+ios/build/
+ios/*.xcuserdata/
+ios/*.xcworkspace/
+ios/*.xcscmblueprint
+ios/DerivedData/
+ios/.xcode.env

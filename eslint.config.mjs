@@ -6,9 +6,9 @@ import reactNative from "eslint-plugin-react-native";
 
 export default [
     {
-        plugins: { "@stylistic/js": stylisticJs, "@stylistic/jsx": stylisticJsx, "@stylistic": stylistic, "react": react, "react-native": reactNative },
-        languageOptions: { parserOptions: { ecmaFeatures: { jsx: true }, ecmaVersion: 2021, sourceType: "module" }},
-        rules: {
+        "plugins": { "@stylistic/js": stylisticJs, "@stylistic/jsx": stylisticJsx, "@stylistic": stylistic, "react": react, "react-native": reactNative },
+        "languageOptions": { "parserOptions": { "ecmaFeatures": { "jsx": true }, "ecmaVersion": 2021, "sourceType": "module" } },
+        "rules": {
             "semi": "error",
             "indent": ["error", 4],
             "quotes": ["error", "double"],
@@ -67,6 +67,6 @@ export default [
             "react-native/no-color-literals": "warn",
             "react-native/no-raw-text": "error",
         },
-        ignores: ["tailwind.config.js"],
+        "ignores": ["tailwind.config.js"],
     },
 ];

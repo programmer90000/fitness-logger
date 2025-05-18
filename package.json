@@ -14,7 +14,12 @@
     "devDependencies": {
         "@babel/core": "7.20.7",
         "@react-native/babel-preset": "0.74.87",
-        "@react-native/metro-config": "0.74.87"
+        "@react-native/metro-config": "0.74.87",
+        "@stylistic/eslint-plugin": "2.13.0",
+        "@stylistic/eslint-plugin-js": "2.13.0",
+        "@stylistic/eslint-plugin-jsx": "2.13.0",
+        "eslint": "9.27.0",
+        "eslint-plugin-json-format": "2.0.1"
     },
     "engines": {
         "node": ">=18"

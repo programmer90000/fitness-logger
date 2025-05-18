@@ -6,7 +6,8 @@
         "android": "react-native run-android",
         "ios": "react-native run-ios",
         "start": "react-native start",
-        "prepare": "husky"
+        "prepare": "husky",
+        "lint": "npx eslint ."
     },
     "dependencies": {
         "react": "18.2.0",
@@ -16,6 +17,12 @@
         "@babel/core": "7.20.7",
         "@react-native/babel-preset": "0.74.87",
         "@react-native/metro-config": "0.74.87",
+        "@stylistic/eslint-plugin": "2.13.0",
+        "@stylistic/eslint-plugin-js": "2.13.0",
+        "@stylistic/eslint-plugin-jsx": "2.13.0",
+        "eslint": "9.27.0",
+        "eslint-plugin-react": "7.37.5",
+        "eslint-plugin-react-native": "5.0.0",
         "husky": "9.1.7"
     },
     "engines": {

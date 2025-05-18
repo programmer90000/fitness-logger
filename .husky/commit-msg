@@ -1,0 +1,17 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+ALLOWED_PREFIXES="config screen component feat fix database docs style refactor perf optimize merge test revert debug comment breaking snapshot other"
+ALLOWED_PREFIXES_REGEX="^($(echo $ALLOWED_PREFIXES | sed 's/ /|/g')): "
+
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+if ! echo "$COMMIT_MSG" | grep -qE "$ALLOWED_PREFIXES_REGEX"; then
+    printf "${RED}Error: Commit message must start with one of the following prefixes:${NC}\n"
+    printf "  ${RED}$(echo "$ALLOWED_PREFIXES" | sed 's/[^ ]\+/ & /g' | sed 's/ \+/ | /g' | sed 's/^ | //' | sed 's/ | $//')${NC}\n"
+    printf "${RED}followed by a colon and a space. Example: 'feat: Add user authentication'${NC}\n"
+    exit 1
+fi

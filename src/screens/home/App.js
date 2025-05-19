@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from "react-native/Libraries/NewAppScreen";
+import BootSplash from "react-native-bootsplash";
 
 const styles = StyleSheet.create({
     "sectionContainer": {
@@ -33,6 +34,17 @@ function Section({ children, title }) {
 }
 
 function App() {
+
+    useEffect(() => {
+        const init = async () => {
+            await new Promise((resolve) => { return setTimeout(resolve, 1000); });
+    
+            await BootSplash.hide({ "fade": true });
+            console.log("BootSplash has been hidden successfully");
+        };
+    
+        init();
+    }, []);
     const isDarkMode = useColorScheme() === "dark";
 
     const backgroundStyle = { "backgroundColor": isDarkMode ? Colors.darker : Colors.lighter };

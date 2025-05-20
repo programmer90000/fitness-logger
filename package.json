@@ -14,7 +14,8 @@
         "nativewind": "2.0.11",
         "react": "18.2.0",
         "react-native": "0.74.5",
-        "react-native-bootsplash": "6.3.8"
+        "react-native-bootsplash": "6.3.8",
+        "realm": "20.0.0"
     },
     "devDependencies": {
         "@babel/core": "7.20.7",

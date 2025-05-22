@@ -1,5 +1,4 @@
-import { View } from "react-native";
-import { Link } from "expo-router";
+import { View, Link } from "react-native";
 import { HomeIcon, CalendarDaysIcon, PlusCircleIcon, ChartBarIcon, Cog6ToothIcon } from "react-native-heroicons/solid";
 import { colours } from "../../constants/colours.js";
 

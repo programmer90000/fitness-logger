@@ -22,7 +22,7 @@ public class MainActivity extends ReactActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
     RNBootSplash.init(this, R.style.BootTheme);
-    super.onCreate(savedInstanceState);
   }
 }

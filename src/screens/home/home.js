@@ -33,7 +33,7 @@ function Section({ children, title }) {
     );
 }
 
-function App() {
+function Home() {
 
     useEffect(() => {
         const init = async () => {
@@ -70,4 +70,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;

@@ -1,13 +1,13 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import App from "../screens/home/App.js";
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name = "Home" component = {App} />
-        </Stack.Navigator>
+        <Drawer.Navigator>
+            <Drawer.Screen name = "Home" component = {App} />
+        </Drawer.Navigator>
     );
 }

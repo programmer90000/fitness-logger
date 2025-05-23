@@ -1,6 +1,5 @@
-import React, { useEffect} from "react";
-import { ScrollView, StatusBar, Text, useColorScheme } from "react-native";
-import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from "react-native/Libraries/NewAppScreen";
+import React, { useEffect } from "react";
+import { ScrollView, Text, StatusBar } from "react-native";
 import BootSplash from "react-native-bootsplash";
 
 function Home() {
@@ -15,13 +14,9 @@ function Home() {
     
         init();
     }, []);
-    const isDarkMode = useColorScheme() === "dark";
-
-    const backgroundStyle = { "backgroundColor": isDarkMode ? Colors.darker : Colors.lighter };
-
     return (
-        <ScrollView style={backgroundStyle}>
-            <StatusBar barStyle = {isDarkMode ? "light-content" : "dark-content"} backgroundColor = {backgroundStyle.backgroundColor} />
+        <ScrollView>
+            <StatusBar barStyle = "light-content" backgroundColor = "#ff0000" />
             <Text>Temp</Text>
         </ScrollView>
     );

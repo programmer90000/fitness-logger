@@ -39,6 +39,8 @@ function Home() {
     return (
         <ScrollView className = "flex-1" style = {{ "backgroundColor": colours.main_background }} contentContainerStyle = {{ "alignItems": "center" }}>
             <StatusBar barStyle = "light-content" backgroundColor = "#ff0000" />
+            <Text className = "mt-10 text-2xl">Why use a fitness logger app?</Text>
+            <Text className = "m-3">Using a fitness logger app is a powerful way to take control of your health and fitness journey. It helps you monitor your progress, set achievable goals, and stay accountable by providing a clear picture of your workouts. By tracking your efforts, you can identify trends and make informed adjustments to your routine, ensuring you continue improving your fitness. Whether you're striving to lose weight, build strength, or simply maintain a healthy lifestyle, a fitness logger app makes it easier to turn your goals into lasting habits.</Text>
             <Text className = "mt-5 text-2xl">FAQ</Text>
             <Accordion data={faqData} style="mt-3" />
             <Text className = "mt-5 text-2xl">Benefits Of Using A Fitness Logger</Text>

@@ -39,7 +39,9 @@ function Home() {
     return (
         <ScrollView className = "flex-1" style = {{ "backgroundColor": colours.main_background }} contentContainerStyle = {{ "alignItems": "center" }}>
             <StatusBar barStyle = "light-content" backgroundColor = "#ff0000" />
+            <Text className = "mt-5 text-2xl">FAQ</Text>
             <Accordion data={faqData} style="mt-3" />
+            <Text className = "mt-5 text-2xl">Benefits Of Using A Fitness Logger</Text>
             <Accordion data = {benefitsOfUsingFitnessLogger} style = "mb-10" />
         </ScrollView>
     );
